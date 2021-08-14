@@ -17,7 +17,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-var scopes = ['identify', 'email'];
+var scopes = ['identify', 'email', 'guilds'];
 var prompt = 'consent'
 app.set("view egine", "ejs")
 passport.use(new DiscordStrategy({
@@ -27,7 +27,6 @@ passport.use(new DiscordStrategy({
     scope: scopes,
     prompt: prompt
 }, function(accessToken, refreshToken, profile, done) {
-  
   fetch("https://discord.com/api/users/@me/guilds", {
         method: 'get',
         headers: { 
@@ -36,7 +35,6 @@ passport.use(new DiscordStrategy({
     })
     .then(res => res.json())
     .then(json => {
-      console.log(json)
       if(json.filter(server => (server.id == "719496895449530439")).length > 0) {
         profile.VCP = true;
         db.findOrCreate(profile.provider, profile, function(user) {

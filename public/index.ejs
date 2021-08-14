@@ -2,6 +2,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./resources/style.css" rel="stylesheet">
+    <script src="./resources/spin.js"></script>
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
     <title>Vukkybox</title>
 </head>
@@ -12,7 +13,7 @@
         <div>
             <a href="/"><img id="icon" src="resources/icon.png" class="max-h-20 m-2" /></a>
         </div>
-        <ul class="flex flex-row p-5">
+        <ul class="flex flex-row p-10">
             <!-- <li class="pr-5"><a> Services </a></li>
             <li class="pr-5"><a>Porfolio</a></li>
             <li class="pr-5"><a>About</a></li> -->
@@ -32,6 +33,17 @@
               
         </ul>
     </nav>
+</div>
+
+<div id="welcome" class="p-5">
+welcome to vukkybox!
+<% if(username != "") { %>
+  looks like you're <%= username%>! well, let's get you started!
+  <br>first off, i must sadly inform you that there's nothing to do here. sorry, but this is a private space.
+  <br>your personal info was delicious though!
+<% } else {%>
+  <a href="/login"><button class="button button-blue font-bold">log in</button></a>
+<% } %>
 </div>
 
 </body>
