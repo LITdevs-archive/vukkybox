@@ -1,44 +1,39 @@
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./resources/style.css" rel="stylesheet">
-    <link rel="icon" type="image/png" id="randomizedFavicon" />
-    <script src="https://kit.fontawesome.com/e28851c58c.js" crossorigin="anonymous"></script>
-    <title>Skelly!</title>
-</head>
-<body class="bg-gray-800 text-white">
-    
- <div class=" bg-gray-900  w-full">
-    <nav class="flex justify-between">
-        <div>
-            <a href="/"><img id="vukmojiRandomization" class="max-h-10 m-2" /></a>
-        </div>
-        <script>
-            let id = Math.floor(Math.random() * (39 - 1 + 1) + 1)
-                    document.getElementById("vukmojiRandomization").src = `https://sivusto.tk/innervukky/${id}.png`;
-                    document.getElementById("randomizedFavicon").href = `https://sivusto.tk/innervukky/${id}.png`;
-        </script>
-        <ul class="flex flex-row p-5">
-            <!-- <li class="pr-5"><a> Services </a></li>
-            <li class="pr-5"><a>Porfolio</a></li>
-            <li class="pr-5"><a>About</a></li> -->
-            <% if(username != "") { %>
-              <div class="dropdown">
-                
-                <li class="pr-5"><a><%= username%></a></li>
-                <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
-                <div class="dropdown-content text-white">
-                  <a class="text-white" href="profile">Profile</a>
-                  <a class="text-white" href="logout">Log Out</a>
-                </div>
-              </div>
-            <% } else {%>
-                <li><a href="/login">Log In</a></li>
-            <% } %>
-              
-        </ul>
-    </nav>
-</div>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./resources/style.css" rel="stylesheet">
+        <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+        <script src="https://kit.fontawesome.com/e28851c58c.js" crossorigin="anonymous"></script>
+        <title>Vukkybox</title>
+    </head>
+    <body class="bg-gray-800 text-white">
+        
+     <div class=" bg-gray-900  w-full">
+        <nav class="flex justify-between">
+            <div>
+                <a href="/"><img id="icon" src="resources/icon.png" class="max-h-20 m-2" /></a>
+            </div>
+            <ul class="flex flex-row p-5">
+                <!-- <li class="pr-5"><a> Services </a></li>
+                <li class="pr-5"><a>Porfolio</a></li>
+                <li class="pr-5"><a>About</a></li> -->
+                <% if(username != "") { %>
+                  <div class="dropdown">
+                    
+                    <li class="pr-5"><a><%= username%></a></li>
+                    <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
+                    <div class="dropdown-content text-white">
+                      <a class="text-white" href="profile">Profile</a>
+                      <a class="text-white" href="logout">Log Out</a>
+                    </div>
+                  </div>
+                <% } else {%>
+                    <li><a href="/login">Log In</a></li>
+                <% } %>
+                  
+            </ul>
+        </nav>
+    </div>
     <div class=" py-10 px-10 ">
     
         <img class="max-h-50 rounded float-left" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/>

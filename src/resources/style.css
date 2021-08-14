@@ -40,6 +40,6 @@
   }
   
   
-  .dropdown-content a:hover {background-color: #ddd; color:black;}
+  .dropdown-content a:hover {background-color: #ddd; color:black; border-radius: 5px;}
   
   .dropdown:hover .dropdown-content {display: block;}

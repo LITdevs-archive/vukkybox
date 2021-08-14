@@ -23,7 +23,7 @@ app.set("view egine", "ejs")
 passport.use(new DiscordStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: 'https://skelly.xyz/callbackdiscord',
+    callbackURL: 'https://vukkybox.com/callbackdiscord',
     scope: scopes,
     prompt: prompt
 }, function(accessToken, refreshToken, profile, done) {
@@ -36,6 +36,7 @@ passport.use(new DiscordStrategy({
     })
     .then(res => res.json())
     .then(json => {
+      console.log(json)
       if(json.filter(server => (server.id == "719496895449530439")).length > 0) {
         profile.VCP = true;
         db.findOrCreate(profile.provider, profile, function(user) {
@@ -52,7 +53,7 @@ passport.use(new DiscordStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "https://skelly.xyz/callbackgithub",
+    callbackURL: "https://vukkybox.com/callbackgithub",
     scope: ["user:email"]
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -75,7 +76,7 @@ passport.use(new GitHubStrategy({
 passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: "https://skelly.xyz/callbacktwitter",
+    callbackURL: "https://vukkybox.com/callbacktwitter",
     userProfileURL  : 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
   },
   function(token, tokenSecret, profile, cb) {
@@ -87,7 +88,7 @@ passport.use(new TwitterStrategy({
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://skelly.xyz/callbackgoogle",
+    callbackURL: "https://vukkybox.com/callbackgoogle",
     scope: ["profile", "email"]
   },
   function(token, tokenSecret, profile, cb) {
