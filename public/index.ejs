@@ -39,11 +39,8 @@
 </div>
 
 <div id="welcome" class="p-5">
-welcome to vukkybox!
 <% if(username != "") { %>
-  looks like you're <%= username%>! well, let's get you started!
-  <br>first off, i must sadly inform you that there's nothing to do here. sorry, but this is a private space.
-  <br>your personal info was delicious though!
+  Hi <%= username%>!
 <% } else {%>
   <a href="/login"><button class="button button-blue font-bold">log in</button></a>
 <% } %>

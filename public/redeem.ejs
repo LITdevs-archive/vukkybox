@@ -1,24 +1,32 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Redeem</title>
         <style>
             body {
-                background-image: url("https://i.imgur.com/NlGok01.png");
+                background-image: url("https://i.imgur.com/YjWYAyf.png");
                 color: white;
+                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             }
         </style>
     </head>
     <body>
         <center>
-            <% if (invalid) { %>
+            <% if (invalid == "invalid") { %>
+                <script>document.body.style.backgroundImage = 'url("https://i.imgur.com/XVENcFy.png")'</script>
                 <h1>Alfur couldn't find that code.</h1>
-                <p>It's just... not there! Maybe it's expired, or our server broke?</p>
+                <p>It's not in the fancy organized lists of codes and users...<br>Either it doesn't exist, or our servers are just broken.</p>
+            <%} else if (invalid == "used") {%>
+                <script>document.body.style.backgroundImage = 'url("https://i.imgur.com/VzwJpXt.png")'</script>
+                <h1>Alfur has disappointing news...</h1>
+                <p>That code has already been used.</p>
             <%} else {%>
+                <script>document.body.style.backgroundImage = 'url("https://i.imgur.com/NlGok01.png")'</script>
                 <h1>Congratulations!</h1>
-                <p>You have successfully redeemed <code><%= code.toUpperCase() %></code>! It is worth <%= amount %> in Vukkybux.<br>
-                Your Vukkybux have been credited to your account now.</p><br><br>
-                <img src="/resources/icon.png" width="128" height="128"></img>
+                <p>You have successfully redeemed <code><%= code.toUpperCase() %></code>! It is worth <%= amount %> Vukkybux.<br>
+                Your Vukkybux have been credited to your account now.</p>
             <%} %>
+            <br><br><a href="/"><img src="/resources/icon.png" width="128" height="128"></img></a><br><small>A Vukky Limited service</small>
         </center>
     </body>
 </html>
