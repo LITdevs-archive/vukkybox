@@ -211,8 +211,10 @@ app.get('/info', checkAuth, function(req, res) {
     //console.log(req.user
     res.redirect("/")
     //db.findOrCreate(req.user.provider, req.user)
-
 });
+app.get('/redeem/*', function (req, res) {
+  res.send('congratulations! you redeemed a Literally Fucking Nothing!\nthat makes me so happy')
+})
 
 function checkAuth(req, res, next) {
     if (req.isAuthenticated()) return next();

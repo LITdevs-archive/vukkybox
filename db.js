@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/SkellyServices', {useNewUrlParser: true, useUnifiedTopology: true});
+require("dotenv").config();
+mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -16,12 +17,9 @@ db.once('open', function() {
     discordEmail: String,
     googleEmail: String,
     twitterEmail: String,
-    VCP: Boolean,
-    Patron: Boolean,
-    Salad: Boolean,
-    LinkedAccounts: Array,
-    tokens: Object,
-    username: String
+    username: String,
+    balance: Number,
+    gallery: Array
   });
   User = mongoose.model('User', userSchema);
 });
@@ -139,17 +137,22 @@ function changeUsername(user, newUsername) {
 }
 }
 
-function addVCP(user) {
+function addToGallery(user, id) {
 
 }
 
-function addSalad(user) {
+function getBalance(user) {
+
+}
+
+function setBalance(user) {
 
 }
 
 module.exports = {
     findOrCreate: findOrCreate,
     changeUsername: changeUsername,
-    addVCP: addVCP,
-    addSalad: addSalad
+    addToGallery: addToGallery,
+    getBalance: getBalance,
+    setBalance: setBalance
 }
