@@ -16,7 +16,7 @@ db.once('open', function() {
     githubEmail: String,
     discordEmail: String,
     googleEmail: String,
-    linkedAccounts: Array,
+    LinkedAccounts: Array,
     twitterEmail: String,
     username: String,
     balance: Number,
