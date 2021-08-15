@@ -14,6 +14,9 @@
             <div>
                 <a href="/"><img id="icon" src="resources/icon.png" class="max-h-20 m-2" /></a>
             </div>
+            <% if(username != "") { %>
+                <p class="p-5 text-2xl text-bold">Balance: <%=user.balance %></p>
+            <% } %>
             <ul class="flex flex-row p-10">
                 <!-- <li class="pr-5"><a> Services </a></li>
                 <li class="pr-5"><a>Porfolio</a></li>
