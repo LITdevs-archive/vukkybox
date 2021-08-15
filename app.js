@@ -4,12 +4,17 @@ var express  = require('express')
   , DiscordStrategy = require('passport-discord').Strategy
   , app      = express();
 const crypto = require("crypto");
+require("dotenv").config();
+const MongoDBStore = require("connect-mongodb-session")(session);
+var store = new MongoDBStore({
+	uri: process.env.MONGODB_HOST,
+	collection: 'sessions'
+});
 var GitHubStrategy = require('passport-github').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var db = require('./db')
 var fetch = require("node-fetch")
-require("dotenv").config();
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -83,7 +88,8 @@ passport.use(new GoogleStrategy({
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: true,
-	saveUninitialized: true
+	saveUninitialized: true,
+	store: store
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -135,6 +141,7 @@ app.get("/editProfile", checkAuth, function (req, res) {
 app.post("/editProfile", checkAuth, function(req, res) {
 	if(req.body.username != "") {
 	  db.changeUsername(req.user, req.body.username)
+	  req.session.passport.user.username = req.body.username
 	}
 	res.redirect("/profile")
 })
@@ -170,16 +177,48 @@ app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
 app.get('/loginTwitter', passport.authenticate('twitter'), function(req, res) {});
 app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
 app.get('/callbackdiscord',
-	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { res.redirect('/info') } // auth success
+	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
+		if(req.session.redirectTo) {
+			let dest = req.session.redirectTo;
+			req.session.redirectTo = "/"
+			res.redirect(dest) 
+		} else {
+			res.redirect('/')
+		}
+	} // auth success
 );
 app.get('/callbackgithub',
-	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { res.redirect('/info') } // auth success
+	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
+		if(req.session.redirectTo) {
+			let dest = req.session.redirectTo;
+			req.session.redirectTo = "/"
+			res.redirect(dest) 
+		} else {
+			res.redirect('/')
+		}
+	} // auth success
 );
 app.get('/callbacktwitter',
-	passport.authenticate('twitter', { failureRedirect: '/' }), function(req, res) { res.redirect('/info') } // auth success
+	passport.authenticate('twitter', { failureRedirect: '/' }), function(req, res) { 
+		if(req.session.redirectTo) {
+			let dest = req.session.redirectTo;
+			req.session.redirectTo = "/"
+			res.redirect(dest) 
+		} else {
+			res.redirect('/')
+		}
+	} // auth success
 );
 app.get('/callbackgoogle',
-	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) { res.redirect('/info') } // auth success
+	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) { 
+		if(req.session.redirectTo) {
+			let dest = req.session.redirectTo;
+			req.session.redirectTo = "/"
+			res.redirect(dest) 
+		} else {
+			res.redirect('/')
+		}
+	} // auth success
 );
 app.get('/logout', function(req, res) {
 	req.logout();
@@ -193,23 +232,20 @@ app.get('/info', checkAuth, function(req, res) {
 app.get('/redeem/:code', checkAuth, function (req, res) {
 	let code = req.params["code"];
 	db.validCode(code, (isValid) => {
-		if(isValid) {
-			db.redeemCode(req.user, code, (success, amount) => {
-				if(success) {
-					res.render(__dirname + '/public/redeem.ejs', {invalid: false, code: code, amount: amount});
-				} else {
-					res.render(__dirname + '/public/redeem.ejs', {invalid: true, code: null, amount: null});
-				}
-			});
-		} else {
-			res.render(__dirname + '/public/redeem.ejs', {invalid: true, code: null, amount: null});
-		}
+		db.redeemCode(req.user, code, (success, amount) => {
+			if(success) {
+				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: code, amount: amount});
+			} else {
+				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
+			}
+		});
 	});
 })
 
 function checkAuth(req, res, next) {
 	if (req.isAuthenticated()) return next();
-	res.redirect("/login")
+	req.session.redirectTo = req.path;
+	res.redirect(`/login`)
 }
 
 
