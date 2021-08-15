@@ -5,7 +5,7 @@
         <script src="./resources/spin.js"></script>
         <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
         <script src="https://kit.fontawesome.com/e28851c58c.js" crossorigin="anonymous"></script>
-        <title>Vukkybox</title>
+        <title>Vukkybox - Profile</title>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         
@@ -41,7 +41,7 @@
         <div class="bg-opacity-30 bg-gray-100 rounded-lg p-5">
             <div class="inline-block">
             <a href="/editProfile"><p class=" pl-5 hover:bg-opacity-30 hover:bg-gray-900"><%= username %><i class="fa pl-3 s fa-edit"></i></p></a>
-            <p class=" pl-5 text-gray-400"><%= primaryEmail %></p> <br>
+            <p class=" pl-5 text-gray-200"><%= primaryEmail %></p> <br>
 
             <% if(linkedAccounts.includes("github")) { %><i class="fab pl-5 fa-github"></i><% } if(linkedAccounts.includes("google")) { %><i class="fab pl-3 fa-google"></i><% } if(linkedAccounts.includes("twitter")) { %><i class="fab pl-3 fa-twitter"></i><% } if(linkedAccounts.includes("discord")) { %><i class="fab pl-3 fa-discord"></i><% } if(linkedAccounts.length == 4) { %><i class="fas pl-3 fa-plus-circle"></i> <% } %>
         </div>
