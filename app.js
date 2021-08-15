@@ -34,7 +34,9 @@ passport.use(new DiscordStrategy({
         },
     })
     .then(res => res.json())
-    .then(json => {
+    .then(json => { //its not a json lol
+      //console.log(json)
+      try {
       if(json.filter(server => (server.id == "719496895449530439")).length > 0) {
         profile.VCP = true;
         db.findOrCreate(profile.provider, profile, function(user) {
@@ -45,6 +47,10 @@ passport.use(new DiscordStrategy({
           done(null, user)
         })
       }
+    } catch(err) {
+      console.log(err)
+      console.log("---------\n", json)
+    }
     })
   
 }));
