@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Redeem</title>
+        <style>
+            body {
+                background-image: url("https://i.imgur.com/NlGok01.png");
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <% if (invalid) { %>
+                <h1>Alfur couldn't find that code.</h1>
+                <p>It's just... not there! Maybe it's expired, or our server broke?</p>
+            <%} else {%>
+                <h1>Congratulations!</h1>
+                <p>You have successfully redeemed <code><%= code.toUpperCase() %></code>! It is worth <%= amount %> in Vukkybux.<br>
+                Your Vukkybux have been credited to your account now.</p><br><br>
+                <img src="/resources/icon.png" width="128" height="128"></img>
+            <%} %>
+        </center>
+    </body>
+</html>

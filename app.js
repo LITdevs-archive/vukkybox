@@ -190,8 +190,21 @@ app.get('/info', checkAuth, function(req, res) {
 	res.redirect("/")
 	//db.findOrCreate(req.user.provider, req.user)
 });
-app.get('/redeem/*', function (req, res) {
-  res.send('congratulations! you redeemed a Literally Fucking Nothing!\nthat makes me so happy')
+app.get('/redeem/:code', checkAuth, function (req, res) {
+	let code = req.params["code"];
+	db.validCode(code, (isValid) => {
+		if(isValid) {
+			db.redeemCode(req.user, code, (success, amount) => {
+				if(success) {
+					res.render(__dirname + '/public/redeem.ejs', {invalid: false, code: code, amount: amount});
+				} else {
+					res.render(__dirname + '/public/redeem.ejs', {invalid: true, code: null, amount: null});
+				}
+			});
+		} else {
+			res.render(__dirname + '/public/redeem.ejs', {invalid: true, code: null, amount: null});
+		}
+	});
 })
 
 function checkAuth(req, res, next) {
