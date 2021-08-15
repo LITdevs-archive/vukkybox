@@ -43,8 +43,8 @@
     "passport-local": "^1.0.0",
     "passport-reddit": "^0.2.4",
     "passport-stack-exchange": "^1.0.0",
-    "passport-twitter": "^1.0.4",
+    "passport-twitter": "^0.1.5",
     "postcss-cli": "^8.3.1",
-    "xmldom": "^0.5.0"
+    "xmldom": "^0.6.0"
   }
 }

@@ -100,10 +100,10 @@ app.use(express.urlencoded({extended:true}));
 app.get('/login', function(req, res) {
   if(req.user) {
 	if(req.user.primaryEmail) {
-	  res.render(__dirname + '/public/login.ejs', {username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+	  res.render(__dirname + '/public/login.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 	} else {
 	  if(req.user[0].primaryEmail) {
-		res.render(__dirname + '/public/login.ejs', {username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/login.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 	  }
 	}
 	} else {
@@ -118,10 +118,10 @@ app.get("/profile", checkAuth, function (req, res) {
   if(req.user) {
 	if(req.user.primaryEmail) {
 	  
-	  res.render(__dirname + '/public/profile.ejs', {linkedAccounts: req.user.LinkedAccounts, username: req.user.username, primaryEmail: req.user.primaryEmail, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+	  res.render(__dirname + '/public/profile.ejs', {user: req.user, linkedAccounts: req.user.LinkedAccounts, username: req.user.username, primaryEmail: req.user.primaryEmail, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 	  } else {
 		if(req.user[0].primaryEmail) {
-		  res.render(__dirname + '/public/profile.ejs', {linkedAccounts: req.user[0].LinkedAccounts, username: req.user[0].username, primaryEmail: req.user[0].primaryEmail, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+		  res.render(__dirname + '/public/profile.ejs', {user: req.user[0], linkedAccounts: req.user[0].LinkedAccounts, username: req.user[0].username, primaryEmail: req.user[0].primaryEmail, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 		}
 	  }
 	  }
@@ -130,10 +130,10 @@ app.get("/profile", checkAuth, function (req, res) {
 app.get("/editProfile", checkAuth, function (req, res) { 
   
   if(req.user.primaryEmail) {
-	res.render(__dirname + '/public/editProfile.ejs', {username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+	res.render(__dirname + '/public/editProfile.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 	} else {
 	  if(req.user[0].primaryEmail) {
-		res.render(__dirname + '/public/editProfile.ejs', {username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/editProfile.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 	  }
 	}
 })
@@ -144,17 +144,6 @@ app.post("/editProfile", checkAuth, function(req, res) {
 	  req.session.passport.user.username = req.body.username
 	}
 	res.redirect("/profile")
-})
-
-app.get("/linkAccounts", checkAuth, function (req, res) { 
-  
-  if(req.user.primaryEmail) {
-	res.render(__dirname + '/public/linkAccounts.ejs', {linkedAccounts: req.user.LinkedAccounts, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
-	} else {
-	  if(req.user[0].primaryEmail) {
-		res.render(__dirname + '/public/linkAccounts.ejs', {linkedAccounts: req.user[0].LinkedAccounts, username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
-	  }
-	}
 })
 
 app.get('/', function(req, res) {
