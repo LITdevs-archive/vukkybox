@@ -5,6 +5,7 @@ mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTop
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 var User
+var Code
 db.once('open', function() {
   // we're connected!
   const userSchema = new mongoose.Schema({
@@ -23,6 +24,13 @@ db.once('open', function() {
     gallery: Array
   });
   User = mongoose.model('User', userSchema);
+  const codeSchema = new mongoose.Schema({
+    code: String,
+    amount: Number,
+    redeemedBy: String,
+    used: Boolean
+  });
+  Code = mongoose.model('Code', codeSchema);
 });
 
 
@@ -41,6 +49,7 @@ function findOrCreate(service, profile, callback) {
                         googleEmail:profile.emails[0].value,
                         primaryEmail:profile.emails[0].value,
                         LinkedAccounts: ["google"],
+                        balance: 100,
                         username:profile.emails[0].value
                     })
                     user.save(function (err, user) {
@@ -63,6 +72,7 @@ function findOrCreate(service, profile, callback) {
                         twitterEmail:profile.emails[0].value,
                         primaryEmail:profile.emails[0].value,
                         LinkedAccounts: ["twitter"],
+                        balance: 100,
                         username:profile.emails[0].value
                     })
                     user.save(function (err, user) {
@@ -85,6 +95,7 @@ function findOrCreate(service, profile, callback) {
                         githubEmail:profile.email,
                         primaryEmail:profile.email,
                         LinkedAccounts: ["github"],
+                        balance: 100,
                         username:profile.email
                     })
                     user.save(function (err, user) {
@@ -110,6 +121,7 @@ function findOrCreate(service, profile, callback) {
                         discordEmail:profile.email,
                         primaryEmail:profile.email,
                         LinkedAccounts: ["discord"],
+                        balance: 100,
                         username:profile.email,
                         VCP: profile.VCP
                     })
@@ -150,10 +162,60 @@ function setBalance(user) {
 
 }
 
+function redeemCode(user, code, callback) { // callback with a boolean representing if the code was used successfully
+    Code.findOne({code:code}, function (err, code) {
+        if(err) {
+            callback(false)
+            console.log(err)
+        };
+        if(!code.used) {
+            code.used = true;
+            if(user._id) {
+                code.redeemedBy = user._id;
+            } else {
+                code.redeemedBy = user[0]._id;
+            }
+            code.save().then(savedCode => {
+                if (user._id) {
+                    User.findById({_id: user._id}, function (err, doc) {
+                        if(err) {
+                            callback(false, null)
+                            console.log(err)
+                        };
+                        doc.balance += savedCode.amount;
+                        doc.save()
+                        callback(true, savedCode.amount)
+                    })
+                } else {
+                    User.findById({_id: user[0]._id}, function (err, doc) {
+                        if(err) {
+                            callback(false, null)
+                            console.log(err)
+                        };
+                        doc.balance += savedCode.amount;
+                        doc.save()
+                        callback(true, savedCode.amount)
+                    })
+                }
+            });
+        }
+    });
+}
+
+function validCode(code, callback) { // callback with a boolean representing if the code is valid or not. (used codes are not valid)
+    Code.findOne({code: code}, function (err, code) {
+        if(!code) return callback(false)
+        if(code.used) return callback(false)
+        if(!code.used) return callback(true) 
+    });
+}
+
 module.exports = {
     findOrCreate: findOrCreate,
     changeUsername: changeUsername,
     addToGallery: addToGallery,
     getBalance: getBalance,
-    setBalance: setBalance
+    setBalance: setBalance,
+    redeemCode: redeemCode,
+    validCode: validCode
 }
