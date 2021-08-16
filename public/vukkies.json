@@ -1,0 +1,377 @@
+{
+	"levels":{
+		"1":{
+			"name":"Common",
+			"color":"#b0ceff"
+		},
+		"2":{
+			"name":"Uncommon",
+			"color":"#91bbff"
+		},
+		"3":{
+			"name":"Rare",
+			"color":"#af7dff"
+		},
+		"4":{
+			"name":"Mythical",
+			"color":"#d642ff"
+		},
+		"5":{
+			"name":"Godly",
+			"color":"#000dff"
+		},
+		"6":{
+			"name":"bukky",
+			"color":"#00A8F3"
+		}
+	},
+	"rarity":{
+		"1":{
+			"Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Happy Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Sad Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Confused Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Dead Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Joy Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Mad Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Scared Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Shruggy":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Thinking Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Woah":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Head":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Yes Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"No Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Mixed Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Left Looking Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Right Looking Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Crying Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Empty Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			}
+		},
+		"2":{
+			"Among Us Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Pink Vukky Head":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Cursed Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Fire Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Fat Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Flat Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Pain":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky This":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Sweat":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Sleeping Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Sarcastic Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Salad Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Ragi Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Love":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Flushed and Happy Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Flushed Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Disappointed Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"What the fuck have you done":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Blank Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			}
+		},
+		"3":{
+			"Sleeping Vukky in bed":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"XMas Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Denmark Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Faroes Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Finland Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Greenland Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Halloween Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Iceland Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"New Year Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Norway Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Sweden Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Valentine Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Worker's Day Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Yahoo Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Åland Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			}
+		},
+		"4":{
+			"Popcorn Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Burnt Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Cooked Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Bukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Gun":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Smart Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			}
+		},
+		"5":{
+			"Popcorn eating Vukky (Animated)":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Blinking Vukky (Animated)":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Looking (Animated)":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Spinning Vukky (Animated)":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Waving Vukky (Animated)":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Plush":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			}
+		},
+		"6":{
+			"Wikipedia Vukky":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			},
+			"Vukky Miner":{
+				"name":"pissjar",
+				"url":"url",
+				"description":"A vukky!"
+			}
+		}
+	}
+}
