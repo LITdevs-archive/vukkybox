@@ -27,98 +27,98 @@
 	},
 	"rarity":{
 		"1":{
-			"Vukky":{
-				"name":"pissjar",
+			"1":{
+				"name":"Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Happy Vukky":{
-				"name":"pissjar",
+			"2":{
+				"name":"Happy Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Sad Vukky":{
-				"name":"pissjar",
+			"3":{
+				"name":"Sad Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Confused Vukky":{
-				"name":"pissjar",
+			"4":{
+				"name":"Confused Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Dead Vukky":{
-				"name":"pissjar",
+			"5":{
+				"name":"Dead Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Joy Vukky":{
-				"name":"pissjar",
+			"6":{
+				"name":"Joy Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Mad Vukky":{
-				"name":"pissjar",
+			"7":{
+				"name":"Mad Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Scared Vukky":{
-				"name":"pissjar",
+			"8":{
+				"name":"Scared Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Shruggy":{
-				"name":"pissjar",
+			"9":{
+				"name":"Shruggy",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Thinking Vukky":{
-				"name":"pissjar",
+			"10":{
+				"name":"Thinking Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Vukky Woah":{
-				"name":"pissjar",
+			"11":{
+				"name":"Vukky Woah",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Vukky Head":{
-				"name":"pissjar",
+			"12":{
+				"name":"Vukky Head",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Yes Vukky":{
-				"name":"pissjar",
+			"13":{
+				"name":"Yes Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"No Vukky":{
-				"name":"pissjar",
+			"14":{
+				"name":"No Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Mixed Vukky":{
-				"name":"pissjar",
+			"15":{
+				"name":"Mixed Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Left Looking Vukky":{
-				"name":"pissjar",
+			"16":{
+				"name":"Left Looking Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Right Looking Vukky":{
-				"name":"pissjar",
+			"17":{
+				"name":"Right Looking Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Crying Vukky":{
-				"name":"pissjar",
+			"18":{
+				"name":"Crying Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			},
-			"Empty Vukky":{
-				"name":"pissjar",
+			"19":{
+				"name":"Empty Vukky",
 				"url":"url",
 				"description":"A vukky!"
 			}
