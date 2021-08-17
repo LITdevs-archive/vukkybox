@@ -100,14 +100,14 @@ app.use(express.urlencoded({extended:true}));
 app.get('/login', function(req, res) {
   if(req.user) {
 	if(req.user.primaryEmail) {
-	  res.render(__dirname + '/public/login.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+	  res.render(__dirname + '/public/login.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex"), redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
 	} else {
 	  if(req.user[0].primaryEmail) {
-		res.render(__dirname + '/public/login.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/login.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex"), redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
 	  }
 	}
 	} else {
-	  res.render(__dirname + '/public/login.ejs', {username: "", gravatarHash: ""})
+	  res.render(__dirname + '/public/login.ejs', {username: "", gravatarHash: "", redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false})
 	}
 });
 app.get("/index", (req, res) => {
@@ -147,14 +147,15 @@ app.post("/editProfile", checkAuth, function(req, res) {
 })
 
 app.get('/', function(req, res) {
-  if(req.user) {
-  if(req.user.username) {
-	res.render(__dirname + '/public/index.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
-	} else {
-	  if(req.user[0].primaryEmail) {
-		res.render(__dirname + '/public/index.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
-	  }
-	}
+	req.session.redirectTo = "/"
+  	if(req.user) {
+		if(req.user.username) {
+			res.render(__dirname + '/public/index.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+		} else {
+			if(req.user[0].primaryEmail) {
+				res.render(__dirname + '/public/index.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+			}
+		}
 	} else {
 	  res.render(__dirname + '/public/index.ejs', {user: null, username: ""})
 	}
@@ -230,6 +231,14 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 		});
 	});
 })
+
+app.get('/store', function(req,res) {
+	if(req.isAuthenticated()) {
+		res.render(__dirname + '/public/store.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+	} else {
+		res.render(__dirname + '/public/store.ejs', {user: null, username: "", gravatarHash: null});
+	}
+});
 
 function checkAuth(req, res, next) {
 	if (req.isAuthenticated()) return next();
