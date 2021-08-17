@@ -13,16 +13,17 @@
     
  <div class="bg-opacity-10  bg-gray-100 w-full">
     <nav class="flex justify-between">
-        <div>
+        <div class="inline-flex">
             <a href="/"><img id="icon" src="resources/icon.png" class="max-h-20 m-2" /></a>
+            <% if(username != "") { %>
+              <p class="m-auto text-2xl text-bold">Balance: <%=user.balance %></p>
+            <% } %>
         </div>
-        <% if(username != "") { %>
-          <p class="p-5 text-2xl text-bold">Balance: <%=user.balance %></p>
-        <% } %>
         <ul class="flex flex-row p-10">
             <!-- <li class="pr-5"><a> Services </a></li>
             <li class="pr-5"><a>Porfolio</a></li>
             <li class="pr-5"><a>About</a></li> -->
+            <li class="pr-10"><a href="/store">Storefront</a></li>
             <% if(username != "") { %>
               <div class="dropdown">
                 
@@ -30,6 +31,7 @@
                 <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
                 <div class="dropdown-content text-white">
                   <a class="text-white" href="profile">Profile</a>
+                  <a class="text-white" href="gallery">Collection</a>
                   <a class="text-white" href="logout">Log Out</a>
                 </div>
               </div>
