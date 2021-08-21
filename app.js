@@ -13,6 +13,7 @@ var store = new MongoDBStore({
 var GitHubStrategy = require('passport-github').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
 var db = require('./db')
 var fetch = require("node-fetch")
 passport.serializeUser(function(user, done) {
@@ -25,6 +26,17 @@ passport.deserializeUser(function(obj, done) {
 var scopes = ['identify', 'email'];
 var prompt = 'consent'
 app.set("view egine", "ejs")
+passport.use(new MediaWikiStrategy({
+    consumerKey: process.env.MEDIAWIKI_CONSUMER,
+    consumerSecret: process.env.MEDIAWIKI_SECRET,
+    callbackURL: "https://vukkybox.com/callbackmediawiki"
+  },
+  function(token, tokenSecret, profile, done) {
+    db.findOrCreate(profile.provider, profile, function(user) {
+		done(null, user)
+	  })
+  }
+));
 passport.use(new DiscordStrategy({
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
@@ -166,6 +178,7 @@ app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, promp
 app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
 app.get('/loginTwitter', passport.authenticate('twitter'), function(req, res) {});
 app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
+app.get('/loginMediawiki', passport.authenticate('mediawiki'), function(req, res) {});
 app.get('/callbackdiscord',
 	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {
@@ -177,6 +190,20 @@ app.get('/callbackdiscord',
 		}
 	} // auth success
 );
+
+
+app.get('/callbackmediawiki',
+	passport.authenticate('mediawiki', { failureRedirect: '/' }), function(req, res) { 
+		if(req.session.redirectTo) {
+			let dest = req.session.redirectTo;
+			req.session.redirectTo = "/"
+			res.redirect(dest) 
+		} else {
+			res.redirect('/')
+		}
+	} // auth success
+);
+
 app.get('/callbackgithub',
 	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {

@@ -11,6 +11,7 @@ db.once('open', function() {
   const userSchema = new mongoose.Schema({
 	githubId: String,
 	discordId: String,
+	mediawikiId: String,
 	googleId: String,
 	twitterId: String,
 	primaryEmail: String,
@@ -19,6 +20,7 @@ db.once('open', function() {
 	googleEmail: String,
 	LinkedAccounts: Array,
 	twitterEmail: String,
+	mediawikiEmail: String,
 	username: String,
 	balance: Number,
 	gallery: Array
@@ -51,6 +53,29 @@ function findOrCreate(service, profile, callback) {
 						LinkedAccounts: ["google"],
 						balance: 100,
 						username:profile.emails[0].value
+					})
+					user.save(function (err, user) {
+						if (err) return console.error(err);
+						callback(user)
+					  });
+				}
+			})
+		break;
+		case "mediawiki":
+			User.countDocuments({mediawikiId:profile.id},function(err, res){
+				if (res) {
+					return User.find({mediawikiId:profile.id}, function(err, user) {
+						if(!err) callback(user)
+						if(err) console.log(err)
+					})
+				} else {
+					let user = new User({
+						mediawikiId:profile.id,
+						mediawikiEmail:profile._json.email,
+						primaryEmail:profile._json.email,
+						LinkedAccounts: ["mediawiki"],
+						balance: 100,
+						username:profile.displayName
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
