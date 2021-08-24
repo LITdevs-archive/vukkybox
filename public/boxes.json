@@ -1,5 +1,6 @@
 {
     "fire": {
+        "price": 25,
         "uniques": [
             {
                 "id": "23",
@@ -16,6 +17,7 @@
         }
     },
     "warped": {
+        "price": 50,
         "uniques": [
             {
                 "id": "69",
@@ -40,6 +42,7 @@
         }
     },
     "veggie": {
+        "price": 25,
         "uniques": [
             {
                 "id": "68",
@@ -60,6 +63,7 @@
         }
     },
     "classic": {
+        "price": 10,
         "uniques": [
             {
                 "id": "73",
