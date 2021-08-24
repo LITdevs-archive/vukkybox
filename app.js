@@ -158,6 +158,27 @@ app.post("/editProfile", checkAuth, function(req, res) {
 	res.redirect("/profile")
 })
 
+app.post('/buyBox', (req, res) => {
+	if(req.isAuthenticated()) {
+		let validBoxes = ["veggie", "warped", "classic", "fire"]
+		
+		if(validBoxes.includes(req.body.box)) {
+			db.buyBox(req.user, req.body.box, function(prize, newBalance) {
+				req.session.user.balance = newBalance
+				if(req.user.primaryEmail) {
+					res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+				} else {
+					res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				}
+			});
+		} else {
+			res.status(400).send({message: "Box not found"})
+		}
+	} else {
+		res.status(403).send({message: "Unauthorized"})
+	}
+});
+
 app.get('/', function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {

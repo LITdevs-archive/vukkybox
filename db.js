@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
+const boxJson = require("./public/boxes.json")
 mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
@@ -241,6 +242,39 @@ function validCode(code, callback) { // callback with a boolean representing if 
 	});
 }
 
+function buyBox(user, box, callback) {
+	let boxData = boxJson[box]
+	if (user._id) {
+		User.findById({_id: user._id}, function (err, doc) {
+			if(err) {
+				callback({"box":"error"})
+				console.log(err)
+			};
+			if(doc.balance >= boxData.price) {
+				doc.balance -= boxData.price;
+				doc.save()
+				callback({"box":"boxybox", "error": null})
+			} else {
+				callback({"box":null, "error":"not enough funds"})
+			}
+		})
+	} else {
+		User.findById({_id: user[0]._id}, function (err, doc) {
+			if(err) {
+				callback({"box":"error"})
+				console.log(err)
+			};
+			if(doc.balance >= boxData.price) {
+				doc.balance -= boxData.price;
+				doc.save()
+				callback({"box":"boxybox", "error": null}, doc.balance)
+			} else {
+				callback({"box":null, "error":"not enough funds"}, doc.balance)
+			}
+		})
+	}
+}
+
 module.exports = {
 	findOrCreate: findOrCreate,
 	changeUsername: changeUsername,
@@ -248,5 +282,6 @@ module.exports = {
 	getBalance: getBalance,
 	setBalance: setBalance,
 	redeemCode: redeemCode,
-	validCode: validCode
+	validCode: validCode,
+	buyBox: buyBox
 }

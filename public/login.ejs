@@ -37,11 +37,13 @@
             </ul>
         </nav>
     </div>
-        <div class="flex items-center justify-center p-24">
+        <center>
     
-            <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10 align-middle text-center justify-center">
+            <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 w-1/3 px-10 align-middle text-center justify-center">
                 <% if(redirect) { %>
-                <p class="text-gray-900">Please login to do that.</p><br>
+                <p class="text-gray-900">Please login to do that.</p>
+                <% } else { %>
+                  <p class="text-gray-900">Please sign in with one of these methods</p>
                 <% } %>
                 <br><br><a id="login" href="/loginDiscord"><button class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/discord.svg" width="32px">&nbsp;Sign in with Discord</button></a>
                 <br><br><a id="login" href="/loginMediawiki"><button class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/wikipedia.svg" width="32px">&nbsp;Sign in with Wikipedia</button></a>
@@ -51,6 +53,6 @@
                 
             </div>
             
-          </div>
+          </center>
 	</body>
 </html>
