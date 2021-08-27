@@ -8,7 +8,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 var User
 var Code
 db.once('open', function() {
-  // we're connected!
   const userSchema = new mongoose.Schema({
 	githubId: String,
 	discordId: String,
