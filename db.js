@@ -275,8 +275,22 @@ function buyBox(user, box, callback) {
 	}
 }
 
-function openBox(boxData) {
-	const rndInt = Math.floor(Math.random() * 10000)
+function openBox(boxname) {
+	let boxData = boxJson[boxname]
+	const probabilities = boxData.levels  
+	const level = () => {
+		const random = Math.random();
+		let threshold = 1;
+		
+		for (let [level, percentage] of Object.entries(probabilities)) {
+		  threshold = threshold - (percentage / 100);
+		  
+		  if (random >= threshold) {
+			return level;
+		  }
+		}
+	}
+
 }
 
 
