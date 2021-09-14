@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
 const boxJson = require("./public/boxes.json")
+const vukkyJson = require("./public/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
@@ -273,6 +274,11 @@ function buyBox(user, box, callback) {
 		})
 	}
 }
+
+function openBox(boxData) {
+	const rndInt = Math.floor(Math.random() * 10000)
+}
+
 
 module.exports = {
 	findOrCreate: findOrCreate,
