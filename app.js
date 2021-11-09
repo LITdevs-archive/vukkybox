@@ -14,6 +14,7 @@ var GitHubStrategy = require('passport-github').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
+const vukkyJson = require("./public/vukkies.json")
 var db = require('./db')
 var fetch = require("node-fetch")
 passport.serializeUser(function(user, done) {
@@ -108,6 +109,7 @@ app.use(passport.session());
 app.use("/resources", express.static('public/resources'))
 app.use("/.well-known", express.static('public/.well-known'))
 app.use(express.urlencoded({extended:true}));
+app.use(express.json())
 
 app.get('/login', function(req, res) {
   if(req.user) {
@@ -158,24 +160,31 @@ app.post("/editProfile", checkAuth, function(req, res) {
 	res.redirect("/profile")
 })
 
-app.post('/buyBox', (req, res) => {
+app.get('/buyBox/:data', (req, res) => {
 	if(req.isAuthenticated()) {
 		let validBoxes = ["veggie", "warped", "classic", "fire"]
-		
-		if(validBoxes.includes(req.body.box)) {
-			db.buyBox(req.user, req.body.box, function(prize, newBalance) {
-				req.session.user.balance = newBalance
-				if(req.user.primaryEmail) {
-					res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+		if(validBoxes.includes(req.params.data)) {
+			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery) {
+				if(prize.box) {
+					req.session.passport.user.balance = newBalance
+					req.session.passport.user.gallery = newGallery
+					if(req.user.primaryEmail) {
+						res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+					} else {
+						res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+					}
 				} else {
-					res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+					res.send("you poor lol. get good")
 				}
 			});
 		} else {
+			console.log("Invalid box")
 			res.status(400).send({message: "Box not found"})
 		}
 	} else {
 		res.status(403).send({message: "Unauthorized"})
+		req.session.redirectTo = "/store"
+		res.redirect("/login")
 	}
 });
 
@@ -191,6 +200,18 @@ app.get('/', function(req, res) {
 		}
 	} else {
 	  res.render(__dirname + '/public/index.ejs', {user: null, username: ""})
+	}
+});
+
+app.get('/gallery', checkAuth, function(req, res) {
+  	if(req.user) {
+		if(req.user.username) {
+			res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+		} else {
+			if(req.user[0].primaryEmail) {
+				res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+			}
+		}
 	}
 });
 
@@ -272,6 +293,7 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 	db.validCode(code, (isValid) => {
 		db.redeemCode(req.user, code, (success, amount) => {
 			if(success) {
+				req.session.passport.user.balance += amount
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: code, amount: amount});
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
@@ -294,6 +316,10 @@ function checkAuth(req, res, next) {
 	res.redirect(`/login`)
 }
 
+
+app.get('*', function(req, res){
+	res.status(404).render(`${__dirname}/public/404.ejs`);
+});
 
 var fs = require('fs');
 var http = require('http');

@@ -4,7 +4,7 @@
     <link href="./resources/style.css" rel="stylesheet">
     <script src="./resources/spin.js"></script>
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
-    <title>Vukkybox</title>
+    <title>Vukkybox - Collection</title>
     <meta name="title" content="Vukkybox">
     <meta name="description" content="Collect Vukkies trapped in boxes!">
     <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
@@ -43,13 +43,43 @@
     </nav>
 </div>
 
-<div id="welcome" class="p-5">
-<% if(username != "") { %>
-  Hi <%= username%>!
-<% } else {%>
-  <a href="/login"><button class="button button-blue font-bold">log in</button></a>
-<% } %>
-</div>
+<div id="7">
+<p class="text-bold text-xl ml-10 mt-5">7 Star Vukkies</p>
 
+</div>
+<div id="6">
+
+
+</div>
+<div id="5">
+
+
+</div>
+<div id="4">
+
+
+</div>
+<div id="3">
+
+
+</div>
+<div id="2">
+
+
+</div>
+<div id="1">
+
+
+</div>
+<p class="hidden"><%=JSON.stringify(vukkies) %></p>
 </body>
+<script>
+    const userGallery = [<%=user.gallery %>]
+    const vukkies = JSON.parse(decodeURIComponent('<%=JSON.stringify(vukkies) %>')) //TODO
+    for(let i = 0; i < vukkies["7"].length; i++) {
+        if(userGallery.includes(vukkies["7"][i])) {
+            document.getElementById("7").innerHTML += `<img class="max-h-20 m-2" src="https://vukkybox.com/resources/vukkies/7/${vukkies["7"][i].url}.png"/>`
+        }
+    }
+</script>
 </html>

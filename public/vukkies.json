@@ -1,30 +1,37 @@
 {
 	"levels":{
 		"1":{
+			"level": 1,
 			"name":"Common",
 			"color":"#b0ceff"
 		},
 		"2":{
+			"level": 2,
 			"name":"Uncommon",
 			"color":"#91bbff"
 		},
 		"3":{
+			"level": 3,
 			"name":"Rare",
 			"color":"#af7dff"
 		},
 		"4":{
+			"level": 4,
 			"name":"Mythical",
 			"color":"#d642ff"
 		},
 		"5":{
+			"level": 5,
 			"name":"Godly",
 			"color":"#000dff"
 		},
 		"6":{
+			"level": 6,
 			"name":"bukky",
 			"color":"#00A8F3"
 		},
 		"7":{
+			"level": 7,
 			"name":"Unique",
 			"color":"#ffbb00"
 		}
@@ -122,8 +129,8 @@
 				"description":"This Vukky is crying. It saw Twitter."
 			},
 			"19":{
-				"name":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyempty.png?raw=true",
-				"url":"url",
+				"name":"Vukky with no soul",
+				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyempty.png?raw=true",
 				"description":"Someone forgot to color in this one... Damn you, <insert random name later>!!"
 			}
 		},
@@ -212,6 +219,11 @@
 				"name":"Blank Vukky",
 				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyblank.png?raw=true",
 				"description":"This Vukky is so disappointed it doesn't even know what to display."
+			},
+			"74":{
+				"name":"Wiiky",
+				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiiky.png?raw=true",
+				"description":"Now with Vukky Sports!"
 			}
 		},
 		"3":{
@@ -219,6 +231,11 @@
 				"name":"Sleeping Vukky in bed",
 				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysleepbed.png?raw=true",
 				"description":"That looks really comfortable! Mind if I push you off, Vukky!"
+			},
+			"75":{
+				"name":"Wiiky U",
+				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiikyu.png?raw=true",
+				"description":"Not really sure what this is supposed to be. An accessory for the Wiiky?"
 			},
 			"40":{
 				"name":"XMas Vukky",
@@ -380,12 +397,12 @@
 			},
 			"70":{
 				"name":"Cooked Vukky Meat",
-				"url":"https://vukkybox.com/resources/vukkyplanet.png",
+				"url":"https://vukkybox.com/resources/cookedvukkymeat.png",
 				"description":"First you kill him and then you cook him??? what kind of monster are you"
 			},
 			"71":{
 				"name":"Burnt Vukky Meat",
-				"url":"https://vukkybox.com/resources/vukkyplanet.png",
+				"url":"https://vukkybox.com/resources/burntvukkymeat.png",
 				"description":"First you killed him and then you didnt even bother cooking right..."
 			},
 			"31":{
