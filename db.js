@@ -252,8 +252,13 @@ function buyBox(user, box, callback) {
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
-				doc.save()
-				callback({"box":"boxybox", "error": null})
+				openBox(box, res => {
+					if(!doc.gallery.includes(res.vukkyId)) {
+						doc.gallery.push(res.vukkyId)
+					}
+					doc.save()
+					callback({"box":res, "error": null}, doc.balance, doc.gallery)
+				})
 			} else {
 				callback({"box":null, "error":"not enough funds"})
 			}
@@ -266,8 +271,13 @@ function buyBox(user, box, callback) {
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
-				doc.save()
-				callback({"box":"boxybox", "error": null}, doc.balance)
+				openBox(box, res => {
+					if(!doc.gallery.includes(res.vukkyId)) {
+						doc.gallery.push(res.vukkyId)
+					}
+					doc.save()
+					callback({"box":res, "error": null}, doc.balance, doc.gallery)
+				})
 			} else {
 				callback({"box":null, "error":"not enough funds"}, doc.balance)
 			}
@@ -275,7 +285,7 @@ function buyBox(user, box, callback) {
 	}
 }
 
-function openBox(boxname) {
+function openBox(boxname, callback) {
 	let boxData = boxJson[boxname]
 	const probabilities = boxData.levels  
 	const level = () => {
@@ -290,9 +300,24 @@ function openBox(boxname) {
 		  }
 		}
 	}
+	const vukkyLevel = level()
+	let vukkyData = vukkyJson.rarity[vukkyLevel.toString()]
+	let vukkyKeys = Object.keys(vukkyData)
+	const vukky = () => {
+		if (vukkyLevel != 7) {
+			return vukkyData[vukkyKeys[vukkyKeys.length * Math.random() << 0]]
+		} else {
+			return vukkyData[boxData.uniques[Math.floor(Math.random() * boxData.uniques.length)].toString()]
+		}
+	}
+	let theVukky = vukky()
+	callback({vukky: theVukky, level: vukkyJson.levels[vukkyLevel.toString()], vukkyId: getKeyByValue(vukkyData, theVukky)})
 
 }
 
+function getKeyByValue(object, value) {
+	return Object.keys(object).find(key => object[key] === value);
+  }
 
 module.exports = {
 	findOrCreate: findOrCreate,
