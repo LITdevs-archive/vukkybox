@@ -26,12 +26,18 @@ db.once('open', function() {
 	mediawikiEmail: String,
 	username: String,
 	balance: Number,
-	gallery: Array
+	gallery: Array,
+	loginHourly: Date,
+	loginDaily: Date,
+	boxesOpened: Number,
+	codesRedeemed: Number,
+	uniqueVukkiesGot: Number
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
 	code: String,
 	amount: Number,
+	uses: Number,
 	redeemedBy: String,
 	used: Boolean
   });
@@ -55,7 +61,9 @@ function findOrCreate(service, profile, callback) {
 						primaryEmail:profile.emails[0].value,
 						LinkedAccounts: ["google"],
 						balance: 100,
-						username:profile.emails[0].value
+						username:profile.emails[0].value,
+						loginHourly: Date.now(),
+						loginDaily: Date.now()
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -78,30 +86,9 @@ function findOrCreate(service, profile, callback) {
 						primaryEmail:profile._json.email,
 						LinkedAccounts: ["mediawiki"],
 						balance: 100,
-						username:profile.displayName
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
-			})
-		break;
-		case "twitter":
-			User.countDocuments({twitterId:profile.id},function(err, res){
-				if (res) {
-					return User.find({twitterId:profile.id}, function(err, user) {
-						if(!err) callback(user)
-						if(err) console.log(err)
-					})
-				} else {
-					let user = new User({
-						twitterId:profile.id,
-						twitterEmail:profile.emails[0].value,
-						primaryEmail:profile.emails[0].value,
-						LinkedAccounts: ["twitter"],
-						balance: 100,
-						username:profile.emails[0].value
+						username:profile.displayName,
+						loginHourly: Date.now(),
+						loginDaily: Date.now()
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -124,7 +111,9 @@ function findOrCreate(service, profile, callback) {
 						primaryEmail:profile.email,
 						LinkedAccounts: ["github"],
 						balance: 100,
-						username:profile.email
+						username:profile.username,
+						loginHourly: Date.now(),
+						loginDaily: Date.now()
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -150,8 +139,10 @@ function findOrCreate(service, profile, callback) {
 						primaryEmail:profile.email,
 						LinkedAccounts: ["discord"],
 						balance: 100,
-						username:profile.email,
-						VCP: profile.VCP
+						username:profile.username,
+						VCP: profile.VCP,
+						loginHourly: Date.now(),
+						loginDaily: Date.now()
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -198,7 +189,8 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 		};
 		if(code) {
 		if(!code.used) {
-			code.used = true;
+			if(code.uses <= 1) code.used = true;
+			code.uses--;
 			if(user._id) {
 				code.redeemedBy = user._id;
 			} else {
@@ -212,6 +204,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 							console.log(err)
 						};
 						doc.balance += savedCode.amount;
+						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
 					})
@@ -222,6 +215,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 							console.log(err)
 						};
 						doc.balance += savedCode.amount;
+						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
 					})
@@ -257,11 +251,13 @@ function buyBox(user, box, callback) {
 				openBox(box, res => {
 					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
+						doc.uniqueVukkiesGot++;
 						doc.gallery.push(res.vukkyId)
 					} else {
 						dupe = true;
 						doc.balance += 0.1 * boxData.price;
 					}
+					doc.boxesOpened++;
 					doc.save()
 					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe)
 				})
@@ -280,10 +276,12 @@ function buyBox(user, box, callback) {
 				openBox(box, res => {
 					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
+						doc.uniqueVukkiesGot++;
 						doc.gallery.push(res.vukkyId)
 					} else {
 						dupe = true
 					}
+					doc.boxesOpened++;
 					doc.save()
 					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe)
 				})
@@ -328,11 +326,12 @@ function getKeyByValue(object, value) {
 	return Object.keys(object).find(key => object[key] === value);
   }
 
-function createCode(code, amount, callback) {
-	if(code.length < 1 || amount.length < 1) return callback(null, "invalid arguments")
+function createCode(code, amount, uses, callback) {
+	if(code.length < 1 || amount.length < 1 || uses.length < 1) return callback(null, "invalid arguments")
 	let newCode = new Code({
 		code: code,
 		amount: amount,
+		uses: uses,
 		used: false
 	})
 	newCode.save()
@@ -349,6 +348,21 @@ function getUser(userId, callback) {
 	})
 }
 
+function lastLogin(user, callback) {
+	User.findById({_id: user._id}, function (err, doc) {
+		if(Math.floor(Date.now() - doc.loginHourly) / 1000 / 3600 > 1) {
+			doc.loginHourly = Date.now()
+			doc.balance += 20
+		}
+		if(Math.floor(Date.now() - doc.loginDaily) / 1000 / 86400 > 1) {
+			doc.loginDaily = Date.now()
+			doc.balance += 500
+		}
+		doc.save()
+		callback(doc.balance)
+	})
+}
+
 module.exports = {
 	findOrCreate: findOrCreate,
 	changeUsername: changeUsername,
@@ -359,5 +373,6 @@ module.exports = {
 	createCode: createCode,
 	validCode: validCode,
 	buyBox: buyBox,
-	getUser: getUser
+	getUser: getUser,
+	lastLogin: lastLogin
 }

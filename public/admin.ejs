@@ -1,10 +1,12 @@
 <body style="background-color: #333333;color:#00ff00;padding-left:50px;padding-top: 50px">
-    <h1>BOXSTEALER (CONFIDENTIAL!!!)</h1>
+    <img src="/resources/devvukky.png"><h1>BOXSTEALER (CONFIDENTIAL!!!)</h1>
+    <p>this service is to be used by the vukky black hat hacking organization ONLY!!!</p>
     <br>
     <h3>Inject Vukkybux Generator</h3>
     <form method="post" action="https://vukkybox.com/admin/create_code">
         <input type="text" name="code" placeholder="code"/>
-        <input type="number" name="amount" placeholder="amount"/>
+        <input type="number" name="amount" placeholder="vukkybux">
+        <input type="number" name="uses" placeholder="uses" min="0">
         <input type="submit" value="INJECT IT NOW!!"/>
     </form>
     <br>
@@ -13,10 +15,16 @@
         <input type="text" name="name" placeholder="name"/>
         <input type="text" name="description" placeholder="description"/>
         <input type="text" name="url" placeholder="url"/>
-        <input type="number" name="level" placeholder="level"/>
+        <input type="number" name="level" placeholder="tier" max="7" min="1">
         <input type="submit" value="Execute"/>
     </form>
+    <br>
+    <a href="https://vukkybox.com" style="color:#00ff00;">DONE HACKING FOR TODAY</a><br><br><small>for legal reasons, this is a joke. this is our admin panel. please don't send us to jail</small>
     <script>
-
+        let params = new URL(document.location.href).searchParams;
+        if(params.get("code") != null) {
+            navigator.clipboard.writeText(`https://vukkybox.com/redeem/${params.get("code")}`);
+            alert("Redeem link copied to clipboard!")
+        }
     </script>
 </body>

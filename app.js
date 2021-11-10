@@ -11,7 +11,6 @@ var store = new MongoDBStore({
 	collection: 'sessions'
 });
 var GitHubStrategy = require('passport-github').Strategy;
-var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
 function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
@@ -73,18 +72,6 @@ passport.use(new GitHubStrategy({
 	  })
 	})
 	
-  }
-));
-passport.use(new TwitterStrategy({
-	consumerKey: process.env.TWITTER_CONSUMER_KEY,
-	consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-	callbackURL: "https://vukkybox.com/callbacktwitter",
-	userProfileURL  : 'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
-  },
-  function(token, tokenSecret, profile, cb) {
-	db.findOrCreate(profile.provider, profile, function(user) {
-	  cb(null, user)
-	})
   }
 ));
 passport.use(new GoogleStrategy({
@@ -162,18 +149,23 @@ app.post("/editProfile", checkAuth, function(req, res) {
 	res.redirect("/profile")
 })
 
-app.get('/buyBox/:data', (req, res) => {
-	if(req.isAuthenticated()) {
+app.get('/buyBox/:data', checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
 				if(prize.box) {
-					req.session.passport.user.balance = newBalance
-					req.session.passport.user.gallery = newGallery
 					if(req.user.primaryEmail) {
-						res.render(__dirname + '/public/buyBox.ejs', {boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+						let oldBalance = req.user.balance
+						req.session.passport.user.balance = newBalance
+						req.session.passport.user.gallery = newGallery
+						res.render(__dirname + '/public/buyBox.ejs', {oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+						
 					} else {
-						res.render(__dirname + '/public/buyBox.ejs', {boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+						let oldBalance = req.user[0].balance
+						req.session.passport.user[0].balance = newBalance
+						req.session.passport.user[0].gallery = newGallery
+						res.render(__dirname + '/public/buyBox.ejs', {oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+						
 					}
 				} else {
 					res.redirect("https://vukkybox.com/store?poor=true")
@@ -183,11 +175,6 @@ app.get('/buyBox/:data', (req, res) => {
 			console.log("Invalid box")
 			res.status(400).send({message: "Box not found"})
 		}
-	} else {
-		res.status(403).send({message: "Unauthorized"})
-		req.session.redirectTo = "/store"
-		res.redirect("/login")
-	}
 });
 
 app.get("/admin", function(req, res) {
@@ -203,7 +190,7 @@ app.post("/admin/:action", function(req, res) {
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		switch(req.params.action) {
 			case "create_code":
-				db.createCode(req.body.code, req.body.amount, (resp, err) => {
+				db.createCode(req.body.code, req.body.amount, req.body.uses, (resp, err) => {
 					if(err) return res.redirect("/admin?error=" + err) // res = {code: "code", amount: 123}
 					res.redirect("/admin?code=" + resp.code)
 				})
@@ -218,7 +205,7 @@ app.post("/admin/:action", function(req, res) {
 					description: req.body.description
 				}
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
-				res.redirect("/admin?vukky=" + newId)
+				res.redirect("/view/" + req.body.level + "/" + newId)
 				/*
 				"67":{
 					"name":"Vukky Miner",
@@ -231,8 +218,6 @@ app.post("/admin/:action", function(req, res) {
 				res.redirect("/admin?error=invalidaction")
 				break;
 		}
-		console.log(req.params.action)
-		console.log(req.body)
 	} else {
 		res.status(403).send({message: "This endpoint is reserved for future purposes. (but you are too cringe to have access to it)"})
 	}
@@ -289,7 +274,6 @@ app.get("/guestgallery/:userId", function(req, res) {
 
 app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {});
 app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
-app.get('/loginTwitter', passport.authenticate('twitter'), function(req, res) {});
 app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
 app.get('/loginMediawiki', passport.authenticate('mediawiki'), function(req, res) {});
 app.get('/callbackdiscord',
@@ -328,17 +312,6 @@ app.get('/callbackgithub',
 		}
 	} // auth success
 );
-app.get('/callbacktwitter',
-	passport.authenticate('twitter', { failureRedirect: '/' }), function(req, res) { 
-		if(req.session.redirectTo) {
-			let dest = req.session.redirectTo;
-			req.session.redirectTo = "/"
-			res.redirect(dest) 
-		} else {
-			res.redirect('/')
-		}
-	} // auth success
-);
 app.get('/callbackgoogle',
 	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {
@@ -364,7 +337,11 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 	db.validCode(code, (isValid) => {
 		db.redeemCode(req.user, code, (success, amount) => {
 			if(success) {
-				req.session.passport.user.balance += amount
+				if(req.user.primaryEmail) {
+					req.session.passport.user.balance += amount
+				} else {
+					req.session.passport.user[0].balance += amount
+				}
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: code, amount: amount});
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
@@ -383,7 +360,16 @@ app.get('/store', function(req,res) {
 });
 
 function checkAuth(req, res, next) {
-	if (req.isAuthenticated()) return next();
+	if (req.isAuthenticated()) {
+		db.lastLogin(req.user, function(newBalance) {
+			if(req.user.primaryEmail) {
+				req.session.passport.user.balance = newBalance
+			} else {
+				req.session.passport.user[0].balance = newBalance
+			}
+		})
+		return next();
+	}
 	req.session.redirectTo = req.path;
 	res.redirect(`/login`)
 }

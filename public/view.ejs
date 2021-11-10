@@ -13,7 +13,7 @@
             <div class="inline-flex">
                 <a href="/"><img id="icon" src="https://vukkybox.com/resources/icon.png" class="max-h-20 m-2" /></a>
                 <% if(username != "") { %>
-                  <p class="m-auto text-2xl text-bold">Balance: <%=user.balance %></p>
+                  <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
                 <% } %>
             </div>
             <ul class="flex flex-row p-10">
@@ -39,7 +39,7 @@
         </nav>
     </div>
         <center class="py-8">
-            <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 w-1/3 px-10 align-middle text-center justify-center">
+            <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 
                 <img class="m-auto" width="128" height="128" src="<%=JSON.parse(vukky).url %>"/>
                 <p><%=JSON.parse(vukky).name %> (#<%=vukkyId %>)</p>
