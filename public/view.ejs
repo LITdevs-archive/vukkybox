@@ -43,7 +43,11 @@
                 
                 <img class="m-auto" width="128" height="128" src="<%=JSON.parse(vukky).url %>"/>
                 <p><%=JSON.parse(vukky).name %> (#<%=vukkyId %>)</p>
-                <p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %> (<%=JSON.parse(level).level %> star)</p>
+                <% if(parseInt(JSON.parse(level).level) == 8) { %>
+                        <p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %></p>
+                    <% } else { %>
+                        <p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %> (<%=JSON.parse(level).level %> star)</p>
+                    <% } %>
                 <p><%=JSON.parse(vukky).description %></p>
                 <br>
                 <button onclick="history.back()" class="button button-blue">Go back</button>

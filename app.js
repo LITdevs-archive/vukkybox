@@ -150,7 +150,7 @@ app.post("/editProfile", checkAuth, function(req, res) {
 })
 
 app.get('/buyBox/:data', checkAuth, (req, res) => {
-		let validBoxes = ["veggie", "warped", "classic", "fire"]
+		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
 				if(prize.box) {
@@ -237,6 +237,18 @@ app.get("/view/:level/:id", checkAuth, function (req, res) {
 		}
 	  }
   })
+
+app.get('/stats', checkAuth, function(req, res) {
+	
+	if(req.user.primaryEmail) {
+		db.getUser(req.user._id, function(resp, err) {
+			if(err) return res.send(err)
+			res.send(resp)
+		})
+	} else {	
+		db.getUser(req.user[0]._id)
+	}
+})
 
 app.get('/', function(req, res) {
 	req.session.redirectTo = "/"

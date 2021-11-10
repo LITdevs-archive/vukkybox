@@ -63,6 +63,11 @@
 
 
 </div>
+<div id="pukky">
+    <p class="text-bold text-xl ml-10 mt-5" id="pukky_text">Pukky</p>
+
+
+</div>
 <div id="3">
     <p class="text-bold text-xl ml-10 mt-5" id="3_text">Rare (3 stars)</p>
 
@@ -98,6 +103,19 @@
             
         }
     }
+    let owned = 0
+        for(let i = 0; i < Object.keys(vukkies["pukky"]).length; i++) {
+            if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
+                owned++
+                document.getElementById("pukky").innerHTML += `<a href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 m-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}"/></a>`
+            }
+        }
+        if (owned == 0) {
+            document.getElementById("pukky").remove()
+        } else {
+            document.getElementById("pukky_text").innerHTML += ` (${owned}/${Object.keys(vukkies["pukky"]).length})`
+            
+        }
     document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
 </script>
 </html>
