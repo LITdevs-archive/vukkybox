@@ -63,7 +63,11 @@ function findOrCreate(service, profile, callback) {
 						balance: 100,
 						username:profile.emails[0].value,
 						loginHourly: Date.now(),
-						loginDaily: Date.now()
+						loginDaily: Date.now(),
+						boxesOpened: 0,
+						codesRedeemed: 0,
+						uniqueVukkiesGot: 0
+
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -88,7 +92,10 @@ function findOrCreate(service, profile, callback) {
 						balance: 100,
 						username:profile.displayName,
 						loginHourly: Date.now(),
-						loginDaily: Date.now()
+						loginDaily: Date.now(),
+						boxesOpened: 0,
+						codesRedeemed: 0,
+						uniqueVukkiesGot: 0
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -113,7 +120,10 @@ function findOrCreate(service, profile, callback) {
 						balance: 100,
 						username:profile.username,
 						loginHourly: Date.now(),
-						loginDaily: Date.now()
+						loginDaily: Date.now(),
+						boxesOpened: 0,
+						codesRedeemed: 0,
+						uniqueVukkiesGot: 0
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -142,7 +152,10 @@ function findOrCreate(service, profile, callback) {
 						username:profile.username,
 						VCP: profile.VCP,
 						loginHourly: Date.now(),
-						loginDaily: Date.now()
+						loginDaily: Date.now(),
+						boxesOpened: 0,
+						codesRedeemed: 0,
+						uniqueVukkiesGot: 0
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -280,6 +293,7 @@ function buyBox(user, box, callback) {
 						doc.gallery.push(res.vukkyId)
 					} else {
 						dupe = true
+						doc.balance += 0.1 * boxData.price;
 					}
 					doc.boxesOpened++;
 					doc.save()
@@ -308,6 +322,7 @@ function openBox(boxname, callback) {
 		}
 	}
 	const vukkyLevel = level()
+	console.log(boxname)
 	let vukkyData = vukkyJson.rarity[vukkyLevel.toString()]
 	let vukkyKeys = Object.keys(vukkyData)
 	const vukky = () => {

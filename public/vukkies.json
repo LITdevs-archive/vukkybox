@@ -34,9 +34,14 @@
 			"level": 7,
 			"name": "Unique",
 			"color": "#ffbb00"
+		},
+		"pukky": {
+			"level": 8,
+			"name": "Pukky",
+			"color": "#00bbff"
 		}
 	},
-	"currentId": 77,
+	"currentId": 110,
 	"rarity": {
 		"1": {
 			"1": {
@@ -62,7 +67,7 @@
 			"5": {
 				"name": "Dead Vukky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkydead.png?raw=true",
-				"description": "You murdered it. How dare you."
+				"description": "This might be tastier if I slice its limbs and eyes off."
 			},
 			"6": {
 				"name": "Joy Vukky",
@@ -212,7 +217,7 @@
 				"description": "This Vukky has been exposed to the internet for too long."
 			},
 			"37": {
-				"name": "What the fuck have you done",
+				"name": "Sliced Vukky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyblanksliced.png?raw=true",
 				"description": "Ready for meat processing! Wait, what now?"
 			},
@@ -234,9 +239,9 @@
 				"description": "That looks really comfortable! Mind if I push you off, Vukky!"
 			},
 			"40": {
-				"name": "XMas Vukky",
+				"name": "Santa Vukky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkychristmas.png?raw=true",
-				"description": "Christmas!! This Vukky has gifts!"
+				"description": "I don't want a lot for Christmas, there is just one thing I need... Vukkies!"
 			},
 			"41": {
 				"name": "Denmark Vukky",
@@ -334,6 +339,26 @@
 				"name": "Smart Vukky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysmart.png?raw=true",
 				"description": "It's been editing Wikipedia a lot. So much knowledge."
+			},
+			"107": {
+				"name": "Tukky",
+				"url": "https://vukkybox.com/resources/tukky.png",
+				"description": " This Vukky is the next level of product placement. It isn't just holding a generic Salad bowl. It is the Salad logo. How nice for it."
+			},
+			"108": {
+				"name": "Sussy Tukky",
+				"url": "https://vukkybox.com/resources/tukkysus.png",
+				"description": " Oh NO! The Tukky is SUS! That's super SUSSY!"
+			},
+			"109": {
+				"name": "Broken Vukky",
+				"url": "https://vukkybox.com/resources/vukkybroken.png",
+				"description": " Oh no! Our Vukky! It's broken!"
+			},
+			"110": {
+				"name": "Brokener Vukky",
+				"url": "https://vukkybox.com/resources/vukkybrokener.png",
+				"description": "Oh no! Our Vukky! Let's throw it in the trash! It's brokener than the Broken Vukky!"
 			}
 		},
 		"5": {
@@ -404,22 +429,22 @@
 			"68": {
 				"name": "Planet Vukky",
 				"url": "https://vukkybox.com/resources/vukkyplanet.png",
-				"description": "This Vukky is a Vukky."
+				"description": "You're living on a Vukky."
 			},
 			"69": {
 				"name": "Vukky Meat",
 				"url": "https://vukkybox.com/resources/vukkymeat.png",
-				"description": "Who killed him?????"
+				"description": "Delicious! ...what does it taste like?"
 			},
 			"70": {
 				"name": "Cooked Vukky Meat",
 				"url": "https://vukkybox.com/resources/cookedvukkymeat.png",
-				"description": "First you kill him and then you cook him??? what kind of monster are you"
+				"description": "I hope you're prepared for an unforgettable luncheon."
 			},
 			"71": {
 				"name": "Burnt Vukky Meat",
 				"url": "https://vukkybox.com/resources/burntvukkymeat.png",
-				"description": "First you killed him and then you didnt even bother cooking right..."
+				"description": "That isn't smoke. It's steam. Steam from the steamed Vukkies we're having. Mmm. Steamed Vukkies."
 			},
 			"73": {
 				"name": "VukkyBot",
@@ -427,9 +452,156 @@
 				"description": "It turned into a robot?? I guess it liked Discord moderation that much."
 			},
 			"76": {
-				"name": "Testing Vukky",
+				"name": "Developer Vukky",
 				"url": "https://vukkybox.com/resources/devvukky.png",
-				"description": "This Vukky was used for testing purposes during development of the website!"
+				"description": "This Vukky is very excited to start working on this website!"
+			}
+		},
+		"pukky": {
+			"78": {
+				"name": "yourfriend's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/yourfriend.png",
+				"description": "This Pukky belongs to yourfriend! Aww, that's so nice."
+			},
+			"79": {
+				"name": "Xotic's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/xotic.png",
+				"description": "This Pukky belongs to Xotic. It looks very exotic! Is it a furry?"
+			},
+			"80": {
+				"name": "Wazii's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/wazii.png",
+				"description": "This Pukky belongs to Wazii"
+			},
+			"81": {
+				"name": "Vukky's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/vukky.png",
+				"description": "This Pukky belongs to Vukky (wait a minute.. aren't they all Vukkies??)"
+			},
+			"82": {
+				"name": "Vansh's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/vansh.png",
+				"description": "This Pukky belongs to Vansh. That's quite the detailed Pukky!"
+			},
+			"83": {
+				"name": "txger's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/txger.png",
+				"description": "This Pukky belongs to txger"
+			},
+			"84": {
+				"name": "TheBlueBurger's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/theblueburger.png",
+				"description": "This Pukky belongs to TheBlueBurger, who is one of the BEST SaladBind developers! Oh. Their Pukky isn't that original."
+			},
+			"85": {
+				"name": "Tam's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/tam.gif",
+				"description": "This Pukky belongs to Tam"
+			},
+			"86": {
+				"name": "Strixx Em's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/strixxem.png",
+				"description": "This Pukky belongs to Strixx Em (hey, that's a special person!)"
+			},
+			"87": {
+				"name": "Scooberto's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/scooberto.png",
+				"description": "This Pukky belongs to Scooberto. I bet it's listening to some nice music!"
+			},
+			"88": {
+				"name": "Smokey's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/smokey.png",
+				"description": "This Pukky belongs to Smokey"
+			},
+			"89": {
+				"name": "Slonkey_Tint's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/slonkey_tint.png",
+				"description": "This Pukky belongs to Slonkey_Tint"
+			},
+			"90": {
+				"name": "Skelly's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/skelly.gif",
+				"description": "This Pukky belongs to Skelly. That's the person who worked on this terrible site!"
+			},
+			"91": {
+				"name": "rgnx's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/rgnx.png",
+				"description": "This Pukky belongs to rgnx"
+			},
+			"92": {
+				"name": "prth's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/prth.png",
+				"description": "This Pukky belongs to prth"
+			},
+			"93": {
+				"name": "Pro_Fire_Development's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/profiredevelopment.png",
+				"description": "This Pukky belongs to PFD"
+			},
+			"94": {
+				"name": "Plerion's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/plerion.gif",
+				"description": "Headache inducing image. Viewer discretion advised."
+			},
+			"95": {
+				"name": "ooby's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/ooby.png",
+				"description": "This Pukky belongs to ooby.. floppa bad!! Vukky supremacy!!"
+			},
+			"96": {
+				"name": "nahsahh's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/nahsahh.png",
+				"description": "This Pukky belongs to nahsahh"
+			},
+			"97": {
+				"name": "nado's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/nado.png",
+				"description": "This Pukky belongs to nado"
+			},
+			"98": {
+				"name": "Mot's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/mot.png",
+				"description": "This Pukky belongs to Mot"
+			},
+			"99": {
+				"name": "isavc's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/isavc.png",
+				"description": "This Pukky belongs to isavc"
+			},
+			"100": {
+				"name": "gepli's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/gepli.png",
+				"description": "This Pukky belongs to gepli"
+			},
+			"101": {
+				"name": "Fvn's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/fvn.png",
+				"description": "This Pukky belongs to Fvn/nyom"
+			},
+			"102": {
+				"name": "duckky's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/duckky.png",
+				"description": "This Pukky belongs to duckky"
+			},
+			"103": {
+				"name": "Box's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/box.png",
+				"description": "This Pukky belongs to Box"
+			},
+			"104": {
+				"name": "blxxdrxsh's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/blxxdrxsh.png",
+				"description": "This Pukky belongs to blxxdrxsh"
+			},
+			"105": {
+				"name": "axldevil's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/axldevil.png",
+				"description": "This Pukky belongs to axldevil"
+			},
+			"106": {
+				"name": "1nfinity's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/1nfinity.png",
+				"description": "This Pukky belongs to 1nfinity"
 			}
 		}
 	}
