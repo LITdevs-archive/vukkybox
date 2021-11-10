@@ -45,36 +45,36 @@
 </div>
 
 <div id="7">
-<p class="text-bold text-xl ml-10 mt-5">Unique (7 stars)</p>
+<p class="text-bold text-xl ml-10 mt-5" id="7_text">Unique (7 stars)</p>
 
 </div>
 <div id="6">
-<p class="text-bold text-xl ml-10 mt-5">bukky (6 stars)</p>
+<p class="text-bold text-xl ml-10 mt-5" id="6_text">bukky (6 stars)</p>
 
 
 </div>
 <div id="5">
-    <p class="text-bold text-xl ml-10 mt-5">Godly (5 stars)</p>
+    <p class="text-bold text-xl ml-10 mt-5" id="5_text">Godly (5 stars)</p>
 
 
 </div>
 <div id="4">
-    <p class="text-bold text-xl ml-10 mt-5">Mythical (4 stars)</p>
+    <p class="text-bold text-xl ml-10 mt-5" id="4_text">Mythical (4 stars)</p>
 
 
 </div>
 <div id="3">
-    <p class="text-bold text-xl ml-10 mt-5">Rare (3 stars)</p>
+    <p class="text-bold text-xl ml-10 mt-5" id="3_text">Rare (3 stars)</p>
 
 
 </div>
 <div id="2">
-    <p class="text-bold text-xl ml-10 mt-5">Uncommon (2 stars)</p>
+    <p class="text-bold text-xl ml-10 mt-5" id="2_text">Uncommon (2 stars)</p>
 
 
 </div>
 <div id="1">
-    <p class="text-bold text-xl ml-10 mt-5">Common (1 star)</p>
+    <p class="text-bold text-xl ml-10 mt-5" id="1_text">Common (1 star)</p>
 
 
 </div>
@@ -93,6 +93,9 @@
         }
         if (owned == 0) {
             document.getElementById(j).remove()
+        } else {
+            document.getElementById(j + "_text").innerHTML += ` (${owned}/${Object.keys(vukkies[j]).length})`
+            
         }
     }
     document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"

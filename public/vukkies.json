@@ -36,7 +36,7 @@
 			"color": "#ffbb00"
 		}
 	},
-	"currentId": 76,
+	"currentId": 77,
 	"rarity": {
 		"1": {
 			"1": {
@@ -369,6 +369,11 @@
 			}
 		},
 		"6": {
+			"57": {
+				"name": "Bukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/bukky.png?raw=true",
+				"description": "This Ykkuv has been through the depths of hell."
+			},
 			"66": {
 				"name": "Wikipedia Vukky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkywikipediaday.png?raw=true",
@@ -379,10 +384,10 @@
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyminer.png?raw=true",
 				"description": "This Vukky's going to mine crypto and convert it to SQUID! Wait! No! <a href='https://www.reddit.com/qkai4d'>The value dropped by 99%!</a> You're going to lose all your money! Stop!"
 			},
-			"57": {
-				"name": "Bukky",
-				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/bukky.png?raw=true",
-				"description": "This Ykkuv has been through the depths of hell."
+			"77": {
+				"name": "Vukky Burger",
+				"url": "https://vukkybox.com/resources/vukkyburger.png",
+				"description": "What are you doing? If you're going to eat that, at least add some toppings..."
 			}
 		},
 		"7": {

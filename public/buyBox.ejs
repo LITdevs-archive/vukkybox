@@ -13,7 +13,7 @@
             <div class="inline-flex">
                 <a href="/"><img id="icon" src="https://vukkybox.com/resources/icon.png" class="max-h-20 m-2" /></a>
                 <% if(username != "") { %>
-                  <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
+                  <p class="m-auto text-2xl text-bold" id="balance"><%=oldBalance %> Vukkybux</p>
                 <% } %>
             </div>
             <ul class="flex flex-row p-10">
@@ -39,7 +39,7 @@
         </nav>
     </div>
         <center class="py-8">
-            <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 w-1/3 px-10 align-middle text-center justify-center">
+            <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <div class="hidden reward" id="reward">
                     <img class="m-auto" width="128" height="128" src="<%=prize.box.vukky.url %>"/>
                     <p><%=prize.box.vukky.name %> (#<%=prize.box.vukkyId %>)</p>
@@ -48,7 +48,7 @@
                     <p class="text-red-500"><%if (dupe) { %><br>Sorry, but you already have this Vukky. You have been refunded 10%.<% } %></p>
                     <br>
                     <button class="button button-blue" onclick="window.location = window.location">Buy another one</button>
-                    <a href="/store"><button class="button button-blue">Return to the storefront</button></a>
+                    <a href="/store"><button class="py-5 button button-blue">Return to the storefront</button></a>
                 </div>
                 <div class="opener" id="opener">
                     <img id="openingicon" src="https://vukkybox.com/resources/<%=boxType %>vukkybox.png" class="max-h-48 m-auto" />
@@ -59,6 +59,7 @@
     <script type="text/javascript">
         const rarity = <%=prize.box.level.level %>;
         let rotation = (0.285714286 + (Math.random() / 3)) * rarity;
+        let newBalance = <%=user.balance %>;
         let spinner = setInterval(function() {
             document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
             rotation = rotation * 1.12
@@ -81,6 +82,7 @@
                 icon.style.display = "none";
                 document.getElementById("reward").classList.remove("hidden")
                 document.getElementById("opener").classList.add("hidden")
+                document.getElementById("balance").innerHTML = `${newBalance} Vukkybux`;
             }, 200);
         }, 600 * rarity);
 
