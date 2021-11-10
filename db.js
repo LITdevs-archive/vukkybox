@@ -259,7 +259,8 @@ function buyBox(user, box, callback) {
 					if(!doc.gallery.includes(res.vukkyId)) {
 						doc.gallery.push(res.vukkyId)
 					} else {
-						dupe = true
+						dupe = true;
+						doc.balance += 0.1 * boxData.price;
 					}
 					doc.save()
 					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe)

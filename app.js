@@ -171,9 +171,9 @@ app.get('/buyBox/:data', (req, res) => {
 					req.session.passport.user.balance = newBalance
 					req.session.passport.user.gallery = newGallery
 					if(req.user.primaryEmail) {
-						res.render(__dirname + '/public/buyBox.ejs', {dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+						res.render(__dirname + '/public/buyBox.ejs', {boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
 					} else {
-						res.render(__dirname + '/public/buyBox.ejs', {dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+						res.render(__dirname + '/public/buyBox.ejs', {boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 					}
 				} else {
 					res.redirect("https://vukkybox.com/store?poor=true")

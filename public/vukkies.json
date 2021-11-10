@@ -3,12 +3,12 @@
 		"1": {
 			"level": 1,
 			"name": "Common",
-			"color": "#b0ceff"
+			"color": "#6b7adb"
 		},
 		"2": {
 			"level": 2,
 			"name": "Uncommon",
-			"color": "#91bbff"
+			"color": "#4f92ff"
 		},
 		"3": {
 			"level": 3,
@@ -325,11 +325,6 @@
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkycooked.png?raw=true",
 				"description": "Mmm, that cookied Vukky looks tasty."
 			},
-			"57": {
-				"name": "Bukky",
-				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/bukky.png?raw=true",
-				"description": "This Ykkuv has been through the depths of hell."
-			},
 			"58": {
 				"name": "Vukky Gun",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkygun.png?raw=true",
@@ -383,6 +378,11 @@
 				"name": "Vukky Miner",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyminer.png?raw=true",
 				"description": "This Vukky's going to mine crypto and convert it to SQUID! Wait! No! <a href='https://www.reddit.com/qkai4d'>The value dropped by 99%!</a> You're going to lose all your money! Stop!"
+			},
+			"57": {
+				"name": "Bukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/bukky.png?raw=true",
+				"description": "This Ykkuv has been through the depths of hell."
 			}
 		},
 		"7": {
@@ -423,7 +423,7 @@
 			},
 			"76": {
 				"name": "Testing Vukky",
-				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukky%C3%A5land.png?raw=true",
+				"url": "https://vukkybox.com/resources/devvukky.png",
 				"description": "This Vukky was used for testing purposes during development of the website!"
 			}
 		}
