@@ -1,9 +1,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./resources/style.css" rel="stylesheet">
-    <script src="./resources/spin.js"></script>
-    <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+    <link href="https://vukkybox.com/resources/style.css" rel="stylesheet">
+    <script src="https://vukkybox.com/resources/spin.js"></script>
+    <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
     <title>Vukkybox - Collection</title>
     <meta name="title" content="Vukkybox">
     <meta name="description" content="Collect Vukkies trapped in boxes!">
@@ -14,7 +14,7 @@
  <div class="bg-opacity-10  bg-gray-100 w-full">
     <nav class="flex justify-between">
         <div class="inline-flex">
-            <a href="/"><img id="icon" src="resources/icon.png" class="max-h-20 m-2" /></a>
+            <a href="/"><img id="icon" src="https://vukkybox.com/resources/icon.png" class="max-h-20 m-2" /></a>
             <% if(username != "") { %>
               <p class="m-auto text-2xl text-bold">Balance: <%=user.balance %></p>
             <% } %>
@@ -23,20 +23,21 @@
             <!-- <li class="pr-5"><a> Services </a></li>
             <li class="pr-5"><a>Porfolio</a></li>
             <li class="pr-5"><a>About</a></li> -->
-            <li class="pr-10"><a href="/store">Storefront</a></li>
+            <li class="pr-10"><a href="https://vukkybox.com/guestgallery/<%=user._id %>" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/guestgallery/<%=user._id %>`);alert('Copied share link to clipboard')">Share Collection</a></li>
+            <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
             <% if(username != "") { %>
               <div class="dropdown">
                 
                 <li class="pr-5"><a><%= username%></a></li>
                 <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
                 <div class="dropdown-content text-white">
-                  <a class="text-white" href="profile">Profile</a>
-                  <a class="text-white" href="gallery">Collection</a>
-                  <a class="text-white" href="logout">Log Out</a>
+                  <a class="text-white" href="https://vukkybox.com/profile">Profile</a>
+                  <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
+                  <a class="text-white" href="https://vukkybox.com/logout">Log Out</a>
                 </div>
               </div>
             <% } else {%>
-                <li><a href="/login">Log In</a></li>
+                <li><a href="https://vukkybox.com/login">Log In</a></li>
             <% } %>
               
         </ul>
@@ -48,38 +49,52 @@
 
 </div>
 <div id="6">
+<p class="text-bold text-xl ml-10 mt-5">6 Star Vukkies</p>
 
 
 </div>
 <div id="5">
+    <p class="text-bold text-xl ml-10 mt-5">5 Star Vukkies</p>
 
 
 </div>
 <div id="4">
+    <p class="text-bold text-xl ml-10 mt-5">4 Star Vukkies</p>
 
 
 </div>
 <div id="3">
+    <p class="text-bold text-xl ml-10 mt-5">3 Star Vukkies</p>
 
 
 </div>
 <div id="2">
+    <p class="text-bold text-xl ml-10 mt-5">2 Star Vukkies</p>
 
 
 </div>
 <div id="1">
+    <p class="text-bold text-xl ml-10 mt-5">1 Star Vukkies</p>
 
 
 </div>
-<p class="hidden"><%=JSON.stringify(vukkies) %></p>
+<p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
 <script>
     const userGallery = [<%=user.gallery %>]
-    const vukkies = JSON.parse(decodeURIComponent('<%=JSON.stringify(vukkies) %>')) //TODO
-    for(let i = 0; i < vukkies["7"].length; i++) {
-        if(userGallery.includes(vukkies["7"][i])) {
-            document.getElementById("7").innerHTML += `<img class="max-h-20 m-2" src="https://vukkybox.com/resources/vukkies/7/${vukkies["7"][i].url}.png"/>`
+    const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
+    for(let j = 1; j <= 7; j++) {
+        let owned = 0
+        for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
+            if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
+                owned++
+                document.getElementById(j).innerHTML += `<a href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 m-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}"/></a>`
+            }
+        }
+        if (owned == 0) {
+            document.getElementById(j).remove()
         }
     }
+    document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
 </script>
 </html>

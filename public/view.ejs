@@ -40,23 +40,14 @@
     </div>
         <center class="py-8">
             <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 w-1/3 px-10 align-middle text-center justify-center">
-                <div class="hidden reward" id="reward">
-                    <img class="m-auto" src="<%=prize.box.vukky.url %>"/>
-                    <p><%=prize.box.vukky.name %> (#<%=prize.box.vukkyId %>)</p>
-                    <p style="color:<%=prize.box.level.color %>;"><%=prize.box.level.name %> (<%=prize.box.level.level %> star)</p>
-                    <p><%=prize.box.vukky.description %></p>
-                    <p class="text-red-500"><%if (dupe) { %>This vukky is a duplicate<% } %></p>
-                    <br>
-                    <button class="button button-blue" onclick="window.location = window.location">Buy another one</button>
-                    <a href="/store"><button class="button button-blue">Return to the storefront</button></a>
-                </div>
-                <div class="opener" id="opener">
-
-                </div>
+                
+                <img class="m-auto" src="<%=JSON.parse(vukky).url %>"/>
+                <p><%=JSON.parse(vukky).name %> (#<%=vukkyId %>)</p>
+                <p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %> (<%=JSON.parse(level).level %> star)</p>
+                <p><%=JSON.parse(vukky).description %></p>
+                <br>
+                <button onclick="history.back()" class="button button-blue">Go back</button>
             </div>
         </center>
 	</body>
-    <script type="text/javascript">
-
-    </script>
 </html>

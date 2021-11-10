@@ -1,7 +1,7 @@
 {
-  "name": "skelly.xyz",
+  "name": "vukkybox",
   "version": "1.0.0",
-  "description": "Skelly.xyz website",
+  "description": "Collect Vukkies trapped in boxes!",
   "main": "app.js",
   "scripts": {
     "cssdev": "npx postcss src/resources/*.css -d public/resources/",
@@ -10,17 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vtheskeleton/skelly.xyz.git"
+    "url": "git+https://github.com/litdevs/vukkybox.git"
   },
   "keywords": [
     "nodejs"
   ],
-  "author": "Skelly",
+  "author": "Skelly, Vukky",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vtheskeleton/skelly.xyz/issues"
+    "url": "https://github.com/litdevs/vukkybox/issues"
   },
-  "homepage": "https://github.com/vtheskeleton/skelly.xyz#readme",
+  "homepage": "https://github.com/litdevs/vukkybox#readme",
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.10",

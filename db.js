@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
 const boxJson = require("./public/boxes.json")
+function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
+nocache("./public/vukkies.json")
 const vukkyJson = require("./public/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -247,39 +249,45 @@ function buyBox(user, box, callback) {
 	if (user._id) {
 		User.findById({_id: user._id}, function (err, doc) {
 			if(err) {
-				callback({"box":"error"})
+				callback({"box":"error"}, null, null, null)
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
 				openBox(box, res => {
+					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
 						doc.gallery.push(res.vukkyId)
+					} else {
+						dupe = true
 					}
 					doc.save()
-					callback({"box":res, "error": null}, doc.balance, doc.gallery)
+					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe)
 				})
 			} else {
-				callback({"box":null, "error":"not enough funds"})
+				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null)
 			}
 		})
 	} else {
 		User.findById({_id: user[0]._id}, function (err, doc) {
 			if(err) {
-				callback({"box":"error"})
+				callback({"box":"error"}, null, null, null)
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
 				openBox(box, res => {
+					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
 						doc.gallery.push(res.vukkyId)
+					} else {
+						dupe = true
 					}
 					doc.save()
-					callback({"box":res, "error": null}, doc.balance, doc.gallery)
+					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe)
 				})
 			} else {
-				callback({"box":null, "error":"not enough funds"}, doc.balance)
+				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null)
 			}
 		})
 	}
@@ -319,6 +327,27 @@ function getKeyByValue(object, value) {
 	return Object.keys(object).find(key => object[key] === value);
   }
 
+function createCode(code, amount, callback) {
+	if(code.length < 1 || amount.length < 1) return callback(null, "invalid arguments")
+	let newCode = new Code({
+		code: code,
+		amount: amount,
+		used: false
+	})
+	newCode.save()
+	return callback({code: code, amount: amount}, null)
+}
+
+function getUser(userId, callback) {
+	User.findById({_id: userId}, function (err, doc) {
+		if(err) {
+			callback(null, err)
+			console.log(err)
+		};
+		callback(doc, null)
+	})
+}
+
 module.exports = {
 	findOrCreate: findOrCreate,
 	changeUsername: changeUsername,
@@ -326,6 +355,8 @@ module.exports = {
 	getBalance: getBalance,
 	setBalance: setBalance,
 	redeemCode: redeemCode,
+	createCode: createCode,
 	validCode: validCode,
-	buyBox: buyBox
+	buyBox: buyBox,
+	getUser: getUser
 }
