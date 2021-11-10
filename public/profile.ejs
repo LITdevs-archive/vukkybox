@@ -6,6 +6,9 @@
         <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
         <script src="https://kit.fontawesome.com/e28851c58c.js" crossorigin="anonymous"></script>
         <title>Vukkybox - Profile</title>
+        <meta name="title" content="Vukkybox">
+        <meta name="description" content="Collect Vukkies trapped in boxes!">
+        <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         
@@ -21,20 +24,20 @@
                     <!-- <li class="pr-5"><a> Services </a></li>
                     <li class="pr-5"><a>Porfolio</a></li>
                     <li class="pr-5"><a>About</a></li> -->
-                    <li class="pr-10"><a href="/store">Storefront</a></li>
+                    <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
                     <% if(username != "") { %>
                       <div class="dropdown">
                         
                         <li class="pr-5"><a><%= username%></a></li>
                         <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
                         <div class="dropdown-content text-white">
-                          <a class="text-white" href="profile">Profile</a>
-                          <a class="text-white" href="gallery">Collection</a>
-                          <a class="text-white" href="logout">Log Out</a>
+                          <a class="text-white" href="https://vukkybox.com/profile">Profile</a>
+                          <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
+                          <a class="text-white" href="https://vukkybox.com/logout">Log Out</a>
                         </div>
                       </div>
                     <% } else {%>
-                        <li><a href="/login">Log In</a></li>
+                        <li><a href="https://vukkybox.com/login">Log In</a></li>
                     <% } %>
                       
                 </ul>

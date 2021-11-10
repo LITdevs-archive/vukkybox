@@ -1,425 +1,431 @@
 {
-	"levels":{
-		"1":{
+	"levels": {
+		"1": {
 			"level": 1,
-			"name":"Common",
-			"color":"#b0ceff"
+			"name": "Common",
+			"color": "#b0ceff"
 		},
-		"2":{
+		"2": {
 			"level": 2,
-			"name":"Uncommon",
-			"color":"#91bbff"
+			"name": "Uncommon",
+			"color": "#91bbff"
 		},
-		"3":{
+		"3": {
 			"level": 3,
-			"name":"Rare",
-			"color":"#af7dff"
+			"name": "Rare",
+			"color": "#af7dff"
 		},
-		"4":{
+		"4": {
 			"level": 4,
-			"name":"Mythical",
-			"color":"#d642ff"
+			"name": "Mythical",
+			"color": "#d642ff"
 		},
-		"5":{
+		"5": {
 			"level": 5,
-			"name":"Godly",
-			"color":"#000dff"
+			"name": "Godly",
+			"color": "#000dff"
 		},
-		"6":{
+		"6": {
 			"level": 6,
-			"name":"bukky",
-			"color":"#00A8F3"
+			"name": "bukky",
+			"color": "#00A8F3"
 		},
-		"7":{
+		"7": {
 			"level": 7,
-			"name":"Unique",
-			"color":"#ffbb00"
+			"name": "Unique",
+			"color": "#ffbb00"
 		}
 	},
-	"rarity":{
-		"1":{
-			"1":{
-				"name":"Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukky.png?raw=true",
-				"description":"Oh look, it's a standard Vukky! How boring and simple."
+	"currentId": 76,
+	"rarity": {
+		"1": {
+			"1": {
+				"name": "Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukky.png?raw=true",
+				"description": "Oh look, it's a standard Vukky! How boring and simple."
 			},
-			"2":{
-				"name":"Happy Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyhappy.png?raw=true",
-				"description":"This Vukky seems to be happy. About what, though?"
+			"2": {
+				"name": "Happy Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyhappy.png?raw=true",
+				"description": "This Vukky seems to be happy. About what, though?"
 			},
-			"3":{
-				"name":"Sad Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysad.png?raw=true",
-				"description":"This Vukky is sad. Did you upset it?"
+			"3": {
+				"name": "Sad Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysad.png?raw=true",
+				"description": "This Vukky is sad. Did you upset it?"
 			},
-			"4":{
-				"name":"Confused Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyconfused.png?raw=true",
-				"description":"'Where the fuck am I??' -Vukky"
+			"4": {
+				"name": "Confused Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyconfused.png?raw=true",
+				"description": "'Where the fuck am I??' -Vukky"
 			},
-			"5":{
-				"name":"Dead Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkydead.png?raw=true",
-				"description":"You murdered it. How dare you."
+			"5": {
+				"name": "Dead Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkydead.png?raw=true",
+				"description": "You murdered it. How dare you."
 			},
-			"6":{
-				"name":"Joy Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyjoy.png?raw=true",
-				"description":"This Vukky seems to have spent time on Facebook again..."
+			"6": {
+				"name": "Joy Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyjoy.png?raw=true",
+				"description": "This Vukky seems to have spent time on Facebook again..."
 			},
-			"7":{
-				"name":"Mad Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkymad.png?raw=true",
-				"description":"Wow! It sure is pissed off! Maybe because it's a card!"
+			"7": {
+				"name": "Mad Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkymad.png?raw=true",
+				"description": "Wow! It sure is pissed off! Maybe because it's a card!"
 			},
-			"8":{
-				"name":"Scared Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyscared.png?raw=true",
-				"description":"Please stop shitting your pants because you saw a fly, Vukky..."
+			"8": {
+				"name": "Scared Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyscared.png?raw=true",
+				"description": "Please stop shitting your pants because you saw a fly, Vukky..."
 			},
-			"9":{
-				"name":"Shruggy",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyshrug.png?raw=true",
-				"description":"This Vukky didn't care enough to write its own description."
+			"9": {
+				"name": "Shruggy",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyshrug.png?raw=true",
+				"description": "This Vukky didn't care enough to write its own description."
 			},
-			"10":{
-				"name":"Thinking Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkythink.png?raw=true",
-				"description":"It's trying to think of a plan to destroy the unive- uh, I mean, get food from the store."
+			"10": {
+				"name": "Thinking Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkythink.png?raw=true",
+				"description": "It's trying to think of a plan to destroy the unive- uh, I mean, get food from the store."
 			},
-			"11":{
-				"name":"Vukky Woah",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywoah.png?raw=true",
-				"description":"This Vukky appears to be mildly impressed by your lack of computer knowledge."
+			"11": {
+				"name": "Vukky Woah",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywoah.png?raw=true",
+				"description": "This Vukky appears to be mildly impressed by your lack of computer knowledge."
 			},
-			"12":{
-				"name":"Vukky Head",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyhead.png?raw=true",
-				"description":"What the fuck did you do to it??"
+			"12": {
+				"name": "Vukky Head",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyhead.png?raw=true",
+				"description": "This Vukky... This Vukky. It's a special one. Why, exactly? Well... it knows what you did."
 			},
-			"13":{
-				"name":"Yes Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true",
-				"description":"This Vukky agrees with you."
+			"13": {
+				"name": "Yes Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true",
+				"description": "This Vukky agrees with you."
 			},
-			"14":{
-				"name":"No Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyno.png?raw=true",
-				"description":"This Vukky is ready to start a 5-hour war on reddit."
+			"14": {
+				"name": "No Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyno.png?raw=true",
+				"description": "This Vukky is ready to start a 5-hour war on reddit."
 			},
-			"15":{
-				"name":"Mixed Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkymixed.png?raw=true",
-				"description":"This Vukky is not sure if it wants to agree or start World War 3."
+			"15": {
+				"name": "Mixed Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkymixed.png?raw=true",
+				"description": "This Vukky is not sure if it wants to agree or start World War 3."
 			},
-			"16":{
-				"name":"Left Looking Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyleft.png?raw=true",
-				"description":"What is it looking at? You'll never know..."
+			"16": {
+				"name": "Left Looking Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyleft.png?raw=true",
+				"description": "What is it looking at? You'll never know..."
 			},
-			"17":{
-				"name":"Right Looking Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyright.png?raw=true",
-				"description":"...wonk reven ll'uoY ?ta gnikool ti si tahW"
+			"17": {
+				"name": "Right Looking Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyright.png?raw=true",
+				"description": "...wonk reven ll'uoY ?ta gnikool ti si tahW"
 			},
-			"18":{
-				"name":"Crying Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkycry.png?raw=true",
-				"description":"This Vukky is crying. It saw Twitter."
+			"18": {
+				"name": "Crying Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkycry.png?raw=true",
+				"description": "This Vukky is crying. It saw Twitter."
 			},
-			"19":{
-				"name":"Vukky with no soul",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyempty.png?raw=true",
-				"description":"Someone forgot to color in this one... Damn you, <insert random name later>!!"
+			"19": {
+				"name": "Vukky with no soul",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyempty.png?raw=true",
+				"description": "Someone forgot to color in this one... Damn you, <insert random name later>!!"
 			}
 		},
-		"2":{
-			"20":{
-				"name":"Among Us Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyamongus.png?raw=true",
-				"description":"susi baka"
+		"2": {
+			"20": {
+				"name": "Among Us Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyamongus.png?raw=true",
+				"description": "susi baka"
 			},
-			"21":{
-				"name":"Pink Vukky Head",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyheadpink.png?raw=true",
-				"description":"Do you think this is funny?"
+			"21": {
+				"name": "Pink Vukky Head",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyheadpink.png?raw=true",
+				"description": "Do you think this is funny?"
 			},
-			"22":{
-				"name":"Cursed Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkycursed.png?raw=true",
-				"description":"This Vukky finally has some world domination plans."
+			"22": {
+				"name": "Cursed Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkycursed.png?raw=true",
+				"description": "This Vukky finally has some world domination plans."
 			},
-			"24":{
-				"name":"Fat Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyfat.png?raw=true",
-				"description":"This Vukky ate the Sussy Burger 2 with extra sauce."
+			"24": {
+				"name": "Fat Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyfat.png?raw=true",
+				"description": "This Vukky ate the Sussy Burger 2 with extra sauce."
 			},
-			"25":{
-				"name":"Flat Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyflat.png?raw=true",
-				"description":"Vukky on the Nintendo!"
+			"25": {
+				"name": "Flat Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyflat.png?raw=true",
+				"description": "Vukky on the Nintendo!"
 			},
-			"26":{
-				"name":"Vukky Pain",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkypain.png?raw=true",
-				"description":"This vukky is in severe pain... Did it try out 'JavaScript'?"
+			"26": {
+				"name": "Vukky Pain",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkypain.png?raw=true",
+				"description": "This Vukky is in severe pain... Did it try out 'JavaScript'?"
 			},
-			"27":{
-				"name":"Vukky This",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkythis.png?raw=true",
-				"description":"This Vukky 'agrees with the message above'. I have no idea what that means."
+			"27": {
+				"name": "Vukky This",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkythis.png?raw=true",
+				"description": "This Vukky 'agrees with the message above'. I have no idea what that means."
 			},
-			"28":{
-				"name":"Vukky Sweat",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysweat.png?raw=true",
-				"description":"This Vukky has anxiety! Cool!"
+			"28": {
+				"name": "Vukky Sweat",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysweat.png?raw=true",
+				"description": "This Vukky has anxiety! Cool!"
 			},
-			"29":{
-				"name":"Sleeping Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysleep.png?raw=true",
-				"description":"Quiet! It's sleeping... BOO!"
+			"29": {
+				"name": "Sleeping Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysleep.png?raw=true",
+				"description": "Quiet! It's sleeping... BOO!"
 			},
-			"30":{
-				"name":"Sarcastic Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysarcasm.png?raw=true",
-				"description":"This Vukky doesn't seem to be very serious. Is it a redditor, perhaps?"
+			"30": {
+				"name": "Sarcastic Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysarcasm.png?raw=true",
+				"description": "This Vukky doesn't seem to be very serious. Is it a redditor, perhaps?"
 			},
-			"32":{
-				"name":"Ragi Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyragi.png?raw=true",
-				"description":"Wow! This Vukky is the most poorly drawn one yet! Oh, it didn't like that."
+			"32": {
+				"name": "Ragi Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyragi.png?raw=true",
+				"description": "Wow! This Vukky is the most poorly drawn one yet! Oh, it didn't like that."
 			},
-			"33":{
-				"name":"Vukky Love",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkylove.png?raw=true",
-				"description":"Vukky loves you."
+			"33": {
+				"name": "Vukky Love",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkylove.png?raw=true",
+				"description": "Vukky loves you."
 			},
-			"34":{
-				"name":"Flushed and Happy Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyflushedhappy.png?raw=true",
-				"description":"This Vukky is flushed AND happy! Did you give it a compliment?"
+			"34": {
+				"name": "Flushed and Happy Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyflushedhappy.png?raw=true",
+				"description": "This Vukky is flushed AND happy! Did you give it a compliment?"
 			},
-			"35":{
-				"name":"Flushed Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyflushed.png?raw=true",
-				"description":"So embarrasing... Crap, I even spelt embarrasing wrong. Oh, I did it again... embraasing."
+			"35": {
+				"name": "Flushed Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyflushed.png?raw=true",
+				"description": "So embarrasing... Crap, I even spelt embarrasing wrong. Oh, I did it again... embraasing."
 			},
-			"36":{
-				"name":"Disappointed Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkydisappointed.png?raw=true",
-				"description":"This Vukky has been exposed to the internet for too long."
+			"36": {
+				"name": "Disappointed Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkydisappointed.png?raw=true",
+				"description": "This Vukky has been exposed to the internet for too long."
 			},
-			"37":{
-				"name":"What the fuck have you done",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyblanksliced.png?raw=true",
-				"description":"Ready for meat processing! Wait, what now?"
+			"37": {
+				"name": "What the fuck have you done",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyblanksliced.png?raw=true",
+				"description": "Ready for meat processing! Wait, what now?"
 			},
-			"38":{
-				"name":"Blank Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyblank.png?raw=true",
-				"description":"This Vukky is so disappointed it doesn't even know what to display."
+			"38": {
+				"name": "Blank Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyblank.png?raw=true",
+				"description": "This Vukky is so disappointed it doesn't even know what to display."
 			},
-			"74":{
-				"name":"Wiiky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiiky.png?raw=true",
-				"description":"Now with Vukky Sports!"
+			"74": {
+				"name": "Wiiky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiiky.png?raw=true",
+				"description": "Now with Vukky Sports!"
 			}
 		},
-		"3":{
-			"39":{
-				"name":"Sleeping Vukky in bed",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysleepbed.png?raw=true",
-				"description":"That looks really comfortable! Mind if I push you off, Vukky!"
+		"3": {
+			"39": {
+				"name": "Sleeping Vukky in bed",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysleepbed.png?raw=true",
+				"description": "That looks really comfortable! Mind if I push you off, Vukky!"
 			},
-			"75":{
-				"name":"Wiiky U",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiikyu.png?raw=true",
-				"description":"Not really sure what this is supposed to be. An accessory for the Wiiky?"
+			"40": {
+				"name": "XMas Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkychristmas.png?raw=true",
+				"description": "Christmas!! This Vukky has gifts!"
 			},
-			"40":{
-				"name":"XMas Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkychristmas.png?raw=true",
-				"description":"Christmas!! This Vukky has gifts!"
+			"41": {
+				"name": "Denmark Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkydenmark.png?raw=true",
+				"description": "This Vukky has been to Denmark."
 			},
-			"41":{
-				"name":"Denmark Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkydenmark.png?raw=true",
-				"description":"This Vukky has been to Denmark."
+			"42": {
+				"name": "Faroes Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyfaroes.png?raw=true",
+				"description": "This Vukky has been to the Faroes."
 			},
-			"42":{
-				"name":"Faroes Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyfaroes.png?raw=true",
-				"description":"This Vukky has been to the Faroes."
+			"43": {
+				"name": "Finland Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyfinland.png?raw=true",
+				"description": "This Vukky has been to Finland."
 			},
-			"43":{
-				"name":"Finland Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyfinland.png?raw=true",
-				"description":"This Vukky has been to Finland."
+			"44": {
+				"name": "Greenland Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkygreenland.png?raw=true",
+				"description": "This Vukky has been to Greenland."
 			},
-			"44":{
-				"name":"Greenland Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkygreenland.png?raw=true",
-				"description":"This Vukky has been to Greenland."
+			"45": {
+				"name": "Halloween Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyhalloween.png?raw=true",
+				"description": "Very very scary!"
 			},
-			"45":{
-				"name":"Halloween Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyhalloween.png?raw=true",
-				"description":"Very very scary!"
+			"46": {
+				"name": "Iceland Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyiceland.png?raw=true",
+				"description": "This Vukky has been to Iceland."
 			},
-			"46":{
-				"name":"Iceland Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyiceland.png?raw=true",
-				"description":"This Vukky has been to Iceland."
+			"47": {
+				"name": "New Year Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkynewyear.png?raw=true",
+				"description": "Yes! It's 2020 2! Uh, I mean 2022. Hold on, what the fuck do you mean COVID-22??"
 			},
-			"47":{
-				"name":"New Year Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkynewyear.png?raw=true",
-				"description":"Yes! It's 2020 2! Uh, I mean 2022. Hold on, what the fuck do you mean COVID-22??" 
+			"48": {
+				"name": "Norway Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkynorway.png?raw=true",
+				"description": "This Vukky has been to Norway!"
 			},
-			"48":{
-				"name":"Norway Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkynorway.png?raw=true",
-				"description":"This Vukky has been to Norway!"
+			"49": {
+				"name": "Sweden Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkysweden.png?raw=true",
+				"description": "This Vukky has been to Sweden."
 			},
-			"49":{
-				"name":"Sweden Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkysweden.png?raw=true",
-				"description":"This Vukky has been to Sweden."
+			"50": {
+				"name": "Valentine Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyvalentine.png?raw=true",
+				"description": "What a cute Vukky. Does it have chocolate for me? The description writer?"
 			},
-			"50":{
-				"name":"Valentine Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyvalentine.png?raw=true",
-				"description":"What a cute Vukky. Does it have chocolate for me? The description writer?"
+			"51": {
+				"name": "Worker's Day Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyworkersday.png?raw=true",
+				"description": "This Vukky is a hard worker."
 			},
-			"51":{
-				"name":"Worker's Day Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyworkersday.png?raw=true",
-				"description":"This Vukky is a hard worker."
+			"52": {
+				"name": "Yahoo Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyyahoo.png?raw=true",
+				"description": "me after killing millions of websites and the best q&a site ever... i guess i'll use quora now"
 			},
-			"52":{
-				"name":"Yahoo Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyyahoo.png?raw=true",
-				"description":"me after killing millions of websites and the best q&a site ever... i guess i'll use quora now"
+			"53": {
+				"name": "Åland Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukky%C3%A5land.png?raw=true",
+				"description": "This Vukky has been to Åland."
 			},
-			"53":{
-				"name":"Åland Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukky%C3%A5land.png?raw=true",
-				"description":"This Vukky has been to Åland."
+			"75": {
+				"name": "Wiiky U",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiikyu.png?raw=true",
+				"description": "Not really sure what this is supposed to be. An accessory for the Wiiky?"
 			}
 		},
-		"4":{
-			"54":{
-				"name":"Popcorn Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkypopcorn.png?raw=true",
-				"description":"This Vukky is enjoying a movie, or cancel culture. You decide."
+		"4": {
+			"54": {
+				"name": "Popcorn Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkypopcorn.png?raw=true",
+				"description": "This Vukky is enjoying a movie, or cancel culture. You decide."
 			},
-			"55":{
-				"name":"Burnt Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyburnt.png?raw=true",
-				"description":"Oh dear, it's totally burnt!"
+			"55": {
+				"name": "Burnt Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyburnt.png?raw=true",
+				"description": "Oh dear, it's totally burnt!"
 			},
-			"56":{
-				"name":"Cooked Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkycooked.png?raw=true",
-				"description":"Mmm, that cookied Vukky looks tasty."
+			"56": {
+				"name": "Cooked Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkycooked.png?raw=true",
+				"description": "Mmm, that cookied Vukky looks tasty."
 			},
-			"57":{
-				"name":"Bukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/bukky.png?raw=true",
-				"description":"This Ykkuv has been through the depths of hell."
+			"57": {
+				"name": "Bukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/bukky.png?raw=true",
+				"description": "This Ykkuv has been through the depths of hell."
 			},
-			"58":{
-				"name":"Vukky Gun",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkygun.png?raw=true",
-				"description":"It doesn't think you're that funny."
+			"58": {
+				"name": "Vukky Gun",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkygun.png?raw=true",
+				"description": "It doesn't think you're that funny."
 			},
-			"59":{
-				"name":"Smart Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysmart.png?raw=true",
-				"description":"It's been editing Wikipedia a lot. So much knowledge."
+			"59": {
+				"name": "Smart Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysmart.png?raw=true",
+				"description": "It's been editing Wikipedia a lot. So much knowledge."
 			}
 		},
-		"5":{
-			"60":{
-				"name":"Popcorn Vukky (Animated)",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkypopcorneat.gif?raw=true",
-				"description":"This Vukky is enjoying cancel cultu- uh, I mean movies, so much that it moves!"
+		"5": {
+			"60": {
+				"name": "Popcorn Vukky (Animated)",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkypopcorneat.gif?raw=true",
+				"description": "This Vukky is enjoying cancel cultu- uh, I mean movies, so much that it moves!"
 			},
-			"61":{
-				"name":"Blinking Vukky (Animated)",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkyblink.gif?raw=true",
-				"description":"Is it bored?"
+			"61": {
+				"name": "Blinking Vukky (Animated)",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkyblink.gif?raw=true",
+				"description": "Is it bored?"
 			},
-			"62":{
-				"name":"Looking (Animated)",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkylook.gif?raw=true",
-				"description":"This Vukky is looking around in its freshly minted card."
+			"62": {
+				"name": "Looking (Animated)",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkylook.gif?raw=true",
+				"description": "This Vukky is looking around in its freshly minted card."
 			},
-			"63":{
-				"name":"Spinning Vukky (Animated)",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkyspin.gif?raw=true",
-				"description":"Wee! Oh wait, it's going to throw up."
+			"63": {
+				"name": "Spinning Vukky (Animated)",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkyspin.gif?raw=true",
+				"description": "Wee! Oh wait, it's going to throw up."
 			},
-			"64":{
-				"name":"Waving Vukky (Animated)",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkywave.gif?raw=true",
-				"description":"It's waving at you! Say hello, and don't mention the fourth wall!"
-			}, 
-			"65":{
-				"name":"Vukky Plush",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyplush.png?raw=true",
-				"description":"Looks quite huggable. Not for sale, though."
+			"64": {
+				"name": "Waving Vukky (Animated)",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/animated/vukkywave.gif?raw=true",
+				"description": "It's waving at you! Say hello, and don't mention the fourth wall!"
+			},
+			"65": {
+				"name": "Vukky Plush",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyplush.png?raw=true",
+				"description": "Looks quite huggable. Not for sale, though."
 			}
 		},
-		"6":{
-			"66":{
-				"name":"Wikipedia Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkywikipediaday.png?raw=true",
-				"description":"This Vukky has been editing Wikipedia so much that it IS Wikipedia."
+		"6": {
+			"66": {
+				"name": "Wikipedia Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkywikipediaday.png?raw=true",
+				"description": "This Vukky has been editing Wikipedia so much that it IS Wikipedia."
 			},
-			"67":{
-				"name":"Vukky Miner",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyminer.png?raw=true",
-				"description":"Vukky's going to mine coins! Wait! No! The value dropped by 1000%! It's not profitable! Stop!"
+			"67": {
+				"name": "Vukky Miner",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyminer.png?raw=true",
+				"description": "This Vukky's going to mine crypto and convert it to SQUID! Wait! No! <a href='https://www.reddit.com/qkai4d'>The value dropped by 99%!</a> You're going to lose all your money! Stop!"
 			}
 		},
-		"7":{
-			"68":{
-				"name":"Planet Vukky",
-				"url":"https://vukkybox.com/resources/vukkyplanet.png",
-				"description":"This Vukky is a Vukky."
+		"7": {
+			"23": {
+				"name": "Fire Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyfire.png?raw=true",
+				"description": "Also an Annoying Orange Vukky, if you prefer."
 			},
-			"69":{
-				"name":"Vukky Meat",
-				"url":"https://vukkybox.com/resources/vukkymeat.png",
-				"description":"Who killed him?????"
+			"31": {
+				"name": "Salad Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysalad.png?raw=true",
+				"description": "Ah yes, my favorite Vukky - product placement flavored."
 			},
-			"70":{
-				"name":"Cooked Vukky Meat",
-				"url":"https://vukkybox.com/resources/cookedvukkymeat.png",
-				"description":"First you kill him and then you cook him??? what kind of monster are you"
+			"68": {
+				"name": "Planet Vukky",
+				"url": "https://vukkybox.com/resources/vukkyplanet.png",
+				"description": "This Vukky is a Vukky."
 			},
-			"71":{
-				"name":"Burnt Vukky Meat",
-				"url":"https://vukkybox.com/resources/burntvukkymeat.png",
-				"description":"First you killed him and then you didnt even bother cooking right..."
+			"69": {
+				"name": "Vukky Meat",
+				"url": "https://vukkybox.com/resources/vukkymeat.png",
+				"description": "Who killed him?????"
 			},
-			"31":{
-				"name":"Salad Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkysalad.png?raw=true",
-				"description":"Ah yes, my favorite Vukky - product placement flavored."
+			"70": {
+				"name": "Cooked Vukky Meat",
+				"url": "https://vukkybox.com/resources/cookedvukkymeat.png",
+				"description": "First you kill him and then you cook him??? what kind of monster are you"
 			},
-			"23":{
-				"name":"Fire Vukky",
-				"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyfire.png?raw=true",
-				"description":"Also an Annoying Orange Vukky, if you prefer."
+			"71": {
+				"name": "Burnt Vukky Meat",
+				"url": "https://vukkybox.com/resources/burntvukkymeat.png",
+				"description": "First you killed him and then you didnt even bother cooking right..."
 			},
-			"73":{
-				"name":"VukkyBot",
-				"url":"https://vukkybox.com/resources/vukkybot.png",
-				"description":"He has been turned into a robot?? I guess he liked discord moderation that much."
+			"73": {
+				"name": "VukkyBot",
+				"url": "https://vukkybox.com/resources/vukkybot.png",
+				"description": "It turned into a robot?? I guess it liked Discord moderation that much."
+			},
+			"76": {
+				"name": "Testing Vukky",
+				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukky%C3%A5land.png?raw=true",
+				"description": "This Vukky was used for testing purposes during development of the website!"
 			}
 		}
 	}
-} 
+}

@@ -14,6 +14,8 @@ var GitHubStrategy = require('passport-github').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
+function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
+nocache("./public/vukkies.json")
 const vukkyJson = require("./public/vukkies.json")
 var db = require('./db')
 var fetch = require("node-fetch")
@@ -164,17 +166,17 @@ app.get('/buyBox/:data', (req, res) => {
 	if(req.isAuthenticated()) {
 		let validBoxes = ["veggie", "warped", "classic", "fire"]
 		if(validBoxes.includes(req.params.data)) {
-			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery) {
+			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
 				if(prize.box) {
 					req.session.passport.user.balance = newBalance
 					req.session.passport.user.gallery = newGallery
 					if(req.user.primaryEmail) {
-						res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+						res.render(__dirname + '/public/buyBox.ejs', {dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
 					} else {
-						res.render(__dirname + '/public/buyBox.ejs', {prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+						res.render(__dirname + '/public/buyBox.ejs', {dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 					}
 				} else {
-					res.send("you poor lol. get good")
+					res.redirect("https://vukkybox.com/store?poor=true")
 				}
 			});
 		} else {
@@ -187,6 +189,69 @@ app.get('/buyBox/:data', (req, res) => {
 		res.redirect("/login")
 	}
 });
+
+app.get("/admin", function(req, res) {
+	if(!req.isAuthenticated()) return res.status(404).render(`${__dirname}/public/404.ejs`);
+	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
+		res.render(__dirname + "/public/admin.ejs")
+	} else {
+		res.status(404).render(`${__dirname}/public/404.ejs`);
+	}
+})
+
+app.post("/admin/:action", function(req, res) {
+	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
+		switch(req.params.action) {
+			case "create_code":
+				db.createCode(req.body.code, req.body.amount, (resp, err) => {
+					if(err) return res.redirect("/admin?error=" + err) // res = {code: "code", amount: 123}
+					res.redirect("/admin?code=" + resp.code)
+				})
+			break;
+			case "create_vukky": //i really dont want to make this one
+				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.redirect("/admin?error=missingargs")
+				let newId = parseInt(vukkyJson.currentId) + 1
+				vukkyJson.currentId = newId;
+				vukkyJson.rarity[req.body.level][newId] = {
+					name: req.body.name,
+					url: req.body.url,
+					description: req.body.description
+				}
+				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
+				res.redirect("/admin?vukky=" + newId)
+				/*
+				"67":{
+					"name":"Vukky Miner",
+					"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyminer.png?raw=true",
+					"description":"This Vukky's going to mine crypto and convert it to SQUID! Wait! No! <a href='https://www.reddit.com/qkai4d'>The value dropped by 99%!</a> You're going to lose all your money! Stop!"
+				}
+				*/
+			break;
+			default:
+				res.redirect("/admin?error=invalidaction")
+				break;
+		}
+		console.log(req.params.action)
+		console.log(req.body)
+	} else {
+		res.status(403).send({message: "This endpoint is reserved for future purposes. (but you are too cringe to have access to it)"})
+	}
+});
+
+app.get("/view/:level/:id", checkAuth, function (req, res) { 
+	if(!vukkyJson.levels[req.params.level]) return res.send("this doesnt exist")
+	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.send("this doesnt exist")
+	if(req.user.primaryEmail) {
+		  res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+	  
+		} else {
+		if(req.user[0].primaryEmail) {
+			res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+		} else {
+			res.status("500").send("something fucked up.")
+		}
+	  }
+  })
 
 app.get('/', function(req, res) {
 	req.session.redirectTo = "/"
@@ -215,6 +280,12 @@ app.get('/gallery', checkAuth, function(req, res) {
 	}
 });
 
+app.get("/guestgallery/:userId", function(req, res) {
+	db.getUser(req.params.userId, function(user, err) {
+		if(err) return res.status(500).send("500 " + err)
+		res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: user, username: "Guest Collection", gravatarHash: null});
+	})
+})
 
 app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {});
 app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
@@ -304,7 +375,8 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 
 app.get('/store', function(req,res) {
 	if(req.isAuthenticated()) {
-		res.render(__dirname + '/public/store.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+		if(req.user.primaryEmail) return res.render(__dirname + '/public/store.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+		if(req.user[0].primaryEmail) return res.render(__dirname + '/public/store.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 	} else {
 		res.render(__dirname + '/public/store.ejs', {user: null, username: "", gravatarHash: null});
 	}
