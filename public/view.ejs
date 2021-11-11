@@ -5,8 +5,16 @@
         <script src="https://vukkybox.com/resources/spin.js"></script>
         <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
         <title>Vukkybox</title>
+        <meta name="title" content="<%=JSON.parse(vukky).name %> (#<%=vukkyId %>)">
+        <meta name="description" content="<%=JSON.parse(vukky).description %>">
+        <meta property="og:image" content="<%=JSON.parse(vukky).url %>">
+        <link rel="preload" href="/resources/unbox.wav" as="audio">
+        <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
+        <link rel="preload" href="/resources/unboxrare.wav" as="audio">
+        <link rel="preload" href="/resources/unboxunique.wav" as="audio">
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
+        <audio src="/resources/unbox.wav"></audio>
         
  <div class="bg-opacity-10  bg-gray-100 w-full">
         <nav class="flex justify-between">
@@ -50,8 +58,22 @@
                     <% } %>
                 <p><%=JSON.parse(vukky).description %></p>
                 <br>
-                <button onclick="history.back()" class="button button-blue">Go back</button>
+                <button class="button button-blue">Go back</button>
             </div>
         </center>
 	</body>
+    <script>
+        document.querySelector("button").onclick = function() {
+            history.back();
+            setTimeout(() => {
+                document.location.pathname = "/";
+            }, 300);
+        };
+        const rarity = <%= parseInt(JSON.parse(level).level) %>;
+        if(rarity >= 6) document.querySelector("audio").src = "/resources/unboxrare.wav"
+        if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
+        if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
+        if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
+        document.querySelector("audio").play();
+    </script>
 </html>

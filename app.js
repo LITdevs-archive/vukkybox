@@ -149,6 +149,10 @@ app.post("/editProfile", checkAuth, function(req, res) {
 	res.redirect("/profile")
 })
 
+function getKeyByValue(object, value) {
+	return Object.keys(object).find(key => object[key] === value);
+  }
+
 app.get('/buyBox/:data', checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky"]
 		if(validBoxes.includes(req.params.data)) {
@@ -158,21 +162,25 @@ app.get('/buyBox/:data', checkAuth, (req, res) => {
 						let oldBalance = req.user.balance
 						req.session.passport.user.balance = newBalance
 						req.session.passport.user.gallery = newGallery
-						res.render(__dirname + '/public/buyBox.ejs', {oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
+						let ownedInTier = 0
+						let fullUnlock = false
+							res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
 						
 					} else {
 						let oldBalance = req.user[0].balance
 						req.session.passport.user[0].balance = newBalance
 						req.session.passport.user[0].gallery = newGallery
-						res.render(__dirname + '/public/buyBox.ejs', {oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+						let ownedInTier = 0
+						let fullUnlock = false
+						
+						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 						
 					}
 				} else {
-					res.redirect("https://vukkybox.com/store?poor=true")
+					res.redirect("https://vukkybox.com/balance")
 				}
 			});
 		} else {
-			console.log("Invalid box")
 			res.status(400).send({message: "Box not found"})
 		}
 });
@@ -185,8 +193,37 @@ app.get('/terms', function(req, res){
 	res.redirect('/resources/terms.html');
 });
 
+app.get('/delete', checkAuth, function(req,res) {
+	res.send("severe bug. disabled temporarily, contact us for manual deletion")//res.render(__dirname + "/public/deleteConfirm.ejs")
+})
+
+app.post("/delete", checkAuth, function(req, res) {
+	return res.send("severe bug. disabled temporarily, contact us for manual deletion")
+	if(req.user.primaryEmail) {
+	db.deleteUser(req.user, function(result) {
+		if(result == 500) {
+			res.redirect('/resources/500.html');
+		} else {
+			req.logout();
+			res.redirect('/resources/deleted.html');
+		}
+	});
+	} else {
+	db.deleteUser(req.user[0], function(result) {
+		if(result == 500) {
+			res.redirect('/resources/500.html');
+		} else {
+			req.logout();
+			res.redirect('/resources/deleted.html');
+		}
+	});
+	}
+})
+
 app.get("/admin", function(req, res) {
 	if(!req.isAuthenticated()) return res.status(404).render(`${__dirname}/public/404.ejs`);
+	if(!req.user) return res.status(404).render(`${__dirname}/public/404.ejs`);
+	if(!req.user.discordId) return res.status(404).render(`${__dirname}/public/404.ejs`);
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		res.render(__dirname + "/public/admin.ejs")
 	} else {
@@ -231,9 +268,10 @@ app.post("/admin/:action", function(req, res) {
 	}
 });
 
-app.get("/view/:level/:id", checkAuth, function (req, res) { 
+app.get("/view/:level/:id", function (req, res) { 
 	if(!vukkyJson.levels[req.params.level]) return res.send("this doesnt exist")
 	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.send("this doesnt exist")
+	if(!req.user) return res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: null, username: "", gravatarHash: null})
 	if(req.user.primaryEmail) {
 		  res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 	  
@@ -270,6 +308,21 @@ app.get('/', function(req, res) {
 		}
 	} else {
 	  res.render(__dirname + '/public/index.ejs', {user: null, username: ""})
+	}
+});
+
+app.get('/balance', function(req, res) {
+	req.session.redirectTo = "/"
+  	if(req.user) {
+		if(req.user.username) {
+			res.render(__dirname + '/public/balance.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+		} else {
+			if(req.user[0].primaryEmail) {
+				res.render(__dirname + '/public/balance.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+			}
+		}
+	} else {
+	  res.render(__dirname + '/public/balance.ejs', {user: null, username: ""})
 	}
 });
 
@@ -363,6 +416,7 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 					req.session.passport.user[0].balance += amount
 				}
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: code, amount: amount});
+				console.log(`${code} redeemed for ${amount} Vukkybux!`)
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
 			}

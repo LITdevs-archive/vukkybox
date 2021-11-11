@@ -44,10 +44,25 @@
 </div>
 
 <div id="welcome" class="p-5">
+<h1 id="pooruser" class="hidden text-3xl">Oh no, you've run out of Vukkybux!</p>
+<h2 class="text-2xl">How do I get more Vukkybux?</h1>
+<ul class="list-disc list-inside">
+  <li>Logging in every hour for 20 Vukkybux</li>
+  <li>Logging in every day for 500 Vukkybux</li>
+  <li>Redeeming promo codes</li>
+  <li>Trading for Vukkybux below</li>
+</ul>
+<h2 class="text-2xl pt-8">Trading for Vukkybux</h1>
 <% if(username != "") { %>
-  Hi <%= username%>! Welcome to Vukkybox. You might want to go to the storefront.
-<% } else {%>
-  <a href="/login"><button class="button button-blue font-bold w-1/2 h-1/2">Log in</button></a>
+  You can trade for Vukkybux using these methods:
+  <ul class="list-disc list-inside">
+    <li>Supporting OMG.LOL by purchasing a domain for 5,000 Vukkybux</li>
+    <li>Cryptocurrency</li>
+    <li>Digital Tokens for Prepaid Visa Cards from Prepaid Digital Solutions (like the ones from Salad.com)</li>
+  </ul>
+  To trade with us and for more information, please join <a href="https://discord.gg/mmhPScCZH4" class="text-blue-300">our Discord server</a>, then contact someone with the "LIT Devs" role.
+<% } else {%> 
+  You need to sign in first.
 <% } %>
 </div>
 

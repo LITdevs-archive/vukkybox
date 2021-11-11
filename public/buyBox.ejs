@@ -8,6 +8,14 @@
         <link rel="preload" href="/resources/unbox.wav" as="audio">
         <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
         <link rel="preload" href="/resources/unboxrare.wav" as="audio">
+        <link rel="preload" href="/resources/unboxunique.wav" as="audio">
+        <link rel="preload" href="https://vukkybox.com/resources/<%=boxType %>vukkybox.png" as="image">
+        <link rel="preload" href="<%=prize.box.vukky.url %>" as="image">
+        <style>
+            #share:hover {
+                cursor: pointer
+            }
+        </style>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     <audio src="/resources/unbox.wav"></audio>
@@ -24,6 +32,11 @@
                 <!-- <li class="pr-5"><a> Services </a></li>
                 <li class="pr-5"><a>Porfolio</a></li>
                 <li class="pr-5"><a>About</a></li> -->
+                <% if(parseInt(prize.box.level.level) == 8) { %>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>`);alert('Copied share link to clipboard')">Share your drop!</a></li>
+                <% } else { %>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>`);alert('Copied share link to clipboard')">Share your drop!</a></li>
+                <% } %>
                 <% if(username != "") { %>
                   <div class="dropdown">
                     
@@ -55,7 +68,7 @@
                     <p><%=prize.box.vukky.description %></p>
                     <p class="text-red-500"><%if (dupe) { %><br>Sorry, but you already have this Vukky. You have been refunded 10%.<% } %></p>
                     <br>
-                    <button class="button button-blue" onclick="window.location = window.location">Buy another one</button>
+                    <button class="button button-blue" onclick="window.location.reload()">Buy another one</button>
                     <a href="/store"><button class="py-5 button button-blue">Return to the storefront</button></a>
                 </div>
                 <div class="opener" id="opener">
@@ -89,11 +102,17 @@
                 icon.classList.remove("animate-ping");
                 icon.style.display = "none";
                 if(rarity >= 6) document.querySelector("audio").src = "/resources/unboxrare.wav"
+                if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
                 if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
-                document.querySelector("audio").play()  
+                if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
+                document.querySelector("audio").play();
+                document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")
                 document.getElementById("opener").classList.add("hidden")
                 document.getElementById("balance").innerHTML = `${newBalance} Vukkybux`;
+                <% if(fullUnlock) { %>
+                    alert("You have unlocked all " + rarity != 8 ? rarity + " star Vukkies!" : "Pukkies!")
+                <% } %>
             }, 200);
         }, 600 * rarity);
 
