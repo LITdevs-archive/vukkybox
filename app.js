@@ -435,14 +435,18 @@ app.get('/store', function(req,res) {
 
 function checkAuth(req, res, next) {
 	if (req.isAuthenticated()) {
-		db.lastLogin(req.user, function(newBalance) {
-			if(req.user.primaryEmail) {
+		if(req.user._id) {
+			db.lastLogin(req.user, function(newBalance) {
 				req.session.passport.user.balance = newBalance
-			} else {
+
+			})
+			return next();
+		} else {
+			db.lastLogin(req.user[0], function(newBalance) {
 				req.session.passport.user[0].balance = newBalance
-			}
-		})
-		return next();
+			})
+			return next();
+		}
 	}
 	req.session.redirectTo = req.path;
 	res.redirect(`/login`)
