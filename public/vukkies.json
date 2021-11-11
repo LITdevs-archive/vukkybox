@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 111,
+	"currentId": 123,
 	"rarity": {
 		"1": {
 			"1": {
@@ -230,6 +230,16 @@
 				"name": "Wiiky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiiky.png?raw=true",
 				"description": "Now with Vukky Sports!"
+			},
+			"114": {
+				"name": "Joking Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyjoking.png",
+				"description": "This Vukky is just joking... It might troll you later."
+			},
+			"115": {
+				"name": "Smelly Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/smellyvukky.png",
+				"description": "Ew! Vukky, that's gross!"
 			}
 		},
 		"3": {
@@ -301,7 +311,7 @@
 			"52": {
 				"name": "Yahoo Vukky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/events/static/vukkyyahoo.png?raw=true",
-				"description": "me after killing millions of websites and the best q&a site ever... i guess i'll use quora now"
+				"description": "This Vukky has a track record of ruining the internet! Watch out."
 			},
 			"53": {
 				"name": "Åland Vukky",
@@ -312,6 +322,16 @@
 				"name": "Wiiky U",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkywiikyu.png?raw=true",
 				"description": "Not really sure what this is supposed to be. An accessory for the Wiiky?"
+			},
+			"113": {
+				"name": "Vukky Captcha",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkycaptcha.png",
+				"description": "Are you a Vukky?"
+			},
+			"119": {
+				"name": "D-Zone Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/dzonevukky.png",
+				"description": "Oh no! Vukky turned into a cube!"
 			}
 		},
 		"4": {
@@ -359,6 +379,21 @@
 				"name": "Brokener Vukky",
 				"url": "https://vukkybox.com/resources/vukkybrokener.png",
 				"description": "Oh no! Our Vukky! Let's throw it in the trash! It's brokener than the Broken Vukky!"
+			},
+			"117": {
+				"name": "Penelope Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/OMGEX.png",
+				"description": "This Vukky has turned into a pigeon! How suspicious. Maybe it has OMG.LOL domains?"
+			},
+			"120": {
+				"name": "Ethereum Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ethvukky.png",
+				"description": "Gas gas gas!"
+			},
+			"122": {
+				"name": "Raven Vukky",
+				"url": "https://vukkybox.com/resources/ravenvukky.png",
+				"description": "This Vukky seems to have gotten very much into Ravencoin!"
 			}
 		},
 		"5": {
@@ -516,12 +551,12 @@
 			"88": {
 				"name": "Smokey's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/smokey.png",
-				"description": "This Pukky belongs to Smokey"
+				"description": "This Pukky belongs to Smokey! Why is it smoking?"
 			},
 			"89": {
 				"name": "Slonkey_Tint's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/slonkey_tint.png",
-				"description": "This Pukky belongs to Slonkey_Tint"
+				"description": "This Pukky belongs to Slonkey_Tint. It has some pretty nice colors!"
 			},
 			"90": {
 				"name": "Skelly's Pukky",
@@ -566,7 +601,7 @@
 			"98": {
 				"name": "Mot's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/mot.png",
-				"description": "This Pukky belongs to Mot"
+				"description": "This Pukky belongs to Mot. why pukky wen eg?"
 			},
 			"99": {
 				"name": "isavc's Pukky",
@@ -607,6 +642,31 @@
 				"name": "1nfinity's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/1nfinity.png",
 				"description": "This Pukky belongs to 1nfinity"
+			},
+			"112": {
+				"name": "airil's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/airil.png",
+				"description": "This Pukky belongs to airil"
+			},
+			"116": {
+				"name": "Pokisan's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/pokisanpukky.png",
+				"description": "This Pukky belongs to Pokisan"
+			},
+			"118": {
+				"name": "CuzImSus' Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/cuzimsuspukky.png",
+				"description": "This Pukky belongs to CuzImSus"
+			},
+			"121": {
+				"name": "Alespic's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/alespicpukky.png",
+				"description": "This Pukky belongs to Alespic. How fancy!"
+			},
+			"123": {
+				"name": "ToshinoriXD's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/toshinoripukky.png",
+				"description": "This Pukky belongs to ToshinoriXD"
 			}
 		}
 	}

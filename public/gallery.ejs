@@ -5,9 +5,14 @@
     <script src="https://vukkybox.com/resources/spin.js"></script>
     <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
     <title>Vukkybox - Collection</title>
-    <meta name="title" content="Vukkybox">
-    <meta name="description" content="Collect Vukkies trapped in boxes!">
+    <meta name="title" content="Vukkybox Collections">
+    <meta name="description" content="View someone's Vukky collection!">
     <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
+    <style>
+        #share:hover {
+            cursor: pointer
+        }
+    </style>
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     
@@ -23,7 +28,7 @@
             <!-- <li class="pr-5"><a> Services </a></li>
             <li class="pr-5"><a>Porfolio</a></li>
             <li class="pr-5"><a>About</a></li> -->
-            <li class="pr-10"><a href="https://vukkybox.com/guestgallery/<%=user._id %>" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/guestgallery/<%=user._id %>`);alert('Copied share link to clipboard')">Share Collection</a></li>
+            <li class="pr-10"><span id="share" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/guestgallery/<%=user._id %>`);alert('Copied share link to clipboard')">Share Collection</a></li>
             <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
             <% if(username != "") { %>
               <div class="dropdown">

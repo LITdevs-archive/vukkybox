@@ -40,19 +40,20 @@
             </ul>
         </nav>
     </div>
-        <center>
-    
+        <center class="py-8">
           <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <% if(redirect) { %>
-                <p class="text-gray-900">Please login to do that.</p>
+                <p>In order to do that, you'll have to sign in.</p>
                 <% } else { %>
-                  <p class="text-gray-900">Please sign in with one of these methods</p>
+                  <p>Please sign in with one of these methods.</p>
                 <% } %>
                 <br><br><a id="login" href="/loginDiscord"><button class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/discord.svg" width="32px">&nbsp;Sign in with Discord</button></a>
                 <br><br><a id="login" href="/loginMediawiki"><button class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/wikipedia.svg" width="32px">&nbsp;Sign in with Wikipedia</button></a>
                 <br><br><a id="login" href="/loginGithub"><button class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/github.svg" width="32px">&nbsp;Sign in with GitHub</button></a>
                 <br><br><a id="login" href="/loginGoogle"><button class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/google.svg" width="32px">&nbsp;Sign in with Google</button></a>
                 
+                <br><br>
+                <p class="text-sm">By signing in, you agree to our <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.</p>
             </div>
             
           </center>

@@ -60,7 +60,7 @@ function findOrCreate(service, profile, callback) {
 						googleEmail:profile.emails[0].value,
 						primaryEmail:profile.emails[0].value,
 						LinkedAccounts: ["google"],
-						balance: 100,
+						balance: 1000,
 						username:profile.emails[0].value,
 						loginHourly: Date.now(),
 						loginDaily: Date.now(),
@@ -89,7 +89,7 @@ function findOrCreate(service, profile, callback) {
 						mediawikiEmail:profile._json.email,
 						primaryEmail:profile._json.email,
 						LinkedAccounts: ["mediawiki"],
-						balance: 100,
+						balance: 1000,
 						username:profile.displayName,
 						loginHourly: Date.now(),
 						loginDaily: Date.now(),
@@ -117,7 +117,7 @@ function findOrCreate(service, profile, callback) {
 						githubEmail:profile.email,
 						primaryEmail:profile.email,
 						LinkedAccounts: ["github"],
-						balance: 100,
+						balance: 1000,
 						username:profile.username,
 						loginHourly: Date.now(),
 						loginDaily: Date.now(),
@@ -148,7 +148,7 @@ function findOrCreate(service, profile, callback) {
 						discordEmail:profile.email,
 						primaryEmail:profile.email,
 						LinkedAccounts: ["discord"],
-						balance: 100,
+						balance: 1000,
 						username:profile.username,
 						VCP: profile.VCP,
 						loginHourly: Date.now(),
@@ -332,7 +332,6 @@ function openBox(boxname, callback) {
 		}
 	}
 	const vukkyLevel = level()
-	console.log(boxname)
 	let vukkyData = vukkyJson.rarity[vukkyLevel.toString()]
 	let vukkyKeys = Object.keys(vukkyData)
 	const vukky = () => {
@@ -388,16 +387,27 @@ function lastLogin(user, callback) {
 	})
 }
 
+function deleteUser(profile, callback) {
+	User.deleteOne({id:profile._id}, function(err, res) {
+		if(err) {
+			callback(500)
+			return console.error(err); //i might look for a js debugger :D > doesnt support virtual workspaces
+		}
+		callback("deleted")
+	})
+}
+
 module.exports = {
-	findOrCreate: findOrCreate,
-	changeUsername: changeUsername,
-	addToGallery: addToGallery,
-	getBalance: getBalance,
-	setBalance: setBalance,
-	redeemCode: redeemCode,
-	createCode: createCode,
-	validCode: validCode,
-	buyBox: buyBox,
-	getUser: getUser,
-	lastLogin: lastLogin
+	findOrCreate,
+	changeUsername,
+	addToGallery,
+	getBalance,
+	setBalance,
+	redeemCode,
+	createCode,
+	validCode,
+	buyBox,
+	getUser,
+	lastLogin,
+	deleteUser
 }
