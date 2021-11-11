@@ -79,7 +79,7 @@
 	</body>
     <script type="text/javascript">
         const rarity = <%=prize.box.level.level %>;
-	const boxName = <%=prize.box.level.name %>;
+	const boxName = "<%=boxType %>";
         let rotation = (0.285714286 + (Math.random() / 3)) * rarity;
         let newBalance = <%=user.balance %>;
         let spinner = setInterval(function() {
