@@ -177,7 +177,7 @@ app.get('/buyBox/:data', checkAuth, (req, res) => {
 						
 					}
 				} else {
-					res.redirect("https://vukkybox.com/balance")
+					res.redirect("https://vukkybox.com/balance?poor=true")
 				}
 			});
 		} else {
