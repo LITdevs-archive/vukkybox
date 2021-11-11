@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 110,
+	"currentId": 111,
 	"rarity": {
 		"1": {
 			"1": {
@@ -413,6 +413,11 @@
 				"name": "Vukky Burger",
 				"url": "https://vukkybox.com/resources/vukkyburger.png",
 				"description": "What are you doing? If you're going to eat that, at least add some toppings..."
+			},
+			"111": {
+				"name": "Vukky in a Box",
+				"url": "https://vukkybox.com/resources/icon.png",
+				"description": "This Vukky has gotten stuck in a box! Hmm... This seems strangely familiar... Probably nothing."
 			}
 		},
 		"7": {
