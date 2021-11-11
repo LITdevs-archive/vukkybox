@@ -374,6 +374,9 @@ function getUser(userId, callback) {
 
 function lastLogin(user, callback) {
 	User.findById({_id: user._id}, function (err, doc) {
+		if(err) {
+			console.log(err)
+		}
 		if(Math.floor(Date.now() - doc.loginHourly) / 1000 / 3600 > 1) {
 			doc.loginHourly = Date.now()
 			doc.balance += 20
