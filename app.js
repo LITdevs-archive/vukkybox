@@ -393,25 +393,9 @@ app.get('*', function(req, res){
 
 var fs = require('fs');
 var http = require('http');
-var https = require('https');
-var key = fs.readFileSync("./privkey.pem");
-var cert = fs.readFileSync("./cert.pem");
-var ca = fs.readFileSync("./chain.pem");
-
-const credentials = {
-	key: key,
-	cert: cert,
-	ca: ca
-};
-
 
 const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(80, () => {
 	console.log('HTTP Server running on port 80');
-});
-
-httpsServer.listen(443, () => {
-	console.log('HTTPS Server running on port 443');
 });
