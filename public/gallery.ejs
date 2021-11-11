@@ -44,6 +44,7 @@
     </nav>
 </div>
 
+<p class="text-bold text-2xl ml-10 mt-5" id="total_text"></p>
 <div id="7">
 <p class="text-bold text-xl ml-10 mt-5" id="7_text">Unique (7 stars)</p>
 
@@ -87,13 +88,14 @@
 </body>
 <script>
     const userGallery = [<%=user.gallery %>]
+    document.getElementById("total_text").innerHTML = "This user has " + userGallery.length + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
     for(let j = 1; j <= 7; j++) {
         let owned = 0
         for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
             if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
                 owned++
-                document.getElementById(j).innerHTML += `<a href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 m-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}"/></a>`
+                document.getElementById(j).innerHTML += `<a href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}"/></a>`
             }
         }
         if (owned == 0) {
@@ -107,7 +109,7 @@
         for(let i = 0; i < Object.keys(vukkies["pukky"]).length; i++) {
             if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
                 owned++
-                document.getElementById("pukky").innerHTML += `<a href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 m-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}"/></a>`
+                document.getElementById("pukky").innerHTML += `<a href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}"/></a>`
             }
         }
         if (owned == 0) {
