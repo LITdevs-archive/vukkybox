@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 123,
+	"currentId": 125,
 	"rarity": {
 		"1": {
 			"1": {
@@ -667,6 +667,16 @@
 				"name": "ToshinoriXD's Pukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/toshinoripukky.png",
 				"description": "This Pukky belongs to ToshinoriXD"
+			},
+			"124": {
+				"name": "Mezo's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/mezopukky.jpg",
+				"description": "This Pukky belongs to Mezo"
+			},
+			"125": {
+				"name": "TurtleBoi's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/turtleboipukky.png",
+				"description": "This Pukky belongs to TurtleBoi"
 			}
 		}
 	}
