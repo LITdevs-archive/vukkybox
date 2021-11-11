@@ -12,6 +12,7 @@
         <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
         <link rel="preload" href="/resources/unboxrare.wav" as="audio">
         <link rel="preload" href="/resources/unboxunique.wav" as="audio">
+	<link rel="preload" href="/resources/unboxbroken.wav" as="audio">
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         <audio src="/resources/unbox.wav"></audio>
@@ -70,10 +71,12 @@
             }, 300);
         };
         const rarity = <%= parseInt(JSON.parse(level).level) %>;
+	const vukkyID = <%=vukkyId %>;
         if(rarity >= 6) document.querySelector("audio").src = "/resources/unboxrare.wav"
         if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
         if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
         if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
+	if(vukkyID == 109 || vukkyID == 110) document.querySelector("audio").src = "/resources/unboxbroken.wav"
         document.querySelector("audio").play();
     </script>
 </html>
