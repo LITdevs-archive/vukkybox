@@ -79,6 +79,7 @@
 	</body>
     <script type="text/javascript">
         const rarity = <%=prize.box.level.level %>;
+	const boxName = <%=prize.box.level.name %>;
         let rotation = (0.285714286 + (Math.random() / 3)) * rarity;
         let newBalance = <%=user.balance %>;
         let spinner = setInterval(function() {
@@ -106,6 +107,7 @@
                 if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
                 if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
                 document.querySelector("audio").play();
+		if(boxName == "warped") document.querySelector("img").style.filter = "invert(100%)"
                 document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")
                 document.getElementById("opener").classList.add("hidden")
