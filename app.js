@@ -177,6 +177,14 @@ app.get('/buyBox/:data', checkAuth, (req, res) => {
 		}
 });
 
+app.get('/privacy', function(req, res){
+	res.redirect('/resources/privacy.html');
+});
+
+app.get('/terms', function(req, res){
+	res.redirect('/resources/terms.html');
+});
+
 app.get("/admin", function(req, res) {
 	if(!req.isAuthenticated()) return res.status(404).render(`${__dirname}/public/404.ejs`);
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
