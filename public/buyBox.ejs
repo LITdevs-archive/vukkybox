@@ -107,7 +107,7 @@
                 if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
                 if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
                 document.querySelector("audio").play();
-		if(boxName == "warped") document.querySelector("img").style.filter = "invert(100%)"
+		if(boxName == "warped") document.querySelector("#reward img").style.filter = "invert(100%)"
                 document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")
                 document.getElementById("opener").classList.add("hidden")
