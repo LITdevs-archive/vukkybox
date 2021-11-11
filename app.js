@@ -346,7 +346,7 @@ app.get('/info', checkAuth, function(req, res) {
 });
 app.get('/redeem/:code', checkAuth, function (req, res) {
 	let code = req.params["code"];
-	db.validCode(code, (isValid) => {
+	db.validCode(code, req.user, (isValid) => {
 		db.redeemCode(req.user, code, (success, amount) => {
 			if(success) {
 				if(req.user.primaryEmail) {

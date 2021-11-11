@@ -38,7 +38,7 @@ db.once('open', function() {
 	code: String,
 	amount: Number,
 	uses: Number,
-	redeemedBy: String,
+	redeemedBy: Array,
 	used: Boolean
   });
   Code = mongoose.model('Code', codeSchema);
@@ -202,12 +202,17 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 		};
 		if(code) {
 		if(!code.used) {
+			if(user._id) {
+				if(code.redeemedBy.includes(user._id.toString())) return callback(false, null)
+			} else {
+				if(code.redeemedBy.includes(user[0]._id.toString())) return callback(false, null)
+			}
 			if(code.uses <= 1) code.used = true;
 			code.uses--;
 			if(user._id) {
-				code.redeemedBy = user._id;
+				code.redeemedBy.push(user._id.toString());
 			} else {
-				code.redeemedBy = user[0]._id;
+				code.redeemedBy.push(user[0]._id.toString());
 			}
 			code.save().then(savedCode => {
 				if (user._id) {
@@ -243,10 +248,15 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 	});
 }
 
-function validCode(code, callback) { // callback with a boolean representing if the code is valid or not. (used codes are not valid)
+function validCode(code, user, callback) { // callback with a boolean representing if the code is valid or not. (used codes are not valid)
 	Code.findOne({code: code}, function (err, code) {
 		if(!code) return callback("invalid")
 		if(code.used) return callback("used")
+		if(user._id) {
+			if(code.redeemedBy.includes(user._id.toString())) return callback("redeemed")
+		} else {
+			if(code.redeemedBy.includes(user[0]._id.toString())) return callback("redeemed")
+		}
 		if(!code.used) return callback("valid") 
 	});
 }
