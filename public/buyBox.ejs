@@ -79,10 +79,11 @@
         </center>
 	</body>
     <script type="text/javascript">
-        const rarity = <%=prize.box.level.level %>;
+    var rarity = <%=prize.box.level.level %>;
+    if(rarity == 8) rarity = 3;
 	const vukkyID = <%=prize.box.vukkyId %>;
 	const boxName = "<%=boxType %>";
-        let rotation = (0.285714286 + (Math.random() / 3)) * rarity;
+        let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
         let newBalance = <%=user.balance %>;
         let spinner = setInterval(function() {
             document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
@@ -107,10 +108,9 @@
                 if(rarity >= 6) document.querySelector("audio").src = "/resources/unboxrare.wav"
                 if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
                 if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
-                if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
-		if(vukkyID == 109 || vukkyID == 110) document.querySelector("audio").src = "/resources/unboxbroken.wav"
+	            if(vukkyID == 136) document.querySelector("audio").src = "/resources/unboxgnome.wav"
                 document.querySelector("audio").play();
-		if(boxName == "warped") document.querySelector("#reward img").style.filter = "invert(100%)"
+                if(boxName == "warped") document.querySelector("#reward img").style.filter = "invert(100%)"
                 document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")
                 document.getElementById("opener").classList.add("hidden")

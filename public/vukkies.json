@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 130,
+	"currentId": 137,
 	"rarity": {
 		"1": {
 			"1": {
@@ -336,7 +336,22 @@
 			"126": {
 				"name": "Fading Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfade.png",
-				"description": "Vukky, where are you going?"
+				"description": "Mr. Neatnik, i dont feel so good"
+			},
+			"131": {
+				"name": "Shy Vukky",
+				"url": "https://vukkybox.com/resources/shyvukky.png",
+				"description": " This Vukky doesn't want to be seen right now, nor does it want you to pick it up and put it in your display case!! ...Oh, you're doing that anyway, aren't you?"
+			},
+			"132": {
+				"name": "Far Away Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/farawayvukky.png",
+				"description": "This is fan art! Oh Vukky, when will I ever see you again..."
+			},
+			"133": {
+				"name": "Selmersen",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/selmersen.png",
+				"description": "A tribute to a friend."
 			}
 		},
 		"4": {
@@ -398,7 +413,17 @@
 			"122": {
 				"name": "Raven Vukky",
 				"url": "https://vukkybox.com/resources/ravenvukky.png",
-				"description": "This Vukky seems to have gotten very much into Ravencoin!"
+				"description": "This is fan art! This Vukky seems to have gotten very much into Ravencoin!"
+			},
+			"134": {
+				"name": "Reunited Vukkies",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/reunitedvukky.png",
+				"description": "This is fan art! Reunited at last."
+			},
+			"137": {
+				"name": "Vukkychu",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkypikachu.png",
+				"description": "This is fan art! Vukkychu, use Woo! It was very effective."
 			}
 		},
 		"5": {
@@ -458,6 +483,16 @@
 				"name": "Vukky in a Box",
 				"url": "https://vukkybox.com/resources/icon.png",
 				"description": "This Vukky has gotten stuck in a box! Hmm... This seems strangely familiar... Probably nothing."
+			},
+			"135": {
+				"name": "Tassen",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/tassen.png",
+				"description": "This is fan art! WOW!"
+			},
+			"136": {
+				"name": "Gnome Vukky",
+				"url": "https://vukkybox.com/resources/gnome.png",
+				"description": "its just laughing we cant get it to stop please help us it just keeps laughing please help us help help help"
 			}
 		},
 		"7": {
