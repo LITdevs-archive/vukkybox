@@ -336,10 +336,10 @@ app.get('/balance', function(req, res) {
 app.get('/gallery', checkAuth, function(req, res) {
   	if(req.user) {
 		if(req.user.username) {
-			res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+			res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 		} else {
 			if(req.user[0].primaryEmail) {
-				res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 			}
 		}
 	}
@@ -348,7 +348,7 @@ app.get('/gallery', checkAuth, function(req, res) {
 app.get("/guestgallery/:userId", function(req, res) {
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
-		res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: user, username: user.username == user.primaryEmail ? "<email hidden>" : user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username == user.primaryEmail ? "<email hidden>" : user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	})
 })
 
