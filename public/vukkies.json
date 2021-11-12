@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 152,
+	"currentId": 157,
 	"rarity": {
 		"1": {
 			"1": {
@@ -255,6 +255,11 @@
 				"name": "Burning Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/burningvukky.png",
 				"description": "This was made by SeysAAAAAAAAAAAAA!!!!!"
+			},
+			"155": {
+				"name": "Vukkyputer",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyputer.png",
+				"description": "This was made by Alespic! The Vukky isn’t in the computer anymore, he IS the computer."
 			}
 		},
 		"3": {
@@ -553,6 +558,11 @@
 				"name": "Gnome Vukky",
 				"url": "https://vukkybox.com/resources/gnome.png",
 				"description": "its just laughing we cant get it to stop please help us it just keeps laughing please help us help help help"
+			},
+			"153": {
+				"name": "m9 bayonet freehand",
+				"url": "https://vukkybox.com/resources/m9.png",
+				"description": "oh god oh fuck its got a m9 bayonet freehand"
 			}
 		},
 		"7": {
@@ -812,6 +822,21 @@
 				"name": "divfar's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/divfar.png",
 				"description": "This Pukky belongs to divfar!"
+			},
+			"154": {
+				"name": "Lilmelon's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/lilmelon.png",
+				"description": "This vibing melon pepe belongs to Lilmelon"
+			},
+			"156": {
+				"name": "Fake_Beluga's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/fake_beluga.png",
+				"description": "This Pukky belongs to Fake_Beluga"
+			},
+			"157": {
+				"name": "Stinkywinky's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/stinkywinky.png",
+				"description": "This Pukky belongs to Stinkywinky"
 			}
 		}
 	}
