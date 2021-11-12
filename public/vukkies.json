@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 130,
+	"currentId": 133,
 	"rarity": {
 		"1": {
 			"1": {
@@ -337,6 +337,11 @@
 				"name": "Fading Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfade.png",
 				"description": "Vukky, where are you going?"
+			},
+			"131": {
+				"name": "Far Away Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/farawayvukky.png",
+				"description": "This is fan art! Oh Vukky, when will I ever see you again..."
 			}
 		},
 		"4": {
@@ -399,6 +404,11 @@
 				"name": "Raven Vukky",
 				"url": "https://vukkybox.com/resources/ravenvukky.png",
 				"description": "This Vukky seems to have gotten very much into Ravencoin!"
+			},
+			"132": {
+				"name": "Reunited Vukkies",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/reunitedvukky.png",
+				"description": "This is fan art! Reunited at last."
 			}
 		},
 		"5": {
@@ -458,6 +468,11 @@
 				"name": "Vukky in a Box",
 				"url": "https://vukkybox.com/resources/icon.png",
 				"description": "This Vukky has gotten stuck in a box! Hmm... This seems strangely familiar... Probably nothing."
+			},
+			"133": {
+				"name": "Selmersen",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/selmersen.png",
+				"description": "A tribute to a friend"
 			}
 		},
 		"7": {
