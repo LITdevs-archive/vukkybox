@@ -379,11 +379,11 @@ function lastLogin(user, callback) {
 		}
 		if(Math.floor(Date.now() - doc.loginHourly) / 1000 / 3600 > 1) {
 			doc.loginHourly = Date.now()
-			doc.balance += 20
+			doc.balance += 150
 		}
 		if(Math.floor(Date.now() - doc.loginDaily) / 1000 / 86400 > 1) {
 			doc.loginDaily = Date.now()
-			doc.balance += 500
+			doc.balance += 750
 		}
 		doc.save()
 		callback(doc.balance)
