@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 137,
+	"currentId": 139,
 	"rarity": {
 		"1": {
 			"1": {
@@ -346,12 +346,22 @@
 			"132": {
 				"name": "Far Away Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/farawayvukky.png",
-				"description": "This is fan art! Oh Vukky, when will I ever see you again..."
+				"description": "This was made by Seysa! Oh Vukky, when will I ever see you again..."
 			},
 			"133": {
 				"name": "Selmersen",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/selmersen.png",
 				"description": "A tribute to a friend."
+			},
+			"138": {
+				"name": "Dream Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/dreamvukky.png",
+				"description": "This was made by Seysa! Okay, my name is Dream, and today we're doing some epic manhunts with..."
+			},
+			"139": {
+				"name": "PewDieVukk",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkypewdie.png",
+				"description": "This was made by Seysa! How's it going bros, my name is PewDieVukk..."
 			}
 		},
 		"4": {
@@ -418,12 +428,12 @@
 			"134": {
 				"name": "Reunited Vukkies",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/reunitedvukky.png",
-				"description": "This is fan art! Reunited at last."
+				"description": "This was made by Seysa! Reunited at last."
 			},
 			"137": {
 				"name": "Vukkychu",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkypikachu.png",
-				"description": "This is fan art! Vukkychu, use Woo! It was very effective."
+				"description": "This was made by Seysa! Vukkychu, use Woo! It was very effective."
 			}
 		},
 		"5": {
@@ -487,7 +497,7 @@
 			"135": {
 				"name": "Tassen",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/tassen.png",
-				"description": "This is fan art! WOW!"
+				"description": "This was made by Seysa! WOW!"
 			},
 			"136": {
 				"name": "Gnome Vukky",
