@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 175,
+	"currentId": 176,
 	"rarity": {
 		"1": {
 			"1": {
@@ -653,6 +653,11 @@
 				"name": "m9 bayonet freehand",
 				"url": "https://vukkybox.com/resources/m9.png",
 				"description": "oh god oh fuck its got a m9 bayonet freehand"
+			},
+			"176": {
+				"name": "Elf Vukky",
+				"url": "https://vukkybox.com/resources/elfvukky.png",
+				"description": "This Vukky is very interested in contracts... Is it related to Alfur?"
 			}
 		},
 		"7": {
