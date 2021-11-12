@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 125,
+	"currentId": 130,
 	"rarity": {
 		"1": {
 			"1": {
@@ -332,6 +332,11 @@
 				"name": "D-Zone Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/dzonevukky.png",
 				"description": "Oh no! Vukky turned into a cube!"
+			},
+			"126": {
+				"name": "Fading Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfade.png",
+				"description": "Vukky, where are you going?"
 			}
 		},
 		"4": {
@@ -677,6 +682,26 @@
 				"name": "TurtleBoi's Pukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/turtleboipukky.png",
 				"description": "This Pukky belongs to TurtleBoi"
+			},
+			"127": {
+				"name": "GarbageGamer's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/garbagegamerpukky.png",
+				"description": "This Pukky has a fancy background!"
+			},
+			"128": {
+				"name": "laker's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/lakerpukky.jpg",
+				"description": "Vukky in space... Pretty sussy."
+			},
+			"129": {
+				"name": "Professional business man's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/professionalbusinessmanpukky.jpg",
+				"description": "This Pukky belongs to Professional business man"
+			},
+			"130": {
+				"name": "Wattle Gattle's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/wattlegattlepukky.png",
+				"description": "Wow! That's a thick outline."
 			}
 		}
 	}
