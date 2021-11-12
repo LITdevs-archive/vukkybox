@@ -9,7 +9,7 @@
         <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
         <link rel="preload" href="/resources/unboxrare.wav" as="audio">
         <link rel="preload" href="/resources/unboxunique.wav" as="audio">
-	<link rel="preload" href="/resources/unboxbroken.wav" as="audio">
+	<link rel="preload" href="/resources/unboxgnome.wav" as="audio">
         <link rel="preload" href="https://vukkybox.com/resources/<%=boxType %>vukkybox.png" as="image">
         <link rel="preload" href="<%=prize.box.vukky.url %>" as="image">
         <style>
@@ -59,7 +59,7 @@
         <center class="py-8">
             <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <div class="hidden reward" id="reward">
-                    <img class="m-auto" width="128" height="128" src="<%=prize.box.vukky.url %>"/>
+                    <img class="m-auto" height="128" src="<%=prize.box.vukky.url %>"/>
                     <p><%=prize.box.vukky.name %> (#<%=prize.box.vukkyId %>)</p>
                     <% if(parseInt(prize.box.level.level) == 8) { %>
                     <p style="color:<%=prize.box.level.color %>;"><%=prize.box.level.name %></p>

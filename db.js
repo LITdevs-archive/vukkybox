@@ -222,6 +222,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 							console.log(err)
 						};
 						doc.balance += savedCode.amount;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
@@ -233,6 +234,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 							console.log(err)
 						};
 						doc.balance += savedCode.amount;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
@@ -271,6 +273,7 @@ function buyBox(user, box, callback) {
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
+				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
@@ -279,6 +282,7 @@ function buyBox(user, box, callback) {
 					} else {
 						dupe = true;
 						doc.balance += 0.1 * boxData.price;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
 					doc.boxesOpened++;
 					doc.save()
@@ -296,6 +300,7 @@ function buyBox(user, box, callback) {
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
+				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
@@ -304,6 +309,7 @@ function buyBox(user, box, callback) {
 					} else {
 						dupe = true
 						doc.balance += 0.1 * boxData.price;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
 					doc.boxesOpened++;
 					doc.save()
@@ -380,10 +386,12 @@ function lastLogin(user, callback) {
 		if(Math.floor(Date.now() - doc.loginHourly) / 1000 / 3600 > 1) {
 			doc.loginHourly = Date.now()
 			doc.balance += 150
+			doc.balance = parseFloat(doc.balance).toFixed(1)
 		}
 		if(Math.floor(Date.now() - doc.loginDaily) / 1000 / 86400 > 1) {
 			doc.loginDaily = Date.now()
 			doc.balance += 750
+			doc.balance = parseFloat(doc.balance).toFixed(1)
 		}
 		doc.save()
 		callback(doc.balance)
