@@ -18,3 +18,10 @@ window.addEventListener('load', (event) => {
         document.querySelector("#balance").style.cursor = "";
     };
 });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/pwasw.js', { scope: "/" })
+    .catch(function(error) {
+      console.log('Service worker registration failed, error:', error);
+    });
+}

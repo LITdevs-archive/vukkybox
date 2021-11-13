@@ -28,7 +28,7 @@
             <!-- <li class="pr-5"><a> Services </a></li>
             <li class="pr-5"><a>Porfolio</a></li>
             <li class="pr-5"><a>About</a></li> -->
-            <li class="pr-10"><span id="share" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/guestgallery/<%=user._id %>`);alert('Copied share link to clipboard')">Share Collection</a></li>
+            <li class="pr-10"><span id="share" onclick="navigator.share({'title': 'Share your gallery', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});">Share Collection</a></li>
             <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
             <% if(username != "") { %>
               <div class="dropdown">

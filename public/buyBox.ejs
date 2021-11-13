@@ -34,9 +34,9 @@
                 <li class="pr-5"><a>Porfolio</a></li>
                 <li class="pr-5"><a>About</a></li> -->
                 <% if(parseInt(prize.box.level.level) == 8) { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>`);alert('Copied share link to clipboard')">Share your drop!</a></li>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %>`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
                 <% } else { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>`);alert('Copied share link to clipboard')">Share your drop!</a></li>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %>`, 'url': 'https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
                 <% } %>
                 <% if(username != "") { %>
                   <div class="dropdown">

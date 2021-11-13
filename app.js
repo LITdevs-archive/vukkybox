@@ -293,7 +293,10 @@ app.get('/stats', checkAuth, function(req, res) {
 			res.send(resp)
 		})
 	} else {	
-		db.getUser(req.user[0]._id)
+		db.getUser(req.user[0]._id, function(resp, err) {
+			if(err) return res.send(err)
+			res.send(resp)
+		})
 	}
 })
 
@@ -450,6 +453,10 @@ app.get('/store', function(req,res) {
 	} else {
 		res.render(__dirname + '/public/store.ejs', {user: null, username: "", gravatarHash: null});
 	}
+});
+
+app.get('/pwasw.js', function(req, res){
+	res.sendFile(__dirname + '/public/resources/pwasw.js')
 });
 
 function checkAuth(req, res, next) {
