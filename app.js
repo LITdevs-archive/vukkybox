@@ -351,7 +351,7 @@ app.get('/gallery', checkAuth, function(req, res) {
 app.get("/guestgallery/:userId", function(req, res) {
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
-		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username == user.primaryEmail ? "<email hidden>" : user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username == user.primaryEmail ? "A Vukkybox User" : user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	})
 })
 
@@ -477,6 +477,9 @@ function checkAuth(req, res, next) {
 	res.redirect(`/login`)
 }
 
+app.get('/sus', function(req, res){
+	res.redirect('/resources/unboxsussy.mp3')
+});
 
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);

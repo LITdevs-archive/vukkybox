@@ -9,7 +9,8 @@
         <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
         <link rel="preload" href="/resources/unboxrare.wav" as="audio">
         <link rel="preload" href="/resources/unboxunique.wav" as="audio">
-	<link rel="preload" href="/resources/unboxgnome.wav" as="audio">
+	    <link rel="preload" href="/resources/unboxgnome.wav" as="audio">
+        <link rel="preload" href="/resources/unboxsussy.mp3" as="audio">
         <link rel="preload" href="https://vukkybox.com/resources/<%=boxType %>vukkybox.png" as="image">
         <link rel="preload" href="<%=prize.box.vukky.url %>" as="image">
         <style>
@@ -34,9 +35,9 @@
                 <li class="pr-5"><a>Porfolio</a></li>
                 <li class="pr-5"><a>About</a></li> -->
                 <% if(parseInt(prize.box.level.level) == 8) { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %>`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
                 <% } else { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %>`, 'url': 'https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
                 <% } %>
                 <% if(username != "") { %>
                   <div class="dropdown">
@@ -109,6 +110,7 @@
                 if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
                 if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
 	            if(vukkyID == 136) document.querySelector("audio").src = "/resources/unboxgnome.wav"
+                if(vukkyID == 20 || vukkyID == 108 || vukkyID == 128) document.querySelector("audio").src = "/resources/unboxsussy.mp3"
                 document.querySelector("audio").play();
                 document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")

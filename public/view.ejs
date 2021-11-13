@@ -13,6 +13,12 @@
         <link rel="preload" href="/resources/unboxrare.wav" as="audio">
         <link rel="preload" href="/resources/unboxunique.wav" as="audio">
         <link rel="preload" href="/resources/unboxgnome.wav" as="audio">
+        <link rel="preload" href="/resources/unboxsussy.mp3" as="audio">
+        <style>
+            #share:hover {
+                cursor: pointer
+            }
+        </style>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         <audio src="/resources/unbox.wav"></audio>
@@ -29,6 +35,7 @@
                 <!-- <li class="pr-5"><a> Services </a></li>
                 <li class="pr-5"><a>Porfolio</a></li>
                 <li class="pr-5"><a>About</a></li> -->
+                <li class="pr-10"><span id="share" onclick="navigator.share({'title': '<%=JSON.parse(vukky).name %> on Vukkybox!', 'url': document.location.href});">Share this Vukky</a></li>
                 <% if(username != "") { %>
                   <div class="dropdown">
                     
@@ -77,6 +84,7 @@
         if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
         if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
 	    if(vukkyID == 136) document.querySelector("audio").src = "/resources/unboxgnome.wav"
+        if(vukkyID == 20 || vukkyID == 108 || vukkyID == 128) document.querySelector("audio").src = "/resources/unboxsussy.mp3"
         document.querySelector("audio").play();
     </script>
 </html>
