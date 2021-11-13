@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 197,
+	"currentId": 199,
 	"rarity": {
 		"1": {
 			"1": {
@@ -144,61 +144,6 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/minevukk.png",
 				"description": "This was made by Seysa! Why mine diamonds when you can mine Vukkies?"
 			},
-			"170": {
-				"name": "Red Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/redvukky.png",
-				"description": "This was made by Mitchellonii! Vukky, but just red."
-			},
-			"171": {
-				"name": "Yellow Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/yellowvukky.png",
-				"description": "This was made by Mitchellonii! Vukky, but just yellow."
-			},
-			"172": {
-				"name": "Green Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/greenvukky.png",
-				"description": "This was made by Mitchellonii! Vukky, but just green."
-			},
-			"173": {
-				"name": "Orange Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/orangevukky.png",
-				"description": "This was made by Mitchellonii! Vukky, but just orange."
-			},
-			"174": {
-				"name": "Magenta Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/magentavukky.png",
-				"description": "This was made by Mitchellonii! Vukky, but just magenta."
-			},
-			"175": {
-				"name": "Vukky Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukky.png",
-				"description": "This was made by Mitchellonii! Vukky, but just Vukky."
-			},
-			"185": {
-				"name": "Vykku",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ykkuv.png",
-				"description": "This saw mayde by Mitchelony! Owo!"
-			},
-			"186": {
-				"name": "Bruh Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/bruhvukky.png",
-				"description": "This was made by Smokey! That's the most idiotic thing this Vukky has ever heard."
-			},
-			"187": {
-				"name": "1 Arm Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/1armvukky.png",
-				"description": "This was made by Mitchellonii! Oh no, Vukky, where'd your arm go?"
-			},
-			"188": {
-				"name": "1 Leg Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/1legvukky.png",
-				"description": "This was made by Mitchellonii! Oh no, Vukky, where'd your leg go?"
-			},
-			"189": {
-				"name": "Vukky's Back",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/backvukky.png",
-				"description": "This was made by Mitchellonii! It's looking at something. What is it? I don't know."
-			},
 			"158": {
 				"name": "China Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/chinavukky.png",
@@ -253,6 +198,61 @@
 				"name": "Czech Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/czechvukky.png",
 				"description": "This was made by Smokey!"
+			},
+			"170": {
+				"name": "Red Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/redvukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just red."
+			},
+			"171": {
+				"name": "Yellow Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/yellowvukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just yellow."
+			},
+			"172": {
+				"name": "Green Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/greenvukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just green."
+			},
+			"173": {
+				"name": "Orange Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/orangevukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just orange."
+			},
+			"174": {
+				"name": "Magenta Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/magentavukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just magenta."
+			},
+			"175": {
+				"name": "Vukky Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just Vukky."
+			},
+			"185": {
+				"name": "Vykku",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ykkuv.png",
+				"description": "This saw mayde by Mitchelony! Owo!"
+			},
+			"186": {
+				"name": "Bruh Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/bruhvukky.png",
+				"description": "This was made by Smokey! That's the most idiotic thing this Vukky has ever heard."
+			},
+			"187": {
+				"name": "1 Arm Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/1armvukky.png",
+				"description": "This was made by Mitchellonii! Oh no, Vukky, where'd your arm go?"
+			},
+			"188": {
+				"name": "1 Leg Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/1legvukky.png",
+				"description": "This was made by Mitchellonii! Oh no, Vukky, where'd your leg go?"
+			},
+			"189": {
+				"name": "Vukky's Back",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/backvukky.png",
+				"description": "This was made by Mitchellonii! It's looking at something. What is it? I don't know."
 			}
 		},
 		"2": {
@@ -356,6 +356,16 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/smellyvukky.png",
 				"description": "Ew! Vukky, that's gross!"
 			},
+			"126": {
+				"name": "Fading Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfade.png",
+				"description": "Mr. Neatnik, i dont feel so good"
+			},
+			"131": {
+				"name": "Shy Vukky",
+				"url": "https://vukkybox.com/resources/shyvukky.png",
+				"description": " This Vukky doesn't want to be seen right now, nor does it want you to pick it up and put it in your display case!! ...Oh, you're doing that anyway, aren't you?"
+			},
 			"142": {
 				"name": "Gift Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/giftvukky.png",
@@ -381,15 +391,10 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/stonksvukky.png",
 				"description": "This was made by Mitchellonii! Buy high, sell low."
 			},
-			"126": {
-				"name": "Fading Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfade.png",
-				"description": "Mr. Neatnik, i dont feel so good"
-			},
-			"131": {
-				"name": "Shy Vukky",
-				"url": "https://vukkybox.com/resources/shyvukky.png",
-				"description": " This Vukky doesn't want to be seen right now, nor does it want you to pick it up and put it in your display case!! ...Oh, you're doing that anyway, aren't you?"
+			"198": {
+				"name": "Piss Vukky",
+				"url": "https://vukkybox.com/resources/pissvukky.png",
+				"description": "It's.... made of piss"
 			}
 		},
 		"3": {
@@ -1016,7 +1021,7 @@
 			"152": {
 				"name": "divfar's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/divfar.png",
-				"description": "This Pukky belongs to divfar!"
+				"description": "This Pukky belongs to divfar! Awesome as always."
 			},
 			"154": {
 				"name": "Lilmelon's Pukky",
@@ -1037,6 +1042,11 @@
 				"name": "Seysa's Pukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/seysapukky.png",
 				"description": "This Pukky was made by Seysa, for Seysa!"
+			},
+			"199": {
+				"name": "Me & Your Mom's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/meandyourmom.png",
+				"description": "This Pukky belongs to Me & Your Mom. I swear that's their username, I'm not trying to make a joke here"
 			}
 		}
 	}
