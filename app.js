@@ -97,7 +97,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/resources", express.static('public/resources'))
-app.use("/.well-known", express.static('public/.well-known'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
