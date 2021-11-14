@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 199,
+	"currentId": 203,
 	"rarity": {
 		"1": {
 			"1": {
@@ -395,6 +395,21 @@
 				"name": "Piss Vukky",
 				"url": "https://vukkybox.com/resources/pissvukky.png",
 				"description": "It's.... made of piss"
+			},
+			"201": {
+				"name": "Beebo Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/beebovukky.png",
+				"description": "YOU GOT ICE CREAM! Always wash your hands and give credit to Synne for making this."
+			},
+			"202": {
+				"name": "Gangster Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/gangstervukky.png",
+				"description": "This was made by Alespic! Do not mess with this Vukky. He will come for your family. "
+			},
+			"203": {
+				"name": "Frokky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/frokky.png",
+				"description": "This was made by Ash! This Vukky belongs to the pond."
 			}
 		},
 		"3": {
@@ -567,6 +582,11 @@
 				"name": "Deep Fried Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/deepfriedvukky.png",
 				"description": "This was made by Mitchellonii! If you see a Vukky like this, please immediately contact the Central Vukky Printing Organization."
+			},
+			"200": {
+				"name": "200 Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukky200.png",
+				"description": "This was made by Synne! It also happens to be the 200th Vukky. What does that mean?"
 			}
 		},
 		"4": {
