@@ -5,6 +5,8 @@ function nocache(module) {require("fs").watchFile(require("path").resolve(module
 nocache("./public/vukkies.json")
 const vukkyJson = require("./public/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTopology: true});
+const { Webhook } = require('discord-webhook-node');
+const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -46,6 +48,7 @@ db.once('open', function() {
 
 
 function findOrCreate(service, profile, callback) {
+	adminHook.send("A new user has registered!")
 	switch (service) {
 		case "google":
 			User.countDocuments({googleId:profile.id},function(err, res){
@@ -222,6 +225,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 							console.log(err)
 						};
 						doc.balance += savedCode.amount;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
@@ -233,6 +237,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 							console.log(err)
 						};
 						doc.balance += savedCode.amount;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
@@ -271,6 +276,7 @@ function buyBox(user, box, callback) {
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
+				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
@@ -279,6 +285,7 @@ function buyBox(user, box, callback) {
 					} else {
 						dupe = true;
 						doc.balance += 0.1 * boxData.price;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
 					doc.boxesOpened++;
 					doc.save()
@@ -296,6 +303,7 @@ function buyBox(user, box, callback) {
 			};
 			if(doc.balance >= boxData.price) {
 				doc.balance -= boxData.price;
+				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
 					if(!doc.gallery.includes(res.vukkyId)) {
@@ -304,6 +312,7 @@ function buyBox(user, box, callback) {
 					} else {
 						dupe = true
 						doc.balance += 0.1 * boxData.price;
+						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
 					doc.boxesOpened++;
 					doc.save()
@@ -379,11 +388,13 @@ function lastLogin(user, callback) {
 		}
 		if(Math.floor(Date.now() - doc.loginHourly) / 1000 / 3600 > 1) {
 			doc.loginHourly = Date.now()
-			doc.balance += 20
+			doc.balance += 150
+			doc.balance = parseFloat(doc.balance).toFixed(1)
 		}
 		if(Math.floor(Date.now() - doc.loginDaily) / 1000 / 86400 > 1) {
 			doc.loginDaily = Date.now()
-			doc.balance += 500
+			doc.balance += 750
+			doc.balance = parseFloat(doc.balance).toFixed(1)
 		}
 		doc.save()
 		callback(doc.balance)

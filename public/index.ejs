@@ -8,6 +8,7 @@
     <meta name="title" content="Vukkybox">
     <meta name="description" content="Collect Vukkies trapped in boxes!">
     <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
+    <link rel="manifest" href="/resources/pwamanifest.json">
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     
@@ -45,11 +46,10 @@
 
 <div id="welcome" class="p-5">
 <% if(username != "") { %>
-  Hi <%= username%>! Welcome to Vukkybox. You might want to go to the storefront.
+  Hi <%= username%>! Welcome to Vukkybox. You might want to go to <a href="store" class="text-blue-300">the storefront</a>, or join our epic <a href="https://discord.gg/TJ6BfgXffa" class="text-blue-300">Discord server</a>!
 <% } else {%>
   <a href="/login"><button class="button button-blue font-bold w-1/2 h-1/2">Log in</button></a>
 <% } %>
 </div>
-
 </body>
 </html>

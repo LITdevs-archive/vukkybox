@@ -12,7 +12,13 @@
         <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
         <link rel="preload" href="/resources/unboxrare.wav" as="audio">
         <link rel="preload" href="/resources/unboxunique.wav" as="audio">
-	<link rel="preload" href="/resources/unboxbroken.wav" as="audio">
+        <link rel="preload" href="/resources/unboxgnome.wav" as="audio">
+        <link rel="preload" href="/resources/unboxsussy.mp3" as="audio">
+        <style>
+            #share:hover {
+                cursor: pointer
+            }
+        </style>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         <audio src="/resources/unbox.wav"></audio>
@@ -29,6 +35,7 @@
                 <!-- <li class="pr-5"><a> Services </a></li>
                 <li class="pr-5"><a>Porfolio</a></li>
                 <li class="pr-5"><a>About</a></li> -->
+                <li class="pr-10"><span id="share" onclick="navigator.share({'title': '<%=JSON.parse(vukky).name %> on Vukkybox!', 'url': document.location.href});">Share this Vukky</a></li>
                 <% if(username != "") { %>
                   <div class="dropdown">
                     
@@ -50,7 +57,7 @@
         <center class="py-8">
             <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 
-                <img class="m-auto" width="128" height="128" src="<%=JSON.parse(vukky).url %>"/>
+                <img class="m-auto" height="128" src="<%=JSON.parse(vukky).url %>"/>
                 <p><%=JSON.parse(vukky).name %> (#<%=vukkyId %>)</p>
                 <% if(parseInt(JSON.parse(level).level) == 8) { %>
                         <p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %></p>
@@ -76,7 +83,8 @@
         if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
         if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
         if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
-	if(vukkyID == 109 || vukkyID == 110) document.querySelector("audio").src = "/resources/unboxbroken.wav"
+	    if(vukkyID == 136) document.querySelector("audio").src = "/resources/unboxgnome.wav"
+        if(vukkyID == 20 || vukkyID == 108 || vukkyID == 128) document.querySelector("audio").src = "/resources/unboxsussy.mp3"
         document.querySelector("audio").play();
     </script>
 </html>
