@@ -232,6 +232,8 @@ app.get("/admin", function(req, res) {
 })
 
 app.post("/admin/:action", function(req, res) {
+	if(!req.isAuthenticated()) return res.status(404);
+	if(!req.user && !req.user[0]) return res.status(404);
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		switch(req.params.action) {
 			case "create_code":
