@@ -11,6 +11,8 @@ var store = new MongoDBStore({
 	collection: 'sessions',
 	clear_interval: 3600
 });
+const { Webhook } = require('discord-webhook-node');
+const hook = new Webhook(process.env.DISCORD_WEBHOOK);
 const rateLimit = require("express-rate-limit");
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -262,6 +264,7 @@ app.post("/admin/:action", function(req, res) {
 				}
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
+				hook.send("https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				/*
 				"67":{
 					"name":"Vukky Miner",
