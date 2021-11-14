@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 203,
+	"currentId": 206,
 	"rarity": {
 		"1": {
 			"1": {
@@ -253,6 +253,11 @@
 				"name": "Vukky's Back",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/backvukky.png",
 				"description": "This was made by Mitchellonii! It's looking at something. What is it? I don't know."
+			},
+			"205": {
+				"name": "5 Legged Vukky",
+				"url": "https://vukkybox.com/resources/5legged.png",
+				"description": "This Vukky seems to have 5 legs... Where did his arms go? This Vukky was made by Mitchelonii"
 			}
 		},
 		"2": {
@@ -410,6 +415,11 @@
 				"name": "Frokky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/frokky.png",
 				"description": "This was made by Ash! This Vukky belongs to the pond."
+			},
+			"206": {
+				"name": "Duolingo Vukky",
+				"url": "https://vukkybox.com/resources/duolingo.png",
+				"description": "This vukky has become the duolingo bird and has taken hostage your entire family. You better do your spanish lessons. This Vukky was created by Alespic"
 			}
 		},
 		"3": {
@@ -1067,6 +1077,11 @@
 				"name": "Me & Your Mom's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/meandyourmom.png",
 				"description": "This Pukky belongs to Me & Your Mom. I swear that's their username, I'm not trying to make a joke here"
+			},
+			"204": {
+				"name": "Pandarose's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/pandarose.png",
+				"description": "This Pukky belongs to Pandarose"
 			}
 		}
 	}
