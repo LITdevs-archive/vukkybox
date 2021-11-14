@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 206,
+	"currentId": 207,
 	"rarity": {
 		"1": {
 			"1": {
@@ -257,7 +257,7 @@
 			"205": {
 				"name": "5 Legged Vukky",
 				"url": "https://vukkybox.com/resources/5legged.png",
-				"description": "This Vukky seems to have 5 legs... Where did his arms go? This Vukky was made by Mitchelonii"
+				"description": "This Vukky seems to have 5 legs... Where did his arms go? This Vukky was made by Mitchellonii"
 			}
 		},
 		"2": {
@@ -709,6 +709,11 @@
 				"name": "Slonkey Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/monkeyvukky.png",
 				"description": "This was made by Synne! o o o a a a"
+			},
+			"207": {
+				"name": "Vukbox",
+				"url": "https://vukkybox.com/resources/vukybox.png",
+				"description": "This Vukky was created by Mot. Not to be confused with Vukkybux, the currency of this game, Vukkybox, the name of this game, or Vukky in a box, another Vukky."
 			}
 		},
 		"5": {

@@ -5,6 +5,8 @@ function nocache(module) {require("fs").watchFile(require("path").resolve(module
 nocache("./public/vukkies.json")
 const vukkyJson = require("./public/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTopology: true});
+const { Webhook } = require('discord-webhook-node');
+const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -46,6 +48,7 @@ db.once('open', function() {
 
 
 function findOrCreate(service, profile, callback) {
+	adminHook.send("A new user has registered!")
 	switch (service) {
 		case "google":
 			User.countDocuments({googleId:profile.id},function(err, res){
