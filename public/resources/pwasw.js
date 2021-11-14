@@ -5,8 +5,7 @@ self.addEventListener('install', (event)=>{
       return cache.addAll([
         "/resources/style.css",
         "/resources/spin.js",
-        "/resources/fuckyou.html",
-        "/",
+        "/resources/fuckyou.html"
       ]);
     })
   );

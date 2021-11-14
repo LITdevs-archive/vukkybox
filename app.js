@@ -11,6 +11,7 @@ var store = new MongoDBStore({
 	collection: 'sessions',
 	clear_interval: 3600
 });
+const rateLimit = require("express-rate-limit");
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
@@ -153,7 +154,14 @@ function getKeyByValue(object, value) {
 	return Object.keys(object).find(key => object[key] === value);
   }
 
-app.get('/buyBox/:data', checkAuth, (req, res) => {
+const boxLimiter = rateLimit({
+	windowMs: 1000,
+	max: 2,
+	handler: function(req, res) {
+		res.status(403).send("You're going too fast! <script>setTimeout(function() { window.location = 'https://vukkybox.com/store' },5000)</script>")
+	}
+});
+app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
@@ -164,8 +172,7 @@ app.get('/buyBox/:data', checkAuth, (req, res) => {
 						req.session.passport.user.gallery = newGallery
 						let ownedInTier = 0
 						let fullUnlock = false
-							res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
-						
+						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
 					} else {
 						let oldBalance = req.user[0].balance
 						req.session.passport.user[0].balance = newBalance
@@ -178,10 +185,12 @@ app.get('/buyBox/:data', checkAuth, (req, res) => {
 					}
 				} else {
 					res.redirect("https://vukkybox.com/balance?poor=true")
+					req.session.openingInProgress = false
 				}
 			});
 		} else {
 			res.status(400).send({message: "Box not found"})
+			req.session.openingInProgress = false
 		}
 });
 
@@ -326,10 +335,26 @@ app.get('/balance', function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
-			res.render(__dirname + '/public/balance.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
-		} else {
+			let loginHourly
+			let loginDaily
+			db.getUser(req.user._id, (resp, err) => {
+				if (err) return res.send(err)
+				loginHourly = resp.loginHourly
+				loginDaily = resp.loginDaily
+				res.render(__dirname + '/public/balance.ejs', {loginHourly: loginHourly, loginDaily: loginDaily, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+		
+			})
+			} else {
 			if(req.user[0].primaryEmail) {
-				res.render(__dirname + '/public/balance.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				
+			let loginHourly
+			let loginDaily
+			db.getUser(req.user[0]._id, (resp) => {
+				loginHourly = resp.loginHourly
+				loginDaily = resp.loginDaily
+				res.render(__dirname + '/public/balance.ejs', {loginHourly: loginHourly, loginDaily: loginDaily, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+			
+			})
 			}
 		}
 	} else {
