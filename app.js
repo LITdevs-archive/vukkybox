@@ -163,10 +163,11 @@ const boxLimiter = rateLimit({
 	handler: function(req, res) {
 		if(req.rateLimit.current > 10) {
 			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
-		} 
-		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
-	} // 2 vukkies per second sounds unrealistic in itself right? the animation probably takes longer than that in all cases (plus reaction time) <-- mmm           // obviously in that case they want to buy a shitload of them
-	// also, do you think we should throw some warning in a priv channel if too many 429s are sent for it to realistically be a person
+			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes! Here's something funny...<br><img src='https://i.imgur.com/twm4zX8.png'><script>setTimeout(function() { window.location.reload() },5000)</script>")
+		} else {
+			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
+		}
+	}
 });
 app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky"]
