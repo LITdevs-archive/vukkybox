@@ -12,6 +12,7 @@ var store = new MongoDBStore({
 	clear_interval: 3600
 });
 const { Webhook } = require('discord-webhook-node');
+const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
 const rateLimit = require("express-rate-limit");
 var GitHubStrategy = require('passport-github').Strategy;
@@ -160,8 +161,12 @@ const boxLimiter = rateLimit({
 	windowMs: 1000,
 	max: 2,
 	handler: function(req, res) {
-		res.status(403).send("You're going too fast! <script>setTimeout(function() { window.location = 'https://vukkybox.com/store' },5000)</script>")
-	}
+		if(req.rateLimit.current > 10) {
+			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
+		} 
+		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
+	} // 2 vukkies per second sounds unrealistic in itself right? the animation probably takes longer than that in all cases (plus reaction time) <-- mmm           // obviously in that case they want to buy a shitload of them
+	// also, do you think we should throw some warning in a priv channel if too many 429s are sent for it to realistically be a person
 });
 app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky"]
