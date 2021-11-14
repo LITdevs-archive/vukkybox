@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 133,
+	"currentId": 207,
 	"rarity": {
 		"1": {
 			"1": {
@@ -138,6 +138,126 @@
 				"name": "Vukky with no soul",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyempty.png?raw=true",
 				"description": "Someone forgot to color in this one... Damn you, <insert random name later>!!"
+			},
+			"141": {
+				"name": "Minevukk",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/minevukk.png",
+				"description": "This was made by Seysa! Why mine diamonds when you can mine Vukkies?"
+			},
+			"158": {
+				"name": "China Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/chinavukky.png",
+				"description": "This was made by Smokey! No social credit for you."
+			},
+			"159": {
+				"name": "Bulgaria Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/bulgarianvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"160": {
+				"name": "Austria Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/austriavukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"161": {
+				"name": "French Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/frenchvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"162": {
+				"name": "Hungary Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/hungaryvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"163": {
+				"name": "German Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/germanvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"164": {
+				"name": "Poland Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/polandvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"165": {
+				"name": "Thailand Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/thailandvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"166": {
+				"name": "Ukraine Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ukranianvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"167": {
+				"name": "Russia Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/russianvukky.png",
+				"description": "This was made by Smokey! Привет!"
+			},
+			"168": {
+				"name": "Czech Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/czechvukky.png",
+				"description": "This was made by Smokey!"
+			},
+			"170": {
+				"name": "Red Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/redvukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just red."
+			},
+			"171": {
+				"name": "Yellow Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/yellowvukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just yellow."
+			},
+			"172": {
+				"name": "Green Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/greenvukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just green."
+			},
+			"173": {
+				"name": "Orange Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/orangevukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just orange."
+			},
+			"174": {
+				"name": "Magenta Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/magentavukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just magenta."
+			},
+			"175": {
+				"name": "Vukky Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukky.png",
+				"description": "This was made by Mitchellonii! Vukky, but just Vukky."
+			},
+			"185": {
+				"name": "Vykku",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ykkuv.png",
+				"description": "This saw mayde by Mitchelony! Owo!"
+			},
+			"186": {
+				"name": "Bruh Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/bruhvukky.png",
+				"description": "This was made by Smokey! That's the most idiotic thing this Vukky has ever heard."
+			},
+			"187": {
+				"name": "1 Arm Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/1armvukky.png",
+				"description": "This was made by Mitchellonii! Oh no, Vukky, where'd your arm go?"
+			},
+			"188": {
+				"name": "1 Leg Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/1legvukky.png",
+				"description": "This was made by Mitchellonii! Oh no, Vukky, where'd your leg go?"
+			},
+			"189": {
+				"name": "Vukky's Back",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/backvukky.png",
+				"description": "This was made by Mitchellonii! It's looking at something. What is it? I don't know."
+			},
+			"205": {
+				"name": "5 Legged Vukky",
+				"url": "https://vukkybox.com/resources/5legged.png",
+				"description": "This Vukky seems to have 5 legs... Where did his arms go? This Vukky was made by Mitchellonii"
 			}
 		},
 		"2": {
@@ -240,6 +360,66 @@
 				"name": "Smelly Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/smellyvukky.png",
 				"description": "Ew! Vukky, that's gross!"
+			},
+			"126": {
+				"name": "Fading Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfade.png",
+				"description": "Mr. Neatnik, i dont feel so good"
+			},
+			"131": {
+				"name": "Shy Vukky",
+				"url": "https://vukkybox.com/resources/shyvukky.png",
+				"description": " This Vukky doesn't want to be seen right now, nor does it want you to pick it up and put it in your display case!! ...Oh, you're doing that anyway, aren't you?"
+			},
+			"142": {
+				"name": "Gift Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/giftvukky.png",
+				"description": "This was made by Seysa! Wow, it's a gift! How cute."
+			},
+			"145": {
+				"name": "Burning Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/burningvukky.png",
+				"description": "This was made by SeysAAAAAAAAAAAAA!!!!!"
+			},
+			"155": {
+				"name": "Vukkyputer",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyputer.png",
+				"description": "This was made by Alespic! The Vukky isn’t in the computer anymore, he IS the computer."
+			},
+			"190": {
+				"name": "Butter Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/buttervukky.png",
+				"description": "This was made by Mitchellonii! Ah yes, my favorite topping to put on a Vukky before I eat it."
+			},
+			"192": {
+				"name": "Stonks Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/stonksvukky.png",
+				"description": "This was made by Mitchellonii! Buy high, sell low."
+			},
+			"198": {
+				"name": "Piss Vukky",
+				"url": "https://vukkybox.com/resources/pissvukky.png",
+				"description": "It's.... made of piss"
+			},
+			"201": {
+				"name": "Beebo Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/beebovukky.png",
+				"description": "YOU GOT ICE CREAM! Always wash your hands and give credit to Synne for making this."
+			},
+			"202": {
+				"name": "Gangster Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/gangstervukky.png",
+				"description": "This was made by Alespic! Do not mess with this Vukky. He will come for your family. "
+			},
+			"203": {
+				"name": "Frokky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/frokky.png",
+				"description": "This was made by Ash! This Vukky belongs to the pond."
+			},
+			"206": {
+				"name": "Duolingo Vukky",
+				"url": "https://vukkybox.com/resources/duolingo.png",
+				"description": "This vukky has become the duolingo bird and has taken hostage your entire family. You better do your spanish lessons. This Vukky was created by Alespic"
 			}
 		},
 		"3": {
@@ -333,15 +513,90 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/dzonevukky.png",
 				"description": "Oh no! Vukky turned into a cube!"
 			},
-			"126": {
-				"name": "Fading Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfade.png",
-				"description": "Vukky, where are you going?"
-			},
-			"131": {
+			"132": {
 				"name": "Far Away Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/farawayvukky.png",
-				"description": "This is fan art! Oh Vukky, when will I ever see you again..."
+				"description": "This was made by Seysa! Oh Vukky, when will I ever see you again..."
+			},
+			"133": {
+				"name": "Selmersen",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/selmersen.png",
+				"description": "A tribute to a friend."
+			},
+			"138": {
+				"name": "Dream Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/dreamvukky.png",
+				"description": "This was made by Seysa! Okay, my name is Dream, and today we're doing some epic manhunts with..."
+			},
+			"139": {
+				"name": "PewDieVukk",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkypewdie.png",
+				"description": "This was made by Seysa! How's it going bros, my name is PewDieVukk..."
+			},
+			"140": {
+				"name": "Minion Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/minionvukky.png",
+				"description": "This was made by Seysa! BANANA!"
+			},
+			"146": {
+				"name": "Siggy",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/siggy.png",
+				"description": "Dedicated to a brother of a friend."
+			},
+			"177": {
+				"name": "Squid Game Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/squidgamevukky.png",
+				"description": "This was made by Seysa! This Vukky is either going to be a millionaire, or die in the first round."
+			},
+			"181": {
+				"name": "Spain Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/spainvukky.png",
+				"description": "This was made by Synne! This Vukky has been to Spain. Or was it pain?"
+			},
+			"183": {
+				"name": "Christmas Tree Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/christmastreevukky.png",
+				"description": "This was made by Synne! This Vukky isn't Santa, this Vukky isn't a gift, but it's a tree!"
+			},
+			"184": {
+				"name": "Mario Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/mariovukky.png",
+				"description": "This was made by Seysa! It's-a me, Vukky!"
+			},
+			"191": {
+				"name": "Hacker Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/hackervukky.jpg",
+				"description": "This was made by Mitchellonii! 01010011 01101111 00100000 01110011 01100011 01100001 01110010 01111001 00101110"
+			},
+			"193": {
+				"name": "No Vukkies Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/protestvukky.png",
+				"description": "This was made by Mitchellonii! I don't want Vukkies in my house. Oh wait, what do you mean I'm a Vukky?"
+			},
+			"194": {
+				"name": "Chibi Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/chibivukky.png",
+				"description": "This was made by Mitchellonii! Kawaii!!! (((o(*ﾟ▽ﾟ*)o)))"
+			},
+			"195": {
+				"name": "Glitched Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/glitchedvukky.png",
+				"description": "This was made by Mitchellonii! Ṯ̵̡̡̳͉̩͕̣̳̣̭͍͈̲̖̪͘̚h̴̟̫̭̲̳̞̻͉͂̅̃̂̈́̇͂̏̊̒̓̂͂̉̽̅́̿ę̷͎͕̱̣̦̪͇̋̄̐̇̿̿̿̕̕͝͠r̵̨͕͖̟̫͕̒͒̃̽̍̿̇̐͆̽̉̉̕͜ě̷̦͉̱̳͇̗̅́͗̃͗͝ ̶̭̻̦̘̱͕̳̤̲͈̻̘̥̥̤̦̮̿͊̔̀̒͌̋̅i̸̧̢͓̹͉̣͔͉̳̠̱͉̘͓͎̝̩̍͆̂s̸̛͍̦̙͒͋̑͐̂̈́͌͛͗͂ ̵̡̨̨̫͚̼͎̰̳̤̻̝̦̇̎́͑̓͋̇̇͐̈́̇̈́̒̂̾̕̚ͅn̶̢̜͓̜̳̤͚͔̦͔͗̑ộ̶̣̗̹̘̳̝̍́̓̑́̑̒̄̆ ̸̨̡̧̖͈̰̘͔̗͉͇̫̹̫̅̅̌̈́̽̕ȅ̶̛̦͙̘̞̆͑̿̿̀̄̊̌͛̌͂̕̚s̶̛͎̭̙͎͚̓̂̾̀͗̀͆̄̌͌c̴͈̥̹͈͇̲͇̠͚̰͊͐̈́̓̃̽̅̋̚á̴̛̹̮͍͔͓̹̟̲̻̓̈́̈́̈́̿̀̓̈́́̋̏͘͝͠p̶͖̆̒e̵͎̹̿̃͌̈́.̵̻͉̻̯̞̥̮̹̫̦̥͔̫̪̤͚͑̇"
+			},
+			"196": {
+				"name": "Deformed Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/deformedvukky.png",
+				"description": "This was made by Mitchellonii! If you see a Vukky like this, please immediately contact the Central Vukky Generating Organization."
+			},
+			"197": {
+				"name": "Deep Fried Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/deepfriedvukky.png",
+				"description": "This was made by Mitchellonii! If you see a Vukky like this, please immediately contact the Central Vukky Printing Organization."
+			},
+			"200": {
+				"name": "200 Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukky200.png",
+				"description": "This was made by Synne! It also happens to be the 200th Vukky. What does that mean?"
 			}
 		},
 		"4": {
@@ -403,12 +658,62 @@
 			"122": {
 				"name": "Raven Vukky",
 				"url": "https://vukkybox.com/resources/ravenvukky.png",
-				"description": "This Vukky seems to have gotten very much into Ravencoin!"
+				"description": "This is fan art! This Vukky seems to have gotten very much into Ravencoin!"
 			},
-			"132": {
+			"134": {
 				"name": "Reunited Vukkies",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/reunitedvukky.png",
-				"description": "This is fan art! Reunited at last."
+				"description": "This was made by Seysa! Reunited at last."
+			},
+			"137": {
+				"name": "Vukkychu",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkypikachu.png",
+				"description": "This was made by Seysa! Vukkychu, use Woo! It was very effective."
+			},
+			"143": {
+				"name": "SpongeBob Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/spongebobvukky.png",
+				"description": "This was made by Seysa! Who lives in a pineapple under the sea?"
+			},
+			"144": {
+				"name": "Angel Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/angelvukky.png",
+				"description": "This was made by Seysa! Vukky's in heaven."
+			},
+			"147": {
+				"name": "Yin and Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/yinandvukky.png",
+				"description": "This was made by Seysa! It's not Yang without Vukky!"
+			},
+			"150": {
+				"name": "Sunset",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkysunset.png",
+				"description": "This was made by Seysa! What a glorious sunset."
+			},
+			"169": {
+				"name": "Vukky God",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkygod.png",
+				"description": "This was made by Alespic! This Vukky has unlocked his full potential and ascended. All hail the Vukky God!"
+			},
+			"178": {
+				"name": "Ghost Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ghostvukky.png",
+				"description": "This was made by Smokey! Boo, you can't even see this Vukky! Oh wait, you can?"
+			},
+			"179": {
+				"name": "Norvukk",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/norvukk.png",
+				"description": "This was made by Seysa! This Vukky has been to Norway way too much."
+			},
+			"182": {
+				"name": "Slonkey Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/monkeyvukky.png",
+				"description": "This was made by Synne! o o o a a a"
+			},
+			"207": {
+				"name": "Vukbox",
+				"url": "https://vukkybox.com/resources/vukybox.png",
+				"description": "This Vukky was created by Mot. Not to be confused with Vukkybux, the currency of this game, Vukkybox, the name of this game, or Vukky in a box, another Vukky."
 			}
 		},
 		"5": {
@@ -441,6 +746,11 @@
 				"name": "Vukky Plush",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyplush.png?raw=true",
 				"description": "Looks quite huggable. Not for sale, though."
+			},
+			"148": {
+				"name": "Donald Vukk",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/donaldvukk.png",
+				"description": "This was made by Seysa! QUACK! I'm a duck??"
 			}
 		},
 		"6": {
@@ -466,13 +776,28 @@
 			},
 			"111": {
 				"name": "Vukky in a Box",
-				"url": "https://vukkybox.com/resources/icon.png",
+				"url": "https://vukkybox.com/resources/vukkyinabox.png",
 				"description": "This Vukky has gotten stuck in a box! Hmm... This seems strangely familiar... Probably nothing."
 			},
-			"133": {
-				"name": "Selmersen",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/selmersen.png",
-				"description": "A tribute to a friend"
+			"135": {
+				"name": "Tassen",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/tassen.png",
+				"description": "This was made by Seysa! WOW!"
+			},
+			"136": {
+				"name": "Gnome Vukky",
+				"url": "https://vukkybox.com/resources/gnome.png",
+				"description": "its just laughing we cant get it to stop please help us it just keeps laughing please help us help help help"
+			},
+			"153": {
+				"name": "m9 bayonet freehand",
+				"url": "https://vukkybox.com/resources/m9.png",
+				"description": "oh god oh fuck its got a m9 bayonet freehand"
+			},
+			"176": {
+				"name": "Elf Vukky",
+				"url": "https://vukkybox.com/resources/elfvukky.png",
+				"description": "This was made by Mitchellonii! This Vukky is very interested in contracts... Is it related to Alfur?"
 			}
 		},
 		"7": {
@@ -691,7 +1016,7 @@
 			"124": {
 				"name": "Mezo's Pukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/mezopukky.jpg",
-				"description": "This Pukky belongs to Mezo"
+				"description": "Mezo the one and only hackerpukky"
 			},
 			"125": {
 				"name": "TurtleBoi's Pukky",
@@ -717,6 +1042,51 @@
 				"name": "Wattle Gattle's Pukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/wattlegattlepukky.png",
 				"description": "Wow! That's a thick outline."
+			},
+			"149": {
+				"name": "AlexHewo!'s Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/alexhewo.png",
+				"description": "This Pukky belongs to AlexHewo!"
+			},
+			"151": {
+				"name": "Femboy Nova's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/nova.png",
+				"description": "This Pukky belongs to a cuti-- I mean Femboy Nova"
+			},
+			"152": {
+				"name": "divfar's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/divfar.png",
+				"description": "This Pukky belongs to divfar! Awesome as always."
+			},
+			"154": {
+				"name": "Lilmelon's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/lilmelon.png",
+				"description": "This vibing melon pepe belongs to Lilmelon"
+			},
+			"156": {
+				"name": "Fake_Beluga's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/fake_beluga.png",
+				"description": "This Pukky belongs to Fake_Beluga"
+			},
+			"157": {
+				"name": "Stinkywinky's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/stinkywinky.png",
+				"description": "This Pukky belongs to Stinkywinky"
+			},
+			"180": {
+				"name": "Seysa's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/seysapukky.png",
+				"description": "This Pukky was made by Seysa, for Seysa!"
+			},
+			"199": {
+				"name": "Me & Your Mom's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/meandyourmom.png",
+				"description": "This Pukky belongs to Me & Your Mom. I swear that's their username, I'm not trying to make a joke here"
+			},
+			"204": {
+				"name": "Pandarose's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/pandarose.png",
+				"description": "This Pukky belongs to Pandarose"
 			}
 		}
 	}

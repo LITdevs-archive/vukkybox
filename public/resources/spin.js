@@ -7,13 +7,21 @@ window.addEventListener('load', (event) => {
             icon.style.display = "none";
         }, 200);
     };
-    document.querySelector("a[href='/']").parentNode.querySelector("p").onclick = function() {
+    document.querySelector("a[href='/']").parentNode.querySelector("p").id = "balance";
+    document.querySelector("#balance").onclick = function() {
         document.location.pathname = "balance";
     };
-    document.querySelector("a[href='/']").parentNode.querySelector("p").onmouseenter = function() {
-        document.querySelector("a[href='/']").parentNode.querySelector("p").style.cursor = "pointer";
+    document.querySelector("#balance").onmouseenter = function() {
+        document.querySelector("#balance").style.cursor = "pointer";
     };
-    document.querySelector("a[href='/']").parentNode.querySelector("p").onmouseout = function() {
-        document.querySelector("a[href='/']").parentNode.querySelector("p").style.cursor = "";
+    document.querySelector("#balance").onmouseout = function() {
+        document.querySelector("#balance").style.cursor = "";
     };
 });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/pwasw.js', { scope: "/" })
+    .catch(function(error) {
+      console.log('Service worker registration failed, error:', error);
+    });
+}

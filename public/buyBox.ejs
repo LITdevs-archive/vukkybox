@@ -9,7 +9,8 @@
         <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
         <link rel="preload" href="/resources/unboxrare.wav" as="audio">
         <link rel="preload" href="/resources/unboxunique.wav" as="audio">
-	<link rel="preload" href="/resources/unboxbroken.wav" as="audio">
+	    <link rel="preload" href="/resources/unboxgnome.wav" as="audio">
+        <link rel="preload" href="/resources/unboxsussy.mp3" as="audio">
         <link rel="preload" href="https://vukkybox.com/resources/<%=boxType %>vukkybox.png" as="image">
         <link rel="preload" href="<%=prize.box.vukky.url %>" as="image">
         <style>
@@ -34,9 +35,9 @@
                 <li class="pr-5"><a>Porfolio</a></li>
                 <li class="pr-5"><a>About</a></li> -->
                 <% if(parseInt(prize.box.level.level) == 8) { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>`);alert('Copied share link to clipboard')">Share your drop!</a></li>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
                 <% } else { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>`);alert('Copied share link to clipboard')">Share your drop!</a></li>
+                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
                 <% } %>
                 <% if(username != "") { %>
                   <div class="dropdown">
@@ -59,7 +60,7 @@
         <center class="py-8">
             <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <div class="hidden reward" id="reward">
-                    <img class="m-auto" width="128" height="128" src="<%=prize.box.vukky.url %>"/>
+                    <img class="m-auto" height="128" src="<%=prize.box.vukky.url %>"/>
                     <p><%=prize.box.vukky.name %> (#<%=prize.box.vukkyId %>)</p>
                     <% if(parseInt(prize.box.level.level) == 8) { %>
                     <p style="color:<%=prize.box.level.color %>;"><%=prize.box.level.name %></p>
@@ -69,7 +70,7 @@
                     <p><%=prize.box.vukky.description %></p>
                     <p class="text-red-500"><%if (dupe) { %><br>Sorry, but you already have this Vukky. You have been refunded 10%.<% } %></p>
                     <br>
-                    <button class="button button-blue" onclick="window.location.reload()">Buy another one</button>
+                    <button class="button button-blue" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;window.location.reload()">Buy another one</button>
                     <a href="/store"><button class="py-5 button button-blue">Return to the storefront</button></a>
                 </div>
                 <div class="opener" id="opener">
@@ -79,10 +80,11 @@
         </center>
 	</body>
     <script type="text/javascript">
-        const rarity = <%=prize.box.level.level %>;
+    var rarity = <%=prize.box.level.level %>;
+    if(rarity == 8) rarity = 3;
 	const vukkyID = <%=prize.box.vukkyId %>;
 	const boxName = "<%=boxType %>";
-        let rotation = (0.285714286 + (Math.random() / 3)) * rarity;
+        let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
         let newBalance = <%=user.balance %>;
         let spinner = setInterval(function() {
             document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
@@ -107,10 +109,9 @@
                 if(rarity >= 6) document.querySelector("audio").src = "/resources/unboxrare.wav"
                 if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
                 if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
-                if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
-		if(vukkyID == 109 || vukkyID == 110) document.querySelector("audio").src = "/resources/unboxbroken.wav"
+	            if(vukkyID == 136) document.querySelector("audio").src = "/resources/unboxgnome.wav"
+                if(vukkyID == 20 || vukkyID == 108 || vukkyID == 128) document.querySelector("audio").src = "/resources/unboxsussy.mp3"
                 document.querySelector("audio").play();
-		if(boxName == "warped") document.querySelector("#reward img").style.filter = "invert(100%)"
                 document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")
                 document.getElementById("opener").classList.add("hidden")

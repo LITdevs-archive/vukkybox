@@ -1,0 +1,16 @@
+{
+    "name": "Vukkybox",
+    "icons": [
+        {
+            "src": "/resources/icon.png",
+            "type": "image/png",
+            "sizes": "1200x1200"
+        }
+    ],
+    "start_url": "/",
+    "theme_color": "#00a8f3",
+    "background_color": "#c8966c",
+    "description": "A gacha game featuring Vukkies!",
+    "display": "fullscreen",
+    "orientation": "portrait"
+}

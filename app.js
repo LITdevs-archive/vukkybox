@@ -8,8 +8,13 @@ require("dotenv").config();
 const MongoDBStore = require("connect-mongodb-session")(session);
 var store = new MongoDBStore({
 	uri: process.env.MONGODB_HOST,
-	collection: 'sessions'
+	collection: 'sessions',
+	clear_interval: 3600
 });
+const { Webhook } = require('discord-webhook-node');
+const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
+const hook = new Webhook(process.env.DISCORD_WEBHOOK);
+const rateLimit = require("express-rate-limit");
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
@@ -96,7 +101,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/resources", express.static('public/resources'))
-app.use("/.well-known", express.static('public/.well-known'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
@@ -153,7 +157,18 @@ function getKeyByValue(object, value) {
 	return Object.keys(object).find(key => object[key] === value);
   }
 
-app.get('/buyBox/:data', checkAuth, (req, res) => {
+const boxLimiter = rateLimit({
+	windowMs: 1000,
+	max: 2,
+	handler: function(req, res) {
+		if(req.rateLimit.current > 10) {
+			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
+		} 
+		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
+	} // 2 vukkies per second sounds unrealistic in itself right? the animation probably takes longer than that in all cases (plus reaction time) <-- mmm           // obviously in that case they want to buy a shitload of them
+	// also, do you think we should throw some warning in a priv channel if too many 429s are sent for it to realistically be a person
+});
+app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
@@ -164,8 +179,7 @@ app.get('/buyBox/:data', checkAuth, (req, res) => {
 						req.session.passport.user.gallery = newGallery
 						let ownedInTier = 0
 						let fullUnlock = false
-							res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
-						
+						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
 					} else {
 						let oldBalance = req.user[0].balance
 						req.session.passport.user[0].balance = newBalance
@@ -178,10 +192,12 @@ app.get('/buyBox/:data', checkAuth, (req, res) => {
 					}
 				} else {
 					res.redirect("https://vukkybox.com/balance?poor=true")
+					req.session.openingInProgress = false
 				}
 			});
 		} else {
 			res.status(400).send({message: "Box not found"})
+			req.session.openingInProgress = false
 		}
 });
 
@@ -222,8 +238,8 @@ app.post("/delete", checkAuth, function(req, res) {
 
 app.get("/admin", function(req, res) {
 	if(!req.isAuthenticated()) return res.status(404).render(`${__dirname}/public/404.ejs`);
-	if(!req.user) return res.status(404).render(`${__dirname}/public/404.ejs`);
-	if(!req.user.discordId) return res.status(404).render(`${__dirname}/public/404.ejs`);
+	if(!req.user && !req.user[0]) return res.status(404).render(`${__dirname}/public/404.ejs`);
+	if(!req.user.discordId && !req.user[0].discordId) return res.status(404).render(`${__dirname}/public/404.ejs`);
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		res.render(__dirname + "/public/admin.ejs")
 	} else {
@@ -232,6 +248,8 @@ app.get("/admin", function(req, res) {
 })
 
 app.post("/admin/:action", function(req, res) {
+	if(!req.isAuthenticated()) return res.status(404);
+	if(!req.user && !req.user[0]) return res.status(404);
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		switch(req.params.action) {
 			case "create_code":
@@ -251,6 +269,7 @@ app.post("/admin/:action", function(req, res) {
 				}
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
+				hook.send("https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				/*
 				"67":{
 					"name":"Vukky Miner",
@@ -292,7 +311,10 @@ app.get('/stats', checkAuth, function(req, res) {
 			res.send(resp)
 		})
 	} else {	
-		db.getUser(req.user[0]._id)
+		db.getUser(req.user[0]._id, function(resp, err) {
+			if(err) return res.send(err)
+			res.send(resp)
+		})
 	}
 })
 
@@ -300,10 +322,16 @@ app.get('/', function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
-			res.render(__dirname + '/public/index.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
-		} else {
+			db.lastLogin(req.user, function(newBalance) {
+				req.session.passport.user.balance = newBalance
+				res.render(__dirname + '/public/index.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+			})
+			} else {
 			if(req.user[0].primaryEmail) {
-				res.render(__dirname + '/public/index.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				db.lastLogin(req.user[0], function(newBalance) {
+					req.session.passport.user.balance = newBalance
+					res.render(__dirname + '/public/index.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				})
 			}
 		}
 	} else {
@@ -315,10 +343,26 @@ app.get('/balance', function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
-			res.render(__dirname + '/public/balance.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
-		} else {
+			let loginHourly
+			let loginDaily
+			db.getUser(req.user._id, (resp, err) => {
+				if (err) return res.send(err)
+				loginHourly = resp.loginHourly
+				loginDaily = resp.loginDaily
+				res.render(__dirname + '/public/balance.ejs', {loginHourly: loginHourly, loginDaily: loginDaily, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+		
+			})
+			} else {
 			if(req.user[0].primaryEmail) {
-				res.render(__dirname + '/public/balance.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				
+			let loginHourly
+			let loginDaily
+			db.getUser(req.user[0]._id, (resp) => {
+				loginHourly = resp.loginHourly
+				loginDaily = resp.loginDaily
+				res.render(__dirname + '/public/balance.ejs', {loginHourly: loginHourly, loginDaily: loginDaily, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+			
+			})
 			}
 		}
 	} else {
@@ -329,10 +373,10 @@ app.get('/balance', function(req, res) {
 app.get('/gallery', checkAuth, function(req, res) {
   	if(req.user) {
 		if(req.user.username) {
-			res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+			res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 		} else {
 			if(req.user[0].primaryEmail) {
-				res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 			}
 		}
 	}
@@ -341,7 +385,7 @@ app.get('/gallery', checkAuth, function(req, res) {
 app.get("/guestgallery/:userId", function(req, res) {
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
-		res.render(__dirname + '/public/gallery.ejs', {vukkies: vukkyJson.rarity, user: user, username: "Guest Collection", gravatarHash: null});
+		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username == user.primaryEmail ? "A Vukkybox User" : user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	})
 })
 
@@ -426,11 +470,27 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 
 app.get('/store', function(req,res) {
 	if(req.isAuthenticated()) {
-		if(req.user.primaryEmail) return res.render(__dirname + '/public/store.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
-		if(req.user[0].primaryEmail) return res.render(__dirname + '/public/store.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+		if(req.user.primaryEmail) {
+			db.lastLogin(req.user, function(newBalance) {
+				req.session.passport.user.balance = newBalance
+				req.user.balance = newBalance
+				res.render(__dirname + '/public/store.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+			})
+		} else if(req.user[0].primaryEmail) {
+			db.lastLogin(req.user[0], function(newBalance) {
+				req.session.passport.user[0].balance = newBalance
+				req.user[0].balance = newBalance
+				res.render(__dirname + '/public/store.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+
+			})
+			}
 	} else {
 		res.render(__dirname + '/public/store.ejs', {user: null, username: "", gravatarHash: null});
 	}
+});
+
+app.get('/pwasw.js', function(req, res){
+	res.sendFile(__dirname + '/public/resources/pwasw.js')
 });
 
 function checkAuth(req, res, next) {
@@ -438,7 +498,6 @@ function checkAuth(req, res, next) {
 		if(req.user._id) {
 			db.lastLogin(req.user, function(newBalance) {
 				req.session.passport.user.balance = newBalance
-
 			})
 			return next();
 		} else {
@@ -452,6 +511,9 @@ function checkAuth(req, res, next) {
 	res.redirect(`/login`)
 }
 
+app.get('/sus', function(req, res){
+	res.redirect('/resources/unboxsussy.mp3')
+});
 
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);

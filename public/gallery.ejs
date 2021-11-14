@@ -6,7 +6,7 @@
     <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
     <title>Vukkybox - Collection</title>
     <meta name="title" content="Vukkybox Collections">
-    <meta name="description" content="View someone's Vukky collection!">
+    <meta name="description" content="View the Vukky collection of <%= username%>!">
     <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
     <style>
         #share:hover {
@@ -28,7 +28,7 @@
             <!-- <li class="pr-5"><a> Services </a></li>
             <li class="pr-5"><a>Porfolio</a></li>
             <li class="pr-5"><a>About</a></li> -->
-            <li class="pr-10"><span id="share" onclick="navigator.clipboard.writeText(`https:/\/vukkybox.com/guestgallery/<%=user._id %>`);alert('Copied share link to clipboard')">Share Collection</a></li>
+            <li class="pr-10"><span id="share" onclick="navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});">Share Collection</a></li>
             <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
             <% if(username != "") { %>
               <div class="dropdown">
@@ -93,7 +93,7 @@
 </body>
 <script>
     const userGallery = [<%=user.gallery %>]
-    document.getElementById("total_text").innerHTML = "This user has " + userGallery.length + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
+    document.getElementById("total_text").innerHTML = "This user has " + userGallery.length + "/" + <%=totalVukkies %> + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
     for(let j = 1; j <= 7; j++) {
         let owned = 0

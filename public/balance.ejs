@@ -5,8 +5,8 @@
     <script src="./resources/spin.js"></script>
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
     <title>Vukkybox</title>
-    <meta name="title" content="Vukkybox">
-    <meta name="description" content="Collect Vukkies trapped in boxes!">
+    <meta name="title" content="Vukkybox - Vukkybux Info">
+    <meta name="description" content="Learn more about how Vukkybux work.">
     <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
     <link rel="preload" href="/resources/nobalance.wav" as="audio">
 </head>
@@ -48,33 +48,46 @@
 <h1 id="pooruser" class="hidden text-3xl">Oh no, you've run out of Vukkybux!</p>
 <h2 class="text-2xl">How do I get more Vukkybux?</h1>
 <ul class="list-disc list-inside">
-  <li>Logging in every hour for 20 Vukkybux</li>
-  <li>Logging in every day for 500 Vukkybux</li>
+  <li>Logging in every hour for 150 Vukkybux</li>
+  <li>Logging in every day for 750 Vukkybux</li>
   <li>Redeeming promo codes</li>
   <li>Trading for Vukkybux below</li>
 </ul>
-<h2 class="text-2xl pt-8">Trading for Vukkybux</h1>
+<h2 class="text-2xl pt-8">How long until I get my Vukkybux?</h1>
 <% if(username != "") { %>
-  You can trade for Vukkybux using these methods:
   <ul class="list-disc list-inside">
-    <li>Supporting OMG.LOL by purchasing a domain for 5,000 Vukkybux</li>
-    <li>Cryptocurrency</li>
-    <li>Digital Tokens for Prepaid Visa Cards from Prepaid Digital Solutions (like the ones from Salad.com)</li>
+    <li>Hourly: Log in after <span id="hourlyTime">LOADING</span></li>
+    <li>Daily: Log in after <span id="dailyTime">LOADING</span></li>
   </ul>
-  To trade with us and for more information, please join <a href="https://discord.gg/mmhPScCZH4" class="text-blue-300">our Discord server</a>, then contact someone with the "LIT Devs" role.
 <% } else {%> 
   You need to sign in first.
 <% } %>
+<h2 class="text-2xl pt-8">Trading for Vukkybux</h1>
+If you need Vukkybux now, you can trade with us and get Vukkybux using these methods:
+<ul class="list-disc list-inside">
+  <li>Supporting OMG.LOL by purchasing a domain for 7,500 Vukkybux</li>
+  <li>Cryptocurrency</li>
+  <li>Digital Tokens for Prepaid Visa Cards from Prepaid Digital Solutions (like the ones from Salad.com)</li>
+</ul>
+To trade with us and for more information, please join <a href="https://discord.gg/mmhPScCZH4" class="text-blue-300">our Discord server</a>, then contact someone with the "LIT Dev" role.
 </div>
 
 </body>
 <script>
-    const queryString = window.location.search;
+  const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	if(urlParams.has('poor')) {
 		document.querySelector("#pooruser").classList.remove("hidden")
 		document.querySelector("audio").play()
 	}
+  <% if(username != "") { %>
+    let loginHourly = new Date('<%= loginHourly %>');
+    let loginDaily = new Date('<%= loginDaily %>');
+    loginDaily.setDate(loginDaily.getDate() + 1);
+    loginHourly.setHours(loginHourly.getHours() + 1);
+    document.querySelector("#hourlyTime").innerHTML = loginHourly.toLocaleString();
+    document.querySelector("#dailyTime").innerHTML = loginDaily.toLocaleString();
+  <% } %> 
 </script>
 
 </html>
