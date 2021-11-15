@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 208,
+	"currentId": 209,
 	"rarity": {
 		"1": {
 			"1": {
@@ -597,6 +597,11 @@
 				"name": "200 Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukky200.png",
 				"description": "This was made by Synne! It also happens to be the 200th Vukky. What does that mean?"
+			},
+			"209": {
+				"name": "Vukky Potter",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkypotter.png",
+				"description": "This was made by Seysa! Vukgardium leviosa."
 			}
 		},
 		"4": {
