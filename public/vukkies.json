@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 207,
+	"currentId": 208,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1087,6 +1087,11 @@
 				"name": "Pandarose's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/pandarose.png",
 				"description": "This Pukky belongs to Pandarose"
+			},
+			"208": {
+				"name": "Ender_'s Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/ender.gif",
+				"description": "This Pukky belongs to Ender_"
 			}
 		}
 	}
