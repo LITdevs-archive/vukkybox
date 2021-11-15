@@ -270,7 +270,7 @@ app.post("/admin/:action", function(req, res) {
 				}
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
-				if(req.body.contribid) {
+				if(req.body.contribid != "") {
 					hook.send("<@" + req.body.contribid + ">" + " https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				} else {
 					hook.send("https://vukkybox.com/view/" + req.body.level + "/" + newId)
