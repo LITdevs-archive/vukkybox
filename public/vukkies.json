@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 209,
+	"currentId": 210,
 	"rarity": {
 		"1": {
 			"1": {
@@ -420,6 +420,11 @@
 				"name": "Duolingo Vukky",
 				"url": "https://vukkybox.com/resources/duolingo.png",
 				"description": "This vukky has become the duolingo bird and has taken hostage your entire family. You better do your spanish lessons. This Vukky was created by Alespic"
+			},
+			"210": {
+				"name": "Egg Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/eggvukky.png",
+				"description": "This was made by laker! When the Vukker is eg!"
 			}
 		},
 		"3": {
