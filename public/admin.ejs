@@ -24,8 +24,7 @@
     <script>
         let params = new URL(document.location.href).searchParams;
         if(params.get("code") != null) {
-            navigator.clipboard.writeText(`https://vukkybox.com/redeem/${params.get("code")}`);
-            alert("Redeem link copied to clipboard!")
+            navigator.share({"title": "Vukkybox code", "url": `https://vukkybox.com/redeem/${params.get("code")}`});
         }
     </script>
 </body>
