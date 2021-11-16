@@ -57,7 +57,7 @@ function findOrCreate(service, profile, callback) {
 						if(err) console.log(err)
 					})
 				} else {
-					adminHook.send("A new user has registered with Google!")
+					adminHook.send("👥 A new user has registered with Google!")
 					let user = new User({
 						googleId:profile.id,
 						googleEmail:profile.emails[0].value,
@@ -87,7 +87,7 @@ function findOrCreate(service, profile, callback) {
 						if(err) console.log(err)
 					})
 				} else {
-					adminHook.send("A new user has registered with MediaWiki!")
+					adminHook.send("👥 A new user has registered with MediaWiki!")
 					let user = new User({
 						mediawikiId:profile.id,
 						mediawikiEmail:profile._json.email,
@@ -116,7 +116,7 @@ function findOrCreate(service, profile, callback) {
 						if(err) console.log(err)
 					})
 				} else {
-					adminHook.send("A new user has registered with GitHub!")
+					adminHook.send("👥 A new user has registered with GitHub!")
 					let user = new User({
 						githubId:profile.id,
 						githubEmail:profile.email,
@@ -148,7 +148,7 @@ function findOrCreate(service, profile, callback) {
 						  });
 					})
 				} else {
-					adminHook.send("A new user has registered with Discord!")
+					adminHook.send("👥 A new user has registered with Discord!")
 					let user = new User({
 						discordId:profile.id,
 						discordEmail:profile.email,
