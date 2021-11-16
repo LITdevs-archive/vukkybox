@@ -104,6 +104,9 @@ app.use("/resources", express.static('public/resources'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
+//db.ethermineRVN() worker ids got shortened to 20 characters only for some reason.. pissy!!
+db.ethermineETH() 
+
 app.get('/login', function(req, res) {
   if(req.user) {
 	if(req.user.primaryEmail) {
@@ -211,7 +214,7 @@ app.get('/terms', function(req, res){
 });
 
 app.get('/delete', checkAuth, function(req,res) {
-	res.send("severe bug. disabled temporarily, contact us for manual deletion")//res.render(__dirname + "/public/deleteConfirm.ejs")
+	res.render(__dirname + "/public/deleteConfirm.ejs")
 })
 
 app.post("/delete", checkAuth, function(req, res) {
@@ -238,19 +241,23 @@ app.post("/delete", checkAuth, function(req, res) {
 })
 
 app.get("/admin", function(req, res) {
-	if(!req.isAuthenticated()) return res.status(404).render(`${__dirname}/public/404.ejs`);
-	if(!req.user && !req.user[0]) return res.status(404).render(`${__dirname}/public/404.ejs`);
-	if(!req.user.discordId && !req.user[0].discordId) return res.status(404).render(`${__dirname}/public/404.ejs`);
+	if(!req.isAuthenticated()) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
+	if(!req.user && !req.user[0]) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
+	if(!req.user.discordId && !req.user[0].discordId) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		res.render(__dirname + "/public/admin.ejs")
 	} else {
-		res.status(404).render(`${__dirname}/public/404.ejs`);
+		res.redirect('https://i.imgur.com/IEl9NzL.gif')
 	}
 })
 
+app.get("/admin/**", function(req, res) {
+	res.redirect('https://i.imgur.com/IEl9NzL.gif');
+})
+
 app.post("/admin/:action", function(req, res) {
-	if(!req.isAuthenticated()) return res.status(404);
-	if(!req.user && !req.user[0]) return res.status(404);
+	if(!req.isAuthenticated()) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
+	if(!req.user && !req.user[0]) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		switch(req.params.action) {
 			case "create_code":
@@ -270,25 +277,19 @@ app.post("/admin/:action", function(req, res) {
 				}
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
+				// me when the spoiler spam! probably won't work but would be cool if it did lol
 				if(req.body.contribid != "") {
-					hook.send("<@" + req.body.contribid + ">" + " https://vukkybox.com/view/" + req.body.level + "/" + newId)
+					hook.send("👶 A new Vukky by <@" + req.body.contribid + ">" + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				} else {
-					hook.send("https://vukkybox.com/view/" + req.body.level + "/" + newId)
+					hook.send("👶 A new Vukky has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				}
-				/*
-				"67":{
-					"name":"Vukky Miner",
-					"url":"https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyminer.png?raw=true",
-					"description":"This Vukky's going to mine crypto and convert it to SQUID! Wait! No! <a href='https://www.reddit.com/qkai4d'>The value dropped by 99%!</a> You're going to lose all your money! Stop!"
-				}
-				*/
 			break;
 			default:
-				res.redirect("/admin?error=invalidaction")
+				res.redirect('https://i.imgur.com/IEl9NzL.gif');
 				break;
 		}
 	} else {
-		res.status(403).send({message: "This endpoint is reserved for future purposes. (but you are too cringe to have access to it)"})
+		res.redirect('https://i.imgur.com/IEl9NzL.gif'); //i really dont want to make this one
 	}
 });
 
@@ -518,7 +519,7 @@ function checkAuth(req, res, next) {
 }
 
 app.get('/sus', function(req, res){
-	res.redirect('/resources/unboxsussy.mp3')
+	res.redirect('https://i.imgur.com/IEl9NzL.gif')
 });
 
 app.get('*', function(req, res){

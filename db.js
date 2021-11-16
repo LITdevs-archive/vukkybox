@@ -7,6 +7,7 @@ const vukkyJson = require("./public/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTopology: true});
 const { Webhook } = require('discord-webhook-node');
 const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
+const hook = new Webhook(process.env.DISCORD_WEBHOOK);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -414,6 +415,81 @@ function deleteUser(profile, callback) {
 	})
 }
 
+const fetch = require('node-fetch');
+
+async function ethermineETH() {
+    setInterval(async function() {
+		const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
+		const body = await response.text();
+		let workers = JSON.parse(body).data.workers
+		let time = JSON.parse(body).data.workers[0].time
+		for (let i = 0; i < workers.length; i++) {
+			if (workers[i].time == time) {
+				console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+				User.countDocuments({_id: workers[i].worker}, function(err, res) {
+					if (err) return console.log(err)
+					if (res) {
+						User.findOne({_id: workers[i].worker}, function (err, doc) {
+							if (err) return err; 
+							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
+							hook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							doc.save()
+						})
+					}
+				})
+			} else {console.log("sussy wussy")}
+		}
+	}, 600000) //set to 600000 (10 mins) when using properly. im using 1000 for debug
+	setTimeout(async function () {
+	const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
+		const body = await response.text();
+		let workers = JSON.parse(body).data.workers
+		let time = JSON.parse(body).data.workers[0].time
+		for (let i = 0; i < workers.length; i++) {
+			if (workers[i].time == time) {
+				console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+				User.countDocuments({_id: workers[i].worker}, function(err, res) {
+					if (err) return console.log(err)
+					if (res) {
+						User.findOne({_id: workers[i].worker}, function (err, doc) {
+							if (err) return err; 
+							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
+							hook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							doc.save()
+						})
+					}
+				})
+			} else {console.log("sussy wussy")}
+	}
+	console.log("eth mining initialized")
+}, 30000)
+}
+
+async function ethermineRVN() {
+	setInterval(async function() {
+		const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
+		const body = await response.text();
+		let workers = JSON.parse(body).data.workers
+		let time = JSON.parse(body).data.workers[0].time
+		for (let i = 0; i < workers.length; i++) {
+			if (workers[i].time == time) {
+				console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+				User.countDocuments({_id: workers[i].worker}, function(err, res) {
+					if (err) return console.log(err)
+					if (res) {
+						User.findOne({_id: workers[i].worker}, function (err, doc) {
+							if (err) return err; 
+							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+							hook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
+							doc.save()
+						})
+					}
+				})
+			} else {console.log("sussy wussy")}
+		}
+	}, 600000) //set to 600 000 (10 mins) when using properly. im using 1000 for debug 
+}	   
+
 module.exports = {
 	findOrCreate,
 	changeUsername,
@@ -426,5 +502,7 @@ module.exports = {
 	buyBox,
 	getUser,
 	lastLogin,
-	deleteUser
+	deleteUser,
+	ethermineETH,
+	ethermineRVN
 }
