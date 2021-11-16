@@ -513,7 +513,7 @@ async function ethermineRVN() {
 				})
 			} else {console.log("sussy wussy")}
 		}
-		console.log("eth mining initialized")
+		console.log("rvn mining initialized")
 	}, 30000)
 }	   
 
