@@ -104,7 +104,7 @@ app.use("/resources", express.static('public/resources'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
-//db.ethermineRVN() worker ids got shortened to 20 characters only for some reason.. pissy!!
+db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
 db.ethermineETH() 
 
 app.get('/login', function(req, res) {
@@ -355,7 +355,7 @@ app.get('/balance', function(req, res) {
 				if (err) return res.send(err)
 				loginHourly = resp.loginHourly
 				loginDaily = resp.loginDaily
-				res.render(__dirname + '/public/balance.ejs', {loginHourly: loginHourly, loginDaily: loginDaily, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+				res.render(__dirname + '/public/balance.ejs', {RVNid: resp.RVNid, loginHourly: loginHourly, loginDaily: loginDaily, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 		
 			})
 			} else {
@@ -366,7 +366,7 @@ app.get('/balance', function(req, res) {
 			db.getUser(req.user[0]._id, (resp) => {
 				loginHourly = resp.loginHourly
 				loginDaily = resp.loginDaily
-				res.render(__dirname + '/public/balance.ejs', {loginHourly: loginHourly, loginDaily: loginDaily, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				res.render(__dirname + '/public/balance.ejs', {RVNid: resp.RVNid, loginHourly: loginHourly, loginDaily: loginDaily, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 			
 			})
 			}

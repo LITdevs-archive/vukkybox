@@ -47,9 +47,13 @@
 
 <div id="welcome" class="p-5">
 <% if(username != "") { %>
-  Hi <%= username%>! Welcome to Vukkybox. You might want to go to <a href="store" class="text-blue-300">the storefront</a>, or join our epic <a href="https://discord.gg/TJ6BfgXffa" class="text-blue-300">Discord server</a>!
+  Hi <%= username%>! Welcome to Vukkybox. You might want to go to <a href="store" class="text-blue-500">the storefront</a>, or join our epic <a href="https://discord.gg/TJ6BfgXffa" class="text-blue-500">Discord server</a>!
 <% } else {%>
-  <a href="/login"><button class="button button-blue font-bold w-1/2 h-1/2">Log in</button></a>
+  Welcome to Vukkybox, the online gacha game that lets you collect mysterious creatures known as "Vukkies"!<br>
+  Right now, you can collect these Vukkies and show off your collection, but more cool features such as trading is coming soon.<br>
+  The Vukkies are really cute, and there's over 200 of them! Are you ready to collect them all? Just make an account, and start collecting!<br><br>
+  <a href="/login"><button class="button button-blue font-bold">Log in</button></a><br><br>
+  Vukkybox is a service by LIT Devs. You may be interested in our <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>.
 <% } %>
 </div>
 </body>

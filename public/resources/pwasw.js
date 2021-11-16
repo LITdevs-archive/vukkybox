@@ -1,3 +1,5 @@
+caches.delete('v1');
+
 //this function triggers when the user clicks the Install app button.
 self.addEventListener('install', (event)=>{
   event.waitUntil(
