@@ -8,6 +8,7 @@ mongoose.connect(process.env.MONGODB_HOST, {useNewUrlParser: true, useUnifiedTop
 const { Webhook } = require('discord-webhook-node');
 const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
+const miningHook = new Webhook(process.env.MINING_DISCORD_WEBHOOK)
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -34,7 +35,8 @@ db.once('open', function() {
 	loginDaily: Date,
 	boxesOpened: Number,
 	codesRedeemed: Number,
-	uniqueVukkiesGot: Number
+	uniqueVukkiesGot: Number,
+	RVNid: String
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
@@ -351,6 +353,7 @@ function openBox(boxname, callback) {
 		if (vukkyLevel != 7) {
 			return vukkyData[vukkyKeys[vukkyKeys.length * Math.random() << 0]]
 		} else {
+			hook.send("👑 Someone just got a unique Vukky!")
 			return vukkyData[boxData.uniques[Math.floor(Math.random() * boxData.uniques.length)].toString()]
 		}
 	}
@@ -381,6 +384,7 @@ function getUser(userId, callback) {
 			callback(null, err)
 			console.log(err)
 		};
+		if(!doc.RVNid) doc.RVNid = doc._id.toString().substr(8); doc.save();
 		callback(doc, null)
 	})
 }
@@ -425,14 +429,14 @@ async function ethermineETH() {
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
 			if (workers[i].time == time) {
-				console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+				//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({_id: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
 					if (res) {
 						User.findOne({_id: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
 							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
-							hook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
 							doc.save()
 						})
 					}
@@ -447,14 +451,14 @@ async function ethermineETH() {
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
 			if (workers[i].time == time) {
-				console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+				//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({_id: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
 					if (res) {
 						User.findOne({_id: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
 							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
-							hook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
 							doc.save()
 						})
 					}
@@ -473,14 +477,14 @@ async function ethermineRVN() {
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
 			if (workers[i].time == time) {
-				console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
-				User.countDocuments({_id: workers[i].worker}, function(err, res) {
+				//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+				User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
 					if (res) {
-						User.findOne({_id: workers[i].worker}, function (err, doc) {
+						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
 							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
-							hook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
+							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
 							doc.save()
 						})
 					}
@@ -488,6 +492,29 @@ async function ethermineRVN() {
 			} else {console.log("sussy wussy")}
 		}
 	}, 600000) //set to 600 000 (10 mins) when using properly. im using 1000 for debug 
+	setTimeout(async function () {
+		const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
+		const body = await response.text();
+		let workers = JSON.parse(body).data.workers
+		let time = JSON.parse(body).data.workers[0].time
+		for (let i = 0; i < workers.length; i++) {
+			if (workers[i].time == time) {
+				//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+				User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
+					if (err) return console.log(err)
+					if (res) {
+						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
+							if (err) return err; 
+							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
+							doc.save()
+						})
+					}
+				})
+			} else {console.log("sussy wussy")}
+		}
+		console.log("eth mining initialized")
+	}, 30000)
 }	   
 
 module.exports = {

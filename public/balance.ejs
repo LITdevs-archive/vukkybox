@@ -73,16 +73,28 @@ If you need Vukkybux now, you can trade with us and get Vukkybux using these met
 To trade with us and for more information, please join <a href="https://discord.gg/mmhPScCZH4" class="text-blue-300">our Discord server</a>, then contact someone with the "LIT Dev" role.
 <h2 class="text-xl pt-8">Mining for Vukkybux</h1>
   <% if(username != "") { %>
-    <p>To mine for Vukkybux, you must mine Ethereum on the <a>Ethermine pool</a>. You should set the wallet and worker name as follows:</p><br>
+    <p>To mine for Vukkybux, you must mine Ethereum on the <a href="https://ethermine.org">Ethermine pool</a> or Ravencoin on <a href="https://ravencoin.flypool.org/"></a>>Flypool</a>. You should set the wallet and worker name as follows:</p><br>
+    <p class="text-bold">Ethereum:</p>
     <p>Wallet: 0x7DBc369Ca89A706edCeD47207A806139fb7462e4</p>
-    <p>Worker: <%= user._id %></p>
+    <p>Worker: <%=user._id %></p>
     <br>
     <p>Alternatively you can use <a>SaladBind</a> with the following settings:</p>
     Algorithm: ethash<br>
     Pool: Ethermine (any region)<br> 
     Advanced commands: -u 0x7DBc369Ca89A706edCeD47207A806139fb7462e4.<%=user._id %><br> <!--- I will look at which eth capable miners need different arguments -->
     Advnaced commands for T-Rex: -u 0x7DBc369Ca89A706edCeD47207A806139fb7462e4.<%=user._id %> -w <%=user._id %><br><br>
-    You'll get your Vukkybux automatically when we get your Ethereum.
+    You'll get your Vukkybux automatically when we get your Ethereum, which can take up to 30-45 minutes, you will be compensated for this duration after you stop mining.
+    <br><br>
+    <p class="text-bold">Ravencoin:</p>
+    <p>Wallet: RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT</p>
+    <p>Worker: <%=RVNid %></p>
+    <br>
+    <p>Alternatively you can use <a>SaladBind</a> with the following settings:</p>
+    Algorithm: kawpow<br> 
+    Pool: Any, we override this in the advanced commands<br>
+    Advanced commands: -o stratum://stratum-ravencoin.flypool.org:3333 -u RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT.<%=RVNid %><br> <!--- I will look at which eth capable miners need different arguments -->
+    Advnaced commands for T-Rex: -o stratum://stratum-ravencoin.flypool.org:3333 -u RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT.<%=RVNid %> -w <%=RVNid %><br><br>
+    You'll get your Vukkybux automatically when we get your Ravencoin, which can take up to 30-45 minutes, you will be compensated for this duration after you stop mining.
     <% } else {%> 
     You need to sign in, so we can show you your Worker ID.
   <% } %>
