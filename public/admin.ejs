@@ -1,4 +1,7 @@
 <body style="background-color: #333333;color:#00ff00;padding-left:50px;padding-top: 50px">
+    <div id="sharecode" style="display: none;">
+        <button id="sharecodebtn">Share Code</button><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
     <img src="/resources/devvukky.png"><h1>BOXSTEALER (CONFIDENTIAL!!!)</h1>
     <p>this service is to be used by the vukky black hat hacking organization ONLY!!!</p>
     <br>
@@ -24,7 +27,10 @@
     <script>
         let params = new URL(document.location.href).searchParams;
         if(params.get("code") != null) {
-            navigator.share({"title": "Vukkybox code", "url": `https://vukkybox.com/redeem/${params.get("code")}`});
+            document.querySelector("#sharecode").style.display = "";
+            document.querySelector("#sharecodebtn").onclick = function() {
+                navigator.share({"title": "Vukkybox code", "url": `https://vukkybox.com/redeem/${params.get("code")}`});
+            }
         }
     </script>
 </body>

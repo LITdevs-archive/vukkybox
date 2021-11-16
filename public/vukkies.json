@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 210,
+	"currentId": 214,
 	"rarity": {
 		"1": {
 			"1": {
@@ -258,6 +258,16 @@
 				"name": "5 Legged Vukky",
 				"url": "https://vukkybox.com/resources/5legged.png",
 				"description": "This Vukky seems to have 5 legs... Where did his arms go? This Vukky was made by Mitchellonii"
+			},
+			"211": {
+				"name": "Indian Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/indianvukky.png",
+				"description": "This was made by Smokey! This Vukky despises so-called \"Tech Support\"."
+			},
+			"212": {
+				"name": "Italian Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/italianvukky.png",
+				"description": "This was made by Smokey! Mmm... pizza."
 			}
 		},
 		"2": {
@@ -607,6 +617,11 @@
 				"name": "Vukky Potter",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkypotter.png",
 				"description": "This was made by Seysa! Vukgardium leviosa."
+			},
+			"213": {
+				"name": "VukVuk",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukvuk.png",
+				"description": "This was made by Alespic! Two half Vukkies stitched together, one of many failed experiments. The pain must be unbearable... if they can even feel it…"
 			}
 		},
 		"4": {
@@ -724,6 +739,11 @@
 				"name": "Vukbox",
 				"url": "https://vukkybox.com/resources/vukybox.png",
 				"description": "This Vukky was created by Mot. Not to be confused with Vukkybux, the currency of this game, Vukkybox, the name of this game, or Vukky in a box, another Vukky."
+			},
+			"214": {
+				"name": "Sans Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/sansvukky.png",
+				"description": "This was made by Smokey! You feel like you're gonna have a wooing time."
 			}
 		},
 		"5": {
