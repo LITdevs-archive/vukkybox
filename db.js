@@ -428,7 +428,7 @@ async function ethermineETH() {
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time) {
+			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
 				//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({_id: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
@@ -450,7 +450,7 @@ async function ethermineETH() {
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time) {
+			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
 				//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({_id: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
@@ -476,7 +476,7 @@ async function ethermineRVN() {
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time) {
+			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
 				//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
@@ -498,7 +498,7 @@ async function ethermineRVN() {
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time) {
+			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
 				//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
