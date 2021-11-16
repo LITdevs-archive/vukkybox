@@ -465,10 +465,10 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 					req.session.passport.user[0].balance += amount
 				}
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: code, amount: amount});
-				adminHook.send(`🔑 A user has redeemed ${code} for ${amount} Vukkybux!`);
+				adminHook.send(`🔑 A user has redeemed \`${code}\` for ${amount} Vukkybux!`);
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
-				adminHook.send(`🔑 A user tried to redeem ${req.params["code"]}, but it was ${isValid}.`);
+				adminHook.send(`🔑 A user tried to redeem \`${req.params["code"]}\`, but it was ${isValid}.`);
 			}
 		});
 	});
