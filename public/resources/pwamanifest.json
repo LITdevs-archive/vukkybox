@@ -2,9 +2,14 @@
     "name": "Vukkybox",
     "icons": [
         {
-            "src": "/resources/icon.png",
+            "src": "/resources/icons/192.png",
             "type": "image/png",
-            "sizes": "1200x1200"
+            "sizes": "192x192"
+        },
+        {
+            "src": "/resources/icons/512.png",
+            "type": "image/png",
+            "sizes": "512x512"
         }
     ],
     "start_url": "/",

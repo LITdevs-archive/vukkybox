@@ -17,6 +17,14 @@ window.addEventListener('load', (event) => {
     document.querySelector("#balance").onmouseout = function() {
         document.querySelector("#balance").style.cursor = "";
     };
+    if(document.querySelector("#redeemCode")) {
+        document.querySelector("#redeemCode").onclick = function() {
+            let codename = prompt("Enter the code you would like to redeem.");
+            if(codename != null && codename != "") {
+                document.location.pathname = `/redeem/${codename}`
+            }
+        }
+    }
 });
 
 if ('serviceWorker' in navigator) {
