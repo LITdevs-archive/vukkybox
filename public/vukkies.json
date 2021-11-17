@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 214,
+	"currentId": 217,
 	"rarity": {
 		"1": {
 			"1": {
@@ -622,6 +622,11 @@
 				"name": "VukVuk",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukvuk.png",
 				"description": "This was made by Alespic! Two half Vukkies stitched together, one of many failed experiments. The pain must be unbearable... if they can even feel it…"
+			},
+			"215": {
+				"name": "KyKy",
+				"url": "https://vukkybox.com/resources/kyky.png",
+				"description": "This was made by SharkOfGod! Two Vukky heads stitched together, one of many failed experiments. The pain must be unbearable... if they can even feel it… How do they control their limbs?"
 			}
 		},
 		"4": {
@@ -744,6 +749,16 @@
 				"name": "Sans Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/sansvukky.png",
 				"description": "This was made by Smokey! You feel like you're gonna have a wooing time."
+			},
+			"216": {
+				"name": "Kaiser Vukky",
+				"url": "https://vukkybox.com/resources/kaiservuk.png",
+				"description": "This was made by Smokey! Long live emperor Vukky!"
+			},
+			"217": {
+				"name": "Vthulhu",
+				"url": "https://vukkybox.com/resources/vthulu.png",
+				"description": "This was made by Xotic! Looks like Cthulhu has taken over this one..."
 			}
 		},
 		"5": {
