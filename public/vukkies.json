@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 217,
+	"currentId": 222,
 	"rarity": {
 		"1": {
 			"1": {
@@ -435,6 +435,11 @@
 				"name": "Egg Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/eggvukky.png",
 				"description": "This was made by laker! When the Vukker is eg!"
+			},
+			"218": {
+				"name": "Tide Pod Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/tidevukk.png",
+				"description": "Delicious!"
 			}
 		},
 		"3": {
@@ -627,6 +632,16 @@
 				"name": "KyKy",
 				"url": "https://vukkybox.com/resources/kyky.png",
 				"description": "This was made by SharkOfGod! Two Vukky heads stitched together, one of many failed experiments. The pain must be unbearable... if they can even feel it… How do they control their limbs?"
+			},
+			"220": {
+				"name": "Sliced Among Us Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/dedvukker.png",
+				"description": "Oh no! It has a bone."
+			},
+			"221": {
+				"name": "Booky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/booky.png",
+				"description": "I'm as open as a closed book!"
 			}
 		},
 		"4": {
@@ -759,6 +774,16 @@
 				"name": "Vthulhu",
 				"url": "https://vukkybox.com/resources/vthulu.png",
 				"description": "This was made by Xotic! Looks like Cthulhu has taken over this one..."
+			},
+			"219": {
+				"name": "lol biscuits",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/lolbiscuits.png",
+				"description": "your texting puppy will think these lol biscuits are totally omg"
+			},
+			"222": {
+				"name": "Strong Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/strongvukky.png",
+				"description": "chad vukky vs virgin among us crewmate"
 			}
 		},
 		"5": {

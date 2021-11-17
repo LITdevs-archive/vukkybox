@@ -204,6 +204,7 @@ function setBalance(user, callback) {
 }
 
 function redeemCode(user, code, callback) { // callback with a boolean representing if the code was used successfully
+	code = code.toUpperCase();
 	Code.findOne({code:code}, function (err, code) {
 		if(err) {
 			callback(false)
@@ -260,6 +261,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 }
 
 function validCode(code, user, callback) { // callback with a boolean representing if the code is valid or not. (used codes are not valid)
+	code = code.toUpperCase();
 	Code.findOne({code: code}, function (err, code) {
 		if(!code) return callback("invalid")
 		if(code.used) return callback("used")
@@ -353,7 +355,9 @@ function openBox(boxname, callback) {
 		if (vukkyLevel != 7) {
 			return vukkyData[vukkyKeys[vukkyKeys.length * Math.random() << 0]]
 		} else {
-			hook.send("👑 Someone just got a unique Vukky!")
+			setTimeout(() => {
+				hook.send("👑 Someone just got a unique Vukky!");
+			}, 300 * 7 + 600 * 7 + 200);
 			return vukkyData[boxData.uniques[Math.floor(Math.random() * boxData.uniques.length)].toString()]
 		}
 	}
@@ -368,6 +372,7 @@ function getKeyByValue(object, value) {
 
 function createCode(code, amount, uses, callback) {
 	if(code.length < 1 || amount.length < 1 || uses.length < 1) return callback(null, "invalid arguments")
+	code = code.toUpperCase();
 	let newCode = new Code({
 		code: code,
 		amount: amount,
