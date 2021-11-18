@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 231,
+	"currentId": 232,
 	"rarity": {
 		"1": {
 			"1": {
@@ -687,6 +687,11 @@
 				"name": "Empty Vukky Faceplate",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfaceplateempty.png",
 				"description": "A Vukky faceplate that needs eyes."
+			},
+			"232": {
+				"name": "Drained Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyhull.png",
+				"description": "All the Vukky Energy has been drained out, only the hull remains."
 			}
 		},
 		"4": {
