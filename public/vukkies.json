@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 228,
+	"currentId": 230,
 	"rarity": {
 		"1": {
 			"1": {
@@ -465,6 +465,11 @@
 				"name": "Vukky Skin",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyskin.png",
 				"description": "You can wear this! Actually, don't."
+			},
+			"229": {
+				"name": "Vukky Faceplate",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfaceplate.png",
+				"description": "The face of a Vukky."
 			}
 		},
 		"3": {
@@ -672,6 +677,11 @@
 				"name": "Vukky Mouse",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkymouse.png",
 				"description": "This was made by Seysa! Vukky sued."
+			},
+			"230": {
+				"name": "Vukky Eyes",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyeyes.png",
+				"description": "The eyes of a Vukky."
 			}
 		},
 		"4": {
