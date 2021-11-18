@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 222,
+	"currentId": 224,
 	"rarity": {
 		"1": {
 			"1": {
@@ -440,6 +440,11 @@
 				"name": "Tide Pod Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/tidevukk.png",
 				"description": "Delicious!"
+			},
+			"224": {
+				"name": "Cursed Shruggy",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyshrug.png",
+				"description": "Absolutely horrifying."
 			}
 		},
 		"3": {
@@ -642,6 +647,11 @@
 				"name": "Booky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/booky.png",
 				"description": "I'm as open as a closed book!"
+			},
+			"223": {
+				"name": "Vukky Mouse",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkymouse.png",
+				"description": "This was made by Seysa! Vukky sued."
 			}
 		},
 		"4": {
