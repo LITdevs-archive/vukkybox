@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 225,
+	"currentId": 227,
 	"rarity": {
 		"1": {
 			"1": {
@@ -273,6 +273,11 @@
 				"name": "White Outline Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/whiteoutlinevukky.png",
 				"description": "For use on black backgrounds."
+			},
+			"226": {
+				"name": "No Outline Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/nooutlinevukky.png",
+				"description": "It's RAW!"
 			}
 		},
 		"2": {
@@ -450,6 +455,11 @@
 				"name": "Cursed Shruggy",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyshrug.png",
 				"description": "Absolutely horrifying."
+			},
+			"227": {
+				"name": "Absolutely No Outlines Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/absolutelynooutlinevukky.png",
+				"description": "It's RAWER! I don't like it."
 			}
 		},
 		"3": {
