@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 227,
+	"currentId": 228,
 	"rarity": {
 		"1": {
 			"1": {
@@ -460,6 +460,11 @@
 				"name": "Absolutely No Outlines Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/absolutelynooutlinevukky.png",
 				"description": "It's RAWER! I don't like it."
+			},
+			"228": {
+				"name": "Vukky Skin",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyskin.png",
+				"description": "You can wear this! Actually, don't."
 			}
 		},
 		"3": {
