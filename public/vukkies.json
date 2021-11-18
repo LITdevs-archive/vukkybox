@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 232,
+	"currentId": 234,
 	"rarity": {
 		"1": {
 			"1": {
@@ -692,6 +692,11 @@
 				"name": "Drained Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyhull.png",
 				"description": "All the Vukky Energy has been drained out, only the hull remains."
+			},
+			"234": {
+				"name": "Battery Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkybattery.png",
+				"description": "Used by the Central Vukky Printing Organization to power their printing machines."
 			}
 		},
 		"4": {
@@ -871,6 +876,11 @@
 				"name": "Donald Vukk",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/donaldvukk.png",
 				"description": "This was made by Seysa! QUACK! I'm a duck??"
+			},
+			"233": {
+				"name": "Vukky Toolkit",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyteardown.png",
+				"description": "All the things the Central Vukky Printing Organization uses to print Vukkies. This image is confidential, and must not be shared."
 			}
 		},
 		"6": {
