@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 230,
+	"currentId": 231,
 	"rarity": {
 		"1": {
 			"1": {
@@ -682,6 +682,11 @@
 				"name": "Vukky Eyes",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyeyes.png",
 				"description": "The eyes of a Vukky."
+			},
+			"231": {
+				"name": "Empty Vukky Faceplate",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyfaceplateempty.png",
+				"description": "A Vukky faceplate that needs eyes."
 			}
 		},
 		"4": {
