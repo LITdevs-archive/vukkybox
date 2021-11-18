@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 224,
+	"currentId": 225,
 	"rarity": {
 		"1": {
 			"1": {
@@ -268,6 +268,11 @@
 				"name": "Italian Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/italianvukky.png",
 				"description": "This was made by Smokey! Mmm... pizza."
+			},
+			"225": {
+				"name": "White Outline Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/whiteoutlinevukky.png",
+				"description": "For use on black backgrounds."
 			}
 		},
 		"2": {
