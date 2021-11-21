@@ -4,3 +4,5 @@
 Welcome to the Vukkybox repository! This is where Vukkybox's source code is hosted.
 
 If you are looking for the Vukkies themselves, they are kind of all over the place, just so you know.
+
+For the licensing regarding Vukkies in the "resources" folder, please see [the Vukmoji license](https://github.com/Vukkyy/vukmoji/blob/master/LICENSE).
