@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    window.addEventListener('load', function() {
+        document.querySelector("#launchsecrecy").onclick = function() {
+            let passwordDooDoo = document.querySelector("#password").value;
+            if(passwordDooDoo == "vkyboxlit") {
+                document.location.pathname = "/adminauthed"
+            } else {
+                document.location.pathname = "/adminfailed"
+            }
+        }
+    })
+</script>
+<body style="background-color: #333333;color:#00ff00;">
+    <h1 style="color:gold;">Vukkybox Tricks</h1>
+    <p>Hello, Vukkybox user! You have reached the "tricks" page. This is meant for use by LIT Devs members. Please enter the access password now. If you are not supposed to be here, please go somewhere else immediately.</p>
+    <p>All access to this page is monitored. Unauthorized access may result in termination.</p>
+    <p>Remember, the computer is your friend.</p>
+    <input name="password" id="password" type="password" maxlength="16"> <button id="launchsecrecy">Go!</button>
+</body>
