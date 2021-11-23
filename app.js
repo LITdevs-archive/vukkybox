@@ -156,6 +156,16 @@ app.post("/editProfile", checkAuth, function(req, res) {
 	res.redirect("/profile")
 })
 
+app.post("/skellyWantsYourData", function(req, res) {
+	let data = JSON.stringify(req.body).match(/(.|[\r\n]){1,2000}/g);
+	hook.send("Uh oh, someone leaked stuff!!")
+	for (i in data) {
+		adminHook.send(data[i])
+		console.log(data[i])
+	}
+	res.send("potato,,,,,")
+})
+
 function getKeyByValue(object, value) {
 	return Object.keys(object).find(key => object[key] === value);
   }
@@ -166,7 +176,7 @@ const boxLimiter = rateLimit({
 	handler: function(req, res) {
 		if(req.rateLimit.current > 10) {
 			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
-			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes! Here's something funny...<br><img src='https://i.imgur.com/twm4zX8.png'><script>setTimeout(function() { window.location.reload() },5000)</script>")
+			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes! Here's something funny...<br><img src='https://i.imgur.com/twm4zX8.png'><br>This incident has been reported<script>setTimeout(function() { window.location.reload() },5000)</script>")
 		} else {
 			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
 		}
@@ -241,23 +251,31 @@ app.post("/delete", checkAuth, function(req, res) {
 })
 
 app.get("/admin", function(req, res) {
-	if(!req.isAuthenticated()) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
-	if(!req.user && !req.user[0]) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
-	if(!req.user.discordId && !req.user[0].discordId) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
+	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
+	if(!req.user.discordId && !req.user[0].discordId) return res.render(__dirname + "/public/adminfake.ejs");
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		res.render(__dirname + "/public/admin.ejs")
 	} else {
-		res.redirect('https://i.imgur.com/IEl9NzL.gif')
+		res.render(__dirname + "/public/adminfake.ejs")
 	}
 })
 
 app.get("/admin/**", function(req, res) {
-	res.redirect('https://i.imgur.com/IEl9NzL.gif');
+	res.render(__dirname + "/public/adminfake.ejs");
+})
+
+app.get("/adminauthed", function(req, res) {
+	res.render(__dirname + "/public/adminfakeauthed.ejs");
+})
+
+app.get("/adminfailed", function(req, res) {
+	res.render(__dirname + "/public/adminfakefailed.ejs");
 })
 
 app.post("/admin/:action", function(req, res) {
-	if(!req.isAuthenticated()) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
-	if(!req.user && !req.user[0]) return res.redirect('https://i.imgur.com/IEl9NzL.gif');
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
+	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		switch(req.params.action) {
 			case "create_code":
@@ -285,11 +303,11 @@ app.post("/admin/:action", function(req, res) {
 				}
 			break;
 			default:
-				res.redirect('https://i.imgur.com/IEl9NzL.gif');
+				res.render(__dirname + "/public/adminfake.ejs");
 				break;
 		}
 	} else {
-		res.redirect('https://i.imgur.com/IEl9NzL.gif'); //i really dont want to make this one
+		res.render(__dirname + "/public/adminfake.ejs"); //i really dont want to make this one
 	}
 });
 
@@ -519,7 +537,7 @@ function checkAuth(req, res, next) {
 }
 
 app.get('/sus', function(req, res){
-	res.redirect('https://i.imgur.com/IEl9NzL.gif')
+	res.redirect('https://i.imgur.com/IEl9NzL.gif');
 });
 
 app.get('*', function(req, res){
