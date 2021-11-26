@@ -183,7 +183,7 @@ const boxLimiter = rateLimit({
 	}
 });
 app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
-		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky"]
+		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky", "shark"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
 				if(prize.box) {
