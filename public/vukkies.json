@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 234,
+	"currentId": 236,
 	"rarity": {
 		"1": {
 			"1": {
@@ -970,6 +970,16 @@
 				"name": "Developer Vukky",
 				"url": "https://vukkybox.com/resources/devvukky.png",
 				"description": "This Vukky is very excited to start working on this website!"
+			},
+			"235": {
+				"name": "Vukky Printer",
+				"url": "https://vukkybox.com/resources/vukkyprinter.png",
+				"description": "This is what the CVPO uses to print Vukkies, sometimes it malfunctions and creates weridness like #136, whatever that means."
+			},
+			"236": {
+				"name": "Vukky Merging Machine",
+				"url": "https://vukkybox.com/resources/vukkymerging.png",
+				"description": "Two things go in, One Vukky comes out."
 			}
 		},
 		"pukky": {
