@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 242,
+	"currentId": 244,
 	"rarity": {
 		"1": {
 			"1": {
@@ -727,6 +727,11 @@
 				"name": "Dank Vukker",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/dankvukker.png",
 				"description": "pls sell dankvukker all"
+			},
+			"244": {
+				"name": "Vesax Vukky",
+				"url": "https://vukkybox.com/resources/vesax.png",
+				"description": "This Vukky seems to have weird lines on it."
 			}
 		},
 		"4": {
@@ -958,6 +963,11 @@
 				"name": "Elf Vukky",
 				"url": "https://vukkybox.com/resources/elfvukky.png",
 				"description": "This was made by Mitchellonii! This Vukky is very interested in contracts... Is it related to Alfur?"
+			},
+			"243": {
+				"name": "Ducky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ducky.png",
+				"description": "Got any grapes?"
 			}
 		},
 		"7": {
