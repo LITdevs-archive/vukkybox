@@ -51,6 +51,8 @@
     </nav>
 </div>
 
+<p class="text-bold text-2xl ml-10 mt-5" id="loading_data">Loading data...</p>
+<div id="collection" style="display: none;">
 <p class="text-bold text-2xl ml-10 mt-5" id="total_text"></p>
 <div id="7">
 <p class="text-bold text-xl ml-10 mt-5" id="7_text">Unique (7 stars)</p>
@@ -91,6 +93,7 @@
 
 
 </div>
+</div>
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
 <script>
@@ -126,5 +129,9 @@
             
         }
     document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
+    window.addEventListener('load', function() {
+        document.querySelector("#loading_data").style.display = "none";
+        document.querySelector("#collection").style.display = "";
+    })
 </script>
 </html>
