@@ -313,8 +313,8 @@ app.post("/admin/:action", function(req, res) {
 });
 
 app.get("/view/:level/:id", function (req, res) { 
-	if(!vukkyJson.levels[req.params.level]) return res.send("this doesnt exist")
-	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.send("this doesnt exist")
+	if(!vukkyJson.levels[req.params.level]) return res.send("That doesn't even exist, what are you doing")
+	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.send("That doesn't even exist, what are you doing")
 	if(!req.user) return res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: null, username: "", gravatarHash: null})
 	if(req.user.primaryEmail) {
 		  res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
