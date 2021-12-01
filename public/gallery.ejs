@@ -105,7 +105,7 @@
         for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
             if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
                 owned++
-                document.getElementById(j).innerHTML += `<a href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}"/></a>`
+                document.getElementById(j).innerHTML += `<a href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name}"/></a>`
             }
         }
         if (owned == 0) {
@@ -119,7 +119,7 @@
         for(let i = 0; i < Object.keys(vukkies["pukky"]).length; i++) {
             if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
                 owned++
-                document.getElementById("pukky").innerHTML += `<a href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}"/></a>`
+                document.getElementById("pukky").innerHTML += `<a href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name}"/></a>`
             }
         }
         if (owned == 0) {
