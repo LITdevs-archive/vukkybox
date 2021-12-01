@@ -253,7 +253,8 @@ app.post("/delete", checkAuth, function(req, res) {
 app.get("/admin", function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
-	if(!req.user.discordId && !req.user[0].discordId) return res.render(__dirname + "/public/adminfake.ejs");
+	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/adminfake.ejs");
+	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/adminfake.ejs");
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
 		res.render(__dirname + "/public/admin.ejs")
 	} else {
