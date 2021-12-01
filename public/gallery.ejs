@@ -52,7 +52,7 @@
     </nav>
 </div>
 
-<p class="text-bold text-2xl ml-5 mt-5" id="loading_data">Loading data...<a href="https://vukkybox.com/view/pukky/90"><img class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif" title="Skelly's Pukky"></a></p>
+<p class="text-bold text-2xl ml-5 mt-5" id="loading_data">Loading data...<a href="https://vukkybox.com/view/pukky/90"><img class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif" title="Skelly's Pukky"></a><br><button id="loadskip" class="button button-blue" onclick="loadingdone()" style="display: none;">Continue anyway</button></p>
 <div id="collection" style="display: none;">
 <p class="text-bold text-2xl ml-5 mt-5" id="total_text"></p>
 <div id="7">
@@ -98,6 +98,10 @@
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
 <script>
+    function loadingdone() {
+        document.querySelector("#loading_data").style.display = "none";
+        document.querySelector("#collection").style.display = "";
+    }
     const userGallery = [<%=user.gallery %>]
     document.getElementById("total_text").innerHTML = "This user has " + userGallery.length + "/" + <%=totalVukkies %> + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
@@ -130,9 +134,7 @@
             
         }
     document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
-    window.addEventListener('load', function() {
-        document.querySelector("#loading_data").style.display = "none";
-        document.querySelector("#collection").style.display = "";
-    })
+    document.querySelector("#loadskip").style.display = "";
+    window.addEventListener('load', loadingdone)
 </script>
 </html>
