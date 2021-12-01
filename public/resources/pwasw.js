@@ -1,11 +1,12 @@
 caches.delete('v1');
+caches.delete('v2');
 
 //this function triggers when the user clicks the Install app button.
 self.addEventListener('install', (event)=>{
   event.waitUntil(
-    caches.open('v2').then((cache)=>{
+    caches.open('v3').then((cache)=>{
       return cache.addAll([
-        "/resources/fuckyou.html"
+        "/resources/offline.html"
       ]);
     })
   );
@@ -17,7 +18,7 @@ self.addEventListener('fetch', (event)=>{
     caches.match(event.request).then(function(response){
       return response || fetch(event.request);
     }).catch(()=>{
-      return caches.match('/resources/fuckyou.html');
+      return caches.match('/resources/offline.html');
     })
   );
 });
