@@ -21,7 +21,7 @@
  <div class="bg-opacity-10  bg-gray-100 w-full">
     <nav class="flex justify-between">
         <div class="inline-flex">
-            <a href="/"><img id="icon" src="https://vukkybox.com/resources/icon.png" class="max-h-20 m-2" /></a>
+            <a href="/"><img id="icon" src="https://vukkybox.com/resources/icon.png" class="max-h-20 m-2" title="Vukkybox Logo" /></a>
             <% if(username != "") { %>
               <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
             <% } %>
@@ -52,7 +52,7 @@
     </nav>
 </div>
 
-<span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<a href="https://vukkybox.com/view/pukky/90"><img class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif" title="Skelly's Pukky"></a><br><pre class="ml-5">Loaded <span id="vukkyloadname">nothing</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
+<span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<a href="https://vukkybox.com/view/pukky/90"><img class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif" title="Skelly's Pukky"></a><br><pre class="ml-5">Printed <span id="vukkyloadname">nothing</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
 <div id="collection" style="display: none;">
 <p class="text-bold text-2xl ml-5 mt-5" id="total_text"></p>
 <div id="7">
