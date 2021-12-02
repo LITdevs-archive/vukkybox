@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 245,
+	"currentId": 246,
 	"rarity": {
 		"1": {
 			"1": {
@@ -293,6 +293,11 @@
 				"name": "Vukky...?",
 				"url": "https://vukkybox.com/resources/ykkuv.png",
 				"description": "There's something wrong with this one. I'm not quite sure what..."
+			},
+			"246": {
+				"name": "\"V\" ukky",
+				"url": "https://vukkybox.com/resources/vvukky.png",
+				"description": "VVVVVV    This Vukky was created by SharkOfGod"
 			}
 		},
 		"2": {
@@ -1050,7 +1055,7 @@
 			},
 			"82": {
 				"name": "Vansh's Pukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vanzhpukky.png",
+				"url": "https://vukkybox.com/resources/pukkies/vansh.png",
 				"description": "This Pukky belongs to Vansh. That's quite the detailed Pukky!"
 			},
 			"83": {
