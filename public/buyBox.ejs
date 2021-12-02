@@ -97,6 +97,7 @@
         }, 10);
         
         setTimeout(function() {
+            document.querySelector("#unboxSpinSfx").pause();
             clearInterval(spinner);
             spinner = setInterval(function() {
                 document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
@@ -105,7 +106,6 @@
             }, 10);
         }, 300 * rarity);
         setTimeout(function() {
-            document.querySelector("#unboxSpinSfx").pause();
             let icon = document.getElementById("openingicon")
             clearInterval(spinner);
             icon.classList.add("animate-ping");
