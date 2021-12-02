@@ -52,7 +52,7 @@
     </nav>
 </div>
 
-<span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<a href="https://vukkybox.com/view/pukky/90"><img class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif" title="Skelly's Pukky"></a><br><pre class="ml-5">Printed <span id="vukkyloadname">nothing</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
+<span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<a href="https://vukkybox.com/view/pukky/90"><img class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif" title="Skelly's Pukky"></a><br><pre class="ml-5">Printed <span id="vukkyloadcount">0/0</span>: <span id="vukkyloadname">nothing</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
 <div id="collection" style="display: none;">
 <p class="text-bold text-2xl ml-5 mt-5" id="total_text"></p>
 <div id="7">
@@ -98,6 +98,8 @@
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
 <script>
+    let loaded = 0;
+    let totalOwned = 0;
     function loadingdone() {
         document.querySelector("#loading_data").style.display = "none";
         document.querySelector("#collection").style.display = "";
@@ -110,6 +112,7 @@
         for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
             if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
                 owned++
+                totalOwned++
                 document.getElementById(j).innerHTML += `<a href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name}"/></a>`
             }
         }
@@ -124,6 +127,7 @@
         for(let i = 0; i < Object.keys(vukkies["pukky"]).length; i++) {
             if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
                 owned++
+                totalOwned++
                 document.getElementById("pukky").innerHTML += `<a href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name}"/></a>`
             }
         }
@@ -138,6 +142,8 @@
     window.addEventListener('load', loadingdone)
     document.querySelectorAll("img").forEach(function(coolimage) {
         coolimage.onload = function() {
+            loaded++
+            document.querySelector("#vukkyloadcount").innerHTML = `${loaded}/${totalOwned}`;
             document.querySelector("#vukkyloadname").innerHTML = coolimage.title;
         }
     })
