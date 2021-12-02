@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 244,
+	"currentId": 245,
 	"rarity": {
 		"1": {
 			"1": {
@@ -916,6 +916,11 @@
 				"name": "Vukky Toolkit",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/vukkyteardown.png",
 				"description": "All the things the Central Vukky Printing Organization uses to print Vukkies. This image is confidential, and must not be shared."
+			},
+			"245": {
+				"name": "Cupcake Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/cupcakevukky.png",
+				"description": "This was made by Sunset! CUPCAKES!!"
 			}
 		},
 		"6": {
