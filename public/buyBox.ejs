@@ -104,8 +104,8 @@
                 if(rotation > 10000) rotation = 10000
             }, 10);
         }, 300 * rarity);
-        document.querySelector("#unboxSpinSfx").pause();
         setTimeout(function() {
+            document.querySelector("#unboxSpinSfx").pause();
             let icon = document.getElementById("openingicon")
             clearInterval(spinner);
             icon.classList.add("animate-ping");
