@@ -45,5 +45,6 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .bg-gradient-to-br {
-    min-height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
