@@ -489,6 +489,8 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
 				adminHook.send(`🔑 A user tried to redeem \`${req.params["code"]}\`, but it was ${isValid}.`);
+				if (req.user._id) console.log(req.user._id)
+				if (req.user[0]._id) console.log(req.user[0]._id)
 			}
 		});
 	});
