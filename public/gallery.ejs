@@ -102,14 +102,16 @@
 <script>
     let loaded = 0;
     let totalOwned = 0;
+    let totalVukkies = <%=totalVukkies %>;
     function loadingdone() {
         document.querySelector("#loadingMusic").pause();
+        if(totalOwned == totalVukkies) document.querySelector("#galleryMusic").src = "/resources/gallerydone.ogg"
         document.querySelector("#galleryMusic").play();
         document.querySelector("#loading_data").style.display = "none";
         document.querySelector("#collection").style.display = "";
     }
     const userGallery = [<%=user.gallery %>]
-    document.getElementById("total_text").innerHTML = "This user has " + userGallery.length + "/" + <%=totalVukkies %> + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
+    document.getElementById("total_text").innerHTML = "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
     for(let j = 1; j <= 7; j++) {
         let owned = 0
