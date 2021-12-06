@@ -288,7 +288,7 @@ app.post("/admin/:action", function(req, res) {
 				})
 			break;
 			case "upload_file":
-				console.log(req.body);
+				console.log(req.files);
 				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
 				if(req.body.vukkytype == "vukky") {
 					req.files.image.mv(`${__dirname}/resources/${req.files.image.name}`);
