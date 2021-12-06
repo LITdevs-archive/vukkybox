@@ -286,6 +286,16 @@ app.post("/admin/:action", function(req, res) {
 				})
 			break;
 			case "upload_file":
+				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
+				if(req.body.vukkytype == "vukky") {
+					req.files.image.mv(`${__dirname}/resources/${req.files.image.name}`);
+					return res.redirect(`/admin?uploaded=/resources/${reg.files.image.name}`);
+				} else if (req.body.vukkytype == "pukky") {
+					req.files.image.mv(`${__dirname}/resources/pukkies/${req.files.image.name}`);
+					return res.redirect(`/admin?uploaded=/resources/pukkies/${reg.files.image.name}`);
+				} else {
+					return res.redirect("/admin?error=invalidargs")
+				}
 				break;
 			case "create_vukky": //i really dont want to make this one
 				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.redirect("/admin?error=missingargs")
@@ -298,7 +308,6 @@ app.post("/admin/:action", function(req, res) {
 				}
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
-				// me when the spoiler spam! probably won't work but would be cool if it did lol
 				if(req.body.contribid != "") {
 					hook.send("👶 A new Vukky by <@" + req.body.contribid + ">" + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				} else {
