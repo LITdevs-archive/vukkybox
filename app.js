@@ -15,6 +15,7 @@ const { Webhook } = require('discord-webhook-node');
 const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
 const rateLimit = require("express-rate-limit");
+const fileUpload = require("express-fileupload")
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
@@ -73,7 +74,7 @@ passport.use(new GitHubStrategy({
 	  profile.email = filtered[0]
 	}).then (h => {
 	  db.findOrCreate(profile.provider, profile, function(user) {
-		cb(null, user)
+		cb(null, user)what is fileUpload() though
 	  })
 	})
 	
@@ -103,6 +104,7 @@ app.use(passport.session());
 app.use("/resources", express.static('public/resources'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
+app.use(fileUpload())
 
 db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
 db.ethermineETH() 
