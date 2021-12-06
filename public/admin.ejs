@@ -10,28 +10,28 @@
     <br>
     <h3>Inject Vukkybux Generator</h3>
     <form method="post" action="https://vukkybox.com/admin/create_code">
-        <input type="text" name="code" placeholder="code"/>
-        <input type="number" name="amount" placeholder="vukkybux">
-        <input type="number" name="uses" placeholder="uses" min="0">
+        <input type="text" name="code" placeholder="code" required/>
+        <input type="number" name="amount" placeholder="vukkybux" required>
+        <input type="number" name="uses" placeholder="uses" min="0" required>
         <input type="submit" value="INJECT IT NOW!!"/>
     </form>
     <br>
     <h3>TellyScript</h3>
     <form method="post" action="https://vukkybox.com/admin/upload_file">
-        <input name="image" type="file" /><br>
-        <input type="radio" id="vukky" name="vukkytype" value="vukky">
+        <input name="image" type="file" required/><br>
+        <input type="radio" id="vukky" name="vukkytype" value="vukky" required>
         <label for="vukky">Vukky</label><br>
-        <input type="radio" id="pukky" name="vukkytype" value="pukky">
+        <input type="radio" id="pukky" name="vukkytype" value="pukky" required>
         <label for="pukky">Pukky</label><br>
         <input type="submit" value="Execute"/>
     </form>
     <br>
     <h3>/summon vukky</h3>
     <form method="post" action="https://vukkybox.com/admin/create_vukky">
-        <input type="text" name="name" placeholder="name"/>
-        <input type="text" name="description" placeholder="description"/>
-        <input type="text" name="url" placeholder="url"/>
-        <input type="text" name="level" placeholder="1-7 or pukky">
+        <input type="text" name="name" placeholder="name" required/>
+        <input type="text" name="description" placeholder="description" required/>
+        <input type="text" name="url" placeholder="url" required/>
+        <input type="text" name="level" placeholder="1-7 or pukky" required>
         <input type="text" name="contribid" placeholder="contributor discord id">
         <input type="submit" value="Execute"/>
     </form>
