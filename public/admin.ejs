@@ -31,7 +31,7 @@
         <input type="text" name="name" placeholder="name" required/>
         <input type="text" name="description" placeholder="description" required/>
         <input id="vukkayurl" type="text" name="url" placeholder="url" required/>
-        <input type="text" name="level" placeholder="1-7 or pukky" required>
+        <input id="vukkaylevel" type="text" name="level" placeholder="1-7 or pukky" required>
         <input type="text" name="contribid" placeholder="contributor discord id">
         <input type="submit" value="Execute"/>
     </form>
@@ -47,6 +47,9 @@
         }
         if(params.get("uploaded") != null) {
             document.querySelector("#vukkayurl").value = params.get("uploaded");
+            if(params.get("uploaded").includes("/pukkies/")) {
+                document.querySelector("#vukkaylevel").value = "pukky";
+            }
         }
     </script>
 </body>
