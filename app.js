@@ -295,7 +295,7 @@ app.post("/admin/:action", function(req, res) {
 					return res.redirect(`/admin?uploaded=/resources/${reg.files.image.name}`);
 				} else if (req.body.vukkytype == "pukky") {
 					req.files.image.mv(`${__dirname}/resources/pukkies/${req.files.image.name}`);
-					return res.redirect(`/admin?uploaded=/resources/pukkies/${reg.files.image.name}`);
+					return res.redirect(`/admin?uploaded=/resources/pukkies/${req.files.image.name}`);
 				} else {
 					return res.redirect("/admin?error=invalidargs")
 				}
