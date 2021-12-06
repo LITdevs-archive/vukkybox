@@ -2,17 +2,19 @@ caches.delete('v1');
 caches.delete('v2');
 caches.delete('v3');
 caches.delete('v4');
+caches.delete('v5');
 
 //this function triggers when the user clicks the Install app button.
 self.addEventListener('install', (event)=>{
   event.waitUntil(
-    caches.open('v5').then((cache)=>{
+    caches.open('v6').then((cache)=>{
       return cache.addAll([
         "/resources/offline.html",
         "/resources/loading.ogg",
         "/resources/gallery.ogg",
         "/resources/gallerydone.ogg",
-        "/resources/shop.ogg"
+        "/resources/shop.ogg",
+        "/resources/admin.og"
       ]);
     })
   );
