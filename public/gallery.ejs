@@ -17,6 +17,7 @@
     </style>
     <audio id="loadingMusic" preload="auto" loop src="/resources/loading.ogg"></audio>
     <audio id="galleryMusic" preload="auto" loop src="/resources/gallery.ogg"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     
@@ -105,7 +106,10 @@
     let totalVukkies = <%=totalVukkies %>;
     function loadingdone() {
         document.querySelector("#loadingMusic").pause();
-        if(totalOwned == totalVukkies) document.querySelector("#galleryMusic").src = "/resources/gallerydone.ogg"
+        if(totalOwned == totalVukkies) {
+            document.querySelector("#galleryMusic").src = "/resources/gallerydone.ogg"
+            confetti();
+        }
         document.querySelector("#galleryMusic").play();
         document.querySelector("#loading_data").style.display = "none";
         document.querySelector("#collection").style.display = "";
