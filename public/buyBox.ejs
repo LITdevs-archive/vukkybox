@@ -118,6 +118,7 @@
 	            if(vukkyID == 136) document.querySelector("#unboxSfx").src = "/resources/unboxgnome.wav"
                 if(vukkyID == 20 || vukkyID == 100 || vukkyID == 108 || vukkyID == 128 || vukkyID == 220) document.querySelector("#unboxSfx").src = "/resources/unboxsussy.mp3"
                 if(vukkyID == 242) document.querySelector("#unboxSfx").src = "/resources/unboxnudge.mp3"
+		<%if (dupe) { %>document.querySelector("#unboxSfx").playbackRate = 2<% } %>
                 document.querySelector("#unboxSfx").play();
                 document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")
