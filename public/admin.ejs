@@ -28,8 +28,8 @@
     <br>
     <h3>/summon vukky</h3>
     <form method="post" action="https://vukkybox.com/admin/create_vukky">
-        <input type="text" name="name" placeholder="name" required/>
-        <input type="text" name="description" placeholder="description" required/>
+        <input id="vukkayname" type="text" name="name" placeholder="name" required/>
+        <input id="vukkaydesc" type="text" name="description" placeholder="description" required/>
         <input id="vukkayurl" type="text" name="url" placeholder="url" required/>
         <input id="vukkaylevel" type="text" name="level" placeholder="1-7 or pukky" required>
         <input type="text" name="contribid" placeholder="contributor discord id">
@@ -49,6 +49,8 @@
             document.querySelector("#vukkayurl").value = params.get("uploaded");
             if(params.get("uploaded").includes("/pukkies/")) {
                 document.querySelector("#vukkaylevel").value = "pukky";
+                document.querySelector("#vukkayname").value = params.get("uploaded").split("/")[5].split("pukky")[0] + "'s Pukky"
+                document.querySelector("#vukkaydesc").value = "This Pukky belongs to " + params.get("uploaded").split("/")[5].split("pukky")[0]
             }
         }
     </script>
