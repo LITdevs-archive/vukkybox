@@ -30,7 +30,7 @@
     <form method="post" action="https://vukkybox.com/admin/create_vukky">
         <input type="text" name="name" placeholder="name" required/>
         <input type="text" name="description" placeholder="description" required/>
-        <input type="text" name="url" placeholder="url" required/>
+        <input id="vukkayurl" type="text" name="url" placeholder="url" required/>
         <input type="text" name="level" placeholder="1-7 or pukky" required>
         <input type="text" name="contribid" placeholder="contributor discord id">
         <input type="submit" value="Execute"/>
@@ -44,6 +44,9 @@
             document.querySelector("#sharecodebtn").onclick = function() {
                 navigator.share({"title": "Vukkybox code", "url": `https://vukkybox.com/redeem/${params.get("code")}`});
             }
+        }
+        if(params.get("uploaded") != null) {
+            document.querySelector("#vukkayurl").value = params.get("uploaded");
         }
     </script>
 </body>
