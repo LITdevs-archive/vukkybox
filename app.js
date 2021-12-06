@@ -285,6 +285,8 @@ app.post("/admin/:action", function(req, res) {
 					res.redirect("/admin?code=" + resp.code)
 				})
 			break;
+			case "upload_file":
+				break;
 			case "create_vukky": //i really dont want to make this one
 				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.redirect("/admin?error=missingargs")
 				let newId = parseInt(vukkyJson.currentId) + 1
