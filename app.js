@@ -74,7 +74,7 @@ passport.use(new GitHubStrategy({
 	  profile.email = filtered[0]
 	}).then (h => {
 	  db.findOrCreate(profile.provider, profile, function(user) {
-		cb(null, user)what is fileUpload() though
+		cb(null, user)
 	  })
 	})
 	
