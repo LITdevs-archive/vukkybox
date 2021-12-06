@@ -291,11 +291,11 @@ app.post("/admin/:action", function(req, res) {
 				console.log(req.files);
 				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
 				if(req.body.vukkytype == "vukky") {
-					req.files.image.mv(`${__dirname}/resources/${req.files.image.name}`);
-					return res.redirect(`/admin?uploaded=/resources/${reg.files.image.name}`);
+					req.files.image.mv(`${__dirname}/public/resources/${req.files.image.name}`);
+					return res.redirect(`/admin?uploaded=https://vukkybox.com/resources/${reg.files.image.name}`);
 				} else if (req.body.vukkytype == "pukky") {
-					req.files.image.mv(`${__dirname}/resources/pukkies/${req.files.image.name}`);
-					return res.redirect(`/admin?uploaded=/resources/pukkies/${req.files.image.name}`);
+					req.files.image.mv(`${__dirname}/public/resources/pukkies/${req.files.image.name}`);
+					return res.redirect(`/admin?uploaded=https://vukkybox.com/resources/pukkies/${req.files.image.name}`);
 				} else {
 					return res.redirect("/admin?error=invalidargs")
 				}
