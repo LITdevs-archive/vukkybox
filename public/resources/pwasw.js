@@ -1,14 +1,11 @@
-caches.delete('v1');
-caches.delete('v2');
-caches.delete('v3');
-caches.delete('v4');
-caches.delete('v5');
-caches.delete('v6');
-
 //this function triggers when the user clicks the Install app button.
 self.addEventListener('install', (event)=>{
   event.waitUntil(
-    caches.open('v7').then((cache)=>{
+    caches.keys().then(function(names) {
+      for (let name of names)
+          caches.delete(name);
+    }),
+    caches.open('v8').then((cache)=>{
       return cache.addAll([
         "/resources/offline.html",
         "/resources/loading.ogg",
@@ -24,7 +21,8 @@ self.addEventListener('install', (event)=>{
         "/resources/unboxspinning.ogg",
         "/resources/unboxsussy.mp3",
         "/resources/unboxunique.wav",
-        "/resources/nobalance.wav"
+        "/resources/nobalance.wav",
+        "/resources/tada.ogg"
       ]);
     })
   );
