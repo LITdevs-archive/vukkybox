@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 276,
+	"currentId": 274,
 	"rarity": {
 		"1": {
 			"1": {
@@ -737,11 +737,6 @@
 				"name": "Vesax Vukky",
 				"url": "https://vukkybox.com/resources/vesax.png",
 				"description": "This Vukky seems to have weird lines on it."
-			},
-			"275": {
-				"name": "KenTukky Fried Chicken",
-				"url": "https://vukkybox.com/resources/kentukky.png",
-				"description": "Delicious!"
 			}
 		},
 		"4": {
@@ -884,11 +879,6 @@
 				"name": "Strong Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/strongvukky.png",
 				"description": "chad vukky vs virgin among us crewmate"
-			},
-			"276": {
-				"name": "Bad Santa Vukky",
-				"url": "https://vukkybox.com/resources/badsantavukky.png",
-				"description": "Put the present down or I put your name on by bad list!"
 			}
 		},
 		"5": {
@@ -987,14 +977,14 @@
 			"243": {
 				"name": "Ducky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/ducky.png",
-				"description": "Got any grapes?"
+				"description": "This was made by Seysa! Got any grapes?"
 			}
 		},
 		"7": {
 			"23": {
 				"name": "Fire Vukky",
 				"url": "https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyfire.png?raw=true",
-				"description": "Also an Annoying Orange Vukky, if you prefer."
+				"description": "Wow! It's on fire, but literally!"
 			},
 			"31": {
 				"name": "Salad Vukky",
@@ -1039,7 +1029,7 @@
 			"236": {
 				"name": "Vukky Merging Machine",
 				"url": "https://vukkybox.com/resources/vukkymerging.png",
-				"description": "Two things go in, One Vukky comes out."
+				"description": "Two things go in, one Vukky comes out."
 			}
 		},
 		"pukky": {
