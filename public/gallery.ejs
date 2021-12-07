@@ -178,13 +178,13 @@
         }
     document.querySelector("#loadingMusic").play();
     // id collection sort
-    Array.from(document.querySelectorAll("a[vukkyid]")).sort(function(a, b) {
+    Array.from(document.querySelectorAll("#collection a[vukkyid]")).sort(function(a, b) {
         if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return -1;
         if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return 1;
     }).forEach(function(vukky) {
         document.querySelector("#idacollection").innerHTML += vukky.outerHTML
     })
-    Array.from(document.querySelectorAll("a[vukkyid]")).sort(function(a, b) {
+    Array.from(document.querySelectorAll("#collection a[vukkyid]")).sort(function(a, b) {
         if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return -1;
         if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return 1;
     }).forEach(function(vukky) {
