@@ -23,7 +23,8 @@ self.addEventListener('install', (event)=>{
         "/resources/unboxunique.wav",
         "/resources/nobalance.wav",
         "/resources/tada.ogg",
-        "/resources/menumusic.ogg"
+        "/resources/menumusic.ogg",
+        "/resources/select.flac"
       ]);
     })
   );

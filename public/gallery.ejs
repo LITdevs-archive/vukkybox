@@ -17,6 +17,7 @@
     </style>
     <audio id="loadingMusic" preload="auto" loop src="/resources/loading.ogg"></audio>
     <audio id="galleryMusic" preload="auto" loop src="/resources/gallery.ogg"></audio>
+    <audio id="selectSfx" preload="auto" loop src="/resources/select.flac"></audio>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
@@ -127,6 +128,7 @@
     }
     function sortUpdate() {
         let selectedSort = document.querySelector("select").options[document.querySelector("select").selectedIndex].value;
+        document.querySelector("#selectSfx").play();
         if(selectedSort == "rarity") {
             document.querySelector("#collection").style.display = "";
             document.querySelector("#idacollection").style.display = "none";
