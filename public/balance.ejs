@@ -115,8 +115,10 @@ That's a fair question! The money we've made is <a href="https://litdevs.org/fin
 		document.querySelector("#sadfalgus").play()
     setTimeout(() => {
       document.querySelector("#banger").play()
-    }, 2000);
-	}
+    }, 710);
+	} else {
+    document.querySelector("#banger").play()
+  }
   <% if(username != "") { %>
     let loginHourly = new Date('<%= loginHourly %>');
     let loginDaily = new Date('<%= loginDaily %>');
