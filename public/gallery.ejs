@@ -182,13 +182,13 @@
         if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return -1;
         if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return 1;
     }).forEach(function(vukky) {
-        document.querySelector("#idacollection").innerHTML += vukky.innerHTML
+        document.querySelector("#idacollection").innerHTML += vukky.outerHTML
     })
     Array.from(document.querySelectorAll("a[vukkyid]")).sort(function(a, b) {
         if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return -1;
         if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return 1;
     }).forEach(function(vukky) {
-        document.querySelector("#iddcollection").innerHTML += vukky.innerHTML
+        document.querySelector("#iddcollection").innerHTML += vukky.outerHTML
     })
     document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
     document.querySelector("#loadskip").style.display = "";
