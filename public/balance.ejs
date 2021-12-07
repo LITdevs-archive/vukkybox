@@ -12,7 +12,8 @@
     <link rel="preload" href="/resources/nobalance.wav" as="audio">
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
-    <audio src="/resources/nobalance.wav"></audio>
+    <audio id="sadfalgus" src="/resources/nobalance.wav"></audio>
+    <audio id="banger" src="/resources/menumusic.ogg"></audio>
  <div class="bg-opacity-10  bg-gray-100 w-full">
     <nav class="flex justify-between">
         <div class="inline-flex">
@@ -111,7 +112,10 @@ That's a fair question! The money we've made is <a href="https://litdevs.org/fin
 	const urlParams = new URLSearchParams(queryString);
 	if(urlParams.has('poor')) {
 		document.querySelector("#pooruser").classList.remove("hidden")
-		document.querySelector("audio").play()
+		document.querySelector("#sadfalgus").play()
+    setTimeout(() => {
+      document.querySelector("#banger").play()
+    }, 2000);
 	}
   <% if(username != "") { %>
     let loginHourly = new Date('<%= loginHourly %>');
