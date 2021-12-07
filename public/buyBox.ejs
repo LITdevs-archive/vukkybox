@@ -90,28 +90,30 @@
     if(rarity == 8) rarity = 3;
 	const vukkyID = <%=prize.box.vukkyId %>;
 	const boxName = "<%=boxType %>";
+    const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
         let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
         let newBalance = <%=user.balance %>;
-        let spinner = setInterval(function() {
-            document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
-            rotation = rotation * 1.12
-        }, 10);
-        
-        setTimeout(function() {
-            clearInterval(spinner);
-            spinner = setInterval(function() {
+        if(!noAnim) {
+            let spinner = setInterval(function() {
                 document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
-                rotation = rotation * 0.92
-                if(rotation > 10000) rotation = 10000
+                rotation = rotation * 1.12
             }, 10);
-        }, 300 * rarity);
+            setTimeout(function() {
+                clearInterval(spinner);
+                spinner = setInterval(function() {
+                    document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
+                    rotation = rotation * 0.92
+                    if(rotation > 10000) rotation = 10000
+                }, 10);
+            }, 300 * rarity);
+        }
         setTimeout(function() {
             document.querySelector("#unboxSpinSfx").pause();
             let icon = document.getElementById("openingicon")
             clearInterval(spinner);
-            icon.classList.add("animate-ping");
+            if(!noAnim) icon.classList.add("animate-ping");
             setTimeout(() => {
-                icon.classList.remove("animate-ping");
+                if(!noAnim) icon.classList.remove("animate-ping");
                 icon.style.display = "none";
                 if(rarity >= 6) document.querySelector("#unboxSfx").src = "/resources/unboxrare.wav"
                 if(rarity == 7) document.querySelector("#unboxSfx").src = "/resources/unboxunique.wav"
