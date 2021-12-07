@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" style="height:100%">
+<html lang="en"  >
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./resources/style.css" rel="stylesheet">
     <script src="./resources/spin.js"></script>
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
-    <title>Vukkybox</title>
-    <meta name="title" content="Vukkybox">
-    <meta name="description" content="Collect Vukkies trapped in boxes!">
+    <title>Vukkybox - Credits</title>
+    <meta name="title" content="Vukkybox - Credits">
+    <meta name="description" content="Want to know who helped with Vukkybox? Here you go!">
     <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
-    <link rel="manifest" href="/resources/pwamanifest.json">
+    <link rel="preload" href="/resources/nobalance.wav" as="audio">
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
-    
+    <audio src="/resources/nobalance.wav"></audio>
  <div class="bg-opacity-10  bg-gray-100 w-full">
     <nav class="flex justify-between">
         <div class="inline-flex">
@@ -46,17 +46,15 @@
     </nav>
 </div>
 
-<div id="welcome" class="p-5">
-<% if(username != "") { %>
-  Hi <%= username%>! Welcome to Vukkybox. You might want to go to <a href="store" class="text-blue-500">the storefront</a>, or join our epic <a href="https://discord.gg/TJ6BfgXffa" class="text-blue-500">Discord server</a>!
-<% } else {%>
-  Welcome to Vukkybox, the online gacha game that lets you collect mysterious creatures known as "Vukkies"!<br>
-  Right now, you can collect these Vukkies and show off your collection, but more cool features such as trading is coming soon.<br>
-  The Vukkies are really cute, and there's over 200 of them! Are you ready to collect them all? Just make an account, and start collecting!<br><br>
-  <a href="/store"><button class="button button-blue font-bold">Check out the storefront!</button></a><br><br>
-  Vukkybox is a service by LIT Devs. You may be interested in our <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>.<br>
-<% } %>
-<br>This website works best on Firefox with autoplay enabled. <a href="/credits" class="text-blue-500">View credits</a>.
-</div>
+<h2 class="text-2xl">Music composers</h1>
+<ul class="list-disc list-inside">
+<li>Gallery loading music: <a href="https://freesound.org/people/Sirkoto51/sounds/360608/">"Loading... (Loop)" by Sirkoto51</a></li>
+<li>Gallery music: <a href="https://freesound.org/people/axtoncrolley/sounds/172707/">"Nodens (Field Song)" by axtoncrolley</a></li>
+<li>Gallery music (complete): <a href="https://freesound.org/people/SieuAmThanh/sounds/545249/">"Nhiệm Vụ Hoàn Thành" by SieuAmThanh"</a></li>
+<li>Storefront music: <a href="https://freesound.org/people/kbrecordzz/sounds/595844/">"cute melody" by kbrecordzz"</a></li>
+<li>Login music: <a href="https://freesound.org/people/code_box/sounds/520853/">"Nothing is Happening" by code_box"</a></li>
+</ul>
+<h2 class="text-2xl pt-8">Vukky creators</h2>
+These are credited in the Vukky's description. If a creator is not specified, it is either by Vukky or Skelly.
 </body>
 </html>
