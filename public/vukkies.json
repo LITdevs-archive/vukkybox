@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 246,
+	"currentId": 274,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1282,6 +1282,146 @@
 				"name": "Ender_'s Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/ender.gif",
 				"description": "This Pukky belongs to Ender_"
+			},
+			"247": {
+				"name": "SUPER IDOL IN YOUR MOUTH's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/superidolinyourmouthpukky.png",
+				"description": "This Pukky belongs to SUPER IDOL IN YOUR MOUTH"
+			},
+			"248": {
+				"name": "bear with me's Pukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/bearwithmepukky.png",
+				"description": "This Pukky belongs to bear with me"
+			},
+			"249": {
+				"name": "Jello's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/jellopukky.png",
+				"description": "This Pukky belongs to Jello"
+			},
+			"250": {
+				"name": "itzflakes' Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/itzflakespukky.png",
+				"description": "This Pukky belongs to itzflakes"
+			},
+			"251": {
+				"name": "Flowzee's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/flowzeepukky.png",
+				"description": "This Pukky belongs to Flowzee"
+			},
+			"252": {
+				"name": "Patrickn's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/patricknpukky.png",
+				"description": "This Pukky belongs to Patrickn"
+			},
+			"253": {
+				"name": "Duke's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/dukepukky.png",
+				"description": "This Pukky belongs to Duke"
+			},
+			"254": {
+				"name": "beanOS' Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/beanOSpukky.png",
+				"description": "This Pukky belongs to beanOS"
+			},
+			"255": {
+				"name": "Shady's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Shadypukky.png",
+				"description": "This Pukky belongs to Shady"
+			},
+			"256": {
+				"name": "Kanna's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Kannapukky.png",
+				"description": "This Pukky belongs to Kanna"
+			},
+			"257": {
+				"name": "VocalFan's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/VocalFanpukky.png",
+				"description": "This Pukky belongs to VocalFan"
+			},
+			"258": {
+				"name": "idek tbh's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/idektbhpukky.png",
+				"description": "This Pukky belongs to idek tbh"
+			},
+			"259": {
+				"name": "k a t's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/katpukky.png",
+				"description": "This Pukky belongs to k a t"
+			},
+			"260": {
+				"name": "M.R Mustach8's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/mrmustach8pukky.png",
+				"description": "This Pukky belongs to M.R Mustach8"
+			},
+			"261": {
+				"name": "AstroWRLD Surviver's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/AstroWRLDSurviverpukky.png",
+				"description": "This Pukky belongs to AstroWRLD Surviver"
+			},
+			"262": {
+				"name": "Bugs' Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Bugspukky.png",
+				"description": "This Pukky belongs to Bugs"
+			},
+			"263": {
+				"name": "suriyum's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/suriyumpukky.png",
+				"description": "This Pukky belongs to suriyum"
+			},
+			"264": {
+				"name": "LIGHTY's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/LIGHTYpukky.png",
+				"description": "This Pukky belongs to LIGHTY"
+			},
+			"265": {
+				"name": "Lemon WRLD's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/LemonWRLDpukky.png",
+				"description": "This Pukky belongs to Lemon WRLD"
+			},
+			"266": {
+				"name": "Jaeger129's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Jaeger129pukky.png",
+				"description": "This Pukky belongs to Jaeger129"
+			},
+			"267": {
+				"name": "Noodles' Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Noodlespukky.png",
+				"description": "This Pukky belongs to Noodles"
+			},
+			"268": {
+				"name": "Kel's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Kelpukky.png",
+				"description": "This Pukky belongs to Kel"
+			},
+			"269": {
+				"name": "Reyy's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Reyypukky.png",
+				"description": "This Pukky belongs to Reyy"
+			},
+			"270": {
+				"name": "Jamal's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Jamalpukky.png",
+				"description": "This Pukky belongs to Jamal"
+			},
+			"271": {
+				"name": "jojo anime watcher's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/jojoanimewatcherpukky.png",
+				"description": "This Pukky belongs to jojo anime watcher"
+			},
+			"272": {
+				"name": "f4tb01_101's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/f4tb01101pukky.png",
+				"description": "This Pukky belongs to f4tb01_101"
+			},
+			"273": {
+				"name": "ad$m's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/admpukky.png",
+				"description": "This Pukky belongs to ad$m"
+			},
+			"274": {
+				"name": "Grimmie's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/grimmiepukky.png",
+				"description": "This Pukky belongs to Grimmie"
 			}
 		}
 	}
