@@ -97,6 +97,9 @@
 
 
 </div>
+<div id="idcollection" style="display: none;">
+
+</div>
 </div>
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
@@ -123,7 +126,7 @@
             if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
                 owned++
                 totalOwned++
-                document.getElementById(j).innerHTML += `<a href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name}"/></a>`
+                document.getElementById(j).innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name}"/></a>`
             }
         }
         if (owned == 0) {
@@ -138,7 +141,7 @@
             if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
                 owned++
                 totalOwned++
-                document.getElementById("pukky").innerHTML += `<a href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name}"/></a>`
+                document.getElementById("pukky").innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name}"/></a>`
             }
         }
         if (owned == 0) {
