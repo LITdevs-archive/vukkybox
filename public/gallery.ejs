@@ -141,7 +141,7 @@
             if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
                 owned++
                 totalOwned++
-                document.getElementById("pukky").innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name}"/></a>`
+                document.getElementById("pukky").innerHTML += `<a vukkyid="${Object.keys(vukkies["pukky"])[i]}" href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name}"/></a>`
             }
         }
         if (owned == 0) {
