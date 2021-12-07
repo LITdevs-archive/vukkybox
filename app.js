@@ -530,6 +530,27 @@ app.get('/store', function(req,res) {
 	}
 });
 
+app.get('/credits', function(req,res) {
+	if(req.isAuthenticated()) {
+		if(req.user.primaryEmail) {
+			db.lastLogin(req.user, function(newBalance) {
+				req.session.passport.user.balance = newBalance
+				req.user.balance = newBalance
+				res.render(__dirname + '/public/credits.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+			})
+		} else if(req.user[0].primaryEmail) {
+			db.lastLogin(req.user[0], function(newBalance) {
+				req.session.passport.user[0].balance = newBalance
+				req.user[0].balance = newBalance
+				res.render(__dirname + '/public/credits.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+
+			})
+			}
+	} else {
+		res.render(__dirname + '/public/credits.ejs', {user: null, username: "", gravatarHash: null});
+	}
+});
+
 app.get('/pwasw.js', function(req, res){
 	res.sendFile(__dirname + '/public/resources/pwasw.js')
 });
