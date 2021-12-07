@@ -151,6 +151,13 @@
             
         }
     document.querySelector("#loadingMusic").play();
+    // id collection sort
+    Array.from(document.querySelectorAll("a[vukkyid]")).sort(function(a, b) {
+        if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return -1;
+        if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return 1;
+    }).forEach(function(vukky) {
+        document.querySelector("#idcollection").innerHTML += vukky.innerHTML
+    })
     document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
     document.querySelector("#loadskip").style.display = "";
     window.addEventListener('load', loadingdone)
