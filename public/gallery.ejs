@@ -57,7 +57,10 @@
 
 <span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<img id="vukkyloadspinner" class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif"><br><pre class="ml-5">Printed <span id="vukkyloadcount">0/0</span>: <span id="vukkyloadname">Sending requests...</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
 <div id="collection" style="display: none;">
-<p class="text-bold text-2xl ml-5 mt-5" id="total_text"></p>
+<p class="text-bold text-2xl ml-5 mt-5" id="total_text"><select>
+    <option value="rarity">Sort by Rarity</option>
+	<option value="id">Sort by ID</option>
+</select><br></p>
 <div id="7">
 <p class="text-bold text-xl ml-5 mt-5" id="7_text">Unique (7 stars)</p>
 
@@ -118,7 +121,7 @@
         document.querySelector("#collection").style.display = "";
     }
     const userGallery = [<%=user.gallery %>]
-    document.getElementById("total_text").innerHTML = "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
+    document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
     for(let j = 1; j <= 7; j++) {
         let owned = 0
