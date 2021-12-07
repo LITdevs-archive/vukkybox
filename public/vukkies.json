@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 274,
+	"currentId": 276,
 	"rarity": {
 		"1": {
 			"1": {
@@ -737,6 +737,11 @@
 				"name": "Vesax Vukky",
 				"url": "https://vukkybox.com/resources/vesax.png",
 				"description": "This Vukky seems to have weird lines on it."
+			},
+			"275": {
+				"name": "KenTukky Fried Chicken",
+				"url": "https://vukkybox.com/resources/kentukky.png",
+				"description": "This was made by Mot! Delicious!"
 			}
 		},
 		"4": {
@@ -878,7 +883,12 @@
 			"222": {
 				"name": "Strong Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/vukkybox/strongvukky.png",
-				"description": "chad vukky vs virgin among us crewmate"
+				"description": "This was made by Synne! chad vukky vs virgin among us crewmate"
+			},
+			"276": {
+				"name": "Bad Santa Vukky",
+				"url": "https://vukkybox.com/resources/badsantavukky.png",
+				"description": "This was made by Synne! Put the present down or I put your name on by bad list!"
 			}
 		},
 		"5": {
