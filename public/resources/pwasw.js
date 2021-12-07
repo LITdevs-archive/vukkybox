@@ -3,18 +3,28 @@ caches.delete('v2');
 caches.delete('v3');
 caches.delete('v4');
 caches.delete('v5');
+caches.delete('v6');
 
 //this function triggers when the user clicks the Install app button.
 self.addEventListener('install', (event)=>{
   event.waitUntil(
-    caches.open('v6').then((cache)=>{
+    caches.open('v7').then((cache)=>{
       return cache.addAll([
         "/resources/offline.html",
         "/resources/loading.ogg",
         "/resources/gallery.ogg",
         "/resources/gallerydone.ogg",
         "/resources/shop.ogg",
-        "/resources/admin.og"
+        "/resources/admin.ogg",
+        "/resources/unbox.wav",
+        "/resources/unboxcommon.wav",
+        "/resources/unboxgnome.wav",
+        "/resources/unboxnudge.mp3",
+        "/resources/unboxrare.wav",
+        "/resources/unboxspinning.ogg",
+        "/resources/unboxsussy.mp3",
+        "/resources/unboxunique.wav",
+        "/resources/nobalance.wav"
       ]);
     })
   );
