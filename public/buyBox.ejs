@@ -93,8 +93,9 @@
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
         let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
         let newBalance = <%=user.balance %>;
+        let spinner;
         if(!noAnim) {
-            let spinner = setInterval(function() {
+            spinner = setInterval(function() {
                 document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
                 rotation = rotation * 1.12
             }, 10);
