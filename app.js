@@ -191,7 +191,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 				let fullUnlock = false;
 				let ownedInTier = db.vukkyTierCount(newGallery)[prize.box.level.level] ? db.vukkyTierCount(newGallery)[prize.box.level.level] : 0
 				const vukkies = require("./public/vukkies.json");
-				if(ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
+				if(req.session.passport.user.gallery != newGallery && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
 				if(prize.box) {
 					if(req.user.primaryEmail) {
 						let oldBalance = req.user.balance
