@@ -189,24 +189,20 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
 				if(prize.box) {
+					let fullUnlock = false;
+					let ownedInTier = db.vukkyTierCount(newGallery)[prize.box.level.level] ? db.vukkyTierCount(newGallery)[prize.box.level.level] : 0
+					const vukkies = require("./public/vukkies.json");
+					if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
 					if(req.user.primaryEmail) {
 						let oldBalance = req.user.balance
 						req.session.passport.user.balance = newBalance
 						req.session.passport.user.gallery = newGallery
-						let fullUnlock = false;
-						let ownedInTier = db.vukkyTierCount(newGallery)[prize.box.level.level] ? db.vukkyTierCount(newGallery)[prize.box.level.level] : 0
-						const vukkies = require("./public/vukkies.json");
-						if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
 
 						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
 					} else {
 						let oldBalance = req.user[0].balance
 						req.session.passport.user[0].balance = newBalance
 						req.session.passport.user[0].gallery = newGallery
-						let fullUnlock = false;
-						let ownedInTier = db.vukkyTierCount(newGallery)[prize.box.level.level] ? db.vukkyTierCount(newGallery)[prize.box.level.level] : 0
-						const vukkies = require("./public/vukkies.json");
-						if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
 
 						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 						
