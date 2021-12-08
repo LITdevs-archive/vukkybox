@@ -61,6 +61,7 @@
     <option value="rarity">Sort by Rarity</option>
 	<option value="ida">Sort by ID (Ascending)</option>
     <option value="idd">Sort by ID (Descending)</option>
+    <option value="grav">Sort by Gravity</option>
 </select><br><br></p>
 <div id="collection" style="display: none;">
 <div id="7">
@@ -141,6 +142,12 @@
             document.querySelector("#collection").style.display = "none";
             document.querySelector("#idacollection").style.display = "none";
             document.querySelector("#iddcollection").style.display = "";
+        } else if (selectedSort == "grav") {
+            document.querySelectorAll("*").forEach(function(node) {
+                node.classList.add("box2d");
+            })
+            document.head.appendChild(document.createElement('script').setAttribute('src','https://vukkybox.com/resources/egg/box2d.js'))
+            document.head.appendChild(document.createElement('script').setAttribute('src','https://vukkybox.com/resources/egg/gravity.js'))
         }
     }
     const userGallery = [<%=user.gallery %>]
