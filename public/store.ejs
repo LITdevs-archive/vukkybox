@@ -99,6 +99,7 @@
 	</body>
 	<script>
 	function buyBox(id) {
+		event.srcElement.disabled = true;
 		setTimeout(() => {
 			window.location="/buyBox/"+id;
 		}, 1000);
