@@ -171,7 +171,8 @@
             document.querySelector("#iddcollection").style.display = "";
         } else if (selectedSort == "grav") {
             document.getElementById("total_text").innerHTML = "Oh no! My Vukkies! HELP!";
-            document.querySelectorAll("*").forEach(function(node) {
+            moveFallingThing(icon, 0.1, document.documentElement.scrollHeight);
+            document.querySelectorAll("a[vukkyid]").forEach(function(node) {
                 if(node.parentNode && node.parentNode.querySelector("p")) node.parentNode.querySelector("p").remove();
                 node.style.position = "fixed";
                 node.classList.add("duration-150")
