@@ -128,7 +128,7 @@
     const moveFallingThing = (ele, acceleration, ground) => {
         let xPos = getRandomInt(0, 100);
         let velocity = acceleration; // speed at a point in time
-        let positionY = getRandomInt(-300, 600); // where we are now
+        let positionY = getRandomInt(-500, 300); // where we are now
         const render = () => {
             positionY += velocity; // move our current position
             velocity += acceleration; // increment our speed
