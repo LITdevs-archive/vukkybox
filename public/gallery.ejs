@@ -113,32 +113,6 @@
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
 <script>
-    const moveFallingThing = (ele) => {
-        // settings
-        const tickMs = 50; // how often to check our loop
-        const acceleration = 0.2; // by having a fraction we get a nicer slide
-        const floorPos = window.innerHeight; // we'll assume this won't change
-
-        // initialize moving parts
-        let velocity = acceleration; // speed at a point in time
-        let positionY = 0; // where we are now
-        let animationHandle = undefined; // we'll need this later, but we don't have it yet
-
-        // where work is done
-        const animator = () => {
-            positionY += velocity; // move our current postion
-            velocity += acceleration; // increment our speed
-            if (ele.getBoundingClientRect().bottom > floorPos) {
-                clearInterval(animationHandle); // hit bottom, stop spinning
-            } else {
-                ele.style.transform = `translateY(${Math.floor(positionY)}px)`;
-            }
-        };
-
-        // we'll use a JS function that basically repeats forever
-        // we'll capture the result of calling this so we can stop it alter
-        animationHandle = setInterval(animator, tickMs);
-    };
     let loaded = 0;
     let totalOwned = 0;
     let totalVukkies = <%=totalVukkies %>;
@@ -168,10 +142,6 @@
             document.querySelector("#collection").style.display = "none";
             document.querySelector("#idacollection").style.display = "none";
             document.querySelector("#iddcollection").style.display = "";
-        } else if (selectedSort == "grav") {
-            document.querySelectorAll("a[vukkyid]").forEach(function(node) {
-                moveFallingThing(node);
-            })
         }
     }
     const userGallery = [<%=user.gallery %>]
