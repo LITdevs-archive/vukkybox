@@ -126,7 +126,9 @@
         };
     }
     const moveFallingThing = (ele, acceleration, ground) => {
-        let xPos = getRandomInt(0, 100)
+        ele.parentNode.querySelector("p").remove();
+        document.querySelector("select").remove();
+        let xPos = getRandomInt(0, 100);
         let velocity = acceleration; // speed at a point in time
         let positionY = 0; // where we are now
         const render = () => {
