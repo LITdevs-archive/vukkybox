@@ -172,7 +172,7 @@
         } else if (selectedSort == "grav") {
             document.getElementById("total_text").innerHTML = "Oh no! My Vukkies! HELP!";
             document.querySelectorAll("*").forEach(function(node) {
-                if(node.parentNode.querySelector("p")) node.parentNode.querySelector("p").remove();
+                if(node.parentNode && node.parentNode.querySelector("p")) node.parentNode.querySelector("p").remove();
                 node.style.position = "fixed";
                 node.classList.add("duration-150")
                 moveFallingThing(node, 0.5, document.documentElement.scrollHeight);
