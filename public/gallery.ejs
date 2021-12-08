@@ -164,9 +164,9 @@
             document.querySelector("#idacollection").style.display = "none";
             document.querySelector("#iddcollection").style.display = "";
         } else if (selectedSort == "grav") {
-            document.querySelectorAll("*").forEach(function(node)) {
+            document.querySelectorAll("*").forEach(function(node) {
                 moveFallingThing(node, 0.1, document.documentElement.scrollHeight);
-            }
+            })
         }
     }
     const userGallery = [<%=user.gallery %>]
