@@ -238,6 +238,10 @@
             document.querySelector("#vukkyloadcount").innerHTML = `${loaded}/${totalOwned}`;
             document.querySelector("#vukkyloadname").innerHTML = coolimage.title;
             document.querySelector("#vukkyloadspinner").src = coolimage.src;
+            let clonedLoader = document.querySelector("#vukkyloadspinner").cloneNode();
+            clonedLoader.id = "";
+            document.body.appendChild(clonedLoader);
+            moveFallingThing(clonedLoader, 0.5, document.documentElement.scrollHeight);
             if(loaded == totalOwned) loadingdone();
         }
     })
