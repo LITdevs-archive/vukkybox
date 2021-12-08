@@ -5,7 +5,7 @@ self.addEventListener('install', (event)=>{
       for (let name of names)
           caches.delete(name);
     }),
-    caches.open('v9').then((cache)=>{
+    caches.open('v10').then((cache)=>{
       return cache.addAll([
         "/resources/offline.html",
         "/resources/loading.ogg",
@@ -25,7 +25,8 @@ self.addEventListener('install', (event)=>{
         "/resources/tada.ogg",
         "/resources/menumusic.ogg",
         "/resources/select.flac",
-        "/resources/unboxbroken.wav"
+        "/resources/unboxbroken.wav",
+        "/resources/purchase.wav"
       ]);
     })
   );
