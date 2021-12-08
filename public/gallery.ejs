@@ -137,9 +137,8 @@
             if (getOffset(ele).top < ground) {
                 ele.style.transform = `translateX(${xPos}vw) translateY(${Math.floor(positionY)}px)`;
                 requestAnimationFrame(render);
-            } else {
-                ele.remove()
             }
+            
         };
         requestAnimationFrame(render);
     };
@@ -156,6 +155,9 @@
         document.querySelector("#loading_data").style.display = "none";
         document.querySelector("#collection").style.display = "";
         document.getElementById("total_text").style.display = "";
+        document.querySelectorAll(".clonedloader").forEach(function(node) {
+            node.remove();
+        })
     }
     function sortUpdate() {
         let selectedSort = document.querySelector("select").options[document.querySelector("select").selectedIndex].value;
