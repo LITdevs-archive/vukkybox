@@ -527,7 +527,7 @@ function vukkyTierCount(vukkies) {
 	let theOutput = {};
 	Object.entries(vukkydata.rarity).forEach(function(rarity) {
 		Object.entries(rarity[1]).forEach(function(vukky) {
-			if(vukkies.includes(vukky[0])) {
+			if(vukkies && vukkies.includes(vukky[0])) {
 				if(theOutput[rarity[0]]) {
 					theOutput[rarity[0]] += 1;
 				} else {
