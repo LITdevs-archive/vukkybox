@@ -90,6 +90,7 @@
 	</body>
     <script type="text/javascript">
     var rarity = <%=prize.box.level.level %>;
+    const rarityName = "<%=prize.box.level.name %>";
     if(rarity == 8) rarity = 3;
 	const vukkyID = <%=prize.box.vukkyId %>;
 	const boxName = "<%=boxType %>";
@@ -137,7 +138,7 @@
                     confetti();
                 }
                 <% if(fullUnlock) { %>
-                    alert(`You have unlocked all ${rarity != 8 ? rarity + "-star Vukkies!" : "Pukkies!"}`)
+                    alert(`You have unlocked all the ${rarity != 8 ? `${rarityname} Vukkies!` : "Pukkies!"}`)
                     document.querySelector("#unboxAllSfx").play();
                     confetti();
                 <% } %>
