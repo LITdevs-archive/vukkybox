@@ -143,7 +143,7 @@
             document.querySelector("#idacollection").style.display = "none";
             document.querySelector("#iddcollection").style.display = "";
         } else if (selectedSort == "grav") {
-            document.querySelectorAll("*").forEach(function(node) {
+            document.querySelectorAll("a[vukkyid]").forEach(function(node) {
                 node.classList.add("box2d");
             })
             var script = document.createElement('script');
