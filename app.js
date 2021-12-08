@@ -106,7 +106,7 @@ app.use("/resources", express.static('public/resources'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 app.use(fileUpload())
-app.use(csrf({cookie: true}))
+app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
 app.set('trust proxy', 1);
 
 db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
