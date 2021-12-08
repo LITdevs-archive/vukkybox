@@ -146,8 +146,12 @@
             document.querySelectorAll("*").forEach(function(node) {
                 node.classList.add("box2d");
             })
-            document.head.appendChild(document.createElement('script').setAttribute('src','https://vukkybox.com/resources/egg/box2d.js'))
-            document.head.appendChild(document.createElement('script').setAttribute('src','https://vukkybox.com/resources/egg/gravity.js'))
+            var script = document.createElement('script');
+            script.src = "https://vukkybox.com/resources/egg/box2d.js";
+            document.head.appendChild(script);
+            var script = document.createElement('script');
+            script.src = "https://vukkybox.com/resources/egg/gravity.js";
+            document.head.appendChild(script);
         }
     }
     const userGallery = [<%=user.gallery %>]
