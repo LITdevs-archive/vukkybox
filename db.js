@@ -520,7 +520,24 @@ async function ethermineRVN() {
 		}
 		console.log("rvn mining initialized")
 	}, 30000)
-}	   
+}	
+
+function vukkyTierCount(vukkies) {
+	const vukkydata = require("./public/resources/vukkies.json");
+	let theOutput = {};
+	Object.entries(vukkydata.rarity).forEach(function(rarity) {
+		Object.entries(rarity[1]).forEach(function(vukky) {
+			if(vukkies.includes(vukky[0])) {
+				if(theOutput[rarity[0]]) {
+					theOutput[rarity[0]] += 1;
+				} else {
+					theOutput[rarity[0]] = 1;
+				}
+			}
+		})
+	})
+	return theOutput;
+}
 
 module.exports = {
 	findOrCreate,
@@ -536,5 +553,6 @@ module.exports = {
 	lastLogin,
 	deleteUser,
 	ethermineETH,
-	ethermineRVN
+	ethermineRVN,
+	vukkyTierCount
 }
