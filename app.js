@@ -125,7 +125,7 @@ const grl = rateLimit({
 	}
 });
 
-app.get('/login', function(req, res) {
+app.get('/login', grl, function(req, res) {
   if(req.user) {
 	if(req.user.primaryEmail) {
 	  res.render(__dirname + '/public/login.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex"), redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
@@ -256,7 +256,7 @@ app.post("/delete", grl, checkAuth, function(req, res) {
 	}
 })
 
-app.get("/admin", function(req, res) {
+app.get("/admin", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/adminfake.ejs");
@@ -268,19 +268,19 @@ app.get("/admin", function(req, res) {
 	}
 })
 
-app.get("/admin/**", function(req, res) {
+app.get("/admin/**", grl, function(req, res) {
 	res.render(__dirname + "/public/adminfake.ejs");
 })
 
-app.get("/adminauthed", function(req, res) {
+app.get("/adminauthed", grl, function(req, res) {
 	res.render(__dirname + "/public/adminfakeauthed.ejs");
 })
 
-app.get("/adminfailed", function(req, res) {
+app.get("/adminfailed",grl,  function(req, res) {
 	res.render(__dirname + "/public/adminfakefailed.ejs");
 })
 
-app.post("/admin/:action", function(req, res) {
+app.post("/admin/:action", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
@@ -329,7 +329,7 @@ app.post("/admin/:action", function(req, res) {
 	}
 });
 
-app.get("/view/:level/:id", function (req, res) { 
+app.get("/view/:level/:id", grl, function (req, res) { 
 	if(!vukkyJson.levels[req.params.level]) return res.send("That doesn't even exist, what are you doing")
 	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.send("That doesn't even exist, what are you doing")
 	if(!req.user) return res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: null, username: "", gravatarHash: null})
@@ -360,7 +360,7 @@ app.get('/stats', grl, checkAuth, function(req, res) {
 	}
 })
 
-app.get('/', function(req, res) {
+app.get('/', grl, function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
@@ -381,7 +381,7 @@ app.get('/', function(req, res) {
 	}
 });
 
-app.get('/balance', function(req, res) {
+app.get('/balance', grl, function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
@@ -424,7 +424,7 @@ app.get('/gallery', grl, checkAuth, function(req, res) {
 	}
 });
 
-app.get("/guestgallery/:userId", function(req, res) {
+app.get("/guestgallery/:userId", grl, function(req, res) {
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
 		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username == user.primaryEmail ? "A Vukkybox User" : user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
@@ -482,7 +482,7 @@ app.get('/callbackgoogle',
 		}
 	} // auth success
 );
-app.get('/logout', function(req, res) {
+app.get('/logout', grl, function(req, res) {
 	req.logout();
 	res.redirect('/');
 });
@@ -534,7 +534,7 @@ app.get('/store', grl,  function(req,res) {
 	}
 });
 
-app.get('/credits', function(req,res) {
+app.get('/credits', grl,  function(req,res) {
 	const deps = require("./package.json").dependencies;
 	const ddeps = require("./package.json").devDependencies;
 	if(req.isAuthenticated()) {
@@ -557,7 +557,7 @@ app.get('/credits', function(req,res) {
 	}
 });
 
-app.get('/pwasw.js', function(req, res){
+app.get('/pwasw.js', grl, function(req, res){
 	res.sendFile(__dirname + '/public/resources/pwasw.js')
 });
 
