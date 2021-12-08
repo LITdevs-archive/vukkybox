@@ -46,6 +46,7 @@
             <div class="bg-opacity-30 bg-gray-100 rounded-lg py-20 px-10 align-middle text-center justify-center">
                 <form method="post">
                     <label for="username">New Username:</label>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken %>">
                     <input class="text-black rounded-lg h-10" type="text" id="username" name="username" placeholder="New Username"></input>
                     <input class="text-black button button-blue" type="submit" value="Change Username"/>
                 </form>
