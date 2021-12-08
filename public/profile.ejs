@@ -58,6 +58,11 @@
       </div>
       <br>
       <!--- settings crap starts here lol -->
-      Add fall animation while gallery loads: <input type="checkbox" id="fallToggle">
+      Add fall animation while gallery loads: <input type="checkbox" id="fallToggle" onchange="toggleLocalSetting(event, 'fallLoad')">
 </body>
+<script>
+  function toggleLocalSetting(e, setting) {
+    localStorage.setItem(setting, e.target.checked)
+  }
+</script>
 </html>
