@@ -138,7 +138,7 @@
                     confetti();
                 }
                 <% if(fullUnlock) { %>
-                    alert(`You have unlocked all the ${rarity != 8 ? `${rarityname} Vukkies!` : "Pukkies!"}`)
+                    alert(`You have collected all the ${rarity != 8 ? `${rarityName} Vukkies!` : "Pukkies!"}`)
                     document.querySelector("#unboxAllSfx").play();
                     confetti();
                 <% } %>
