@@ -21,9 +21,9 @@ window.addEventListener('load', (event) => {
         document.querySelector("#balance").style.cursor = "";
     };
     document.querySelectorAll("a").forEach(function(node) {
-        node.onclick = function() {
+        node.addEventListener(click, function() {
             new Audio('https://vukkybox.com/resources/select.flac').play();
-        }
+        })
     })
     document.querySelectorAll(".purchase").forEach(function(node) {
         node.addEventListener(click, function() {
