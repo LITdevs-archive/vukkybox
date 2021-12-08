@@ -126,8 +126,6 @@
         };
     }
     const moveFallingThing = (ele, acceleration, ground) => {
-        ele.parentNode.querySelector("p").remove();
-        document.querySelector("select").remove();
         let xPos = getRandomInt(0, 100);
         let velocity = acceleration; // speed at a point in time
         let positionY = 0; // where we are now
@@ -172,7 +170,9 @@
             document.querySelector("#idacollection").style.display = "none";
             document.querySelector("#iddcollection").style.display = "";
         } else if (selectedSort == "grav") {
+            ocument.getElementById("total_text").innerHTML = "Oh no! My Vukkies! HELP!";
             document.querySelectorAll("a[vukkyid]").forEach(function(node) {
+                node.parentNode.querySelector("p").remove();
                 node.style.position = "fixed";
                 moveFallingThing(node, 0.1, document.documentElement.scrollHeight);
             })
