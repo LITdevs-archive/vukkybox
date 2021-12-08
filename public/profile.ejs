@@ -11,6 +11,12 @@
         <meta name="description" content="Collect Vukkies trapped in boxes!">
         <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
         <audio preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
+        <style>
+          .toggle:checked ~ .dot {
+            transform: translateX(100%);
+            background-color: #48bb78;
+          }
+        </style>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         
@@ -58,7 +64,14 @@
       </div>
       <br>
       <!--- settings crap starts here lol -->
-      Add fall animation while gallery loads: [toggle here]
+      Add fall animation while gallery loads: <div class="relative">
+        <!-- input -->
+        <input class="toggle" type="checkbox" id="toggleB" class="sr-only">
+        <!-- line -->
+        <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
+        <!-- dot -->
+        <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
+      </div>
     </div>
 </body>
 </html>
