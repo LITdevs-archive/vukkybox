@@ -137,8 +137,9 @@
             if (getOffset(ele).top < ground) {
                 ele.style.transform = `translateX(${xPos}vw) translateY(${Math.floor(positionY)}px)`;
                 requestAnimationFrame(render);
+            } else {
+                ele.remove()
             }
-            
         };
         requestAnimationFrame(render);
     };
@@ -238,6 +239,14 @@
             document.querySelector("#vukkyloadcount").innerHTML = `${loaded}/${totalOwned}`;
             document.querySelector("#vukkyloadname").innerHTML = coolimage.title;
             document.querySelector("#vukkyloadspinner").src = coolimage.src;
+            if(false) {
+                let clonedLoader = document.querySelector("#vukkyloadspinner").cloneNode();
+                clonedLoader.id = "";
+                clonedLoader.classList.add("clonedloader");
+                clonedLoader.style.position = "fixed";
+                document.body.appendChild(clonedLoader);
+                moveFallingThing(clonedLoader, 2, document.documentElement.scrollHeight);
+            }
             if(loaded == totalOwned) loadingdone();
         }
     })
