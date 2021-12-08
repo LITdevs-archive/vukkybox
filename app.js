@@ -188,6 +188,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky", "shark"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
+				let fullUnlock = false;
 				let ownedInTier = db.vukkyTierCount(newGallery)[prize.box.level.level] ? db.vukkyTierCount(newGallery)[prize.box.level.level] : 0
 				const vukkies = require("./public/vukkies.json");
 				if(ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
