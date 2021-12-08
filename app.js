@@ -188,6 +188,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky", "shark"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
+				console.log(newGallery);
 				if(prize.box) {
 					if(req.user.primaryEmail) {
 						let oldBalance = req.user.balance
