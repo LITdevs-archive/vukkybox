@@ -105,9 +105,23 @@ app.use("/resources", express.static('public/resources'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 app.use(fileUpload())
+app.set('trust proxy', 1);
 
 db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
 db.ethermineETH() 
+
+const grl = rateLimit({
+	windowMs: 100,
+	max: 5,
+	handler: function(req, res) {
+		if(req.rateLimit.current > 10) {
+			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
+			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes! Here's something funny...<br><img src='https://i.imgur.com/twm4zX8.png'><br>This incident has been reported<script>setTimeout(function() { window.location.reload() },5000)</script>")
+		} else {
+			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
+		}
+	}
+});
 
 app.get('/login', function(req, res) {
   if(req.user) {
@@ -122,11 +136,8 @@ app.get('/login', function(req, res) {
 	  res.render(__dirname + '/public/login.ejs', {username: "", gravatarHash: "", redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false})
 	}
 });
-app.get("/index", (req, res) => {
-  res.send("Hello world")
-})
 
-app.get("/profile", checkAuth, function (req, res) {
+app.get("/profile", grl, checkAuth, function (req, res) {
   if(req.user) {
 	if(req.user.primaryEmail) {
 	  
@@ -139,7 +150,7 @@ app.get("/profile", checkAuth, function (req, res) {
 	  }
 });
 
-app.get("/editProfile", checkAuth, function (req, res) { 
+app.get("/editProfile", grl, checkAuth, function (req, res) { 
   
   if(req.user.primaryEmail) {
 	res.render(__dirname + '/public/editProfile.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
@@ -150,7 +161,7 @@ app.get("/editProfile", checkAuth, function (req, res) {
 	}
 })
 
-app.post("/editProfile", checkAuth, function(req, res) {
+app.post("/editProfile", grl ,checkAuth, function(req, res) {
 	if(req.body.username != "") {
 	  db.changeUsername(req.user, req.body.username)
 	  req.session.passport.user.username = req.body.username
@@ -158,19 +169,9 @@ app.post("/editProfile", checkAuth, function(req, res) {
 	res.redirect("/profile")
 })
 
-app.post("/skellyWantsYourData", function(req, res) {
-	let data = JSON.stringify(req.body).match(/(.|[\r\n]){1,2000}/g);
-	hook.send("Uh oh, someone leaked stuff!!")
-	for (i in data) {
-		adminHook.send(data[i])
-		console.log(data[i])
-	}
-	res.send("potato,,,,,")
-})
-
 function getKeyByValue(object, value) {
 	return Object.keys(object).find(key => object[key] === value);
-  }
+}
 
 const boxLimiter = rateLimit({
 	windowMs: 1000,
@@ -226,11 +227,11 @@ app.get('/terms', function(req, res){
 	res.redirect('/resources/terms.html');
 });
 
-app.get('/delete', checkAuth, function(req,res) {
+app.get('/delete', grl, checkAuth, function(req,res) {
 	res.render(__dirname + "/public/deleteConfirm.ejs")
 })
 
-app.post("/delete", checkAuth, function(req, res) {
+app.post("/delete", grl, checkAuth, function(req, res) {
 	return res.send("severe bug. disabled temporarily, contact us for manual deletion")
 	if(req.user.primaryEmail) {
 	db.deleteUser(req.user, function(result) {
@@ -342,7 +343,7 @@ app.get("/view/:level/:id", function (req, res) {
 	  }
   })
 
-app.get('/stats', checkAuth, function(req, res) {
+app.get('/stats', grl, checkAuth, function(req, res) {
 	
 	if(req.user.primaryEmail) {
 		db.getUser(req.user._id, function(resp, err) {
@@ -409,7 +410,7 @@ app.get('/balance', function(req, res) {
 	}
 });
 
-app.get('/gallery', checkAuth, function(req, res) {
+app.get('/gallery', grl, checkAuth, function(req, res) {
   	if(req.user) {
 		if(req.user.username) {
 			res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
@@ -483,12 +484,12 @@ app.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/');
 });
-app.get('/info', checkAuth, function(req, res) {
+app.get('/info', grl, checkAuth, function(req, res) {
 	//console.log(req.user
 	res.redirect("/")
 	//db.findOrCreate(req.user.provider, req.user)
 });
-app.get('/redeem/:code', checkAuth, function (req, res) {
+app.get('/redeem/:code', grl, checkAuth, function (req, res) {
 	let code = req.params["code"];
 	db.validCode(code, req.user, (isValid) => {
 		db.redeemCode(req.user, code, (success, amount) => {
@@ -510,7 +511,7 @@ app.get('/redeem/:code', checkAuth, function (req, res) {
 	});
 })
 
-app.get('/store', function(req,res) {
+app.get('/store', grl,  function(req,res) {
 	if(req.isAuthenticated()) {
 		if(req.user.primaryEmail) {
 			db.lastLogin(req.user, function(newBalance) {
