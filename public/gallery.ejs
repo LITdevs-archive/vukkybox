@@ -113,6 +113,20 @@
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
 <script>
+    const moveFallingThing = (ele, acceleration, ground) => {
+        let velocity = acceleration; // speed at a point in time
+        let positionY = 0; // where we are now
+        const render = () => {
+            positionY += velocity; // move our current position
+            velocity += acceleration; // increment our speed
+            if (ele.getBoundingClientRect().bottom < ground) {
+                ele.style.transform = `translateY(${Math.floor(positionY)}px)`;
+                requestAnimationFrame(render);
+            }
+            
+        };
+        requestAnimationFrame(render);
+    };
     let loaded = 0;
     let totalOwned = 0;
     let totalVukkies = <%=totalVukkies %>;
