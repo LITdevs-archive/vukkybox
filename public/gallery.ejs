@@ -155,9 +155,6 @@
         document.querySelector("#loading_data").style.display = "none";
         document.querySelector("#collection").style.display = "";
         document.getElementById("total_text").style.display = "";
-        document.querySelector(".clonedloader").forEach(function(node) {
-            node.remove();
-        })
     }
     function sortUpdate() {
         let selectedSort = document.querySelector("select").options[document.querySelector("select").selectedIndex].value;
@@ -243,7 +240,6 @@
             document.querySelector("#vukkyloadspinner").src = coolimage.src;
             let clonedLoader = document.querySelector("#vukkyloadspinner").cloneNode();
             clonedLoader.id = "";
-            clonedLoader.classList.add("clonedloader");
             document.body.appendChild(clonedLoader);
             moveFallingThing(clonedLoader, 0.5, document.documentElement.scrollHeight);
             if(loaded == totalOwned) loadingdone();
