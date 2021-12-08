@@ -25,6 +25,11 @@ window.addEventListener('load', (event) => {
             new Audio('https://vukkybox.com/resources/select.flac').play();
         }
     })
+    document.querySelectorAll(".purchase").forEach(function(node) {
+        node.onclick = function() {
+            new Audio('https://vukkybox.com/resources/purchase.wav').play();
+        }
+    })
     if(document.querySelector("#redeemCode")) {
         document.querySelector("#redeemCode").onclick = function() {
             let codename = prompt("Enter the code you would like to redeem.");
