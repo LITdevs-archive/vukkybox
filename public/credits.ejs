@@ -10,6 +10,7 @@
     <meta name="description" content="Want to know who helped with Vukkybox? Here you go!">
     <meta property="og:image" content="https://vukkybox.com/resources/icon.png">
     <audio preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
+    <audio id="selectSfx" preload="auto" src="/resources/select.flac"></audio>
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
  <div class="bg-opacity-10  bg-gray-100 w-full">
@@ -67,7 +68,7 @@
     </ul>
     <h2 class="text-2xl pt-8">Open source software</h2>
     Vukkybox uses the following NPM packages:<br>
-    <button class="button button-blue" onclick="document.querySelector('#deps').classList.remove('hidden'); this.classList = ['hidden']">Click to view</button>
+    <button class="button button-blue" onclick="document.querySelector('#selectSfx').play; document.querySelector('#deps').classList.remove('hidden'); this.classList = ['hidden']">Click to view</button>
     <ul id="deps" class="list-disc list-inside hidden"><li>Loading...</li></ul>
 </div>
 </body>
