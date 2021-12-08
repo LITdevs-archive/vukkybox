@@ -3,6 +3,7 @@ window.addEventListener('load', (event) => {
     if(!noAnim) {
         icon.classList.add("duration-150");
         icon.onclick = function(){
+            new Audio('https://vukkybox.com/resources/select.flac').play();
             icon.classList.add("animate-ping");
             setTimeout(() => {
                 icon.classList.remove("animate-ping");
