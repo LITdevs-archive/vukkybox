@@ -172,7 +172,7 @@
         } else if (selectedSort == "grav") {
             document.getElementById("total_text").innerHTML = "Oh no! My Vukkies! HELP!";
             document.querySelectorAll("a[vukkyid]").forEach(function(node) {
-                node.parentNode.querySelector("p").remove();
+                if(node.parentNode.querySelector("p")) node.parentNode.querySelector("p").remove();
                 node.style.position = "fixed";
                 moveFallingThing(node, 0.1, document.documentElement.scrollHeight);
             })
