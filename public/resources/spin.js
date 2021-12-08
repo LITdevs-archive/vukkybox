@@ -26,9 +26,9 @@ window.addEventListener('load', (event) => {
         }
     })
     document.querySelectorAll(".purchase").forEach(function(node) {
-        node.onclick = function() {
+        node.addEventListener(click, function() {
             new Audio('https://vukkybox.com/resources/purchase.wav').play();
-        }
+        })
     })
     if(document.querySelector("#redeemCode")) {
         document.querySelector("#redeemCode").onclick = function() {
