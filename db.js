@@ -523,7 +523,7 @@ async function ethermineRVN() {
 }	
 
 function vukkyTierCount(vukkies) {
-	const vukkydata = require("./public/resources/vukkies.json");
+	const vukkydata = require("./public/vukkies.json");
 	let theOutput = {};
 	Object.entries(vukkydata.rarity).forEach(function(rarity) {
 		Object.entries(rarity[1]).forEach(function(vukky) {
