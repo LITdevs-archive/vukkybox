@@ -65,6 +65,13 @@
       <li>Vukky</li>
       <li>Skelly</li>
     </ul>
+    <h2 class="text-2xl pt-8">Open source software</h2>
+    Vukkybox uses the following NPM packages:
+    <ul id="deps" class="list-disc list-inside"><li>Loading...</li></ul>
 </div>
 </body>
+<script>
+  const devDeps = <%= ddeps %>
+  const normalDeps = <%= deps %>
+</script>
 </html>
