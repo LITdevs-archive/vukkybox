@@ -244,7 +244,7 @@
             clonedLoader.classList.add("clonedloader");
             clonedLoader.style.position = "fixed";
             document.body.appendChild(clonedLoader);
-            moveFallingThing(clonedLoader, 2, document.documentElement.scrollHeight);
+            moveFallingThing(clonedLoader, 0.5, document.documentElement.scrollHeight);
             if(loaded == totalOwned) loadingdone();
         }
     })
