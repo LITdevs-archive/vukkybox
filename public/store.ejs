@@ -98,7 +98,9 @@
 	</body>
 	<script>
 	function buyBox(id) {
-		window.location="/buyBox/"+id;
+		setTimeout(() => {
+			window.location="/buyBox/"+id;
+		}, 1000);
 	}
 	</script>
 </html>
