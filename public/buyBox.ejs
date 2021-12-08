@@ -7,14 +7,6 @@
         <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
         <title>Vukkybox - Buy Box</title>
         <link rel="preload" href="/resources/unboxspinning.ogg" as="audio">
-        <link rel="preload" href="/resources/unbox.wav" as="audio">
-        <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
-        <link rel="preload" href="/resources/unboxrare.wav" as="audio">
-        <link rel="preload" href="/resources/unboxunique.wav" as="audio">
-	    <link rel="preload" href="/resources/unboxgnome.wav" as="audio">
-        <link rel="preload" href="/resources/unboxsussy.mp3" as="audio">
-        <link rel="preload" href="/resources/unboxnudge.mp3" as="audio">
-        <link rel="preload" href="/resources/unboxbroken.wav" as="audio">
         <link rel="preload" href="/resources/tada.ogg" as="audio">
         <link rel="preload" href="/resources/purchase.wav" as="audio">
         <link rel="preload" href="https://vukkybox.com/resources/<%=boxType %>vukkybox.png" as="image">
@@ -128,6 +120,7 @@
                 if(vukkyID == 20 || vukkyID == 100 || vukkyID == 108 || vukkyID == 128 || vukkyID == 220) document.querySelector("#unboxSfx").src = "/resources/unboxsussy.mp3"
                 if(vukkyID == 242) document.querySelector("#unboxSfx").src = "/resources/unboxnudge.mp3"
                 if(vukkyID == 109 || vukkyID == 110) document.querySelector("#unboxSfx").src = "/resources/unboxbroken.wav"
+                if(vukkyID == 240) document.querySelector("#unboxSfx").src = "/resources/unboxnancy.mp3"
 		        <%if (dupe) { %>document.querySelector("#unboxSfx").playbackRate = 2<% } %>
                 document.querySelector("#unboxSfx").play();
                 document.querySelector("#share").classList.remove("hidden");

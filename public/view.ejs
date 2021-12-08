@@ -5,7 +5,7 @@
         <link href="https://vukkybox.com/resources/style.css" rel="stylesheet">
         <script src="https://vukkybox.com/resources/spin.js"></script>
         <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
-        <title>Vukkybox - <%=JSON.parse(vukky).name %></title>
+        <title>Vukkybox - <%=JSON.parse(vukky).name %> (#<%=vukkyId %>)</title>
         <meta name="title" content="<%=JSON.parse(vukky).name %> (#<%=vukkyId %>)">
         <meta name="description" content="<%=JSON.parse(vukky).description %>">
         <meta property="og:image" content="<%=JSON.parse(vukky).url %>">
@@ -90,6 +90,7 @@
         if(vukkyID == 20 || vukkyID == 100 || vukkyID == 108 || vukkyID == 128 || vukkyID == 220) document.querySelector("audio").src = "/resources/unboxsussy.mp3"
         if(vukkyID == 242) document.querySelector("audio").src = "/resources/unboxnudge.mp3"
         if(vukkyID == 109 || vukkyID == 110) document.querySelector("audio").src = "/resources/unboxbroken.wav"
+        if(vukkyID == 240) document.querySelector("audio").src = "/resources/unboxnancy.mp3"
         document.querySelector("audio").play();
     </script>
 </html>

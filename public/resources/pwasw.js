@@ -5,7 +5,7 @@ self.addEventListener('install', (event)=>{
       for (let name of names)
           caches.delete(name);
     }),
-    caches.open('v10').then((cache)=>{
+    caches.open('v11').then((cache)=>{
       return cache.addAll([
         "/resources/offline.html",
         "/resources/loading.ogg",
@@ -26,7 +26,8 @@ self.addEventListener('install', (event)=>{
         "/resources/menumusic.ogg",
         "/resources/select.flac",
         "/resources/unboxbroken.wav",
-        "/resources/purchase.wav"
+        "/resources/purchase.wav",
+        "/resources/unboxnancy.mp3"
       ]);
     })
   );
