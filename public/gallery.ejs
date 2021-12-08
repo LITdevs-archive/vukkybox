@@ -165,6 +165,7 @@
             document.querySelector("#iddcollection").style.display = "";
         } else if (selectedSort == "grav") {
             document.querySelectorAll("a[vukkyid]").forEach(function(node) {
+                node.style.position = "fixed";
                 moveFallingThing(node, 0.1, document.documentElement.scrollHeight);
             })
         }
