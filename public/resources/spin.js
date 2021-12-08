@@ -3,7 +3,6 @@ window.addEventListener('load', (event) => {
     if(!noAnim) {
         icon.classList.add("duration-150");
         icon.onclick = function(){
-            new Audio('https://vukkybox.com/resources/select.flac').play();
             icon.classList.add("animate-ping");
             setTimeout(() => {
                 icon.classList.remove("animate-ping");
@@ -21,6 +20,11 @@ window.addEventListener('load', (event) => {
     document.querySelector("#balance").onmouseout = function() {
         document.querySelector("#balance").style.cursor = "";
     };
+    document.querySelectorAll("a").forEach(function(node) {
+        node.onclick = function() {
+            new Audio('https://vukkybox.com/resources/select.flac').play();
+        }
+    })
     if(document.querySelector("#redeemCode")) {
         document.querySelector("#redeemCode").onclick = function() {
             let codename = prompt("Enter the code you would like to redeem.");
