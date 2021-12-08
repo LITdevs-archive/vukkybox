@@ -65,7 +65,7 @@
     localStorage.setItem(e.target.getAttribute("setting"), e.target.checked)
   }
   document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector("input[setting]").forEach(function(node) {
+    document.querySelectorAll("input[setting]").forEach(function(node) {
       if(localStorage.getItem(node.getAttribute("setting")) == true) {
         node.checked = true;
       }
