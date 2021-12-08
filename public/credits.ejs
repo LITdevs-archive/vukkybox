@@ -74,11 +74,11 @@
   const devDeps = <%-JSON.stringify(ddeps)%>
   const normalDeps = <%-JSON.stringify(deps)%>
   document.querySelector("#deps").innerHTML = "";
-  Object.keys(normalDeps).forEach(function(deppy) {
-    document.querySelector("#deps").innerHTML += `<li><a href="https://npmjs.com/${deppy}" class="text-blue-500">${deppy}</a></li>`
+  Object.entries(normalDeps).forEach(function(deppy) {
+    document.querySelector("#deps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
   })
-  Object.keys(devDeps).forEach(function(deppy) {
-    document.querySelector("#deps").innerHTML += `<li><a href="https://npmjs.com/${deppy}" class="text-blue-500">${deppy}</a></li>`
+  Object.entries(devDeps).forEach(function(deppy) {
+    document.querySelector("#deps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
   })
 </script>
 </html>
