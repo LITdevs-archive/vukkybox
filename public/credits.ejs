@@ -71,7 +71,7 @@
 </div>
 </body>
 <script>
-  const devDeps = <%= ddeps %>
-  const normalDeps = <%= deps %>
+  const devDeps = <%-JSON.stringify(ddeps)%>
+  const normalDeps = <%-JSON.stringify(deps)%>
 </script>
 </html>
