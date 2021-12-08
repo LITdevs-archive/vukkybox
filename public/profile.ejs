@@ -66,7 +66,7 @@
   }
   document.addEventListener('load', function() {
     document.querySelectorAll("input[setting]").forEach(function(node) {
-      if(localStorage.getItem(node.getAttribute("setting")) == true) {
+      if(localStorage.getItem(node.getAttribute("setting")) == "true") {
         node.checked = true;
       }
     })
