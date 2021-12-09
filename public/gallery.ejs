@@ -56,7 +56,7 @@
     </nav>
 </div>
 
-<span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<img id="vukkyloadspinner" class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif"><br><pre class="ml-5">Printed <span id="vukkyloadcount">0/0</span>: <span id="vukkyloadname">Sending requests...</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
+<span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<img id="vukkyloadspinner" class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.gif"><br><pre class="ml-5">Printed <span id="vukkyloadcount">0/0</span>: <span id="vukkyloadname">Sending requests...</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()">Skip</button><br></span>
 <p class="text-bold text-2xl ml-5 mt-5" id="total_text" style="display: none;"><select style="color: black;" onchange="sortUpdate()">
     <option value="rarity">Sort by Rarity</option>
 	<option value="ida">Sort by ID (Ascending)</option>
@@ -230,7 +230,6 @@
         document.querySelector("#iddcollection").innerHTML += vukky.outerHTML
     })
     document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
-    document.querySelector("#loadskip").style.display = "";
     window.addEventListener('load', loadingdone)
     document.querySelector("#vukkyloadcount").innerHTML = `0/${totalOwned}`;
     document.querySelectorAll("#collection img").forEach(function(coolimage) {
