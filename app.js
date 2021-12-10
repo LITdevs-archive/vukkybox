@@ -266,7 +266,7 @@ app.get('/delete', grl, checkAuth, function(req,res) {
 })
 
 app.post("/delete", grl, checkAuth, function(req, res) {
-	return res.send("severe bug. disabled temporarily, contact us for manual deletion")
+	return res.send("Due to a bug we have no idea how works where random accounts would be deleted instead of yours, this feature is currently disabled.<br>To delete your account, please contact us at the following email address: contact@vukkybox.com")
 	if(req.user.primaryEmail) {
 	db.deleteUser(req.user, function(result) {
 		if(result == 500) {
