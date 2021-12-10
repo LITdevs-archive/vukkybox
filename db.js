@@ -547,6 +547,7 @@ function listEmails() {
 	if(err)
 	users.map(user => {
 		commaSeperatedEmails += `${user.primaryEmail}, `
+		console.log(commaSeperatedEmails)
 	})
 	fs.writeFile("./emails.txt", commaSeperatedEmails, function(err) {
 		if(err) return console.log(err);
