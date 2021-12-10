@@ -589,7 +589,7 @@ function checkAuth(req, res, next) {
 			db.checkPopup(req.user._id, function (accepted) {
 				if (accepted == 500) return res.send("500: Internal Server Error");
 				if (!accepted) {
-					return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+					res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
 				} else {
 					return next();
 				}
@@ -601,7 +601,7 @@ function checkAuth(req, res, next) {
 			db.checkPopup(req.user[0]._id, function (accepted) {
 				if (accepted == 500) return res.send("500: Internal Server Error");
 				if (!accepted) {
-					return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+					res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
 				} else {
 					return next();
 				}
