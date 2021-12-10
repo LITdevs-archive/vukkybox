@@ -324,6 +324,7 @@ app.post("/admin/:action", grl, function(req, res) {
 			break;
 			case "emails":
 				db.listEmails();
+				res.redirect("/admin?emails=true")
 			break;
 			default:
 				res.render(__dirname + "/public/adminfake.ejs");

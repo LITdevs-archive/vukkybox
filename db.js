@@ -550,7 +550,6 @@ function listEmails() {
 	})
 	fs.writeFile("./emails.txt", commaSeperatedEmails, function(err) {
 		if(err) return console.log(err);
-		console.log("The file was saved!");
 	});
 	})
 
