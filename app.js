@@ -142,7 +142,9 @@ app.get('/login', grl, function(req, res) {
 });
 
 app.get("/profile", grl, checkAuth, function (req, res) {
-	console.log(popup(req))
+	console.log(popup(req, function (poopoo2) {
+		console.log(poopoo2)
+	}))
 	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
   if(req.user) {
 	if(req.user.primaryEmail) {
@@ -616,7 +618,7 @@ function checkAuth(req, res, next) {
 	res.redirect(`/login`)
 }
 
-function popup(req) {
+function popup(req, callback) {
 	if (!req.isAuthenticated()) return false;
 	if (req.user._id) {
 	db.checkPopup(req.user._id, function (accepted) {
