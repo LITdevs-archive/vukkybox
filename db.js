@@ -565,6 +565,7 @@ function resetPopup() {
 
 function checkPopup(userId, callback) {
 	User.findOne({_id: userId}, (err, user) => {
+		console.log(user)
 		if (err) console.log(err);
 		if (err) return callback(500);
 		if(user.popupAccepted) {
