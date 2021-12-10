@@ -114,6 +114,32 @@ app.set('trust proxy', 1);
 db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
 db.ethermineETH() 
 
+function popupMid(req, res, next) {
+	if (!req.isAuthenticated()) {
+		console.log("not authenticated, skipping popup")
+		return next()
+	}
+	if (req.user._id) {
+		db.checkPopup(req.user._id, function (accepted) {
+			if (accepted == 500) return res.send("500: Internal Server Error");
+			if (!accepted) {
+				res.redirect("/popup")
+			} else {
+				return next()
+			}
+		})
+	} else {
+		db.checkPopup(req.user[0]._id, function (accepted) {
+			if (accepted == 500) return res.send("500: Internal Server Error");
+			if (!accepted) {
+				res.redirect("/popup")
+			} else {
+				return next()
+			}
+		})
+	}
+}
+
 const grl = rateLimit({
 	windowMs: 100,
 	max: 5,
@@ -141,9 +167,9 @@ app.get('/login', grl, function(req, res) {
 	}
 });
 
-app.get("/profile", grl, checkAuth, function (req, res) {
-	console.log(popup(req))
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+app.get("/profile", grl, checkAuth, popupMid, function (req, res) {
+	console.log( )
+	  
   if(req.user) {
 	if(req.user.primaryEmail) {
 	  
@@ -157,7 +183,7 @@ app.get("/profile", grl, checkAuth, function (req, res) {
 });
 
 app.get("/editProfile", grl, checkAuth, function (req, res) { 
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
   if(req.user.primaryEmail) {
 	res.render(__dirname + '/public/editProfile.ejs', {csrfToken: req.csrfToken(), user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 	} else {
@@ -168,7 +194,7 @@ app.get("/editProfile", grl, checkAuth, function (req, res) {
 })
 
 app.post("/editProfile", grl ,checkAuth, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	if(req.body.username != "") {
 	  db.changeUsername(req.user, req.body.username)
 	  req.session.passport.user.username = req.body.username
@@ -193,7 +219,7 @@ const boxLimiter = rateLimit({
 	}
 });
 app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky", "shark"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe) {
@@ -263,7 +289,7 @@ app.post("/delete", grl, checkAuth, function(req, res) {
 })
 
 app.get("/admin", grl, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/adminfake.ejs");
@@ -276,17 +302,17 @@ app.get("/admin", grl, function(req, res) {
 })
 
 app.get("/admin/**", grl, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	res.render(__dirname + "/public/adminfake.ejs");
 })
 
 app.get("/adminauthed", grl, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	res.render(__dirname + "/public/adminfakeauthed.ejs");
 })
 
 app.get("/adminfailed",grl,  function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	res.render(__dirname + "/public/adminfakefailed.ejs");
 })
 
@@ -335,7 +361,7 @@ app.post("/admin/:action", grl, function(req, res) {
 				res.redirect("/admin?emails=true")
 			break;
 			case "popup_reset":
-				db.resetpopup(req);
+				db.reset ;
 				res.redirect("/admin?popup=true")
 			break;
 			default:
@@ -348,7 +374,7 @@ app.post("/admin/:action", grl, function(req, res) {
 });
 
 app.get("/view/:level/:id", grl, function (req, res) { 
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	if(!vukkyJson.levels[req.params.level]) return res.send("That doesn't even exist, what are you doing")
 	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.send("That doesn't even exist, what are you doing")
 	if(!req.user) return res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: null, username: "", gravatarHash: null})
@@ -365,7 +391,7 @@ app.get("/view/:level/:id", grl, function (req, res) {
   })
 
 app.get('/stats', grl, checkAuth, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	
 	if(req.user.primaryEmail) {
 		db.getUser(req.user._id, function(resp, err) {
@@ -402,7 +428,7 @@ app.get('/', grl, function(req, res) {
 });
 
 app.get('/balance', grl, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
@@ -434,7 +460,7 @@ app.get('/balance', grl, function(req, res) {
 });
 
 app.get('/gallery', grl, checkAuth, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
   	if(req.user) {
 		if(req.user.username) {
 			res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
@@ -447,7 +473,7 @@ app.get('/gallery', grl, checkAuth, function(req, res) {
 });
 
 app.get("/guestgallery/:userId", grl, function(req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
 		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username == user.primaryEmail ? "A Vukkybox User" : user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
@@ -515,7 +541,7 @@ app.get('/info', grl, checkAuth, function(req, res) {
 	//db.findOrCreate(req.user.provider, req.user)
 });
 app.get('/redeem/:code', grl, checkAuth, function (req, res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	let code = req.params["code"];
 	db.validCode(code, req.user, (isValid) => {
 		db.redeemCode(req.user, code, (success, amount) => {
@@ -547,7 +573,7 @@ app.post('/popup', grl, checkAuth, function (req, res) {
 })
 
 app.get('/store', grl,  function(req,res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	if(req.isAuthenticated()) {
 		if(req.user.primaryEmail) {
 			db.lastLogin(req.user, function(newBalance) {
@@ -569,7 +595,7 @@ app.get('/store', grl,  function(req,res) {
 });
 
 app.get('/credits', grl,  function(req,res) {
-	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	  
 	const deps = require("./package.json").dependencies;
 	const ddeps = require("./package.json").devDependencies;
 	if(req.isAuthenticated()) {
@@ -614,31 +640,6 @@ function checkAuth(req, res, next) {
 	}
 	req.session.redirectTo = req.path;
 	res.redirect(`/login`)
-}
-
-function popup(req) {
-	if (!req.isAuthenticated()) return false;
-	if (req.user._id) {
-	db.checkPopup(req.user._id, function (accepted) {
-		if (accepted == 500) return res.send("500: Internal Server Error");
-		if (!accepted) {
-			console.log("User has not accepted popup yet.")
-			return true
-		} else {
-			console.log("User has accepted popup.")
-			return false
-		}
-	})
-} else {
-	db.checkPopup(req.user[0]._id, function (accepted) {
-		if (accepted == 500) return res.send("500: Internal Server Error");
-		if (!accepted) {
-			return true
-		} else {
-			return false
-		}
-	})
-}
 }
 
 app.get('/sus', function(req, res){
