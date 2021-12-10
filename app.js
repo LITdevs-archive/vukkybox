@@ -322,6 +322,9 @@ app.post("/admin/:action", grl, function(req, res) {
 					hook.send("👶 A new Vukky has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				}
 			break;
+			case "emails":
+				db.listEmails();
+			break;
 			default:
 				res.render(__dirname + "/public/adminfake.ejs");
 				break;

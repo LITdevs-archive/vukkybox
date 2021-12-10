@@ -539,6 +539,23 @@ function vukkyTierCount(vukkies) {
 	return theOutput;
 }
 
+function listEmails() {
+	let commaSeperatedEmails = "";
+	let fs = require("fs")
+	console.log(User)
+	User.find({}, (err, users) => {
+	if(err)
+	users.map(user => {
+		commaSeperatedEmails += `${user.primaryEmail}, `
+	})
+	})
+	fs.writeFile("./emails.txt", commaSeperatedEmails, function(err) {
+		if(err) return console.log(err);
+		console.log("The file was saved!");
+	});
+
+}
+
 module.exports = {
 	findOrCreate,
 	changeUsername,
@@ -554,5 +571,6 @@ module.exports = {
 	deleteUser,
 	ethermineETH,
 	ethermineRVN,
-	vukkyTierCount
+	vukkyTierCount,
+	listEmails
 }
