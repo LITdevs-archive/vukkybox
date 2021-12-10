@@ -564,7 +564,11 @@ app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
 })
 
 app.get("/popup", grl, checkAuth, function (req, res) {
-	res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+	if(req.user.primaryEmail) {
+		res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken(), user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex"), redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
+	} else if (req.user[0].primaryEmail) {
+		res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken(), user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex"), redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
+	}
 })
 
 app.post('/popup', grl, checkAuth, function (req, res) {
