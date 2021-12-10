@@ -544,7 +544,8 @@ function listEmails() {
 	let fs = require("fs")
 	console.log(User)
 	User.find({}, (err, users) => {
-	if(err)
+		console.log("here")
+		console.log(users.length)
 	users.map(user => {
 		commaSeperatedEmails += `${user.primaryEmail}, `
 		console.log(commaSeperatedEmails)
