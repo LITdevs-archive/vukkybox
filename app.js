@@ -182,7 +182,7 @@ app.get("/profile", grl, checkAuth, popupMid, function (req, res) {
 	  }
 });
 
-app.get("/editProfile", grl, checkAuth, function (req, res) { 
+app.get("/editProfile", grl, checkAuth, popupMid, function (req, res) { 
 	  
   if(req.user.primaryEmail) {
 	res.render(__dirname + '/public/editProfile.ejs', {csrfToken: req.csrfToken(), user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
@@ -218,7 +218,7 @@ const boxLimiter = rateLimit({
 		}
 	}
 });
-app.get('/buyBox/:data', boxLimiter, checkAuth, (req, res) => {
+app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 	  
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky", "shark"]
 		if(validBoxes.includes(req.params.data)) {
@@ -288,7 +288,7 @@ app.post("/delete", grl, checkAuth, function(req, res) {
 	}
 })
 
-app.get("/admin", grl, function(req, res) {
+app.get("/admin", grl, popupMid, function(req, res) {
 	  
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
@@ -301,17 +301,17 @@ app.get("/admin", grl, function(req, res) {
 	}
 })
 
-app.get("/admin/**", grl, function(req, res) {
+app.get("/admin/**", grl, popupMid, function(req, res) {
 	  
 	res.render(__dirname + "/public/adminfake.ejs");
 })
 
-app.get("/adminauthed", grl, function(req, res) {
+app.get("/adminauthed", grl, popupMid, function(req, res) {
 	  
 	res.render(__dirname + "/public/adminfakeauthed.ejs");
 })
 
-app.get("/adminfailed",grl,  function(req, res) {
+app.get("/adminfailed",grl, popupMid,  function(req, res) {
 	  
 	res.render(__dirname + "/public/adminfakefailed.ejs");
 })
@@ -373,7 +373,7 @@ app.post("/admin/:action", grl, function(req, res) {
 	}
 });
 
-app.get("/view/:level/:id", grl, function (req, res) { 
+app.get("/view/:level/:id", grl, popupMid, function (req, res) { 
 	  
 	if(!vukkyJson.levels[req.params.level]) return res.send("That doesn't even exist, what are you doing")
 	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.send("That doesn't even exist, what are you doing")
@@ -390,7 +390,7 @@ app.get("/view/:level/:id", grl, function (req, res) {
 	  }
   })
 
-app.get('/stats', grl, checkAuth, function(req, res) {
+app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
 	  
 	
 	if(req.user.primaryEmail) {
@@ -406,7 +406,7 @@ app.get('/stats', grl, checkAuth, function(req, res) {
 	}
 })
 
-app.get('/', grl, function(req, res) {
+app.get('/', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
@@ -427,7 +427,7 @@ app.get('/', grl, function(req, res) {
 	}
 });
 
-app.get('/balance', grl, function(req, res) {
+app.get('/balance', grl, popupMid, function(req, res) {
 	  
 	req.session.redirectTo = "/"
   	if(req.user) {
@@ -459,7 +459,7 @@ app.get('/balance', grl, function(req, res) {
 	}
 });
 
-app.get('/gallery', grl, checkAuth, function(req, res) {
+app.get('/gallery', grl, checkAuth, popupMid, function(req, res) {
 	  
   	if(req.user) {
 		if(req.user.username) {
@@ -472,7 +472,7 @@ app.get('/gallery', grl, checkAuth, function(req, res) {
 	}
 });
 
-app.get("/guestgallery/:userId", grl, function(req, res) {
+app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 	  
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
@@ -540,7 +540,7 @@ app.get('/info', grl, checkAuth, function(req, res) {
 	res.redirect("/")
 	//db.findOrCreate(req.user.provider, req.user)
 });
-app.get('/redeem/:code', grl, checkAuth, function (req, res) {
+app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
 	  
 	let code = req.params["code"];
 	db.validCode(code, req.user, (isValid) => {
@@ -563,7 +563,7 @@ app.get('/redeem/:code', grl, checkAuth, function (req, res) {
 	});
 })
 
-app.post('/popup', grl, checkAuth, function (req, res) {
+app.post('/popup', grl, checkAuth, popupMid, function (req, res) {
 	if(req.body.popup != "yes") return res.redirect("/delete")
 	if(req.user._id) {
 		db.acceptPopup(req.user._id)
@@ -572,7 +572,7 @@ app.post('/popup', grl, checkAuth, function (req, res) {
 	}
 })
 
-app.get('/store', grl,  function(req,res) {
+app.get('/store', grl, popupMid, function(req,res) {
 	  
 	if(req.isAuthenticated()) {
 		if(req.user.primaryEmail) {
@@ -594,7 +594,7 @@ app.get('/store', grl,  function(req,res) {
 	}
 });
 
-app.get('/credits', grl,  function(req,res) {
+app.get('/credits', grl, popupMid, function(req,res) {
 	  
 	const deps = require("./package.json").dependencies;
 	const ddeps = require("./package.json").devDependencies;
