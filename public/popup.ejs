@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<title>Vukkybox - Confirmation</title>
-<form method="post" action="https://vukkybox.com/popup">
-    <h1>Do you agree to our <a href="https://vukkybox.com/terms">Terms of Service</a> and <a href="https://vukkybox.com/privacy">Privacy Policy</a>?</h1>
-    <input type="hidden" name="_csrf" value="<%=csrfToken %>">
-    <input type="radio" id="yes" name="popup" value="yes" required>
-    <label for="yes">Yes, I accept the Terms of Service and the Privacy Policy</label><br>
-    <input type="radio" id="no" name="popup" value="no" required>
-    <label for="no">No, I do not accept and would like to delete my account</label><br>
-    <input type="submit" value="Send Confirmation" />
-</form>
-<small>You are probably seeing this because we updated one or both of the above documents.</small>
+<html lang="en"  >
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./resources/style.css" rel="stylesheet">
+        <script src="./resources/spin.js"></script>
+        <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+        <title>Vukkybox - Confirmation</title>
+        <meta name="title" content="Vukkybox - Confirmation">
+        <meta name="description" content="Confirm you accept policy changes.">
+        <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+        <audio preload="auto" loop autoplay src="/resources/admin.ogg"></audio>
+    </head>
+    <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
+        
+ <div class="bg-opacity-10  bg-gray-100 w-full">
+        <nav class="flex justify-between">
+            <div class="inline-flex">
+                <a href="/"><img id="icon" src="resources/icons/512.png" class="max-h-20 m-2" /></a>
+                <% if(username != "") { %>
+                  <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
+                <% } %>
+            </div>
+            <ul class="flex flex-row p-10">
+                <!-- <li class="pr-5"><a> Services </a></li>
+                <li class="pr-5"><a>Porfolio</a></li>
+                <li class="pr-5"><a>About</a></li> -->
+                <% if(username != "") { %>
+                  <div class="dropdown">
+                    
+                    <li class="pr-5"><a><%= username%></a></li>
+                    <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
+                    <div class="dropdown-content text-white">
+                      <a class="text-white" href="profile">Profile</a>
+                      <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
+                      <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
+                      <a class="text-white" href="logout">Log Out</a>
+                    </div>
+                  </div>
+                <% } else {%>
+                    <li><a href="/login">Log In</a></li>
+                <% } %>
+                  
+            </ul>
+        </nav>
+    </div>
+    <form method="post" action="https://vukkybox.com/popup">
+        <h1>Do you agree to our <a href="https://vukkybox.com/terms">Terms of Service</a> and <a href="https://vukkybox.com/privacy">Privacy Policy</a>?</h1>
+        <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+        <input type="radio" id="yes" name="popup" value="yes" required>
+        <label for="yes">Yes, I accept the Terms of Service and the Privacy Policy</label><br>
+        <input type="radio" id="no" name="popup" value="no" required>
+        <label for="no">No, I do not accept and would like to delete my account</label><br>
+        <input type="submit" value="Send Confirmation" />
+    </form>
+    <small>You are probably seeing this because we updated one or both of the above documents.</small>
+	</body>
 </html>
