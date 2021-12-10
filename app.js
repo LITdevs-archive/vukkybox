@@ -571,8 +571,10 @@ app.post('/popup', grl, checkAuth, function (req, res) {
 	if(req.body.popup != "yes") return res.redirect("/delete")
 	if(req.user._id) {
 		db.acceptPopup(req.user._id)
+		res.redirect("/")
 	} else {
 		db.acceptPopup(req.user[0]._id)
+		res.redirect("/")
 	}
 })
 
