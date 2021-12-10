@@ -232,7 +232,7 @@ app.get('/terms', function(req, res){
 });
 
 app.get('/delete', grl, checkAuth, function(req,res) {
-	res.render(__dirname + "/public/deleteConfirm.ejs")
+	res.render(__dirname + "/public/deleteConfirm.ejs", {csrfToken: req.csrfToken()})
 })
 
 app.post("/delete", grl, checkAuth, function(req, res) {
@@ -523,6 +523,15 @@ app.get('/redeem/:code', grl, checkAuth, function (req, res) {
 	});
 })
 
+app.post('/popup', grl, checkAuth, function (req, res) {
+	if(req.body.popup != "yes") return res.redirect("/delete")
+	if(req.user._id) {
+		db.acceptPopup(req.user._id)
+	} else {
+		db.acceptPopup(req.user[0]._id)
+	}
+})
+
 app.get('/store', grl,  function(req,res) {
 	if(req.isAuthenticated()) {
 		if(req.user.primaryEmail) {
@@ -577,10 +586,22 @@ function checkAuth(req, res, next) {
 			db.lastLogin(req.user, function(newBalance) {
 				req.session.passport.user.balance = newBalance
 			})
+			db.checkPopup(req.user._id, function (accepted) {
+				if (accepted == 500) return res.send("500: Internal Server Error");
+				if (!accepted) {
+					return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+				}
+			})
 			return next();
 		} else {
 			db.lastLogin(req.user[0], function(newBalance) {
 				req.session.passport.user[0].balance = newBalance
+			})
+			db.checkPopup(req.user[0]._id, function (accepted) {
+				if (accepted == 500) return res.send("500: Internal Server Error");
+				if (!accepted) {
+					return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+				}
 			})
 			return next();
 		}
