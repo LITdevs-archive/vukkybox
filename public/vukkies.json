@@ -745,17 +745,17 @@
 			},
 			"283": {
 				"name": "Paddling Vukky",
-				"url": "https://vukkybox.com/resources/paddlevukky.png",
+				"url": "https://vukkybox.com/resources/paddlevukky.webp",
 				"description": "This was made by Silje! This Vukky is going to be paddling very far."
 			},
 			"284": {
 				"name": "Swimming Vukky",
-				"url": "https://vukkybox.com/resources/swimmingvukky.png",
+				"url": "https://vukkybox.com/resources/swimmingvukky.webp",
 				"description": "This was made by Silje! *splish* *splosh*"
 			},
 			"285": {
 				"name": "Raindeer Vukky",
-				"url": "https://vukkybox.com/resources/raindeervukky.png",
+				"url": "https://vukkybox.com/resources/raindeervukky.webp",
 				"description": "This was made by IngvildO. Kinda suspicious."
 			}
 		},
@@ -907,12 +907,12 @@
 			},
 			"278": {
 				"name": "Tuxxy",
-				"url": "https://vukkybox.com/resources/tuxxy.png",
+				"url": "https://vukkybox.com/resources/tuxxy.webp",
 				"description": "The mascot of Vukkux!"
 			},
 			"279": {
 				"name": "SuperTuxxy",
-				"url": "https://vukkybox.com/resources/supertuxxy.png",
+				"url": "https://vukkybox.com/resources/supertuxxy.webp",
 				"description": "*kill.wav*"
 			}
 		},
@@ -1105,7 +1105,7 @@
 			},
 			"85": {
 				"name": "Tam's Pukky",
-				"url": "https://vukkybox.com/resources/pukkies/tam.gif",
+				"url": "https://vukkybox.com/resources/pukkies/tam.webp",
 				"description": "This Pukky belongs to Tam"
 			},
 			"86": {
@@ -1315,7 +1315,7 @@
 			},
 			"208": {
 				"name": "Ender_'s Pukky",
-				"url": "https://vukkybox.com/resources/pukkies/ender.gif",
+				"url": "https://vukkybox.com/resources/pukkies/ender.webp",
 				"description": "This Pukky belongs to Ender_"
 			},
 			"247": {
@@ -1460,22 +1460,22 @@
 			},
 			"277": {
 				"name": "Midofey's Pukky",
-				"url": "https://vukkybox.com/resources/pukkies/midofey.png",
+				"url": "https://vukkybox.com/resources/pukkies/midofey.webp",
 				"description": "This Pukky belongs to Midofey"
 			},
 			"280": {
 				"name": "\\\\\\'s Pukky",
-				"url": "https://vukkybox.com/resources/pukkies/slash.png",
+				"url": "https://vukkybox.com/resources/pukkies/slash.webp",
 				"description": "This Pukky belongs to \\\\\\"
 			},
 			"281": {
 				"name": "Sydney's Pukky",
-				"url": "https://vukkybox.com/resources/pukkies/sydneypukkyone.png",
+				"url": "https://vukkybox.com/resources/pukkies/sydneypukkyone.webp",
 				"description": "This Pukky belongs to sydney"
 			},
 			"282": {
 				"name": "Sydney's Other Pukky",
-				"url": "https://vukkybox.com/resources/pukkies/sydneypukkytwo.png",
+				"url": "https://vukkybox.com/resources/pukkies/sydneypukkytwo.webp",
 				"description": "This Pukky also belongs to Sydney"
 			}
 		}
