@@ -105,7 +105,7 @@
 		event.srcElement.disabled = true;
 		setTimeout(() => {
 			window.location="/buyBox/"+id;
-		}, localStorage.getItem("kachingOff") != "true" ? 1000 : 0);
+		}, localStorage.getItem("kachingOn") != "false" ? 1000 : 0);
 	}
 	</script>
 </html>
