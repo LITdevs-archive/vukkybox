@@ -36,7 +36,8 @@ db.once('open', function() {
 	boxesOpened: Number,
 	codesRedeemed: Number,
 	uniqueVukkiesGot: Number,
-	RVNid: String
+	RVNid: String,
+	popupAccepted: Boolean
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
@@ -72,7 +73,8 @@ function findOrCreate(service, profile, callback) {
 						loginDaily: Date.now(),
 						boxesOpened: 0,
 						codesRedeemed: 0,
-						uniqueVukkiesGot: 0
+						uniqueVukkiesGot: 0,
+						popupAccepted: true
 
 					})
 					user.save(function (err, user) {
@@ -102,7 +104,8 @@ function findOrCreate(service, profile, callback) {
 						loginDaily: Date.now(),
 						boxesOpened: 0,
 						codesRedeemed: 0,
-						uniqueVukkiesGot: 0
+						uniqueVukkiesGot: 0,
+						popupAccepted: true
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -131,7 +134,8 @@ function findOrCreate(service, profile, callback) {
 						loginDaily: Date.now(),
 						boxesOpened: 0,
 						codesRedeemed: 0,
-						uniqueVukkiesGot: 0
+						uniqueVukkiesGot: 0,
+						popupAccepted: true
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -164,7 +168,8 @@ function findOrCreate(service, profile, callback) {
 						loginDaily: Date.now(),
 						boxesOpened: 0,
 						codesRedeemed: 0,
-						uniqueVukkiesGot: 0
+						uniqueVukkiesGot: 0,
+						popupAccepted: true
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -425,6 +430,7 @@ function deleteUser(profile, callback) {
 }
 
 const fetch = require('node-fetch');
+const { updateStrings } = require('yargs');
 
 async function ethermineETH() {
     setInterval(async function() {
@@ -542,19 +548,40 @@ function vukkyTierCount(vukkies) {
 function listEmails() {
 	let commaSeperatedEmails = "";
 	let fs = require("fs")
-	console.log(User)
 	User.find({}, (err, users) => {
-		console.log("here")
-		console.log(users.length)
 	users.map(user => {
 		commaSeperatedEmails += `${user.primaryEmail}, `
-		console.log(commaSeperatedEmails)
 	})
 	fs.writeFile("./emails.txt", commaSeperatedEmails, function(err) {
 		if(err) return console.log(err);
 	});
 	})
 
+}
+
+function resetPopup() {
+	User.updateMany({}, {$set: {popupAccepted: false}})
+}
+
+function checkPopup(userId) {
+	User.findOne({_id: userId}, (err, user) => {
+		if (err) console.log(err);
+		if (err) return 500;
+		if(user.popupAccepted == false) {
+			return true
+		} else {
+			return false
+		}
+	})
+}
+
+function acceptPopup(userId) {
+	User.findOne({_id: userId}, (err, user) => {
+		if (err) console.log(err);
+		if (err) return 500;
+		user.popupAccepted = true
+		user.save()
+	})
 }
 
 module.exports = {
@@ -573,5 +600,8 @@ module.exports = {
 	ethermineETH,
 	ethermineRVN,
 	vukkyTierCount,
-	listEmails
+	listEmails,
+	resetPopup,
+	checkPopup,
+	acceptPopup
 }
