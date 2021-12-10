@@ -563,14 +563,14 @@ function resetPopup() {
 	User.updateMany({}, {$set: {popupAccepted: false}})
 }
 
-function checkPopup(userId) {
+function checkPopup(userId, callback) {
 	User.findOne({_id: userId}, (err, user) => {
 		if (err) console.log(err);
-		if (err) return 500;
+		if (err) return callback(500);
 		if(user.popupAccepted == false) {
-			return true
+			callback(true)
 		} else {
-			return false
+			callback(false)
 		}
 	})
 }

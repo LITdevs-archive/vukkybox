@@ -577,6 +577,7 @@ function checkAuth(req, res, next) {
 			db.lastLogin(req.user, function(newBalance) {
 				req.session.passport.user.balance = newBalance
 			})
+			db.checkPopup(req.user._id)
 			return next();
 		} else {
 			db.lastLogin(req.user[0], function(newBalance) {
