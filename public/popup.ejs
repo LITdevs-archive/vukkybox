@@ -10,6 +10,7 @@
         <meta name="description" content="Confirm you accept policy changes.">
         <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
         <audio preload="auto" loop autoplay src="/resources/admin.ogg"></audio>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         
@@ -49,7 +50,7 @@
             <h1 class="text-2xl">Our legal documents have changed.</h1>
             <p>Do you agree to our updated <a href="https://vukkybox.com/terms" class="text-blue-500">Terms of Service</a> and <a href="https://vukkybox.com/privacy" class="text-blue-500">Privacy Policy</a>?</p>
             <input type="hidden" name="_csrf" value="<%=csrfToken %>">
-            <input type="radio" id="yes" name="popup" value="yes" required>
+            <input type="radio" id="yes" name="popup" value="yes" required onchange="acceptConfetti(event)">
             <label for="yes">Yes, I accept the Terms of Service and the Privacy Policy</label><br>
             <input type="radio" id="no" name="popup" value="no" required>
             <label for="no">No, I do not accept and would like to delete my account</label><br><br>
@@ -58,4 +59,13 @@
         <br><small>You are seeing this because we updated one or both of the above documents.<br><br><img src="https://vukkybox.com/resources/elfvukky.webp" width="52"></small></small>
     </div>
 	</body>
+<script>
+    function acceptConfetti(event) {
+        const { top, height, left, width, } = event.target.getBoundingClientRect();
+        const x = (left + width / 2) / window.innerWidth;
+        const y = (top + height / 2) / window.innerHeight;
+        const origin = { x, y };
+        confetti({origin});
+    }
+</script>
 </html>
