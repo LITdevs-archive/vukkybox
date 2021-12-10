@@ -50,7 +50,7 @@ passport.use(new MediaWikiStrategy({
 passport.use(new DiscordStrategy({
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
-	callbackURL: 'https://dev.vukkybox.com/callbackdiscord',
+	callbackURL: 'https://vukkybox.com/callbackdiscord',
 	scope: scopes,
 	prompt: prompt
 }, function(accessToken, refreshToken, profile, done) {
