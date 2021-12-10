@@ -590,9 +590,10 @@ function checkAuth(req, res, next) {
 				if (accepted == 500) return res.send("500: Internal Server Error");
 				if (!accepted) {
 					return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+				} else {
+					return next();
 				}
 			})
-			return next();
 		} else {
 			db.lastLogin(req.user[0], function(newBalance) {
 				req.session.passport.user[0].balance = newBalance
@@ -601,9 +602,10 @@ function checkAuth(req, res, next) {
 				if (accepted == 500) return res.send("500: Internal Server Error");
 				if (!accepted) {
 					return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+				} else {
+					return next();
 				}
 			})
-			return next();
 		}
 	}
 	req.session.redirectTo = req.path;
