@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Vukkybox - Confirmation</title>
+<form method="post">
+    <h1>Do you agree to our <a href="https://vukkybox.com/terms">Terms of Service</a> and <a href="https://vukkybox.com/privacy">Privacy Policy</a>?</h1>
+    <small>You are probably seeing this because we updated one or both of the above documents.</small>
+    <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+    <input type="radio" id="yes" name="popup" value="vukky" required>
+    <label for="yes">Yes, I accept the Terms of Service and the Privacy Policy</label><br>
+    <input type="radio" id="no" name="popup" value="pukky" required>
+    <label for="no">No, I do not accept and would like to delete my account</label><br>
+    <input type="submit" value="Send Confirmation" />
+</form>
+</html>
