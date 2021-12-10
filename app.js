@@ -622,8 +622,10 @@ function popup(req) {
 	db.checkPopup(req.user._id, function (accepted) {
 		if (accepted == 500) return res.send("500: Internal Server Error");
 		if (!accepted) {
+			console.log("User has not accepted popup yet.")
 			return true
 		} else {
+			console.log("User has accepted popup.")
 			return false
 		}
 	})
