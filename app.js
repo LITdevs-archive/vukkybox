@@ -142,6 +142,7 @@ app.get('/login', grl, function(req, res) {
 });
 
 app.get("/profile", grl, checkAuth, function (req, res) {
+	console.log(popup(req))
 	if (popup(req)) return res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
   if(req.user) {
 	if(req.user.primaryEmail) {
