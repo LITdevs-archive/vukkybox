@@ -326,6 +326,10 @@ app.post("/admin/:action", grl, function(req, res) {
 				db.listEmails();
 				res.redirect("/admin?emails=true")
 			break;
+			case "popup_reset":
+				db.resetPopup();
+				res.redirect("/admin?popup=true")
+			break;
 			default:
 				res.render(__dirname + "/public/adminfake.ejs");
 				break;
