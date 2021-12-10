@@ -28,7 +28,8 @@ self.addEventListener('install', (event)=>{
         "/resources/unboxbroken.wav",
         "/resources/purchase.wav",
         "/resources/unboxnancy.mp3",
-        "/resources/unboxglitch.mp3"
+        "/resources/unboxglitch.mp3",
+        "/resources/icons/512.png"
       ]);
     })
   );
