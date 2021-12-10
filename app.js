@@ -563,7 +563,11 @@ app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
 	});
 })
 
-app.post('/popup', grl, checkAuth, popupMid, function (req, res) {
+app.get("/popup", grl, checkAuth, function (req, res) {
+	res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken()});
+})
+
+app.post('/popup', grl, checkAuth, function (req, res) {
 	if(req.body.popup != "yes") return res.redirect("/delete")
 	if(req.user._id) {
 		db.acceptPopup(req.user._id)
