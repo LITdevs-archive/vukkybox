@@ -26,9 +26,11 @@ window.addEventListener('load', (event) => {
         })
     })
     document.querySelectorAll(".purchase").forEach(function(node) {
-        node.addEventListener("click", function() {
-            new Audio('https://vukkybox.com/resources/purchase.wav').play();
-        })
+        if(localStorage.getItem("kachingOn") != "false") {
+            node.addEventListener("click", function() {
+                new Audio('https://vukkybox.com/resources/purchase.wav').play();
+            })
+        }
     })
     if(document.querySelector("#redeemCode")) {
         document.querySelector("#redeemCode").onclick = function() {

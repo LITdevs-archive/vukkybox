@@ -63,6 +63,7 @@
 </body>
 <script>
   function toggleLocalSetting(e, setting) {
+    new Audio('https://vukkybox.com/resources/select.flac').play();
     localStorage.setItem(e.target.getAttribute("setting"), e.target.checked)
   }
   document.querySelectorAll("input[setting]").forEach(function(node) {
