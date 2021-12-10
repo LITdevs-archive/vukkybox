@@ -58,14 +58,15 @@
       </div>
       <br>
       <!--- settings crap starts here lol -->
-      Add fall animation while gallery loads: <input type="checkbox" setting="fallLoad" onchange="toggleLocalSetting(event)">
+      Add fall animation while gallery loads: <input type="checkbox" setting="fallLoad" onchange="toggleLocalSetting(event)"><br>
+      Enable "ka-ching" sound effect: <input type="checkbox" setting="kachingOff" default="yes" onchange="toggleLocalSetting(event)"><br>
 </body>
 <script>
   function toggleLocalSetting(e, setting) {
     localStorage.setItem(e.target.getAttribute("setting"), e.target.checked)
   }
   document.querySelectorAll("input[setting]").forEach(function(node) {
-    if(localStorage.getItem(node.getAttribute("setting")) == "true") {
+    if(localStorage.getItem(node.getAttribute("setting")) == "true" || localStorage.getItem(node.getAttribute("setting")) == null && node.getAttribute("default") == "true") {
       node.checked = true;
     }
   })
