@@ -463,6 +463,8 @@ async function ethermineETH() {
 		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
 		const body = await response.text();
 		const buttonBody = await buttonData.json();
+		console.log(buttonBody)
+		console.log(buttonBody.isAlive)
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
