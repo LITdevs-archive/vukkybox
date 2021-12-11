@@ -435,7 +435,9 @@ const { updateStrings } = require('yargs');
 async function ethermineETH() {
     setInterval(async function() {
 		const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
+		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
 		const body = await response.text();
+		const buttonBody = await buttonData.json();
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
@@ -446,7 +448,8 @@ async function ethermineETH() {
 					if (res) {
 						User.findOne({_id: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
-							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
+							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 2).toFixed(1))
 							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
 							doc.save()
 						})
@@ -456,8 +459,10 @@ async function ethermineETH() {
 		}
 	}, 600000) //set to 600000 (10 mins) when using properly. im using 1000 for debug
 	setTimeout(async function () {
-	const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
+		const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
+		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
 		const body = await response.text();
+		const buttonBody = await buttonData.json();
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
@@ -468,7 +473,8 @@ async function ethermineETH() {
 					if (res) {
 						User.findOne({_id: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
-							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
+							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 2).toFixed(1))
 							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
 							doc.save()
 						})
@@ -483,7 +489,9 @@ async function ethermineETH() {
 async function ethermineRVN() {
 	setInterval(async function() {
 		const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
+		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
 		const body = await response.text();
+		const buttonBody = await buttonData.json();
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
@@ -494,7 +502,8 @@ async function ethermineRVN() {
 					if (res) {
 						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
-							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 2).toFixed(1))
 							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
 							doc.save()
 						})
@@ -505,7 +514,9 @@ async function ethermineRVN() {
 	}, 600000) //set to 600 000 (10 mins) when using properly. im using 1000 for debug 
 	setTimeout(async function () {
 		const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
+		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
 		const body = await response.text();
+		const buttonBody = await buttonData.json();
 		let workers = JSON.parse(body).data.workers
 		let time = JSON.parse(body).data.workers[0].time
 		for (let i = 0; i < workers.length; i++) {
@@ -516,7 +527,8 @@ async function ethermineRVN() {
 					if (res) {
 						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
-							doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 2).toFixed(1))
 							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
 							doc.save()
 						})
