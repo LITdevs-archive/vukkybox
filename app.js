@@ -333,7 +333,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
 				req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				const fileWithoutExt = req.files.image.name.replace(/\.[^/.]+$/, "")
-				const folderLocation = req.body.vukkytype == pukky ? "/resources/pukkies/" : "/resources/"
+				const folderLocation = req.body.vukkytype == "pukky" ? "/resources/pukkies/" : "/resources/"
 				if(req.files.image.name.endsWith(".gif")) {
 					await webp.gwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
 				} else {
