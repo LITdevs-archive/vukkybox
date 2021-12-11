@@ -119,8 +119,9 @@
         if(navigator.share) {
             navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});
         } else {
-            navigator.clipboard.writeText("https:/\/vukkybox.com/guestgallery/<%=user._id %>");
-            alert("Copied to clipboard!");
+            navigator.clipboard.writeText("https:/\/vukkybox.com/guestgallery/<%=user._id %>").then(function() {
+                alert("Copied to clipboard!");
+            });
         }
     }
     function getRandomInt(min, max) {
