@@ -340,7 +340,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 					await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
 				}
 				fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
-				return res.redirect(`/admin?uploaded=https://vukkybox.com/${folderLocation}${fileWithoutExt}.webp`);
+				return res.redirect(`/admin?uploaded=https://vukkybox.com${folderLocation}${fileWithoutExt}.webp`);
 				break;
 			case "create_vukky": //i really dont want to make this one
 				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.redirect("/admin?error=missingargs")
