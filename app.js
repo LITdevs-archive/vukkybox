@@ -336,10 +336,12 @@ app.post("/admin/:action", grl, async function(req, res) {
 				const folderLocation = req.body.vukkytype == "pukky" ? "/resources/pukkies/" : "/resources/"
 				if(req.files.image.name.endsWith(".gif")) {
 					await webp.gwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
+				} else if (req.files.image.name.endsWith(".webp")) {
+					fs.renameSync(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`)
 				} else {
 					await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
 				}
-				//fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+				fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				return res.redirect(`/admin?uploaded=https://vukkybox.com${folderLocation}${fileWithoutExt}.webp`);
 				break;
 			case "create_vukky": //i really dont want to make this one
