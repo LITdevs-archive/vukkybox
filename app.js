@@ -358,9 +358,9 @@ app.post("/admin/:action", grl, async function(req, res) {
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
 				if(req.body.contribid != "") {
-					hook.send("👶 A new Vukky by <@" + req.body.contribid + ">" + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
+					hook.send("<:alfurhappy:919306037507555398> A new Vukky by <@" + req.body.contribid + ">" + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				} else {
-					hook.send("👶 A new Vukky has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
+					hook.send("<:alfurhappy:919306037507555398> A new Vukky has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				}
 			break;
 			case "emails":
