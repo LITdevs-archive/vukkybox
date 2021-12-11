@@ -331,17 +331,19 @@ app.post("/admin/:action", grl, async function(req, res) {
 			break;
 			case "upload_file":
 				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
-				req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				const fileWithoutExt = req.files.image.name.replace(/\.[^/.]+$/, "")
 				const folderLocation = req.body.vukkytype == "pukky" ? "/resources/pukkies/" : "/resources/"
 				if(req.files.image.name.endsWith(".gif")) {
+					req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 					await webp.gwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
+					fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				} else if (req.files.image.name.endsWith(".webp")) {
-					fs.renameSync(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`)
+					req.files.image.mv(`${__dirname}/public${folderLocation}${req.files.image.name}`);
 				} else {
+					req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 					await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
+					fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				}
-				fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				return res.redirect(`/admin?uploaded=https://vukkybox.com${folderLocation}${fileWithoutExt}.webp`);
 				break;
 			case "create_vukky": //i really dont want to make this one
