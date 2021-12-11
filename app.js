@@ -339,7 +339,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 				} else {
 					await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
 				}
-				await fs.unlink(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+				fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				return res.redirect(`/admin?uploaded=https://vukkybox.com/${folderLocation}${fileWithoutExt}.webp`);
 				break;
 			case "create_vukky": //i really dont want to make this one
