@@ -18,6 +18,8 @@ const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
 const rateLimit = require("express-rate-limit");
 const fileUpload = require("express-fileupload")
+const webp = require('webp-converter');
+webp.grant_permission();
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
@@ -329,15 +331,16 @@ app.post("/admin/:action", grl, function(req, res) {
 			break;
 			case "upload_file":
 				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
-				if(req.body.vukkytype == "vukky") {
-					req.files.image.mv(`${__dirname}/public/resources/${req.files.image.name}`);
-					return res.redirect(`/admin?uploaded=https://vukkybox.com/resources/${req.files.image.name}`);
-				} else if (req.body.vukkytype == "pukky") {
-					req.files.image.mv(`${__dirname}/public/resources/pukkies/${req.files.image.name}`);
-					return res.redirect(`/admin?uploaded=https://vukkybox.com/resources/pukkies/${req.files.image.name}`);
+				req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+				const fileWithoutExt = req.files.image.name.replace(/\.[^/.]+$/, "")
+				const folderLocation = req.body.vukkytype == pukky ? "/resources/pukkies/" : "/resources/"
+				if(req.files.image.name.endsWith(".gif")) {
+					await webp.gwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
 				} else {
-					return res.redirect("/admin?error=invalidargs")
+					await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
 				}
+				await fs.unlink(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+				return res.redirect(`/admin?uploaded=https://vukkybox.com/${folderLocation}${fileWithoutExt}.webp`);
 				break;
 			case "create_vukky": //i really dont want to make this one
 				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.redirect("/admin?error=missingargs")
