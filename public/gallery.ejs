@@ -34,7 +34,7 @@
             <!-- <li class="pr-5"><a> Services </a></li>
             <li class="pr-5"><a>Porfolio</a></li>
             <li class="pr-5"><a>About</a></li> -->
-            <li class="pr-10"><span id="share" onclick="navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});">Share Collection</a></li>
+            <li class="pr-10"><span id="share" onclick="shareGallery()">Share Collection</a></li>
             <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
             <% if(username != "") { %>
               <div class="dropdown">
@@ -115,6 +115,15 @@
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
 </body>
 <script>
+    function shareGallery() {
+        if(navigator.share) {
+            navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});
+        } else {
+            navigator.clipboard.writeText("https:/\/vukkybox.com/guestgallery/<%=user._id %>").then(function() {
+                alert("Copied to clipboard!");
+            });
+        }
+    }
     function getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);

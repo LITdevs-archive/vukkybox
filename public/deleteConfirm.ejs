@@ -7,5 +7,13 @@
     <p>You'll lose ALL your progress! The Vukkies are going to be very sad when they hear the news...</p>
     <input type="submit" value="I'm sure about this." />
 </form>
-    <br><br><input type="button" value="Wait, cancel!" onclick="window.location.href='/';" />
+    <br><br><input type="button" value="Wait, cancel!" id="poopoo"/>
+<script>
+    document.querySelector("#poopoo").onclick = function() {
+        history.back();
+        setTimeout(() => {
+            document.location.pathname = "/";
+        }, 300);
+    };
+</script>
 </html>
