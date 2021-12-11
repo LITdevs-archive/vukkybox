@@ -508,8 +508,8 @@ async function ethermineRVN() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
-							if (!buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
-							if (buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin (3X BONUS!)`)
+							if (!buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
+							if (buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
 							doc.save()
 						})
 					}
@@ -534,8 +534,8 @@ async function ethermineRVN() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
-							if (!buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
-							if (buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin (3X BONUS!)`)
+							if (!buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
+							if (buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
 							doc.save()
 						})
 					}
