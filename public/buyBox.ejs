@@ -35,11 +35,7 @@
                 <!-- <li class="pr-5"><a> Services </a></li>
                 <li class="pr-5"><a>Porfolio</a></li>
                 <li class="pr-5"><a>About</a></li> -->
-                <% if(parseInt(prize.box.level.level) == 8) { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
-                <% } else { %>
-                <li class="pr-10"><span id="share" class="hidden" onclick="navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>'});">Share your drop!</a></li>
-                <% } %>
+                <li class="pr-10"><span id="share" class="hidden" onclick="shareDrop()">Share your drop!</a></li>
                 <% if(username != "") { %>
                   <div class="dropdown">
                     
@@ -82,6 +78,22 @@
         </center>
 	</body>
     <script type="text/javascript">
+    function shareDrop() {
+        if(navigator.share) {
+            <% if(parseInt(prize.box.level.level) == 8) { %>
+            navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>'});
+            <% } else { %>
+            navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>'});
+            <% } %>
+        } else {
+            <% if(parseInt(prize.box.level.level) == 8) { %>
+            navigator.clipboard.writeText("https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>");
+            <% } else { %>
+            navigator.clipboard.writeText("https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>");
+            <% } %>
+            alert("Copied to clipboard!");
+        }
+    }
     var rarity = <%=prize.box.level.level %>;
     const rarityName = "<%=prize.box.level.name %>";
     if(rarity == 8) rarity = 3;
