@@ -318,7 +318,7 @@ app.get("/adminfailed",grl, popupMid,  function(req, res) {
 	res.render(__dirname + "/public/adminfakefailed.ejs");
 })
 
-app.post("/admin/:action", grl, function(req, res) {
+app.post("/admin/:action", grl, async function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
 	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
