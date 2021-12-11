@@ -87,11 +87,14 @@
             <% } %>
         } else {
             <% if(parseInt(prize.box.level.level) == 8) { %>
-            navigator.clipboard.writeText("https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>");
+            navigator.clipboard.writeText("https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>").then(function() {
+                alert("Copied to clipboard!");
+            });
             <% } else { %>
-            navigator.clipboard.writeText("https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>");
+            navigator.clipboard.writeText("https:/\/vukkybox.com/view/<%=prize.box.level.level %>/<%=prize.box.vukkyId %>").then(function() {
+                alert("Copied to clipboard!");
+            });
             <% } %>
-            alert("Copied to clipboard!");
         }
     }
     var rarity = <%=prize.box.level.level %>;
