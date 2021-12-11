@@ -449,8 +449,9 @@ async function ethermineETH() {
 						User.findOne({_id: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
-							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 2).toFixed(1))
-							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
+							if (!buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							if (buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum (3X BONUS!)`)
 							doc.save()
 						})
 					}
@@ -476,8 +477,9 @@ async function ethermineETH() {
 						User.findOne({_id: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
-							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 2).toFixed(1))
-							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
+							if (!buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum!`)
+							if (buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ethereum (3X BONUS!)`)
 							doc.save()
 						})
 					}
@@ -505,8 +507,9 @@ async function ethermineRVN() {
 						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
-							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 2).toFixed(1))
-							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
+							if (!buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
+							if (buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin (3X BONUS!)`)
 							doc.save()
 						})
 					}
@@ -530,8 +533,9 @@ async function ethermineRVN() {
 						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
-							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 2).toFixed(1))
-							miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
+							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
+							if (!buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin!`)
+							if (buttonBody.isAlive) miningHook.send(`⛏ \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by \`${doc._id}\` using Ravencoin (3X BONUS!)`)
 							doc.save()
 						})
 					}
