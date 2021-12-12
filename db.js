@@ -37,7 +37,8 @@ db.once('open', function() {
 	codesRedeemed: Number,
 	uniqueVukkiesGot: Number,
 	RVNid: String,
-	popupAccepted: Boolean
+	popupAccepted: Boolean,
+	duplicates: Object
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
@@ -196,18 +197,6 @@ function changeUsername(user, newUsername) {
 }
 }
 
-function addToGallery(user, id) {
-
-}
-
-function getBalance(user, callback) {
-
-}
-
-function setBalance(user, callback) {
-
-}
-
 function redeemCode(user, code, callback) { // callback with a boolean representing if the code was used successfully
 	code = code.toUpperCase();
 	Code.findOne({code:code}, function (err, code) {
@@ -297,6 +286,8 @@ function buyBox(user, box, callback) {
 						doc.gallery.push(res.vukkyId)
 					} else {
 						dupe = true;
+						if (!doc.duplicates[res.vukkyId]) doc.duplicates[res.vukkyId] = 0
+						doc.duplicates[res.vukkyId] = parseInt(doc.duplicates[res.vukkyId]) + 1
 						doc.balance += 0.1 * boxData.price;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
@@ -605,9 +596,6 @@ function acceptPopup(userId) {
 module.exports = {
 	findOrCreate,
 	changeUsername,
-	addToGallery,
-	getBalance,
-	setBalance,
 	redeemCode,
 	createCode,
 	validCode,
