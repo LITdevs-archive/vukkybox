@@ -48,3 +48,12 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.dupes {
+    position: absolute;
+    border-radius: 15px;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+}
