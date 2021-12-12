@@ -292,7 +292,7 @@ function buyBox(user, box, callback) {
 						duplicates[res.vukkyId] = parseInt(duplicates[res.vukkyId]) + 1
 						
 						doc.duplicates = duplicates
-						User.markModified('duplicates');
+						doc.markModified('duplicates');
 						doc.balance += 0.1 * boxData.price;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
