@@ -286,9 +286,15 @@ function buyBox(user, box, callback) {
 						doc.gallery.push(res.vukkyId)
 					} else {
 						dupe = true;
+						console.log(doc.duplicates)
+						console.log(doc.duplicates[res.vukkyId])
 						if (!doc.duplicates) doc.duplicates = {};
 						if (!doc.duplicates[res.vukkyId]) doc.duplicates[res.vukkyId] = 0
+						console.log(doc.duplicates)
+						console.log(doc.duplicates[res.vukkyId])
 						doc.duplicates[res.vukkyId] = parseInt(doc.duplicates[res.vukkyId]) + 1
+						console.log(doc.duplicates)
+						console.log(doc.duplicates[res.vukkyId])
 						doc.balance += 0.1 * boxData.price;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
