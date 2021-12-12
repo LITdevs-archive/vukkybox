@@ -286,6 +286,7 @@ function buyBox(user, box, callback) {
 						doc.gallery.push(res.vukkyId)
 					} else {
 						dupe = true;
+						if (!doc.duplicates) doc.duplicates = {};
 						if (!doc.duplicates[res.vukkyId]) doc.duplicates[res.vukkyId] = 0
 						doc.duplicates[res.vukkyId] = parseInt(doc.duplicates[res.vukkyId]) + 1
 						doc.balance += 0.1 * boxData.price;
