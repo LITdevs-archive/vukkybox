@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/litdevs/vukkybox#readme",
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.4.0",
     "cross-env": "^7.0.3",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.0.4"
