@@ -59,7 +59,8 @@
       <br>
       <!--- settings crap starts here lol -->
       <p class="text-bold text-2xl">Per-device settings</p>
-      Add fall animation while gallery loads: <input type="checkbox" setting="fallLoad" onchange="toggleLocalSetting(event)"><br>
+      <p>You can hover over the checkboxes for more information, when available.</p>
+      Add fall animation while gallery loads: <input type="checkbox" setting="fallLoad" onchange="toggleLocalSetting(event)" title="This may result in lag on some devices."><br>
       Enable "ka-ching" sound effect: <input type="checkbox" setting="kachingOn" default="true" onchange="toggleLocalSetting(event)"><br>
       Use fancy share menu instead of copying to clipboard: <input type="checkbox" setting="shareMenu" default="true" onchange="toggleLocalSetting(event)"><br>
 </body>
@@ -76,6 +77,7 @@
   if(!navigator.share) {
     document.querySelector("input[setting=shareMenu]").checked = false;
     document.querySelector("input[setting=shareMenu]").disabled = true;
+    document.querySelector("input[setting=shareMenu]").title = "Your operating system does not support this feature.";
   }
 </script>
 </html>
