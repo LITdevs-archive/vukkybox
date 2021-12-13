@@ -319,7 +319,14 @@ function buyBox(user, box, callback) {
 						doc.uniqueVukkiesGot++;
 						doc.gallery.push(res.vukkyId)
 					} else {
-						dupe = true
+						if (!doc.duplicates) doc.duplicates = {};
+						let duplicates = doc.duplicates
+						if (!duplicates[res.vukkyId]) duplicates[res.vukkyId] = 0
+						duplicates[res.vukkyId] = parseInt(duplicates[res.vukkyId]) + 1
+						dupe = parseInt(duplicates[res.vukkyId]);
+						
+						doc.duplicates = duplicates
+						doc.markModified('duplicates');
 						doc.balance += 0.1 * boxData.price;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
