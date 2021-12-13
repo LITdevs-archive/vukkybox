@@ -60,6 +60,7 @@
       <!--- settings crap starts here lol -->
       Add fall animation while gallery loads: <input type="checkbox" setting="fallLoad" onchange="toggleLocalSetting(event)"><br>
       Enable "ka-ching" sound effect: <input type="checkbox" setting="kachingOn" default="true" onchange="toggleLocalSetting(event)"><br>
+      Use fancy share menu instead of copying to clipboard: <input type="checkbox" setting="shareMenu" default="true" onchange="toggleLocalSetting(event)"><br>
 </body>
 <script>
   function toggleLocalSetting(e, setting) {
@@ -71,5 +72,9 @@
       node.checked = true;
     }
   })
+  if(!navigator.share) {
+    document.querySelector("input[setting=shareMenu]").checked = false;
+    document.querySelector("input[setting=shareMenu]").disabled = true;
+  }
 </script>
 </html>

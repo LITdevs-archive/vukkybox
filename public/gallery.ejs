@@ -116,7 +116,7 @@
 </body>
 <script>
     function shareGallery() {
-        if(navigator.share) {
+        if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
             navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});
         } else {
             navigator.clipboard.writeText("https:/\/vukkybox.com/guestgallery/<%=user._id %>").then(function() {

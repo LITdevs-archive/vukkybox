@@ -79,7 +79,7 @@
 	</body>
     <script type="text/javascript">
     function shareDrop() {
-        if(navigator.share) {
+        if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
             <% if(parseInt(prize.box.level.level) == 8) { %>
             navigator.share({'title': `<%=prize.box.vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=prize.box.vukkyId %>'});
             <% } else { %>
