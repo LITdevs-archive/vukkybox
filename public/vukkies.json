@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 285,
+	"currentId": 287,
 	"rarity": {
 		"1": {
 			"1": {
@@ -500,6 +500,16 @@
 				"name": "Nudge Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/nudgevukky.webp",
 				"description": "This was made by Synne! STOP. NUDGING. ME."
+			},
+			"286": {
+				"name": "Vukky Cube",
+				"url": "https://vukkybox.com/resources/vukkycube.webp",
+				"description": "This Vukky was made VocalFan. Diamonds!"
+			},
+			"287": {
+				"name": "Vukky Cube",
+				"url": "https://vukkybox.com/resources/vukkycube.webp",
+				"description": "This Vukky was made VocalFan. Diamonds!"
 			}
 		},
 		"3": {
