@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 290,
+	"currentId": 302,
 	"rarity": {
 		"1": {
 			"1": {
@@ -298,6 +298,21 @@
 				"name": "\"V\"ukky",
 				"url": "https://vukkybox.com/resources/vvukky.webp",
 				"description": "VVVVVV. This was created by SharkOfGod!"
+			},
+			"289": {
+				"name": "Onekky",
+				"url": "https://vukkybox.com/resources/onekky.webp",
+				"description": "This Vukky was created by VocalFan. The first ever produced of the Numky family, it often likes to play board games!"
+			},
+			"296": {
+				"name": "Sleep Deprived Vukky",
+				"url": "https://vukkybox.com/resources/sleepdeprivedvukky.webp",
+				"description": "This Vukky feels like it has lived a thousand lifetimes."
+			},
+			"297": {
+				"name": "Troll Vukky",
+				"url": "https://vukkybox.com/resources/vukkytroll.webp",
+				"description": "This Vukky was made by Ash. This Vukky likes to mess with people! You should probably ignore him."
 			}
 		},
 		"2": {
@@ -501,22 +516,27 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/nudgevukky.webp",
 				"description": "This was made by Synne! STOP. NUDGING. ME."
 			},
-			"286": {
+			"290": {
+				"name": "Twokky",
+				"url": "https://vukkybox.com/resources/twokky.webp",
+				"description": "This Vukky was made by VocalFan. The sister of the Numkies. She was made due to the shocking lack of pink in the Vukky collection!"
+			},
+			"298": {
 				"name": "Vukky Cube",
 				"url": "https://vukkybox.com/resources/vukkycube.webp",
-				"description": "This Vukky was made VocalFan. Diamonds!"
+				"description": "This Vukky was made by VocalFan. Diamonds!"
 			},
-			"287": {
+			"299": {
 				"name": "Email Vukky Cube",
 				"url": "https://vukkybox.com/resources/vukkycube.webp",
-				"description": "This Vukky was made VocalFan. This one contains a lot of emails!"
+				"description": "This Vukky was made by VocalFan. This one contains a lot of emails!"
 			},
-			"288": {
+			"300": {
 				"name": "Vukktton",
 				"url": "https://vukkybox.com/resources/vukktton.webp",
-				"description": "A Vukky stuck as a button! He's worried he won't be pressed..."
+				"description": "This Vukky was made by VocalFan. A Vukky stuck as a button! He's worried he won't be pressed..."
 			},
-			"289": {
+			"301": {
 				"name": "Dedtton",
 				"url": "https://vukkybox.com/resources/dedtton.webp",
 				"description": "A Vukky stuck as a button! He wasn't pressed for a bit too long..."
@@ -777,6 +797,31 @@
 				"name": "Raindeer Vukky",
 				"url": "https://vukkybox.com/resources/raindeervukky.webp",
 				"description": "This was made by IngvildO. Kinda suspicious."
+			},
+			"286": {
+				"name": "Applukky",
+				"url": "https://vukkybox.com/resources/applukky.webp",
+				"description": "A Vukky stuck in an apple costume! Seems someone took a bite out of it..."
+			},
+			"287": {
+				"name": "Smuggy",
+				"url": "https://vukkybox.com/resources/smuggy.webp",
+				"description": "This was made by VocalFan! A smug Feline Vukky! ...I wonder what he's so smug about..."
+			},
+			"288": {
+				"name": "Unplukky",
+				"url": "https://vukkybox.com/resources/smuggy.webp",
+				"description": "This was made by VocalFan. Oh no! Seems like a sneaky Vukky decided to unplug the internet!"
+			},
+			"291": {
+				"name": "Threkky",
+				"url": "https://vukkybox.com/resources/threkky.webp",
+				"description": "This Vukky was made by VocalFan. Often known as the protective Numky, many of the smaller Vukkies like to sleep in his ridges!"
+			},
+			"295": {
+				"name": "Vukky's Mod",
+				"url": "https://vukkybox.com/resources/vukkysmod.webp",
+				"description": "This Vukky was made by VocalFan. A Vukky made by a random person named \"Garry\". This Vukky's concept design was mailed to the Central Vukky Printing Organization's Office without any other details on who he is."
 			}
 		},
 		"4": {
@@ -934,6 +979,11 @@
 				"name": "SuperTuxxy",
 				"url": "https://vukkybox.com/resources/supertuxxy.webp",
 				"description": "*kill.wav*"
+			},
+			"292": {
+				"name": "Fourkky",
+				"url": "https://vukkybox.com/resources/Fourkky.webp",
+				"description": "This Vukky was made by VocalFan. Despite his sharp edges, he is the softest Numky and loves arts and crafts! Even throwing glitter around when something exciting happens!"
 			}
 		},
 		"5": {
@@ -981,6 +1031,11 @@
 				"name": "Cupcake Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/cupcakevukky.webp",
 				"description": "This was made by Sunset! CUPCAKES!!"
+			},
+			"293": {
+				"name": "Fivekky",
+				"url": "https://vukkybox.com/resources/fivekky.webp",
+				"description": "This Vukky was made by VocalFan. The most friendly of the Numkies! Giving shiny silver stars to any good Vukkies he meets!"
 			}
 		},
 		"6": {
@@ -1033,6 +1088,11 @@
 				"name": "Ducky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/ducky.webp",
 				"description": "This was made by Seysa! Got any grapes?"
+			},
+			"294": {
+				"name": "Sixkky",
+				"url": "https://vukkybox.com/resources/sixkky.webp",
+				"description": "This Vukky was made by VocalFan. The brightest and shiniest of the Numkies, he gives rewards to the best Vukkies! ...He sure does leave a sparkly mess, though!"
 			}
 		},
 		"7": {
@@ -1498,7 +1558,7 @@
 				"url": "https://vukkybox.com/resources/pukkies/sydneypukkytwo.webp",
 				"description": "This Pukky also belongs to Sydney"
 			},
-			"290": {
+			"302": {
 				"name": "Spookyy's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/Spookyy.webp",
 				"description": "This Pukky belongs to Spookyy"
