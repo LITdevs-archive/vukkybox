@@ -73,7 +73,7 @@
     if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
     audioEffectThing.play();
     localStorage.setItem(e.target.getAttribute("setting"), e.target.type == "checkbox" ? e.target.checked : e.target.value)
-    if(e.target.getAttribute("setting").includes("Volume")) document.location.refresh();
+    if(e.target.getAttribute("setting").includes("Volume")) document.location.reload();
   }
   document.querySelectorAll("input[setting]").forEach(function(node) {
     if(node.type == "checkbox") {
