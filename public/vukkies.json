@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 287,
+	"currentId": 290,
 	"rarity": {
 		"1": {
 			"1": {
@@ -510,6 +510,16 @@
 				"name": "Email Vukky Cube",
 				"url": "https://vukkybox.com/resources/vukkycube.webp",
 				"description": "This Vukky was made VocalFan. This one contains a lot of emails!"
+			},
+			"288": {
+				"name": "Vukktton",
+				"url": "https://vukkybox.com/resources/vukktton.webp",
+				"description": "A Vukky stuck as a button! He's worried he won't be pressed..."
+			},
+			"289": {
+				"name": "Dedtton",
+				"url": "https://vukkybox.com/resources/dedtton.webp",
+				"description": "A Vukky stuck as a button! He wasn't pressed for a bit too long..."
 			}
 		},
 		"3": {
@@ -1487,6 +1497,11 @@
 				"name": "Sydney's Other Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/sydneypukkytwo.webp",
 				"description": "This Pukky also belongs to Sydney"
+			},
+			"290": {
+				"name": "Spookyy's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Spookyy.webp",
+				"description": "This Pukky belongs to Spookyy"
 			}
 		}
 	}
