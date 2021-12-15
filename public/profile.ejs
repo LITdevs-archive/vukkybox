@@ -64,7 +64,6 @@
       Enable "ka-ching" sound effect: <input type="checkbox" setting="kachingOn" default="true" onchange="toggleLocalSetting(event)" title='A "ka-ching!" sound effect will play when you click on purchase buttons in the Storefront and when buying another Vukky.'><br>
       Use fancy share menu instead of copying to clipboard: <input type="checkbox" setting="shareMenu" default="true" onchange="toggleLocalSetting(event)" title="When sharing your gallery and a Vukky pull, a fancy share menu will appear instead of copying to the clipboard. What this menu looks like depends on your operating system's implementation. Turn this off if you don't like it."><br>
       <br><p class="text-bold text-xl">Audio</p>
-      <p>You will have to refresh to preview these changes.</p><br>
       Music: <input type="range" step="0.01" min="0" max="1" value="1" setting="musicVolume" onchange="toggleLocalSetting(event)"><br>
       Sound effects: <input type="range" step="0.01" min="0" max="1" value="1" setting="sfxVolume" onchange="toggleLocalSetting(event)">
 </body>
@@ -74,6 +73,7 @@
     if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
     audioEffectThing.play();
     localStorage.setItem(e.target.getAttribute("setting"), e.target.type == "checkbox" ? e.target.checked : e.target.value)
+    if(e.target.getAttribute("setting").includes("Volume")) docmuent.location.refresh();
   }
   document.querySelectorAll("input[setting]").forEach(function(node) {
     if(node.type == "checkbox") {
