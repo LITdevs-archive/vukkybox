@@ -10,7 +10,14 @@ window.addEventListener('load', (event) => {
             }, 200);
         };
     }
-    document.querySelector("a[href='/']").parentNode.querySelector("p").id = "balance";
+    document.querySelectorAll("audio").forEach(function(node) {
+        if(node.getAttribute("type") == "music" && localStorage.getItem("musicVolume")) {
+            node.volume = localStorage.getItem("musicVolume");
+        } else if (node.getAttribute("type") == "sfx" && localStorage.getItem("sfxVolume")) {
+            node.volume = localStorage.getItem("sfxVolume");
+        }
+    })
+    if(document.querySelector("a[href='/']") && document.querySelector("a[href='/']").parentNode && document.querySelector("a[href='/']").parentNode.querySelector("p")) document.querySelector("a[href='/']").parentNode.querySelector("p").id = "balance";
     document.querySelector("#balance").onclick = function() {
         document.location.pathname = "balance";
     };
@@ -22,13 +29,17 @@ window.addEventListener('load', (event) => {
     };
     document.querySelectorAll("a").forEach(function(node) {
         node.addEventListener("click", function() {
-            new Audio('https://vukkybox.com/resources/select.flac').play();
+            let audioEffectThing = new Audio('https://vukkybox.com/resources/select.flac');
+            if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
+            audioEffectThing.play();
         })
     })
     document.querySelectorAll(".purchase").forEach(function(node) {
         if(localStorage.getItem("kachingOn") != "false") {
             node.addEventListener("click", function() {
-                new Audio('https://vukkybox.com/resources/purchase.wav').play();
+                let audioEffectThing = new Audio('https://vukkybox.com/resources/purchase.wav');
+                if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
+                audioEffectThing.play();
             })
         }
     })
