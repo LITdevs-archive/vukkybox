@@ -66,7 +66,7 @@
                     <p style="color:<%=prize.box.level.color %>;"><%=prize.box.level.name %> (<%=prize.box.level.level %> star)</p>
                     <% } %>
                     <p><%=prize.box.vukky.description %></p>
-                    <p class="text-red-500"><%if (dupe) { %><br>You can't collect <%=prize.box.vukky.name %> again!<br> You have gotten <%=prize.box.vukky.name %> <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(dupe) + 1 %></span> times. <% } %></p>
+                    <p class="text-red-500"><%if (dupe) { %><br>...oh, but you already have <%=prize.box.vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(dupe) + 1 %></span> times by now. :( <% } %></p>
                     <br>
                     <button class="button button-blue purchase" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;setTimeout(() => {window.location.reload()}, localStorage.getItem('kachingOn') != 'false' ? 1000 : 0);">Buy another one</button>
                     <a href="/store"><button class="py-5 button button-blue">Return to the storefront</button></a>
