@@ -190,7 +190,7 @@
         }
     }
     const userGallery = [<%=user.gallery %>]
-    const userDuplcates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
+    const userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
     document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
     for(let j = 1; j <= 7; j++) {
