@@ -31,9 +31,6 @@
             <% } %>
         </div>
         <ul class="flex flex-row p-10">
-            <!-- <li class="pr-5"><a> Services </a></li>
-            <li class="pr-5"><a>Porfolio</a></li>
-            <li class="pr-5"><a>About</a></li> -->
             <li class="pr-10"><span id="share" onclick="shareGallery()">Share Collection</a></li>
             <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
             <% if(username != "") { %>
@@ -113,6 +110,7 @@
 
 </div>
 <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
+<p class="hidden" id="duplicatesjson"><%=JSON.stringify(user.duplcates) %></p>
 </body>
 <script>
     function shareGallery() {
@@ -192,6 +190,7 @@
         }
     }
     const userGallery = [<%=user.gallery %>]
+    const userDuplcates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
     document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
     for(let j = 1; j <= 7; j++) {
@@ -201,6 +200,10 @@
                 owned++
                 totalOwned++
                 document.getElementById(j).innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}"></ins></a>`
+                console.log(userDuplicates[Object.keys(vukkies[j])[i]])
+                if(userDuplicates[Object.keys(vukkies[j])[i]]) {
+                    document.getElementById(Object.keys(vukkies[j])[i]).style.background = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${userDuplicates[Object.keys(vukkies[j])[i]]}') no-repeat 0 0;`
+                }
             }
         }
         if (owned == 0) {
