@@ -5,8 +5,9 @@ self.addEventListener('install', (event)=>{
       for (let name of names)
           caches.delete(name);
     }),
-    caches.open('v13').then((cache)=>{
+    caches.open('v14').then((cache)=>{
       return cache.addAll([
+        "/resources/spin.js",
         "/resources/offline.html",
         "/resources/loading.ogg",
         "/resources/gallery.ogg",
