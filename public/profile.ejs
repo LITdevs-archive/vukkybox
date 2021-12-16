@@ -10,7 +10,7 @@
         <meta name="title" content="Vukkybox">
         <meta name="description" content="Collect Vukkies trapped in boxes!">
         <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
-        <audio preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
+        <audio type="music" preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
         
@@ -63,15 +63,25 @@
       Add fall animation while gallery loads: <input type="checkbox" setting="fallLoad" onchange="toggleLocalSetting(event)" title='You can watch the loaded in Vukkies fall down, like in the "Sort by Gravity" option! This may result in lag on some devices.'><br>
       Enable "ka-ching" sound effect: <input type="checkbox" setting="kachingOn" default="true" onchange="toggleLocalSetting(event)" title='A "ka-ching!" sound effect will play when you click on purchase buttons in the Storefront and when buying another Vukky.'><br>
       Use fancy share menu instead of copying to clipboard: <input type="checkbox" setting="shareMenu" default="true" onchange="toggleLocalSetting(event)" title="When sharing your gallery and a Vukky pull, a fancy share menu will appear instead of copying to the clipboard. What this menu looks like depends on your operating system's implementation. Turn this off if you don't like it."><br>
+      <br><p class="text-bold text-xl">Audio</p>
+      Music: <input type="range" step="0.01" min="0" max="1" value="1" setting="musicVolume" onchange="toggleLocalSetting(event)"><br>
+      Sound effects: <input type="range" step="0.01" min="0" max="1" value="1" setting="sfxVolume" onchange="toggleLocalSetting(event)">
 </body>
 <script>
-  function toggleLocalSetting(e, setting) {
-    new Audio('https://vukkybox.com/resources/select.flac').play();
-    localStorage.setItem(e.target.getAttribute("setting"), e.target.checked)
+  function toggleLocalSetting(e) {
+    let audioEffectThing = new Audio('https://vukkybox.com/resources/select.flac');
+    if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
+    audioEffectThing.play();
+    localStorage.setItem(e.target.getAttribute("setting"), e.target.type == "checkbox" ? e.target.checked : e.target.value)
+    if(e.target.getAttribute("setting").includes("Volume")) document.location.reload();
   }
   document.querySelectorAll("input[setting]").forEach(function(node) {
-    if(localStorage.getItem(node.getAttribute("setting")) == "true" || localStorage.getItem(node.getAttribute("setting")) == null && node.getAttribute("default") == "true") {
-      node.checked = true;
+    if(node.type == "checkbox") {
+      if(localStorage.getItem(node.getAttribute("setting")) == "true" || localStorage.getItem(node.getAttribute("setting")) == null && node.getAttribute("default") == "true") {
+        node.checked = true;
+      }
+    } else if (localStorage.getItem(node.getAttribute("setting"))) {
+      node.value = localStorage.getItem(node.getAttribute("setting"))
     }
   })
   if(!navigator.share) {

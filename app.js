@@ -147,7 +147,7 @@ const grl = rateLimit({
 	max: 5,
 	handler: function(req, res) {
 		if(req.rateLimit.current > 10) {
-			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.isAuthenticated() && req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
+			adminHook.send(`<:woaha:904051837605408788> Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.isAuthenticated() && req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
 			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes! Here's something funny...<br><img src='https://i.imgur.com/twm4zX8.png'><br>This incident has been reported<script>setTimeout(function() { window.location.reload() },5000)</script>")
 		} else {
 			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
@@ -220,7 +220,7 @@ const boxLimiter = rateLimit({
 	},
 	handler: function(req, res) {
 		if(req.rateLimit.current > 10) {
-			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
+			adminHook.send(`<:woaha:904051837605408788> Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
 			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes! Here's something funny...<br><img src='https://i.imgur.com/twm4zX8.png'><br>This incident has been reported<script>setTimeout(function() { window.location.reload() },5000)</script>")
 		} else {
 			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
@@ -351,6 +351,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 					await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
 					fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
 				}
+				hook.send("<a:eager:902938792896385064> A new Vukky asset has been uploaded.")
 				return res.redirect(`/admin?uploaded=https://vukkybox.com${folderLocation}${fileWithoutExt}.webp`);
 				break;
 			case "create_vukky": //i really dont want to make this one
@@ -365,9 +366,9 @@ app.post("/admin/:action", grl, async function(req, res) {
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
 				if(req.body.contribid != "") {
-					hook.send("<:alfurhappy:919306037507555398> A new Vukky by <@" + req.body.contribid + ">" + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
+					hook.send("<a:eagersplode:902938979563884584> A new Vukky by <@" + req.body.contribid + ">" + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				} else {
-					hook.send("<:alfurhappy:919306037507555398> A new Vukky has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
+					hook.send("<a:eagersplode:902938979563884584> A new Vukky has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				}
 			break;
 			case "emails":
@@ -566,10 +567,10 @@ app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
 					req.session.passport.user[0].balance += amount
 				}
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: code, amount: amount});
-				adminHook.send(`🔑 A user has redeemed \`${code}\` for ${amount} Vukkybux!`);
+				adminHook.send(`<a:clappy:919605268902469662> A user has redeemed \`${code}\` for ${amount} Vukkybux!`);
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
-				adminHook.send(`🔑 A user tried to redeem \`${req.params["code"]}\`, but it was ${isValid}.`);
+				adminHook.send(`<a:hahah:919608495576326174> A user tried to redeem \`${req.params["code"]}\`, but it was ${isValid}.`);
 				if (req.user._id) console.log(req.user._id)
 				if (req.user[0]) console.log(req.user[0]._id)
 			}

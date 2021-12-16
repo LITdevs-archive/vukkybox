@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"  >
 <title>Vukkybox - Delete Account</title>
-<form method="post">
-    <input type="hidden" name="_csrf" value="<%=csrfToken %>">
-    <h1>Are you sure you want to delete your account?</h1>
-    <p>You'll lose ALL your progress! The Vukkies are going to be very sad when they hear the news...</p>
-    <input type="submit" value="I'm sure about this." />
-</form>
-    <br><br><input type="button" value="Wait, cancel!" id="poopoo"/>
+<audio type="music" preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
+<body style="filter: blur(0px); transition: filter 0.2s ease-out;">
+    <form method="post">
+        <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+        <h1>You're about to delete your Vukkybox account.</h1>
+        <p>You will lose all your Vukkies and earned Vukkybux. No refunds will be given for donations.</p>
+        <input type="submit" value="I'm sure about this."> <input type="button" value="Wait, cancel!" id="poopoo"/>
+    </form>
+</body>
 <script>
+    function blur(px) {
+        document.querySelector("body").style.filter = "blur(" + px + "px)"
+    }
+    document.querySelector("audio").playbackRate = 0.25;
+    document.querySelector("input[type=submit]").addEventListener("click", function() {blur("30")})
     document.querySelector("#poopoo").onclick = function() {
         history.back();
         setTimeout(() => {

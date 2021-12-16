@@ -62,7 +62,7 @@ function findOrCreate(service, profile, callback) {
 						if(err) console.log(err)
 					})
 				} else {
-					adminHook.send("👥 A new user has registered with Google!")
+					adminHook.send("<:woaha:904051837605408788> A new user has registered with Google!")
 					let user = new User({
 						googleId:profile.id,
 						googleEmail:profile.emails[0].value,
@@ -93,7 +93,7 @@ function findOrCreate(service, profile, callback) {
 						if(err) console.log(err)
 					})
 				} else {
-					adminHook.send("👥 A new user has registered with MediaWiki!")
+					adminHook.send("<:woaha:904051837605408788> A new user has registered with MediaWiki!")
 					let user = new User({
 						mediawikiId:profile.id,
 						mediawikiEmail:profile._json.email,
@@ -123,7 +123,7 @@ function findOrCreate(service, profile, callback) {
 						if(err) console.log(err)
 					})
 				} else {
-					adminHook.send("👥 A new user has registered with GitHub!")
+					adminHook.send("<:woaha:904051837605408788> A new user has registered with GitHub!")
 					let user = new User({
 						githubId:profile.id,
 						githubEmail:profile.email,
@@ -156,7 +156,7 @@ function findOrCreate(service, profile, callback) {
 						  });
 					})
 				} else {
-					adminHook.send("👥 A new user has registered with Discord!")
+					adminHook.send("<:woaha:904051837605408788> A new user has registered with Discord!")
 					let user = new User({
 						discordId:profile.id,
 						discordEmail:profile.email,
@@ -364,7 +364,7 @@ function openBox(boxname, callback) {
 			return vukkyData[vukkyKeys[vukkyKeys.length * Math.random() << 0]]
 		} else {
 			setTimeout(() => {
-				hook.send("<:alfursmug:919306359663648889> Someone just got a unique Vukky!");
+				hook.send("<a:tadagun:885625507511685150> Someone just got a unique Vukky!");
 			}, 300 * 7 + 600 * 7 + 200);
 			return vukkyData[boxData.uniques[Math.floor(Math.random() * boxData.uniques.length)].toString()]
 		}
@@ -442,9 +442,9 @@ async function ethermineETH() {
 		const body = await response.text();
 		const buttonBody = await buttonData.json();
 		let workers = JSON.parse(body).data.workers
-		let time = JSON.parse(body).data.workers[0].time
+		let time = Math.round(Date.now()/1000)
 		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
+			if (time - workers[i].time < 600) {
 				//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({_id: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
@@ -453,8 +453,8 @@ async function ethermineETH() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
-							if (!buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
-							if (buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
+							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
+							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
 							doc.save()
 						})
 					}
@@ -470,9 +470,9 @@ async function ethermineETH() {
 		console.log(buttonBody)
 		console.log(buttonBody.isAlive)
 		let workers = JSON.parse(body).data.workers
-		let time = JSON.parse(body).data.workers[0].time
+		let time = Math.round(Date.now()/1000)
 		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
+			if (time - workers[i].time < 600) {
 				//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({_id: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
@@ -481,8 +481,8 @@ async function ethermineETH() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
-							if (!buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
-							if (buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
+							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
+							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
 							doc.save()
 						})
 					}
@@ -500,9 +500,9 @@ async function ethermineRVN() {
 		const body = await response.text();
 		const buttonBody = await buttonData.json();
 		let workers = JSON.parse(body).data.workers
-		let time = JSON.parse(body).data.workers[0].time
+		let time = Math.round(Date.now()/1000)
 		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
+			if (time - workers[i].time < 600) {
 				//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
 				User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
 					if (err) return console.log(err)
@@ -511,8 +511,8 @@ async function ethermineRVN() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
-							if (!buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
-							if (buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
+							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
+							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
 							doc.save()
 						})
 					}
@@ -537,8 +537,8 @@ async function ethermineRVN() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
-							if (!buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
-							if (buttonBody.isAlive) miningHook.send(`<:alfuryay:919305893865213973> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
+							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
+							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
 							doc.save()
 						})
 					}

@@ -24,7 +24,7 @@
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
-    "postcss": "^8.4.4",
+    "postcss": "^8.4.5",
     "tailwindcss": "^2.0.4"
   },
   "dependencies": {
@@ -32,12 +32,12 @@
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
     "discord-webhook-node": "^1.1.8",
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-rate-limit": "^5.5.1",
-    "express-session": "^1.17.1",
+    "express-session": "^1.17.2",
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.1",
     "passport": "^0.4.1",
