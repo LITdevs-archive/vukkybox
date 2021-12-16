@@ -218,9 +218,9 @@
                 owned++
                 totalOwned++
                 document.getElementById(j).innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`
-                console.log(userDuplicates[Object.keys(vukkies[j])[i]])
                 if(userDuplicates[Object.keys(vukkies[j])[i]] && parseInt(userDuplicates[Object.keys(vukkies[j])[i]] >= 2)) {
                     document.getElementById(Object.keys(vukkies[j])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${userDuplicates[Object.keys(vukkies[j])[i]]}')`
+                    console.log("adding")
                 }
             }
         }
