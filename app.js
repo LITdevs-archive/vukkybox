@@ -152,6 +152,10 @@ const grl = rateLimit({
 		} else {
 			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
 		}
+	},
+	
+	keyGenerator: function (req /*, res*/) {
+		return req.headers["cf-connecting-ip"];
 	}
 });
 
@@ -211,6 +215,9 @@ function getKeyByValue(object, value) {
 const boxLimiter = rateLimit({
 	windowMs: 1000,
 	max: 2,
+	keyGenerator: function (req /*, res*/) {
+		return req.headers["cf-connecting-ip"];
+	},
 	handler: function(req, res) {
 		if(req.rateLimit.current > 10) {
 			adminHook.send(`Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
