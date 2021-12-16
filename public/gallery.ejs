@@ -203,8 +203,9 @@
                 console.log(userDuplicates[Object.keys(vukkies[j])[i]])
                 if(userDuplicates[Object.keys(vukkies[j])[i]]) {
                     console.log("Adding badge to: " + Object.keys(vukkies[j])[i] + " with " + userDuplicates[Object.keys(vukkies[j])[i]] + " duplicates")
-                    document.getElementById(Object.keys(vukkies[j])[i]).style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${userDuplicates[Object.keys(vukkies[j])[i]]}') no-repeat 0 0;`
+                    document.getElementById(Object.keys(vukkies[j])[i].toString()).style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${userDuplicates[Object.keys(vukkies[j])[i]]}') no-repeat 0 0;`
                 }
+                document.getElementById("245").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=245') no-repeat 0 0;`
             }
         }
         if (owned == 0) {
