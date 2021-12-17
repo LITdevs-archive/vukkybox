@@ -418,7 +418,7 @@ function lastLogin(user, callback) {
 			doc.balance = parseFloat(doc.balance).toFixed(1)
 		}
 		doc.save()
-		callback(doc.balance)
+		callback(doc.balance, doc)
 	})
 }
 

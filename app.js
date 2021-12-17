@@ -39,12 +39,12 @@ var scopes = ['identify', 'email'];
 var prompt = 'consent'
 app.set("view egine", "ejs")
 passport.use(new MediaWikiStrategy({
-    consumerKey: process.env.MEDIAWIKI_CONSUMER,
-    consumerSecret: process.env.MEDIAWIKI_SECRET,
-    callbackURL: "https://vukkybox.com/callbackmediawiki"
+	consumerKey: process.env.MEDIAWIKI_CONSUMER,
+	consumerSecret: process.env.MEDIAWIKI_SECRET,
+	callbackURL: "https://vukkybox.com/callbackmediawiki"
   },
   function(token, tokenSecret, profile, done) {
-    db.findOrCreate(profile.provider, profile, function(user) {
+	db.findOrCreate(profile.provider, profile, function(user) {
 		done(null, user)
 	  })
   }
@@ -425,14 +425,16 @@ app.get('/', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
   	if(req.user) {
 		if(req.user.username) {
-			db.lastLogin(req.user, function(newBalance) {
+			db.lastLogin(req.user, function(newBalance, newUser) {
+				req.session.passport.user = newUser
 				req.session.passport.user.balance = newBalance
 				res.render(__dirname + '/public/index.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 			})
 			} else {
 			if(req.user[0].primaryEmail) {
-				db.lastLogin(req.user[0], function(newBalance) {
-					req.session.passport.user.balance = newBalance
+				db.lastLogin(req.user[0], function(newBalance, newUser) {
+					req.session.passport.user[0] = newUser
+					req.session.passport.user[0].balance = newBalance
 					res.render(__dirname + '/public/index.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 				})
 			}
@@ -601,13 +603,15 @@ app.get('/store', grl, popupMid, function(req,res) {
 	  
 	if(req.isAuthenticated()) {
 		if(req.user.primaryEmail) {
-			db.lastLogin(req.user, function(newBalance) {
+			db.lastLogin(req.user, function(newBalance, newUser) {
+				req.session.passport.user = newUser
 				req.session.passport.user.balance = newBalance
 				req.user.balance = newBalance
 				res.render(__dirname + '/public/store.ejs', {user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 			})
 		} else if(req.user[0].primaryEmail) {
-			db.lastLogin(req.user[0], function(newBalance) {
+			db.lastLogin(req.user[0], function(newBalance, newUser) {
+				req.session.passport.user[0] = newUser
 				req.session.passport.user[0].balance = newBalance
 				req.user[0].balance = newBalance
 				res.render(__dirname + '/public/store.ejs', {user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
@@ -625,13 +629,15 @@ app.get('/credits', grl, popupMid, function(req,res) {
 	const ddeps = require("./package.json").devDependencies;
 	if(req.isAuthenticated()) {
 		if(req.user.primaryEmail) {
-			db.lastLogin(req.user, function(newBalance) {
+			db.lastLogin(req.user, function(newBalance, newUser) {
+				req.session.passport.user = newUser
 				req.session.passport.user.balance = newBalance
 				req.user.balance = newBalance
 				res.render(__dirname + '/public/credits.ejs', {deps: deps, ddeps: ddeps, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 			})
 		} else if(req.user[0].primaryEmail) {
-			db.lastLogin(req.user[0], function(newBalance) {
+			db.lastLogin(req.user[0], function(newBalance, newUser) {
+				req.session.passport.user[0] = newUser
 				req.session.passport.user[0].balance = newBalance
 				req.user[0].balance = newBalance
 				res.render(__dirname + '/public/credits.ejs', {deps: deps, ddeps: ddeps, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
@@ -650,13 +656,15 @@ app.get('/pwasw.js', grl, function(req, res){
 function checkAuth(req, res, next) {
 	if (req.isAuthenticated()) {
 		if(req.user._id) {
-			db.lastLogin(req.user, function(newBalance) {
+			db.lastLogin(req.user, function(newBalance, newUser) {
+				req.session.passport.user = newUser
 				req.session.passport.user.balance = newBalance
 			})
 			return next();
 			
 		} else {
-			db.lastLogin(req.user[0], function(newBalance) {
+			db.lastLogin(req.user[0], function(newBalance, newUser) {
+				req.session.passport.user[0] = newUser
 				req.session.passport.user[0].balance = newBalance
 			})
 			return next();
