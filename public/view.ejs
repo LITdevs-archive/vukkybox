@@ -9,13 +9,6 @@
         <meta name="title" content="<%=JSON.parse(vukky).name %> (#<%=vukkyId %>)">
         <meta name="description" content="<%=JSON.parse(vukky).description %>">
         <meta property="og:image" content="<%=JSON.parse(vukky).url %>">
-        <link rel="preload" href="/resources/unbox.wav" as="audio">
-        <link rel="preload" href="/resources/unboxcommon.wav" as="audio">
-        <link rel="preload" href="/resources/unboxrare.wav" as="audio">
-        <link rel="preload" href="/resources/unboxunique.wav" as="audio">
-        <link rel="preload" href="/resources/unboxgnome.wav" as="audio">
-        <link rel="preload" href="/resources/unboxsussy.mp3" as="audio">
-        <link rel="preload" href="/resources/unboxnudge.mp3" as="audio">
         <style>
             #share:hover {
                 cursor: pointer
@@ -92,6 +85,7 @@
         if(vukkyID == 109 || vukkyID == 110) document.querySelector("audio").src = "/resources/unboxbroken.wav"
         if(vukkyID == 240) document.querySelector("audio").src = "/resources/unboxnancy.mp3"
         if(vukkyID == 195 || vukkyID == 196 || vukkyID == 197) document.querySelector("audio").src = "/resources/unboxglitch.mp3"
+        if(vukkyID == 279) document.querySelector("audio").src = "/resources/unboxsupertuxxy.wav"
         document.querySelector("audio").play();
     </script>
 </html>

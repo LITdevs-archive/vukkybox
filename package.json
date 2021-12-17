@@ -25,7 +25,7 @@
     "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
     "postcss": "^8.4.5",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^3.0.6"
   },
   "dependencies": {
     "connect-mongodb-session": "^3.0.0",
@@ -40,7 +40,7 @@
     "express-session": "^1.17.2",
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.6",
-    "passport": "^0.4.1",
+    "passport": "^0.5.0",
     "passport-discord": "^0.1.4",
     "passport-github": "^1.1.0",
     "passport-google-oauth": "^2.0.0",

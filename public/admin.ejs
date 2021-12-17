@@ -65,8 +65,8 @@
             document.querySelector("#vukkayurl").value = params.get("uploaded");
             if(params.get("uploaded").includes("/pukkies/")) {
                 document.querySelector("#vukkaylevel").value = "pukky";
-                document.querySelector("#vukkayname").value = params.get("uploaded").split("/")[5].split("pukky")[0] + "'s Pukky"
-                document.querySelector("#vukkaydesc").value = "This Pukky belongs to " + params.get("uploaded").split("/")[5].split("pukky")[0]
+                document.querySelector("#vukkayname").value = params.get("uploaded").split("/")[5].split(".")[0] + `'${!params.get("uploaded").split("/")[5].split(".")[0].endsWith("s") ? "s" : ""} Pukky`
+                document.querySelector("#vukkaydesc").value = "This Pukky belongs to " + params.get("uploaded").split("/")[5].split(".")[0]
             }
         }
     </script>
