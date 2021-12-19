@@ -381,10 +381,8 @@ app.post("/admin/:action", grl, async function(req, res) {
 			break;
 			case "set_balance":
 				if(req.body.userid && req.body.newbalance) {
-					db.setBalance(req.body.userid, req.body.newbalance, (resp, err) => {
-						if(err) return res.redirect("/admin?error=" + err)
-						res.redirect("/admin?balance=true")
-					})
+					db.setBalance(req.body.userid, req.body.newbalance)
+					res.redirect("/admin?balance=true")
 				} else {
 					res.redirect("/admin?error=missingargs")
 				}
