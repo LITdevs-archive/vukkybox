@@ -379,6 +379,16 @@ app.post("/admin/:action", grl, async function(req, res) {
 				db.reset ;
 				res.redirect("/admin?popup=true")
 			break;
+			case "set_balance":
+				if(req.body.userid && req.body.newbalance) {
+					db.setBalance(req.body.userid, req.body.newbalance, (resp, err) => {
+						if(err) return res.redirect("/admin?error=" + err)
+						res.redirect("/admin?balance=true")
+					})
+				} else {
+					res.redirect("/admin?error=missingargs")
+				}
+			break;
 			default:
 				res.render(__dirname + "/public/adminfake.ejs");
 				break;

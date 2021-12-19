@@ -605,10 +605,20 @@ function acceptPopup(userId) {
 	})
 }
 
+function setBalance(userId, newBalance) {
+	User.findOne({_id: userId}, (err, user) => {
+		if (err) console.log(err);
+		if (err) return 500;
+		user.balance = newBalance
+		user.save()
+	})
+}
+
 module.exports = {
 	findOrCreate,
 	changeUsername,
 	redeemCode,
+	setBalance,
 	createCode,
 	validCode,
 	buyBox,
