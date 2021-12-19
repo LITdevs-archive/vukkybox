@@ -382,6 +382,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 			case "set_balance":
 				if(req.body.userid && req.body.newbalance) {
 					db.setBalance(req.body.userid, req.body.newbalance)
+					adminHook.send(`<a:eagersplode:902938979563884584> \`${req.body.userid}\`'s balance has been set to ${req.body.newbalance}`)
 					res.redirect("/admin?balance=true")
 				} else {
 					res.redirect("/admin?error=missingargs")
