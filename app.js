@@ -376,7 +376,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 				res.redirect("/admin?emails=true")
 			break;
 			case "popup_reset":
-				db.reset ;
+				db.resetPopup();
 				res.redirect("/admin?popup=true")
 			break;
 			case "set_balance":
