@@ -54,13 +54,13 @@
 			<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
 				
 				<img class="m-auto" height="128" src="<%=JSON.parse(vukky).url %>"/>
-				<p><%=JSON.parse(vukky).name %> (#<%=vukkyId %>)</p>
+				<p><%-JSON.parse(vukky).name %> (#<%=vukkyId %>)</p>
 				<% if(parseInt(JSON.parse(level).level) == 8) { %>
 						<p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %></p>
 					<% } else { %>
 						<p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %> (<%=JSON.parse(level).level %> star)</p>
 					<% } %>
-				<p><%=JSON.parse(vukky).description %></p>
+				<p><%-JSON.parse(vukky).description %></p>
 				<br>
 				<button class="button button-blue">Go back</button>
 			</div>
