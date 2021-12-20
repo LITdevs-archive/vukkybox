@@ -1068,7 +1068,7 @@
 			"67": {
 				"name": "Vukky Miner",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkyminer.webp",
-				"description": "This Vukky's going to mine crypto and convert it to SQUID! Wait! No! <a href='https://www.reddit.com/qkai4d'>The value dropped by 99%!</a> You're going to lose all your money! Stop!"
+				"description": "This Vukky's going to mine crypto and convert it to SQUID! Wait! No! <a class='text-blue-500' href='https://www.reddit.com/qkai4d'>The value dropped by 99%!</a> You're going to lose all your money! Stop!"
 			},
 			"77": {
 				"name": "Vukky Burger",
