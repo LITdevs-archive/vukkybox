@@ -1,9 +1,13 @@
-if(document.location.search == "?copytv") {
+function fardedLol() {
     navigator.clipboard.writeText("https://vukkybox.com/view/6/312").then(function() {
         alert("Copied to clipboard!");
+        document.location.href = "https://vukkybox.com/view/6/312";
     });
 }
-if(document.location.search != "?notv") {
+if(document.location.search == "?copytv") {
+    document.body.innerHTML = `<button onclick="fardedLol();">CLICK HERE TO COPY PLEASE</button>`
+}
+if(document.location.search != "?notv" && document.location.search != "?copytv") {
     var script = document.createElement('script');
     script.setAttribute('src', '/resources/imagemap.js');
     script.setAttribute('type', 'text/javascript');
