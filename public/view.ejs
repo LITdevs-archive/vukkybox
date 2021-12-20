@@ -77,7 +77,7 @@
 	    const vukkyID = <%=vukkyId %>;
         const vukkyAudio = false
         <% if(JSON.parse(vukky).audio) { %>
-            const vukkyAudio = <%=prize.box.vukky.audio %>
+            const vukkyAudio = <%=JSON.parse(vukky).audio %>
         <% } %>
         if(rarity >= 6) document.querySelector("audio").src = "/resources/unboxrare.wav"
         if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
