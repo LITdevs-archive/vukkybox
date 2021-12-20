@@ -104,7 +104,7 @@
 	const boxName = "<%=boxType %>";
     const vukkyAudio = false 
     <% if(prize.box.vukky.audio) { %>
-        const vukkyAudio = <%=prize.box.vukky.audio %>
+        vukkyAudio = "<%=prize.box.vukky.audio %>"
     <% } %>
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
         let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
