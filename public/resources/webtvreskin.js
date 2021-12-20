@@ -1,11 +1,7 @@
 if(document.location.search == "?copytv") {
-    if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
-        navigator.share({'title': 'VukkyTV', 'url': 'https://vukkybox.com/view/6/312'});
-    } else {
-        navigator.clipboard.writeText("https://vukkybox.com/view/6/312").then(function() {
-            alert("Copied to clipboard!");
-        });
-    }
+    navigator.clipboard.writeText("https://vukkybox.com/view/6/312").then(function() {
+        alert("Copied to clipboard!");
+    });
 }
 if(document.location.search != "?notv") {
     var script = document.createElement('script');
