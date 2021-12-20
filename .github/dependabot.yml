@@ -7,6 +7,6 @@ version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
+    open-pull-requests-limit: 999 # lol i don't care
     schedule:
       interval: "daily"
-      open-pull-requests-limit: 999 # lol i don't care
