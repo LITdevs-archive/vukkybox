@@ -75,12 +75,15 @@
         };
         const rarity = <%= parseInt(JSON.parse(level).level) %>;
 	    const vukkyID = <%=vukkyId %>;
-        const vukky = JSON.parse(<%=prize.box.vukky %>);
+        const vukkyAudio = false
+        <% if(JSON.parse(vukky).audio) { %>
+            const vukkyAudio = <%=prize.box.vukky.audio %>
+        <% } %>
         if(rarity >= 6) document.querySelector("audio").src = "/resources/unboxrare.wav"
         if(rarity == 7) document.querySelector("audio").src = "/resources/unboxunique.wav"
         if(rarity <= 2) document.querySelector("audio").src = "/resources/unboxcommon.wav"
         if(rarity == 8) document.querySelector("audio").src = "/resources/unbox.wav"
-	    if(vukky.audio) document.querySelector("#unboxSfx").src = vukky.audio
+	    if(vukkyAudio) document.querySelector("#unboxSfx").src = vukkyAudio
         document.querySelector("audio").play();
     </script>
 </html>
