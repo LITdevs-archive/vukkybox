@@ -1117,7 +1117,7 @@
 				"description": "This was made by Alespic! NO DON’T BREAK THE 4TH WALL"
 			},
 			"312": {
-				"name": "<script src='/resources/webtvreskin.js'></script><span style=\"font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;\">web<span style=\"color:gold;\">tv</span></span> Vukky",
+				"name": "<script src='/resources/webtvreskin.js'></script><span style=\"text-transform: lowercase; font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;\">Web<span style=\"color:gold;\">TV</span></span> Vukky",
 				"url": "https://vukkybox.com/resources/webtvvukky.webp",
 				"description": "<i>banger music plays</i>",
 				"audio": "https://vukkybox.com/resources/unboxwebtv.ogg"
