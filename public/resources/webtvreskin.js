@@ -1,8 +1,11 @@
 function fardedLol() {
     navigator.clipboard.writeText("https://vukkybox.com/view/6/312").then(function() {
         alert("Copied to clipboard!");
-        document.location.href = "https://vukkybox.com/view/6/312";
+        doesThisWorkThen();
     });
+}
+function doesThisWorkThen() {
+    document.location.href = "https://vukkybox.com/view/6/312";
 }
 if(document.location.search == "?copytv") {
     document.body.innerHTML = `<button onclick="fardedLol();">CLICK HERE TO COPY PLEASE</button>`
