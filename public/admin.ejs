@@ -49,11 +49,11 @@
     <br>
     <h3>wtv-setup:/accounts</h3>
     <form style="display: inline;" method="post" action="https://vukkybox.com/admin/set_balance">
-        <input id="userid" type="text" name="userid" placeholder="_id" required/><br>
+        <input id="userid" type="text" name="userid" placeholder="_id" required=""><br>
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
-        <input type="radio" id="newbalanceswitch" name="action" value="newbalance" required>
-        <label for="newbalanceswitch">Change balance</label> <input id="newbalance" type="float" name="newbalance" placeholder="New Balance" required/>
-        <br><input type="submit" value="Execute"/>
+        <input type="radio" id="newbalanceswitch" name="action" value="newbalance" required=""> <label for="newbalanceswitch">Change balance</label> <input id="newbalance" type="float" name="newbalance" placeholder="New Balance" required="">
+        <br><input type="radio" id="deleteaccountswitch" name="action" value="deleteaccount" required=""> <label for="deleteaccount">Delete account (WILL BREAK IMPLEMENT LATER!!)</label>
+        <br><input type="submit" value="Execute">
     </form><br>
     <br>
     <h3>Remote Database Access</h3>
