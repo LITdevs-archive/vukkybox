@@ -319,7 +319,8 @@
 			"20": {
 				"name": "Among Us Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkyamongus.webp",
-				"description": "susi baka"
+				"description": "susi baka",
+				"audio": "https://vukkybox.com/resources/unboxsussy.wav"
 			},
 			"21": {
 				"name": "Pink Vukky Head",
@@ -509,12 +510,14 @@
 			"240": {
 				"name": "birtdai vukie",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp",
-				"description": "tis was mad by nancy. enjoiing his caik and balon. krovn to. feturyng voike aktin also by nanci"
+				"description": "tis was mad by nancy. enjoiing his caik and balon. krovn to. feturyng voike aktin also by nanci",
+				"audio": "https://vukkybox.com/resources/unboxnancy.wav"
 			},
 			"242": {
 				"name": "Nudge Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/nudgevukky.webp",
-				"description": "This was made by Synne! STOP. NUDGING. ME."
+				"description": "This was made by Synne! STOP. NUDGING. ME.",
+				"audio": "https://vukkybox.com/resources/unboxnudge.wav"
 			},
 			"290": {
 				"name": "Twokky",
@@ -706,17 +709,20 @@
 			"195": {
 				"name": "Glitched Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp",
-				"description": "This was made by Mitchellonii! Ṯ̵̡̡̳͉̩͕̣̳̣̭͍͈̲̖̪͘̚h̴̟̫̭̲̳̞̻͉͂̅̃̂̈́̇͂̏̊̒̓̂͂̉̽̅́̿ę̷͎͕̱̣̦̪͇̋̄̐̇̿̿̿̕̕͝͠r̵̨͕͖̟̫͕̒͒̃̽̍̿̇̐͆̽̉̉̕͜ě̷̦͉̱̳͇̗̅́͗̃͗͝ ̶̭̻̦̘̱͕̳̤̲͈̻̘̥̥̤̦̮̿͊̔̀̒͌̋̅i̸̧̢͓̹͉̣͔͉̳̠̱͉̘͓͎̝̩̍͆̂s̸̛͍̦̙͒͋̑͐̂̈́͌͛͗͂ ̵̡̨̨̫͚̼͎̰̳̤̻̝̦̇̎́͑̓͋̇̇͐̈́̇̈́̒̂̾̕̚ͅn̶̢̜͓̜̳̤͚͔̦͔͗̑ộ̶̣̗̹̘̳̝̍́̓̑́̑̒̄̆ ̸̨̡̧̖͈̰̘͔̗͉͇̫̹̫̅̅̌̈́̽̕ȅ̶̛̦͙̘̞̆͑̿̿̀̄̊̌͛̌͂̕̚s̶̛͎̭̙͎͚̓̂̾̀͗̀͆̄̌͌c̴͈̥̹͈͇̲͇̠͚̰͊͐̈́̓̃̽̅̋̚á̴̛̹̮͍͔͓̹̟̲̻̓̈́̈́̈́̿̀̓̈́́̋̏͘͝͠p̶͖̆̒e̵͎̹̿̃͌̈́.̵̻͉̻̯̞̥̮̹̫̦̥͔̫̪̤͚͑̇"
+				"description": "This was made by Mitchellonii! Ṯ̵̡̡̳͉̩͕̣̳̣̭͍͈̲̖̪͘̚h̴̟̫̭̲̳̞̻͉͂̅̃̂̈́̇͂̏̊̒̓̂͂̉̽̅́̿ę̷͎͕̱̣̦̪͇̋̄̐̇̿̿̿̕̕͝͠r̵̨͕͖̟̫͕̒͒̃̽̍̿̇̐͆̽̉̉̕͜ě̷̦͉̱̳͇̗̅́͗̃͗͝ ̶̭̻̦̘̱͕̳̤̲͈̻̘̥̥̤̦̮̿͊̔̀̒͌̋̅i̸̧̢͓̹͉̣͔͉̳̠̱͉̘͓͎̝̩̍͆̂s̸̛͍̦̙͒͋̑͐̂̈́͌͛͗͂ ̵̡̨̨̫͚̼͎̰̳̤̻̝̦̇̎́͑̓͋̇̇͐̈́̇̈́̒̂̾̕̚ͅn̶̢̜͓̜̳̤͚͔̦͔͗̑ộ̶̣̗̹̘̳̝̍́̓̑́̑̒̄̆ ̸̨̡̧̖͈̰̘͔̗͉͇̫̹̫̅̅̌̈́̽̕ȅ̶̛̦͙̘̞̆͑̿̿̀̄̊̌͛̌͂̕̚s̶̛͎̭̙͎͚̓̂̾̀͗̀͆̄̌͌c̴͈̥̹͈͇̲͇̠͚̰͊͐̈́̓̃̽̅̋̚á̴̛̹̮͍͔͓̹̟̲̻̓̈́̈́̈́̿̀̓̈́́̋̏͘͝͠p̶͖̆̒e̵͎̹̿̃͌̈́.̵̻͉̻̯̞̥̮̹̫̦̥͔̫̪̤͚͑̇",
+				"audio": "https://vukkybox.com/resources/unboxglitch.mp3"
 			},
 			"196": {
 				"name": "Deformed Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp",
-				"description": "This was made by Mitchellonii! If you see a Vukky like this, please immediately contact the Central Vukky Generating Organization."
+				"description": "This was made by Mitchellonii! If you see a Vukky like this, please immediately contact the Central Vukky Generating Organization.",
+				"audio": "https://vukkybox.com/resources/unboxglitch.mp3"
 			},
 			"197": {
 				"name": "Deep Fried Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp",
-				"description": "This was made by Mitchellonii! If you see a Vukky like this, please immediately contact the Central Vukky Printing Organization."
+				"description": "This was made by Mitchellonii! If you see a Vukky like this, please immediately contact the Central Vukky Printing Organization.",
+				"audio": "https://vukkybox.com/resources/unboxglitch.mp3"
 			},
 			"200": {
 				"name": "200 Vukky",
@@ -741,7 +747,8 @@
 			"220": {
 				"name": "Sliced Among Us Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/dedvukker.webp",
-				"description": "This was made by Synne! Oh no! It has a bone."
+				"description": "This was made by Synne! Oh no! It has a bone.",
+				"audio": "https://vukkybox.com/resources/unboxsussy.wav"
 			},
 			"221": {
 				"name": "Booky",
@@ -863,17 +870,20 @@
 			"108": {
 				"name": "Sussy Tukky",
 				"url": "https://vukkybox.com/resources/tukkysus.webp",
-				"description": " Oh NO! The Tukky is SUS! That's super SUSSY!"
+				"description": " Oh NO! The Tukky is SUS! That's super SUSSY!",
+				"audio": "https://vukkybox.com/resources/unboxsussy.wav"
 			},
 			"109": {
 				"name": "Broken Vukky",
 				"url": "https://vukkybox.com/resources/vukkybroken.webp",
-				"description": " Oh no! Our Vukky! It's broken!"
+				"description": " Oh no! Our Vukky! It's broken!",
+				"audio": "https://vukkybox.com/resources/unboxbroken.wav"
 			},
 			"110": {
 				"name": "Brokener Vukky",
 				"url": "https://vukkybox.com/resources/vukkybrokener.webp",
-				"description": "Oh no! Our Vukky! Let's throw it in the trash! It's brokener than the Broken Vukky!"
+				"description": "Oh no! Our Vukky! Let's throw it in the trash! It's brokener than the Broken Vukky!",
+				"audio": "https://vukkybox.com/resources/unboxbroken.wav"
 			},
 			"117": {
 				"name": "Penelope Vukky",
@@ -983,7 +993,8 @@
 			"279": {
 				"name": "SuperTuxxy",
 				"url": "https://vukkybox.com/resources/supertuxxy.webp",
-				"description": "*kill.wav*"
+				"description": "*kill.wav*",
+				"audio": "https://vukkybox.com/resources/unboxsupertuxxy.wav"
 			},
 			"292": {
 				"name": "Fourkky",
@@ -1077,7 +1088,8 @@
 			"136": {
 				"name": "Gnome Vukky",
 				"url": "https://vukkybox.com/resources/gnome.webp",
-				"description": "its just laughing we cant get it to stop please help us it just keeps laughing please help us help help help"
+				"description": "its just laughing we cant get it to stop please help us it just keeps laughing please help us help help help",
+				"audio": "https://vukkybox.com/resources/unboxgnome.wav"
 			},
 			"153": {
 				"name": "m9 bayonet freehand",
@@ -1271,7 +1283,8 @@
 			"100": {
 				"name": "gepli's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/gepli.webp",
-				"description": "This Pukky belongs to gepli"
+				"description": "This Pukky belongs to gepli",
+				"audio": "https://vukkybox.com/resources/unboxsussy.wav"
 			},
 			"101": {
 				"name": "Fvn's Pukky",
@@ -1346,7 +1359,8 @@
 			"128": {
 				"name": "laker's Pukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/lakerpukky.webp",
-				"description": "Vukky in space... Pretty sussy."
+				"description": "Vukky in space... Pretty sussy.",
+				"audio": "https://vukkybox.com/resources/unboxsussy.wav"
 			},
 			"129": {
 				"name": "Professional business man's Pukky",
