@@ -102,7 +102,10 @@
     if(rarity == 8) rarity = 3;
 	const vukkyID = <%=prize.box.vukkyId %>;
 	const boxName = "<%=boxType %>";
-    const vukky = <%=JSON.parse(prize.box.vukky) %>;
+    const vukkyAudio = false 
+    <% if(prize.box.vukky.audio) { %>
+        const vukkyAudio = <%=prize.box.vukky.audio %>
+    <% } %>
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
         let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
         let newBalance = <%=user.balance %>;
