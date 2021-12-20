@@ -102,7 +102,7 @@
     if(rarity == 8) rarity = 3;
 	const vukkyID = <%=prize.box.vukkyId %>;
 	const boxName = "<%=boxType %>";
-    const vukkyAudio = false 
+    var vukkyAudio = false 
     <% if(prize.box.vukky.audio) { %>
         vukkyAudio = "<%=prize.box.vukky.audio %>"
     <% } %>
