@@ -38,6 +38,7 @@ if(document.location.search == "?notv") {
         document.querySelector("img[class=m-auto]").src = "https://vukkybox.com/resources/msntvvukky.webp";
         document.querySelector("i").innerHTML = "Thank you for \"upgrading\".";
         document.querySelector("audio").src = "https://vukkybox.com/resources/unboxmsntv.ogg";
+        document.querySelector("audio").loop = true;
         document.querySelector("audio").play();
     });
 }
