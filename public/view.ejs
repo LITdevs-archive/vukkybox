@@ -76,6 +76,7 @@
         const rarity = <%= parseInt(JSON.parse(level).level) %>;
 	    const vukkyID = <%=vukkyId %>;
         const vukkyAudio = false
+        const AvukkyAudio = <%=JSON.parse(vukky).audio %>
         <% if(JSON.parse(vukky).audio) { %>
             const vukkyAudio = <%=JSON.parse(vukky).audio %>
         <% } %>
