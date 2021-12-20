@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 311,
+	"currentId": 312,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1115,6 +1115,12 @@
 				"name": "Vukky Drawing",
 				"url": "https://vukkybox.com/resources/vukkydrawing.webp",
 				"description": "This was made by Alespic! NO DON’T BREAK THE 4TH WALL"
+			},
+			"312": {
+				"name": "<span style=\"font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;\">web<span style=\"color:gold;\">tv</span></span> Vukky",
+				"url": "https://vukkybox.com/resources/webtvvukky.webp",
+				"description": "<i>banger music plays</i>",
+				"audio": "https://vukkybox.com/resources/unboxwebtv.ogg"
 			}
 		},
 		"7": {
