@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 302,
+	"currentId": 311,
 	"rarity": {
 		"1": {
 			"1": {
@@ -540,6 +540,11 @@
 				"name": "Dedtton",
 				"url": "https://vukkybox.com/resources/dedtton.webp",
 				"description": "A Vukky stuck as a button! He wasn't pressed for a bit too long..."
+			},
+			"303": {
+				"name": "Blame Mitch Vukky",
+				"url": "https://vukkybox.com/resources/blamemitch.webp",
+				"description": "This Vukky was made by HaveFUNRICH. This Vukky blames Mitch for it. It was Mitch not me I swear"
 			}
 		},
 		"3": {
@@ -1093,6 +1098,11 @@
 				"name": "Sixkky",
 				"url": "https://vukkybox.com/resources/sixkky.webp",
 				"description": "This Vukky was made by VocalFan. The brightest and shiniest of the Numkies, he gives rewards to the best Vukkies! ...He sure does leave a sparkly mess, though!"
+			},
+			"308": {
+				"name": "Vukky Drawing",
+				"url": "https://vukkybox.com/resources/vukkydrawing.webp",
+				"description": "This was made by Alespic! NO DON’T BREAK THE 4TH WALL"
 			}
 		},
 		"7": {
@@ -1562,6 +1572,41 @@
 				"name": "Spookyy's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/Spookyy.webp",
 				"description": "This Pukky belongs to Spookyy"
+			},
+			"304": {
+				"name": "r6e1c's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/r6e1c.webp",
+				"description": "This Pukky belongs to r6e1c"
+			},
+			"305": {
+				"name": "Midofey's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Midofey.webp",
+				"description": "This Pukky belongs to Midofey"
+			},
+			"306": {
+				"name": "Olaf II's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/OlafII.webp",
+				"description": "This Pukky belongs to Olaf II"
+			},
+			"307": {
+				"name": "Hecker's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Hecker.webp",
+				"description": "This Pukky belongs to Hecker"
+			},
+			"309": {
+				"name": "Crokobos' Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/crokobos.webp",
+				"description": "This Pukky belongs to Crokobos"
+			},
+			"310": {
+				"name": "Piste's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Piste.webp",
+				"description": "This Pukky belongs to Piste"
+			},
+			"311": {
+				"name": "Hamoude's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/Hamoude.webp",
+				"description": "This Pukky belongs to Hamoude"
 			}
 		}
 	}
