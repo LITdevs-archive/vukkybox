@@ -368,6 +368,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 					url: req.body.url,
 					description: req.body.description
 				}
+				if(req.body.sfx.length != 0) vukkyJson.rarity[req.body.level][newId].audio = req.body.sfx;
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
 				if(req.body.contribid != "") {

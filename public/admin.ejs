@@ -42,7 +42,9 @@
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input id="vukkaydesc" type="text" name="description" placeholder="description" required/>
         <input id="vukkayurl" type="text" name="url" placeholder="url" required/>
-        <input id="vukkaylevel" type="text" name="level" placeholder="1-7 or pukky" required>
+        <input id="vukkaylevel" type="text" name="level" placeholder="1-7 or pukky" required><br>
+        Optional: 
+        <input type="text" name="sfx" placeholder="full audio url (use tellyscript)">
         <input type="text" name="contribid" placeholder="contributor discord id">
         <input type="submit" value="Execute"/>
     </form>
