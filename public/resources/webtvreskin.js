@@ -1,11 +1,7 @@
 function fardedLol() {
     navigator.clipboard.writeText("https://vukkybox.com/view/6/312").then(function() {
-        alert("Copied to clipboard!");
-        doesThisWorkThen();
+        alert("Copied to clipboard! Now press the back button. :(");
     });
-}
-function doesThisWorkThen() {
-    document.location.href = "https://vukkybox.com/view/6/312";
 }
 if(document.location.search == "?copytv") {
     document.body.innerHTML = `<button onclick="fardedLol();">CLICK HERE TO COPY PLEASE</button>`
