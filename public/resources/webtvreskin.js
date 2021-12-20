@@ -32,4 +32,8 @@ if(document.location.search != "?notv" && document.location.search != "?copytv")
     }
     document.getElementsByTagName('head')[0].appendChild(script);
 }
-if(document.location.search == "?notv") document.title = "Vukkybox - WebTV Vukky (#312)";
+if(document.location.search == "?notv") {
+    document.title = "Vukkybox - WebTV Vukky (#312)";
+    document.querySelector("audio").src = "https://vukkybox.com/resources/unboxmsntv.ogg"
+    document.querySelector("audio").play();
+}
