@@ -135,7 +135,7 @@
                 if(rarity >= 6) document.querySelector("#unboxSfx").src = "/resources/unboxrare.wav"
                 if(rarity == 7) document.querySelector("#unboxSfx").src = "/resources/unboxunique.wav"
                 if(rarity <= 2) document.querySelector("#unboxSfx").src = "/resources/unboxcommon.wav"
-	            if(vukky.audio) document.querySelector("#unboxSfx").src = vukky.audio
+	            if(vukkyAudio) document.querySelector("#unboxSfx").src = vukkyAudio
 		        <%if (dupe) { %>document.querySelector("#unboxSfx").playbackRate = 2<% } %>
                 document.querySelector("#unboxSfx").play();
                 document.querySelector("#share").classList.remove("hidden");
