@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 312,
+	"currentId": 313,
 	"rarity": {
 		"1": {
 			"1": {
@@ -834,6 +834,11 @@
 				"name": "Vukky's Mod",
 				"url": "https://vukkybox.com/resources/vukkysmod.webp",
 				"description": "This Vukky was made by VocalFan. A Vukky made by a random person named \"Garry\". This Vukky's concept design was mailed to the Central Vukky Printing Organization's Office without any other details on who he is."
+			},
+			"313": {
+				"name": "3D Printed Vukky",
+				"url": "https://vukkybox.com/resources/3dvukky.webp",
+				"description": "A close friend to the Vukky Plush. It's made out of cheap plastic."
 			}
 		},
 		"4": {
