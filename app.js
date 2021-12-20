@@ -338,21 +338,26 @@ app.post("/admin/:action", grl, async function(req, res) {
 			break;
 			case "upload_file":
 				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
-				const fileWithoutExt = req.files.image.name.replace(/\.[^/.]+$/, "")
-				const folderLocation = req.body.vukkytype == "pukky" ? "/resources/pukkies/" : "/resources/"
-				if(req.files.image.name.endsWith(".gif")) {
-					req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
-					await webp.gwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
-					fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
-				} else if (req.files.image.name.endsWith(".webp")) {
-					req.files.image.mv(`${__dirname}/public${folderLocation}${req.files.image.name}`);
+				if(!req.body.vukkytype == "special") {
+					const fileWithoutExt = req.files.image.name.replace(/\.[^/.]+$/, "")
+					const folderLocation = req.body.vukkytype == "pukky" ? "/resources/pukkies/" : "/resources/"
+					if(req.files.image.name.endsWith(".gif")) {
+						req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+						await webp.gwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
+						fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+					} else if (req.files.image.name.endsWith(".webp")) {
+						req.files.image.mv(`${__dirname}/public${folderLocation}${req.files.image.name}`);
+					} else {
+						req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+						await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
+						fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+					}
+					hook.send("<a:eager:902938792896385064> A new Vukky asset has been uploaded.")
+					return res.redirect(`/admin?uploaded=https://vukkybox.com${folderLocation}${fileWithoutExt}.webp`);
 				} else {
-					req.files.image.mv(`${__dirname}/public/resources/temp/${req.files.image.name}`);
-					await webp.cwebp(`${__dirname}/public/resources/temp/${req.files.image.name}`,`${__dirname}/public${folderLocation}${fileWithoutExt}.webp`);
-					fs.unlinkSync(`${__dirname}/public/resources/temp/${req.files.image.name}`);
+					req.files.image.mv(`${__dirname}/public/resources/${req.files.image.name}`);
+					return res.redirect(`/admin`);
 				}
-				hook.send("<a:eager:902938792896385064> A new Vukky asset has been uploaded.")
-				return res.redirect(`/admin?uploaded=https://vukkybox.com${folderLocation}${fileWithoutExt}.webp`);
 				break;
 			case "create_vukky": //i really dont want to make this one
 				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.redirect("/admin?error=missingargs")
