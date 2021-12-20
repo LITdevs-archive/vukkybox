@@ -102,6 +102,7 @@
     if(rarity == 8) rarity = 3;
 	const vukkyID = <%=prize.box.vukkyId %>;
 	const boxName = "<%=boxType %>";
+    const vukky = <%=prize.box.vukky %>;
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
         let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
         let newBalance = <%=user.balance %>;
@@ -131,13 +132,7 @@
                 if(rarity >= 6) document.querySelector("#unboxSfx").src = "/resources/unboxrare.wav"
                 if(rarity == 7) document.querySelector("#unboxSfx").src = "/resources/unboxunique.wav"
                 if(rarity <= 2) document.querySelector("#unboxSfx").src = "/resources/unboxcommon.wav"
-	            if(vukkyID == 136) document.querySelector("#unboxSfx").src = "/resources/unboxgnome.wav"
-                if(vukkyID == 20 || vukkyID == 100 || vukkyID == 108 || vukkyID == 128 || vukkyID == 220) document.querySelector("#unboxSfx").src = "/resources/unboxsussy.mp3"
-                if(vukkyID == 242) document.querySelector("#unboxSfx").src = "/resources/unboxnudge.mp3"
-                if(vukkyID == 109 || vukkyID == 110) document.querySelector("#unboxSfx").src = "/resources/unboxbroken.wav"
-                if(vukkyID == 240) document.querySelector("#unboxSfx").src = "/resources/unboxnancy.mp3"
-                if(vukkyID == 195 || vukkyID == 196 || vukkyID == 197) document.querySelector("#unboxSfx").src = "/resources/unboxglitch.mp3"
-                if(vukkyID == 279) document.querySelector("#unboxSfx").src = "/resources/unboxsupertuxxy.wav"
+	            if(vukky.audio) document.querySelector("#unboxSfx").src = vukky.audio
 		        <%if (dupe) { %>document.querySelector("#unboxSfx").playbackRate = 2<% } %>
                 document.querySelector("#unboxSfx").play();
                 document.querySelector("#share").classList.remove("hidden");
