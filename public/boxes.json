@@ -103,6 +103,7 @@
     "beggars": {
         "price": 2.5,
         "uniques": [],
+        "noRefund": true,
         "levels": {
             "1": 90,
             "2": 10,

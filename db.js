@@ -293,7 +293,7 @@ function buyBox(user, box, callback) {
 						
 						doc.duplicates = duplicates
 						doc.markModified('duplicates');
-						doc.balance += 0.1 * boxData.price;
+						if (!boxData.noRefund) doc.balance += 0.1 * boxData.price;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
 					doc.boxesOpened++;
@@ -327,7 +327,7 @@ function buyBox(user, box, callback) {
 						
 						doc.duplicates = duplicates
 						doc.markModified('duplicates');
-						doc.balance += 0.1 * boxData.price;
+						if (!boxData.noRefund) doc.balance += 0.1 * boxData.price;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
 					doc.boxesOpened++;
