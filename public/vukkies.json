@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 314,
+	"currentId": 315,
 	"rarity": {
 		"1": {
 			"1": {
@@ -844,6 +844,11 @@
 				"name": "3D Printed Vukky",
 				"url": "https://vukkybox.com/resources/3dvukky.webp",
 				"description": "A close friend to the Vukky Plush. It's made out of cheap plastic."
+			},
+			"315": {
+				"name": "[REDACTED] TV Vukky",
+				"url": "https://vukkybox.com/resources/redactedtvvukky.png",
+				"description": "This Vukky covers up things that would make microsoft sue the shit out of us, whatever that means"
 			}
 		},
 		"4": {
