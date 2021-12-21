@@ -277,11 +277,11 @@ function buyBox(user, box, callback) {
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
+				let oldBalance = doc.balance - boxData.price;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
-					let oldBalance = doc.balance
 					if(!doc.gallery.includes(res.vukkyId)) {
 						doc.uniqueVukkiesGot++;
 						doc.gallery.push(res.vukkyId)
@@ -313,11 +313,11 @@ function buyBox(user, box, callback) {
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
+				let oldBalance = doc.balance - boxData.price;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
-					let oldBalance = doc.balance
 					if(!doc.gallery.includes(res.vukkyId)) {
 						doc.uniqueVukkiesGot++;
 						doc.gallery.push(res.vukkyId)
