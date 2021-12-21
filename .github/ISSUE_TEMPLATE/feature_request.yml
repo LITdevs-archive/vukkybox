@@ -1,6 +1,6 @@
 name: ✨ Feature request
 description: Suggest something new for the game
-labels: [enhancement, priority/0/untriaged]
+labels: [enhancement]
 body:
 - type: checkboxes
   attributes:
