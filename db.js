@@ -273,7 +273,7 @@ function buyBox(user, box, callback) {
 	if (user._id) {
 		User.findById({_id: user._id}, function (err, doc) {
 			if(err) {
-				callback({"box":"error"}, null, null, null)
+				callback({"box":"error"}, null, null, null, null)
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
@@ -281,6 +281,7 @@ function buyBox(user, box, callback) {
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
+					let oldBalance = doc.balance
 					if(!doc.gallery.includes(res.vukkyId)) {
 						doc.uniqueVukkiesGot++;
 						doc.gallery.push(res.vukkyId)
@@ -293,21 +294,22 @@ function buyBox(user, box, callback) {
 						
 						doc.duplicates = duplicates
 						doc.markModified('duplicates');
+						
 						if (!boxData.noRefund) doc.balance += 0.1 * boxData.price;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
 					}
 					doc.boxesOpened++;
 					doc.save()
-					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe)
+					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe, oldBalance)
 				})
 			} else {
-				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null)
+				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null, null)
 			}
 		})
 	} else {
 		User.findById({_id: user[0]._id}, function (err, doc) {
 			if(err) {
-				callback({"box":"error"}, null, null, null)
+				callback({"box":"error"}, null, null, null, null)
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
@@ -315,6 +317,7 @@ function buyBox(user, box, callback) {
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
 					let dupe = false;
+					let oldBalance = doc.balance
 					if(!doc.gallery.includes(res.vukkyId)) {
 						doc.uniqueVukkiesGot++;
 						doc.gallery.push(res.vukkyId)
@@ -332,10 +335,10 @@ function buyBox(user, box, callback) {
 					}
 					doc.boxesOpened++;
 					doc.save()
-					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe)
+					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe, oldBalance)
 				})
 			} else {
-				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null)
+				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null, null)
 			}
 		})
 	}
