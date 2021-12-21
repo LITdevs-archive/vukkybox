@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 315,
+	"currentId": 316,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1015,6 +1015,12 @@
 				"name": "Fourkky",
 				"url": "https://vukkybox.com/resources/Fourkky.webp",
 				"description": "This Vukky was made by VocalFan. Despite his sharp edges, he is the softest Numky and loves arts and crafts! Even throwing glitter around when something exciting happens!"
+			},
+			"316": {
+				"name": "Crusty Vukky",
+				"url": "https://vukkybox.com/resources/crustyvukky.webp",
+				"description": "Delicious.",
+				"audio": "https://vukkybox.com/resources/unboxcrusty.ogg"
 			}
 		},
 		"5": {
