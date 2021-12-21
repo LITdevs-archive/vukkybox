@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 313,
+	"currentId": 314,
 	"rarity": {
 		"1": {
 			"1": {
@@ -313,6 +313,11 @@
 				"name": "Troll Vukky",
 				"url": "https://vukkybox.com/resources/vukkytroll.webp",
 				"description": "This Vukky was made by Ash. This Vukky likes to mess with people! You should probably ignore him."
+			},
+			"314": {
+				"name": "transparent outline vukky",
+				"url": "https://vukkybox.com/resources/vukkyline.webp",
+				"description": "Something horrible happened to this one"
 			}
 		},
 		"2": {
