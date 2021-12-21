@@ -27,6 +27,7 @@ if(document.location.search != "?notv" && document.location.search != "?copytv")
             <area target="" alt="WEB-TV GUIDE (HA HA)" title="WEB-TV GUIDE (HA HA)" href="https://vukkybox.com/credits" coords="268,295,352,379" shape="rect">
             <area target="" alt="EDUCATIONAL CONTENT" title="EDUCATIONAL CONTENT" href="https://www.gwern.net/docs/cs/2001-12-02-treginaldgibbons-isyoursonacomputerhacker.html" coords="362,297,440,378" shape="rect">
             <area target="" alt="E" title="E" href="https://www.youtube.com/watch?v=74qsaPK6TCc" coords="453,297,546,379" shape="rect">
+            <area target="" alt="..." title="..." href="https://vukkybox.com/admin" coords="511,394,545,412" shape="rect">
         </map>`
         imageMapResize() 
     }
