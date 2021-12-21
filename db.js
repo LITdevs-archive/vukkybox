@@ -277,7 +277,7 @@ function buyBox(user, box, callback) {
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
-				let oldBalance = doc.balance - boxData.price;
+				let oldBalance = doc.balance;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
@@ -313,7 +313,7 @@ function buyBox(user, box, callback) {
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
-				let oldBalance = doc.balance - boxData.price;
+				let oldBalance = doc.balance;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
