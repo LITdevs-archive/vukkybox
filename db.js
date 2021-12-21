@@ -277,7 +277,8 @@ function buyBox(user, box, callback) {
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
-				let oldBalance = doc.balance;
+				let oldBalance = doc.balance + boxData.price;
+				if(!boxData.noRefund) oldBalance += 0.1 * boxData.price;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
@@ -313,7 +314,8 @@ function buyBox(user, box, callback) {
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
-				let oldBalance = doc.balance;
+				let oldBalance = doc.balance + boxData.price;
+				if(!boxData.noRefund) oldBalance += 0.1 * boxData.price;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
