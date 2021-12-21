@@ -271,14 +271,13 @@ function validCode(code, user, callback) { // callback with a boolean representi
 function buyBox(user, box, callback) {
 	let boxData = boxJson[box]
 	if (user._id) {
+		let oldBalance = user.balance
 		User.findById({_id: user._id}, function (err, doc) {
 			if(err) {
 				callback({"box":"error"}, null, null, null, null)
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
-				let oldBalance = doc.balance + boxData.price;
-				if(!boxData.noRefund) oldBalance += 0.1 * boxData.price;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
@@ -308,14 +307,13 @@ function buyBox(user, box, callback) {
 			}
 		})
 	} else {
+		let oldBalance = user[0].balance
 		User.findById({_id: user[0]._id}, function (err, doc) {
 			if(err) {
 				callback({"box":"error"}, null, null, null, null)
 				console.log(err)
 			};
 			if(doc.balance >= boxData.price) {
-				let oldBalance = doc.balance + boxData.price;
-				if(!boxData.noRefund) oldBalance += 0.1 * boxData.price;
 				doc.balance -= boxData.price;
 				doc.balance = parseFloat(doc.balance).toFixed(1)
 				openBox(box, res => {
