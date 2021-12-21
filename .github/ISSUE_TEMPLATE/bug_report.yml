@@ -40,6 +40,7 @@ body:
         - **OS**: Windows 11
         - **Browser**: Chrome 96.0.4664.110
         - **Login method**: Discord
+        or "Any"
     value: |
         - OS:
         - Browser:
