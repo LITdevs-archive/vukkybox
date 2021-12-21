@@ -1,6 +1,6 @@
 name: 🐞 Bug
 description: File a bug/issue
-labels: [bug, priority/0/untriaged]
+labels: [bug]
 body:
 - type: checkboxes
   attributes:
