@@ -5,8 +5,8 @@ self.addEventListener('install', (event)=>{
       for (let name of names)
           caches.delete(name);
     }),
-    caches.open('v15').then((cache)=>{
-      return cache.addAll([
+    caches.open('v16').then((cache)=>{
+      return cache.addAll([ // the secrets list :(
         "/resources/spin.js",
         "/resources/offline.html",
         "/resources/loading.ogg",
@@ -32,7 +32,9 @@ self.addEventListener('install', (event)=>{
         "/resources/unboxglitch.mp3",
         "/resources/icons/512.png",
         "/resources/unboxsupertuxxy.wav",
-        "/resources/unboxwebtv.ogg"
+        "/resources/unboxwebtv.ogg",
+        "/resources/unboxmsntv.ogg",
+        "/resources/imagemap.js"
       ]);
     })
   );
