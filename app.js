@@ -702,8 +702,7 @@ app.get('*', function(req, res){
 
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
-	console.log(err.message)
-	if(err.message == 'TokenError: Invalid "code" in request.') {
+	if(err.message == 'Invalid "code" in request.') {
 		return res.status(500).render(`${__dirname}/public/500.ejs`, { stacktrace: null, friendlyError: "It looks like we couldn't log you in. Would you mind <a href='/login'>trying that again</a>?" });
 	}
 	res.status(500).render(`${__dirname}/public/500.ejs`, { stacktrace: err.stack, friendlyError: null });
