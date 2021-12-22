@@ -109,6 +109,7 @@ db.ethermineRVN() //worker ids got shortened to 20 characters only for some reas
 db.ethermineETH() 
 
 function popupMid(req, res, next) {
+	if (/MSIE|Trident/.test(req.get('user-agent'))) res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Your browser is no longer supported by Vukkybox. Please <a href='https://browser-update.org/update-browser.html'>update your browser</a>." });
 	if (!req.isAuthenticated()) {
 		console.log("not authenticated, skipping popup")
 		return next()
