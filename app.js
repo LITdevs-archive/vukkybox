@@ -111,6 +111,9 @@ app.use(express.json())
 app.use(fileUpload())
 app.use(cookieParser())
 app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
+app.use(function (err, req, res, next) {
+	res.status(500).send(`<h1>The Vukkies are on fire!<h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety.<br><pre>${err.stack}</pre>`)
+})
 app.set('trust proxy', 1);
 
 db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
