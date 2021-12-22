@@ -18,7 +18,6 @@ db.once('open', function() {
   const userSchema = new mongoose.Schema({
 	githubId: String,
 	discordId: String,
-	mediawikiId: String,
 	googleId: String,
 	twitterId: String,
 	primaryEmail: String,
@@ -27,7 +26,6 @@ db.once('open', function() {
 	googleEmail: String,
 	LinkedAccounts: Array,
 	twitterEmail: String,
-	mediawikiEmail: String,
 	username: String,
 	balance: Number,
 	gallery: Array,
@@ -77,36 +75,6 @@ function findOrCreate(service, profile, callback) {
 						uniqueVukkiesGot: 0,
 						popupAccepted: true
 
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
-			})
-		break;
-		case "mediawiki":
-			User.countDocuments({mediawikiId:profile.id},function(err, res){
-				if (res) {
-					return User.find({mediawikiId:profile.id}, function(err, user) {
-						if(!err) callback(user)
-						if(err) console.log(err)
-					})
-				} else {
-					adminHook.send("<:woaha:904051837605408788> A new user has registered with MediaWiki!")
-					let user = new User({
-						mediawikiId:profile.id,
-						mediawikiEmail:profile._json.email,
-						primaryEmail:profile._json.email,
-						LinkedAccounts: ["mediawiki"],
-						balance: 1000,
-						username:profile.displayName,
-						loginHourly: Date.now(),
-						loginDaily: Date.now(),
-						boxesOpened: 0,
-						codesRedeemed: 0,
-						uniqueVukkiesGot: 0,
-						popupAccepted: true
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
