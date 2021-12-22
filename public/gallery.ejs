@@ -209,7 +209,8 @@
         }
     }
     const userGallery = [<%=user.gallery %>]
-    const userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
+    const userDuplicates = false
+    if(document.getElementById("duplicatesjson").innerHTML.length > 0) userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
     document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
     for(let j = 1; j <= 7; j++) {
@@ -219,7 +220,7 @@
                 owned++
                 totalOwned++
                 document.getElementById(j).innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`
-                if(userDuplicates[Object.keys(vukkies[j])[i]] && parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) >= 1) {
+                if(userDuplicates && userDuplicates[Object.keys(vukkies[j])[i]] && parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) >= 1) {
                     document.getElementById(Object.keys(vukkies[j])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) + 1}')`
                 }
             }
@@ -237,7 +238,7 @@
                 owned++
                 totalOwned++
                 document.getElementById("pukky").innerHTML += `<a vukkyid="${Object.keys(vukkies["pukky"])[i]}" href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name} (#${Object.keys(vukkies["pukky"])[i]})"/><ins id="${Object.keys(vukkies["pukky"])[i]}p"></ins></a>`
-                if(userDuplicates[Object.keys(vukkies["pukky"])[i]] && parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) >= 1) {
+                if(userDuplicates && userDuplicates[Object.keys(vukkies["pukky"])[i]] && parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) >= 1) {
                     document.getElementById(Object.keys(vukkies["pukky"])[i].toString() + "p").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) + 1}')`
                 }
             }
