@@ -111,7 +111,6 @@ app.use(express.json())
 app.use(fileUpload())
 app.use(cookieParser())
 app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
-app.use(errorHandler)
 app.set('trust proxy', 1);
 
 function errorHandler (err, req, res, next) {
@@ -699,6 +698,10 @@ app.get('/sus', function(req, res){
 
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);
+});
+
+app.use(function (err, req, res, next) {
+	res.status(500).send(`<h1>The Vukkies are on fire!<h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety.<br><pre>${err.stack}</pre>`)
 });
 
 var fs = require('fs');
