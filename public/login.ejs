@@ -52,7 +52,6 @@
                   <p>Please sign in with one of these methods.</p>
                 <% } %>
                 <br><br><a id="login" href="/loginDiscord"><button disabled id="discordLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/discord.svg" width="32px">&nbsp;Sign in with Discord</button></a>
-                <br><br><a id="login" href="/loginMediawiki"><button disabled id="mediawikiLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/wikipedia.svg" width="32px">&nbsp;Sign in with Wikipedia</button></a>
                 <br><br><a id="login" href="/loginGithub"><button disabled id="githubLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/github.svg" width="32px">&nbsp;Sign in with GitHub</button></a>
                 <br><br><a id="login" href="/loginGoogle"><button disabled id="googleLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/google.svg" width="32px">&nbsp;Sign in with Google</button></a>
                 <br><br><input type="checkbox" id="terms" name="terms" value="terms"/>
@@ -66,12 +65,10 @@
     checkbox.addEventListener('change', function() {
       if (this.checked) {
         document.getElementById("discordLogin").disabled = false
-        document.getElementById("mediawikiLogin").disabled = false
         document.getElementById("githubLogin").disabled = false
         document.getElementById("googleLogin").disabled = false
       } else {
         document.getElementById("discordLogin").disabled = true
-        document.getElementById("mediawikiLogin").disabled = true
         document.getElementById("githubLogin").disabled = true
         document.getElementById("googleLogin").disabled = true
       }

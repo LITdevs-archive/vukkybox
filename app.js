@@ -22,7 +22,6 @@ const webp = require('webp-converter');
 webp.grant_permission();
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-//var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
 function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
 nocache("./public/vukkies.json")
 const vukkyJson = require("./public/vukkies.json")
@@ -38,17 +37,6 @@ passport.deserializeUser(function(obj, done) {
 var scopes = ['identify', 'email'];
 var prompt = 'consent'
 app.set("view egine", "ejs")
-/*passport.use(new MediaWikiStrategy({
-	consumerKey: process.env.MEDIAWIKI_CONSUMER,
-	consumerSecret: process.env.MEDIAWIKI_SECRET,
-	callbackURL: "https://vukkybox.com/callbackmediawiki"
-  },
-  function(token, tokenSecret, profile, done) {
-	db.findOrCreate(profile.provider, profile, function(user) {
-		done(null, user)
-	  })
-  }
-));*/
 passport.use(new DiscordStrategy({
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
@@ -514,7 +502,6 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {});
 app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
 app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
-//app.get('/loginMediawiki', passport.authenticate('mediawiki'), function(req, res) {});
 app.get("/loginMediawiki", function(req, res) {
 	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Sorry, but this option has been temporarily disabled due to a bug." });
 })
@@ -529,19 +516,6 @@ app.get('/callbackdiscord',
 		}
 	} // auth success
 );
-
-
-/*app.get('/callbackmediawiki',
-	passport.authenticate('mediawiki', { failureRedirect: '/' }), function(req, res) { 
-		if(req.session.redirectTo) {
-			let dest = req.session.redirectTo;
-			req.session.redirectTo = "/"
-			res.redirect(dest) 
-		} else {
-			res.redirect('/')
-		}
-	} // auth success
-);*/
 
 app.get('/callbackgithub',
 	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
