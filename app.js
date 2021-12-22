@@ -38,7 +38,7 @@ passport.deserializeUser(function(obj, done) {
 var scopes = ['identify', 'email'];
 var prompt = 'consent'
 app.set("view egine", "ejs")
-passport.use(new MediaWikiStrategy({
+/*passport.use(new MediaWikiStrategy({
 	consumerKey: process.env.MEDIAWIKI_CONSUMER,
 	consumerSecret: process.env.MEDIAWIKI_SECRET,
 	callbackURL: "https://vukkybox.com/callbackmediawiki"
@@ -48,7 +48,7 @@ passport.use(new MediaWikiStrategy({
 		done(null, user)
 	  })
   }
-));
+));*/
 passport.use(new DiscordStrategy({
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
@@ -514,7 +514,10 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {});
 app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
 app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
-app.get('/loginMediawiki', passport.authenticate('mediawiki'), function(req, res) {});
+//app.get('/loginMediawiki', passport.authenticate('mediawiki'), function(req, res) {});
+app.get("/loginMediawiki", function(req, res) {
+	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Sorry, but this option has been temporarily disabled due to a bug." });
+})
 app.get('/callbackdiscord',
 	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {
@@ -528,7 +531,7 @@ app.get('/callbackdiscord',
 );
 
 
-app.get('/callbackmediawiki',
+/*app.get('/callbackmediawiki',
 	passport.authenticate('mediawiki', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
@@ -538,7 +541,7 @@ app.get('/callbackmediawiki',
 			res.redirect('/')
 		}
 	} // auth success
-);
+);*/
 
 app.get('/callbackgithub',
 	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
