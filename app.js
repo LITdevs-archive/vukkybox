@@ -502,9 +502,7 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {});
 app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
 app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
-app.get("/loginMediawiki", function(req, res) {
-	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Sorry, but this option has been temporarily disabled due to a bug." });
-})
+
 app.get('/callbackdiscord',
 	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {
