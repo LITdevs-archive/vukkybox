@@ -701,7 +701,7 @@ app.get('*', function(req, res){
 });
 
 app.use(function (err, req, res, next) {
-	res.status(500).send(`<h1>The Vukkies are on fire!</h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety.<br>Contact us in our <a href="https://discord.gg/TJ6BfgXffa">Discord server</a> or <a href="mailto:contact@vukkybox.com">by email</a>.<br><pre>${err.stack}</pre><br><br><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyfire.png"><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png"><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyleft.png">`)
+	res.status(500).send(`<h1>The Vukkies are on fire!</h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety.<br>Contact us in our <a href="https://discord.gg/TJ6BfgXffa">Discord server</a> or <a href="mailto:contact@vukkybox.com">by email</a>.<br><pre>${err.stack}</pre><br><br><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyfire.png"><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png"><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyleft.png"><br><small>A LIT Devs service</small>`)
 });
 
 var fs = require('fs');
