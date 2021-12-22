@@ -5,7 +5,7 @@ self.addEventListener('install', (event)=>{
       for (let name of names)
           caches.delete(name);
     }),
-    caches.open('v16').then((cache)=>{
+    caches.open('v17').then((cache)=>{
       return cache.addAll([ // the secrets list :(
         "/resources/spin.js",
         "/resources/offline.html",
@@ -35,7 +35,8 @@ self.addEventListener('install', (event)=>{
         "/resources/unboxwebtv.ogg",
         "/resources/unboxmsntv.ogg",
         "/resources/imagemap.js",
-        "/resources/unboxcrusty.ogg"
+        "/resources/unboxcrusty.ogg",
+        "/resources/icons/santa.png"
       ]);
     })
   );
