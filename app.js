@@ -701,7 +701,7 @@ app.get('*', function(req, res){
 });
 
 app.use(function (err, req, res, next) {
-	res.status(500).send(`<h1>The Vukkies are on fire!</h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety.<br><pre>${err.stack}</pre>`)
+	res.status(500).send(`<h1>The Vukkies are on fire!</h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety.<br><pre>${err.stack}</pre><br><br><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png">`)
 });
 
 var fs = require('fs');
