@@ -313,17 +313,14 @@ app.get("/admin", grl, popupMid, function(req, res) {
 })
 
 app.get("/admin/**", grl, popupMid, function(req, res) {
-	  
-	res.render(__dirname + "/public/adminfake.ejs");
+	return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "You're gonna have to be <i>properly</i> logged in if you wanna do that... ;)" });
 })
 
 app.get("/adminauthed", grl, popupMid, function(req, res) {
-	  
 	res.render(__dirname + "/public/adminfakeauthed.ejs");
 })
 
-app.get("/adminfailed",grl, popupMid,  function(req, res) {
-	  
+app.get("/adminfailed",grl, popupMid,  function(req, res) { 
 	res.render(__dirname + "/public/adminfakefailed.ejs");
 })
 
