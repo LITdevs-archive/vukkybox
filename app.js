@@ -259,7 +259,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 				}
 			});
 		} else {
-			res.status(400).send({message: "Box not found"})
+			return res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a box! <a href='/store'>Check the store</a> to find some boxes that DO exist." });
 			req.session.openingInProgress = false
 		}
 });
@@ -703,9 +703,9 @@ app.get('*', function(req, res){
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
 	if(err.message == 'Invalid "code" in request.') {
-		return res.status(500).render(`${__dirname}/public/500.ejs`, { stacktrace: null, friendlyError: "It looks like we couldn't log you in. Would you mind <a href='/login'>trying that again</a>?" });
+		return res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "It looks like we couldn't log you in. Would you mind <a href='/login'>trying that again</a>?" });
 	}
-	res.status(500).render(`${__dirname}/public/500.ejs`, { stacktrace: err.stack, friendlyError: null });
+	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: err.stack, friendlyError: null });
 });
 
 var fs = require('fs');
