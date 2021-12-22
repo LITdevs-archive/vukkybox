@@ -22,7 +22,7 @@ const webp = require('webp-converter');
 webp.grant_permission();
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
+//var MediaWikiStrategy = require('passport-mediawiki-oauth').OAuthStrategy;
 function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
 nocache("./public/vukkies.json")
 const vukkyJson = require("./public/vukkies.json")
