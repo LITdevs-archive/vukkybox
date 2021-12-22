@@ -334,12 +334,12 @@ app.post("/admin/:action", grl, async function(req, res) {
 		switch(req.params.action) {
 			case "create_code":
 				db.createCode(req.body.code, req.body.amount, req.body.uses, (resp, err) => {
-					if(err) return res.redirect("/admin?error=" + err) // res = {code: "code", amount: 123}
+					if(err) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: err.stack, friendlyError: null });
 					res.redirect("/admin?code=" + resp.code)
 				})
 			break;
 			case "upload_file":
-				if(req.body.vukkytype.length < 1 || !req.files.image) return res.redirect("/admin?error=missingargs")
+				if(req.body.vukkytype.length < 1 || !req.files.image) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you're missing some arguments there! Would you mind <a href='/admin'>trying again</a>?" });
 				if(!req.body.vukkytype == "special") {
 					const fileWithoutExt = req.files.image.name.replace(/\.[^/.]+$/, "")
 					const folderLocation = req.body.vukkytype == "pukky" ? "/resources/pukkies/" : "/resources/"
@@ -362,7 +362,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 				}
 				break;
 			case "create_vukky": //i really dont want to make this one
-				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.redirect("/admin?error=missingargs")
+				if(req.body.name.length < 1 || req.body.description.length < 1 || req.body.url.length < 1 || req.body.level.length < 1) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you're missing some arguments there! Would you mind <a href='/admin'>trying again</a>?" });
 				let newId = parseInt(vukkyJson.currentId) + 1
 				vukkyJson.currentId = newId;
 				vukkyJson.rarity[req.body.level][newId] = {
@@ -393,7 +393,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 					adminHook.send(`<a:eagersplode:902938979563884584> \`${req.body.userid}\`'s balance has been set to ${req.body.newbalance}`)
 					res.redirect("/admin?balance=true")
 				} else {
-					res.redirect("/admin?error=missingargs")
+					return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you're missing some arguments there! Would you mind <a href='/admin'>trying again</a>?" });
 				}
 			break;
 			default:
@@ -407,8 +407,8 @@ app.post("/admin/:action", grl, async function(req, res) {
 
 app.get("/view/:level/:id", grl, popupMid, function (req, res) { 
 	  
-	if(!vukkyJson.levels[req.params.level]) return res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a rarity! <a href='/gallery'>Check your gallery</a> to find some Vukkies that DO exist." });
-	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a Vukky! <a href='/gallery'>Check your gallery</a> to find some Vukkies that DO exist." });
+	if(!vukkyJson.levels[req.params.level]) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a rarity! <a href='/gallery'>Check your gallery</a> to find some Vukkies that DO exist." });
+	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a Vukky! <a href='/gallery'>Check your gallery</a> to find some Vukkies that DO exist." });
 	if(!req.user) return res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: null, username: "", gravatarHash: null})
 	if(req.user.primaryEmail) {
 		  res.render(__dirname + '/public/view.ejs', {level: JSON.stringify(vukkyJson.levels[req.params.level]), vukkyId: req.params.id, vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]), user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
