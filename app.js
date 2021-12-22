@@ -701,7 +701,7 @@ app.get('*', function(req, res){
 });
 
 app.use(function (err, req, res, next) {
-	res.status(500).send(`<title>Vukkybox - Service Unavailable</title><meta name="title" content="Vukkybox - Service Unavailable"><meta name="description" content="This page could not be accessed."><meta property="og:image" content="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyfire.png"><meta name="viewport" content="width=device-width, initial-scale=1.0"><h1>The Vukkies are on fire!</h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety. IF IT DOESN'T FIT IN, PLEASE COPY IT INSTEAD!<br>Contact us in our <a href="https://discord.gg/TJ6BfgXffa">Discord server</a> or <a href="mailto:contact@vukkybox.com">by email</a>.<br><pre>${err.stack}</pre><br><br><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyfire.png"><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png"><img src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyleft.png"><br><small>A LIT Devs service</small>`)
+	res.status(500).render(`${__dirname}/public/500.ejs`, { stacktrace: err.stack });
 });
 
 var fs = require('fs');
