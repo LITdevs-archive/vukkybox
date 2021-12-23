@@ -326,7 +326,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 			break;
 			case "upload_file":
 				if(req.body.vukkytype.length < 1 || !req.files.image) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you're missing some arguments there! Would you mind <a href='/admin'>trying again</a>?" });
-				if(!req.body.vukkytype == "special") {
+				if(req.body.vukkytype != "special") {
 					const fileWithoutExt = req.files.image.name.replace(/\.[^/.]+$/, "")
 					const folderLocation = req.body.vukkytype == "pukky" ? "/resources/pukkies/" : "/resources/"
 					if(req.files.image.name.endsWith(".gif")) {
