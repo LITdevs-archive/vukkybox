@@ -19,6 +19,8 @@ window.addEventListener('load', (event) => {
             }, 200);
         };
     }
+    if(new Date().getMonth() === 3 && new Date().getDate() === 1) icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
+
     document.querySelectorAll("audio").forEach(function(node) {
         if(node.getAttribute("type") == "music" && localStorage.getItem("musicVolume")) {
             node.volume = localStorage.getItem("musicVolume");

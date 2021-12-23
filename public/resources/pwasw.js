@@ -36,7 +36,8 @@ self.addEventListener('install', (event)=>{
         "/resources/unboxmsntv.ogg",
         "/resources/imagemap.js",
         "/resources/unboxcrusty.ogg",
-        "/resources/icons/santa.png"
+        "/resources/icons/santa.png",
+        "/resources/beggarsvukkybox.webp"
       ]);
     })
   );
