@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 316,
+	"currentId": 318,
 	"rarity": {
 		"1": {
 			"1": {
@@ -553,6 +553,11 @@
 				"name": "Blame Mitch Vukky",
 				"url": "https://vukkybox.com/resources/blamemitch.webp",
 				"description": "This Vukky was made by HaveFUNRICH. This Vukky blames Mitch for it. It was Mitch not me I swear"
+			},
+			"317": {
+				"name": "Screaming Vukky",
+				"url": "https://vukkybox.com/resources/screamvukky.webp",
+				"description": "This was made by Synne! AAAAAAAAA WHY"
 			}
 		},
 		"3": {
@@ -1142,6 +1147,12 @@
 				"url": "https://vukkybox.com/resources/webtvvukky.webp",
 				"description": "<i>banger music plays</i>",
 				"audio": "https://vukkybox.com/resources/unboxwebtv.ogg"
+			},
+			"318": {
+				"name": "Corrupted Vukky",
+				"url": "https://vukkybox.com/resources/corruptedvukky.webp",
+				"description": "There is no escape from what is about to come.",
+				"audio": "https://vukkybox.com/resources/silence.ogg"
 			}
 		},
 		"7": {
