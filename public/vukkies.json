@@ -315,7 +315,7 @@
 				"description": "This Vukky was made by Ash. This Vukky likes to mess with people! You should probably ignore him."
 			},
 			"314": {
-				"name": "transparent outline vukky",
+				"name": "Transparent Outline Vukky",
 				"url": "https://vukkybox.com/resources/vukkyline.webp",
 				"description": "Something horrible happened to this one"
 			}
@@ -1143,13 +1143,13 @@
 				"description": "This was made by Alespic! NO DON’T BREAK THE 4TH WALL"
 			},
 			"312": {
-				"name": "<script src='/resources/webtvreskin.js'></script><span style=\"text-transform: lowercase; font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;\">Web<span style=\"color:gold;\">TV</span></span> Vukky",
+				"name": "<script src='/resources/reskin/webtv.js'></script><span style=\"text-transform: lowercase; font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;\">Web<span style=\"color:gold;\">TV</span></span> Vukky",
 				"url": "https://vukkybox.com/resources/webtvvukky.webp",
 				"description": "<i>banger music plays</i>",
 				"audio": "https://vukkybox.com/resources/unboxwebtv.ogg"
 			},
 			"318": {
-				"name": "Corrupted Vukky",
+				"name": "<script src='/resources/reskin/corrupted.js'></script>Corrupted Vukky",
 				"url": "https://vukkybox.com/resources/corruptedvukky.webp",
 				"description": "There is no escape from what is about to come.",
 				"audio": "https://vukkybox.com/resources/silence.ogg"
