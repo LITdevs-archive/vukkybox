@@ -670,7 +670,7 @@ app.get('/sus', function(req, res){
 });
 
 app.get('/crash', grl, function(req, res){
-	throw "Vukkybox crashed, thanks";
+	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: "CRITICAL SERVER FAULT AT APP.JS:1! QUITTING IMMEDIATELY TO PREVENT FURTHER DAMAGE", friendlyError: null });
 });
 
 app.get('*', function(req, res){
