@@ -669,6 +669,10 @@ app.get('/sus', function(req, res){
 	res.redirect('https://i.imgur.com/IEl9NzL.gif');
 });
 
+app.get('/crash', grl, function(req, res){
+	throw "Vukkybox crashed, thanks";
+});
+
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 });
