@@ -24,6 +24,9 @@ window.addEventListener('load', (event) => {
         if(new Date().getMonth() == 0 && new Date().getDate() == 1) {
             rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12);
         }
+        if(new Date().getMonth() == 10 && new Date().getDate() == 11) {
+            rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
+        }
         icon.classList.add("duration-150");
         icon.onclick = function(){
             icon.classList.add("animate-ping");
