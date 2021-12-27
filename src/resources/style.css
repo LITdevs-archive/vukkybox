@@ -57,3 +57,11 @@
     width: 32px;
     height: 32px;
 }
+
+.loginPopup {
+    z-index:1;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%); 
+    display: none;
+}

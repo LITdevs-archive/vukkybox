@@ -38,15 +38,17 @@
 						  <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
 						  <a class="text-white" href="logout">Log Out</a>
 						</div>
+						<data id="loggedIn" value="1"></data>
 					  </div>
 					<% } else {%>
 						<li><a href="/login">Log In</a></li>
+						<data id="loggedIn" value="0"></data>
 					<% } %>
 					  
 				</ul>
 			</nav>
 		</div>
-		<center>
+		<center id="content">
 		<table class="">
 			<tr>
 				<td><div class="rounded-lg py-10 px-10 m-10 bg-gray-200 bg-opacity-30">
@@ -115,13 +117,46 @@
 			</tr>
 		</table>
 		</center>
+		<center id="loginPopup" class="py-8 loginPopup">
+			<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">        
+				  <p>Please Sign In with one of these methods to continue</p>
+				  <br><br><a id="login" href="/loginDiscord"><button disabled="" id="discordLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/discord.svg" width="32px">&nbsp;Sign in with Discord</button></a>
+				  <br><br><a id="login" href="/loginGithub"><button disabled="" id="githubLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/github.svg" width="32px">&nbsp;Sign in with GitHub</button></a>
+				  <br><br><a id="login" href="/loginGoogle"><button disabled="" id="googleLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/google.svg" width="32px">&nbsp;Sign in with Google</button></a>
+				  <br><br><input type="checkbox" id="terms" name="terms" value="terms">
+				  <label for="terms">I agree to the <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>.</label>
+			  </div>    
+		  </center>
 	</body>
 	<script>
 	function buyBox(id) {
 		event.srcElement.disabled = true;
-		setTimeout(() => {
-			window.location="/buyBox/"+id;
-		}, localStorage.getItem("kachingOn") != "false" ? 1000 : 0);
+		if(document.getElementById("loggedIn").value == "1") {
+			setTimeout(() => {
+				window.location="/buyBox/"+id;
+			}, localStorage.getItem("kachingOn") != "false" ? 1000 : 0);
+		} else {
+			loginPopup();
+		}
 	}
+
+	function loginPopup() {
+		document.getElementById("content").style.filter = "blur(5px)";
+
+		document.getElementById("loginPopup").style.display = ""
+	}
+	
+	let checkbox = document.getElementById("terms");
+	checkbox.addEventListener('change', function() {
+	  if (this.checked) {
+			document.getElementById("discordLogin").disabled = false
+			document.getElementById("githubLogin").disabled = false
+			document.getElementById("googleLogin").disabled = false
+		} else {
+			document.getElementById("discordLogin").disabled = true
+			document.getElementById("githubLogin").disabled = true
+			document.getElementById("googleLogin").disabled = true
+		}
+	})
 	</script>
 </html>
