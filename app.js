@@ -16,7 +16,7 @@ var store = new MongoDBStore({
 const { Webhook } = require('discord-webhook-node');
 const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
-const rateLimit = require("express-rate-limit");
+const rateLimit = require("express-rate-limit").default;
 const fileUpload = require("express-fileupload")
 const webp = require('webp-converter');
 webp.grant_permission();
