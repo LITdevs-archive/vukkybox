@@ -25,6 +25,7 @@ window.addEventListener('load', (event) => {
             rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12);
         }
         if(new Date().getMonth() == 10 && new Date().getDate() == 11) {
+            icon.src = "https://vukkybox.com/resources/firevukkybox.webp";
             rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
         }
         icon.classList.add("duration-150");
