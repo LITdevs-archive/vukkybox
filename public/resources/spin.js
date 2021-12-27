@@ -65,7 +65,8 @@ window.addEventListener('load', (event) => {
         })
     })
     document.querySelectorAll(".purchase").forEach(function(node) {
-        if(localStorage.getItem("kachingOn") != "false" && document.getElementById("loggedIn").value == "1") {
+        if(localStorage.getItem("kachingOn") != "false") {
+            if(window.location.pathname == "/store" && document.getElementById("loggedIn").value == "0") return false;
             node.addEventListener("click", function() {
                 let audioEffectThing = new Audio('https://vukkybox.com/resources/purchase.wav');
                 if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
