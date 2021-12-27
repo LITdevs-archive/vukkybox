@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 318,
+	"currentId": 321,
 	"rarity": {
 		"1": {
 			"1": {
@@ -558,6 +558,16 @@
 				"name": "Screaming Vukky",
 				"url": "https://vukkybox.com/resources/screamvukky.webp",
 				"description": "This was made by Synne! AAAAAAAAA WHY"
+			},
+			"319": {
+				"name": "Moderator Vukky",
+				"url": "https://vukkybox.com/resources/modvukky.webp",
+				"description": "This silly Vukky doesn't know how to use a shield properly, it seems."
+			},
+			"320": {
+				"name": "Test Tube Vukky",
+				"url": "https://vukkybox.com/resources/testtubevukky.webp",
+				"description": "I wonder what's inside!"
 			}
 		},
 		"3": {
@@ -1026,6 +1036,11 @@
 				"url": "https://vukkybox.com/resources/crustyvukky.webp",
 				"description": "Delicious.",
 				"audio": "https://vukkybox.com/resources/unboxcrusty.ogg"
+			},
+			"321": {
+				"name": "Runevukk",
+				"url": "https://vukkybox.com/resources/runevukk.webp",
+				"description": "This was made by Synne! You could also call it the Medieval Vukky, but this wouldn't be a Vukky game without a RuneScape reference."
 			}
 		},
 		"5": {
