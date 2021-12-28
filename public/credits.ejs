@@ -114,6 +114,8 @@
     Thank you to <a href="https://www.sitepoint.com/css3-starwars-scrolling-text/" class="text-blue-500">this silly little Star Wars scrolling text tutorial</a>.<br>
     Anyway, Vukkybox uses the following NPM packages:<br>
     <ul id="deps" class="list-disc list-inside"><li>Loading...</li></ul>
+    And also these packages we use during development:<br>
+    <ul id="ddeps" class="list-disc list-inside"><li>Loading...</li></ul>
   </div>
 </div>
 </body>
@@ -125,7 +127,7 @@
     document.querySelector("#deps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500" target="_blank">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
   })
   Object.entries(devDeps).forEach(function(deppy) {
-    document.querySelector("#deps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500" target="_blank">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
+    document.querySelector("#ddeps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500" target="_blank">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
   })
 </script>
 </html>
