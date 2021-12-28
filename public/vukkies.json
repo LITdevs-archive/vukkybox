@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 321,
+	"currentId": 323,
 	"rarity": {
 		"1": {
 			"1": {
@@ -864,6 +864,11 @@
 				"name": "[REDACTED] TV Vukky",
 				"url": "https://vukkybox.com/resources/redactedtvvukky.png",
 				"description": "This Vukky covers up things that would make microsoft sue the shit out of us, whatever that means"
+			},
+			"322": {
+				"name": "Vukky Shaman ",
+				"url": "https://vukkybox.com/resources/vukkyshaman.webp",
+				"description": "This was made by Synne! No cheese for you."
 			}
 		},
 		"4": {
@@ -1093,6 +1098,11 @@
 				"name": "Fivekky",
 				"url": "https://vukkybox.com/resources/fivekky.webp",
 				"description": "This Vukky was made by VocalFan. The most friendly of the Numkies! Giving shiny silver stars to any good Vukkies he meets!"
+			},
+			"323": {
+				"name": "Vukky of Fate",
+				"url": "https://vukkybox.com/resources/vukkyoffate.webp",
+				"description": "Change your plate, change your fate. Not so easy when meteors are trying to kill you."
 			}
 		},
 		"6": {
