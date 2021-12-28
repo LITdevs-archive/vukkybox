@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 323,
+	"currentId": 324,
 	"rarity": {
 		"1": {
 			"1": {
@@ -568,6 +568,11 @@
 				"name": "Test Tube Vukky",
 				"url": "https://vukkybox.com/resources/testtubevukky.webp",
 				"description": "I wonder what's inside!"
+			},
+			"324": {
+				"name": "Obby Vukky",
+				"url": "https://vukkybox.com/resources/obbyvukky.webp",
+				"description": "This was made by Synne! Even easy obbies are hard obbies if you haven't obbied before."
 			}
 		},
 		"3": {
