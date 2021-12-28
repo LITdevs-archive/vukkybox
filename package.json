@@ -1,6 +1,6 @@
 {
   "name": "vukkybox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Collect Vukkies trapped in boxes!",
   "main": "app.js",
   "scripts": {
