@@ -616,6 +616,7 @@ app.get('/store', grl, popupMid, function(req,res) {
 
 app.get('/credits', grl, popupMid, function(req,res) {
 	const vboxVer = require("./package.json").version;
+	const gitHash = require('child_process').execSync('git rev-parse --short HEAD').toString().trim()
 	const deps = require("./package.json").dependencies;
 	const ddeps = require("./package.json").devDependencies;
 	if(req.isAuthenticated()) {
@@ -624,19 +625,19 @@ app.get('/credits', grl, popupMid, function(req,res) {
 				req.session.passport.user = newUser
 				req.session.passport.user.balance = newBalance
 				req.user.balance = newBalance
-				res.render(__dirname + '/public/credits.ejs', {vboxVer: vboxVer, deps: deps, ddeps: ddeps, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
+				res.render(__dirname + '/public/credits.ejs', {vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")});
 			})
 		} else if(req.user[0].primaryEmail) {
 			db.lastLogin(req.user[0], function(newBalance, newUser) {
 				req.session.passport.user[0] = newUser
 				req.session.passport.user[0].balance = newBalance
 				req.user[0].balance = newBalance
-				res.render(__dirname + '/public/credits.ejs', {vboxVer: vboxVer, deps: deps, ddeps: ddeps, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+				res.render(__dirname + '/public/credits.ejs', {vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 
 			})
 			}
 	} else {
-		res.render(__dirname + '/public/credits.ejs', {vboxVer: vboxVer, deps: deps, ddeps: ddeps, user: null, username: "", gravatarHash: null});
+		res.render(__dirname + '/public/credits.ejs', {vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: null, username: "", gravatarHash: null});
 	}
 });
 
