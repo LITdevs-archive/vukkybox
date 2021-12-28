@@ -20,6 +20,10 @@ window.addEventListener('load', (event) => {
         if(new Date().getMonth() == 3 && new Date().getDate() == 1) {
             icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
             rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
+            // probably unsuppoted on most browsers but it's funy
+            document.querySelectorAll("audio[type=music]").forEach(function(node) {
+                node.playbackRate = -1.0
+            })
         }
         if(new Date().getMonth() == 0 && new Date().getDate() == 1) {
             rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12);
