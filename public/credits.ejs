@@ -123,6 +123,7 @@
   const devDeps = <%-JSON.stringify(ddeps)%>
   const normalDeps = <%-JSON.stringify(deps)%>
   document.querySelector("#deps").innerHTML = "";
+  document.querySelector("#ddeps").innerHTML = "";
   Object.entries(normalDeps).forEach(function(deppy) {
     document.querySelector("#deps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500" target="_blank">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
   })
