@@ -13,28 +13,30 @@ function rainParticles(particles, amount) {
 window.addEventListener('load', (event) => {
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if(!noAnim) {
-        if(new Date().getMonth() == 11) {
-            icon.src = "https://vukkybox.com/resources/icons/santa.png";
-            rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/giftvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkychristmas.webp'>"], 12);
-        }
-        if(new Date().getMonth() == 3 && new Date().getDate() == 1) {
-            icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
-            rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
-            setInterval(function() {
-                document.querySelectorAll("audio[type=music]").forEach(function(node) {
-                    node.fastSeek(0 + Math.random() * (node.duration - 0));
-                })
-            }, 300)
-            setInterval(() => {
+        if(localStorage.getItem("seasonalFlair") != "false") {
+            if(new Date().getMonth() == 11) {
+                icon.src = "https://vukkybox.com/resources/icons/santa.png";
+                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/giftvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkychristmas.webp'>"], 12);
+            }
+            if(new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
-            }, 4000 + Math.random() * (1500 - 4000));
-        }
-        if(new Date().getMonth() == 0 && new Date().getDate() == 1) {
-            rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12);
-        }
-        if(new Date().getMonth() == 10 && new Date().getDate() == 11) {
-            icon.src = "https://vukkybox.com/resources/firevukkybox.webp";
-            rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
+                setInterval(function() {
+                    document.querySelectorAll("audio[type=music]").forEach(function(node) {
+                        node.fastSeek(0 + Math.random() * (node.duration - 0));
+                    })
+                }, 300)
+                setInterval(() => {
+                    rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
+                }, 4000 + Math.random() * (1500 - 4000));
+            }
+            if(new Date().getMonth() == 0 && new Date().getDate() == 1) {
+                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12);
+            }
+            if(new Date().getMonth() == 10 && new Date().getDate() == 11) {
+                icon.src = "https://vukkybox.com/resources/firevukkybox.webp";
+                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
+            }
         }
         icon.classList.add("duration-150");
         icon.onclick = function(){
