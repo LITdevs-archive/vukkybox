@@ -137,7 +137,7 @@ function popupMid(req, res, next) {
 }
 
 const grl = rateLimit({
-	windowMs: 100,
+	windowMs: 1000,
 	max: 5,
 	handler: function(req, res) {
 		if(req.rateLimit.current > 10) {
