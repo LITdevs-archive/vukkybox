@@ -138,7 +138,7 @@ function popupMid(req, res, next) {
 
 const grl = rateLimit({
 	windowMs: 1000,
-	max: 5,
+	max: 3,
 	handler: function(req, res) {
 		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
 	},
