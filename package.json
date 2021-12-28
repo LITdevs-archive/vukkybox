@@ -46,8 +46,6 @@
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "passport-reddit": "^0.2.4",
-    "passport-stack-exchange": "^1.0.0",
     "postcss-cli": "^9.1.0",
     "webp-converter": "^2.3.3"
   }
