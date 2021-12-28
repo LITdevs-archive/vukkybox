@@ -19,7 +19,7 @@ window.addEventListener('load', (event) => {
         }
         if(new Date().getMonth() == 3 && new Date().getDate() == 1) {
             icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
-            rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
+            rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 69);
             setInterval(function() {
                 document.querySelectorAll("audio[type=music]").forEach(function(node) {
                     node.fastSeek(0 + Math.random() * (node.duration - 0));
