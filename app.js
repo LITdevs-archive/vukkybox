@@ -140,14 +140,8 @@ const grl = rateLimit({
 	windowMs: 1000,
 	max: 5,
 	handler: function(req, res) {
-		if(req.rateLimit.current > 10) {
-			adminHook.send(`<:woaha:904051837605408788> Warning! Sussy burgers are coming at rapid rates from the user with the ID of: ${req.isAuthenticated() && req.user._id ? req.user._id.toString() : req.user[0]._id.toString()}`)
-			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes! Here's something funny...<br><img src='https://i.imgur.com/twm4zX8.png'><br>This incident has been reported<script>setTimeout(function() { window.location.reload() },5000)</script>")
-		} else {
-			res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
-		}
+		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
 	},
-	
 	keyGenerator: function (req /*, res*/) {
 		return req.headers["cf-connecting-ip"];
 	}
