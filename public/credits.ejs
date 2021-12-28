@@ -11,6 +11,44 @@
     <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
     <audio type="music" preload="auto" loop autoplay src="/resources/credits.ogg"></audio>
     <audio type="sfx" id="selectSfx" preload="auto" src="/resources/select.flac"></audio>
+    <style>
+      #titles {
+        position: absolute;
+        width: 18em;
+        height: 50em;
+        bottom: 0;
+        left: 50%;
+        margin-left: -9em;
+        font-size: 350%;
+        font-weight: bold;
+        text-align: justify;
+        overflow: hidden;
+        transform-origin: 50% 100%;
+        transform: perspective(300px) rotateX(25deg);
+      }
+
+      #titles:after {
+        position: absolute;
+        content: ' ';
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 60%;
+        background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+        pointer-events: none;
+      }
+
+      #titlecontent {
+        position: absolute;
+        top: 100%;
+        animation: scroll 100s linear 4s infinite;
+      }
+
+      @keyframes scroll {
+        0% { top: 100%; }
+        100% { top: -170%; }
+      }
+    </style>
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
  <div class="bg-opacity-10  bg-gray-100 w-full">
@@ -45,9 +83,9 @@
         </ul>
     </nav>
 </div>
-<div class="p-5">
-    <i>credits roll</i>
-    <h2 class="text-2xl">Music composers</h1>
+<div class="p-5" id="titles">
+  <div id="titlecontent">
+    <h2 class="text-2xl">Music composers</h2>
     <ul class="list-disc list-inside">
     <li>Gallery loading music: <a href="https://freesound.org/people/Sirkoto51/sounds/360608/" class="text-blue-500">"Loading... (Loop)" by Sirkoto51</a></li>
     <li>Gallery music: <a href="https://freesound.org/people/axtoncrolley/sounds/172707/" class="text-blue-500">"Nodens (Field Song)" by axtoncrolley</a></li>
@@ -70,8 +108,8 @@
     </ul>
     <h2 class="text-2xl pt-8">Open source software</h2>
     Vukkybox uses the following NPM packages:<br>
-    <button class="button button-blue" onclick="document.querySelector('#selectSfx').play(); document.querySelector('#deps').classList.remove('hidden'); this.classList = ['hidden']">Click to view</button>
-    <ul id="deps" class="list-disc list-inside hidden"><li>Loading...</li></ul>
+    <ul id="deps" class="list-disc list-inside"><li>Loading...</li></ul>
+  </div>
 </div>
 </body>
 <script>
