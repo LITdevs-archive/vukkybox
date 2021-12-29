@@ -31,7 +31,7 @@
                       <div class="dropdown">
                         
                         <li class="pr-5"><a><%= username%></a></li>
-                        <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
+                        <li class=""><img class="max-h-5 rounded" style="cursor: pointer;" src="https://www.gravatar.com/avatar/<%= gravatarHash%>" onclick="gravatarWarning()"/></li>
                         <div class="dropdown-content text-white">
                           <a class="text-white" href="https://vukkybox.com/profile">Profile</a>
                           <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
@@ -69,6 +69,11 @@
       Sound effects: <input type="range" step="0.01" min="0" max="1" value="1" setting="sfxVolume" onchange="toggleLocalSetting(event)">
 </body>
 <script>
+  function gravatarWarning() {
+    if(confirm("Vukkybox uses Gravatar, a service by Automattic, for profile pictures. If you'd like to change your profile picture, you will need to go to Gravatar. Would you like to head there now?") == true) {
+      window.open("https://gravatar.com/connect", "_blank")
+    }
+  }
   function toggleLocalSetting(e) {
     let audioEffectThing = new Audio('https://vukkybox.com/resources/select.flac');
     if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
