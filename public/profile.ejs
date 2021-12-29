@@ -51,9 +51,9 @@
       <div class="bg-opacity-30 bg-gray-100 rounded-lg p-5">
         <div class="inline-block">
           <a href="/editProfile" title="Edit your username"><p class=" pl-5 hover:bg-opacity-30 hover:bg-gray-900"><%= username %><i class="fa pl-3 s fa-edit"></i></p></a>
-          <p class=" pl-5 text-gray-200"><%= primaryEmail %></p> <br>
+          <p title="This is your Vukkybox email address. You can't change it." class="pl-5 text-gray-200"><%= primaryEmail %></p> <br>
 
-          <% if(linkedAccounts.includes("github")) { %><i class="fab pl-5 fa-github"></i><% } if(linkedAccounts.includes("google")) { %><i class="fab pl-3 fa-google"></i><% } if(linkedAccounts.includes("twitter")) { %><i class="fab pl-3 fa-twitter"></i><% } if(linkedAccounts.includes("discord")) { %><i class="fab pl-3 fa-discord"></i><% } if(linkedAccounts.length == 4) { %><i class="fas pl-3 fa-plus-circle"></i> <% } %>
+          <% if(linkedAccounts.includes("github")) { %><i title="You've linked your Vukkybox account to GitHub!" class="fab pl-5 fa-github"></i><% } if(linkedAccounts.includes("google")) { %><i title="You've linked your Vukkybox account to Google!" class="fab pl-3 fa-google"></i><% } if(linkedAccounts.includes("twitter")) { %><i title="You've linked your Vukkybox account to Twitter!" class="fab pl-3 fa-twitter"></i><% } if(linkedAccounts.includes("discord")) { %><i title="You've linked your Vukkybox account to Discord!" class="fab pl-3 fa-discord"></i><% } if(linkedAccounts.length == 4) { %><i title="You've linked your Vukkybox account to more services..." class="fas pl-3 fa-plus-circle"></i> <% } %>
         </div>
       </div>
       <br>
