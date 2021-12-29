@@ -57,6 +57,7 @@ window.addEventListener('load', (event) => {
     })
     if(document.querySelector("a[href='/']") && document.querySelector("a[href='/']").parentNode && document.querySelector("a[href='/']").parentNode.querySelector("p")) document.querySelector("a[href='/']").parentNode.querySelector("p").id = "balance";
     if(document.querySelector("#balance")) {
+        balance.innerHTML = parseFloat(balance.innerText.split(" Vukkybux")).toLocaleString() + " Vukkybux";
         document.querySelector("#balance").onclick = function() {
             document.location.pathname = "balance";
         };
