@@ -141,7 +141,7 @@
                 document.querySelector("#share").classList.remove("hidden");
                 document.getElementById("reward").classList.remove("hidden")
                 document.getElementById("opener").classList.add("hidden")
-                document.getElementById("balance").innerHTML = `${newBalance} Vukkybux`;
+                document.getElementById("balance").innerHTML = `${parseFloat(newBalance).toLocaleString()} Vukkybux`;
                 if(rarity == 7) {
                     document.querySelector("#unboxAllSfx").play();
                     confetti();
