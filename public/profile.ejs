@@ -47,7 +47,7 @@
             </nav>
         </div>
     <div class=" py-10 px-10 ">
-      <img class="max-h-50 rounded float-left px-5 py-5" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/>
+      <img class="max-h-50 rounded float-left px-5 py-5" style="cursor: pointer;" onclick="gravatarWarning()" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/>
       <div class="bg-opacity-30 bg-gray-100 rounded-lg p-5">
         <div class="inline-block">
           <a href="/editProfile"><p class=" pl-5 hover:bg-opacity-30 hover:bg-gray-900"><%= username %><i class="fa pl-3 s fa-edit"></i></p></a>
