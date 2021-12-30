@@ -356,7 +356,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
 				if(req.body.level != "pukky") {
-					hook.send("<a:eagersplode:902938979563884584> A new Vukky by <@" + req.body.creator + ">" + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
+					hook.send("<a:eagersplode:902938979563884584> A new Vukky by " + req.body.creator + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				} else {
 					hook.send("<a:eagersplode:902938979563884584> A new Pukky has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
 				}
