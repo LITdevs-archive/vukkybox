@@ -62,7 +62,7 @@
                     <% } else { %>
                     <p title="This is the rarity of the Vukky." style="color:<%=prize.box.level.color %>;"><%=prize.box.level.name %> (<%=prize.box.level.level %> star)</p>
                     <% } %>
-                    <p title="This is the Vukky's description."><% if(JSON.parse(vukky).creator) { %>This was made by <%=JSON.parse(vukky).creator %>! <% } %><%-JSON.parse(vukky).description %></p>
+                    <p title="This is the Vukky's description."><% if(prize.box.vukky.creator) { %>This was made by <%=prize.box.vukky.creator %>! <% } %><%-prize.box.vukky.description %></p>
                     <p class="text-red-500"><%if (dupe) { %><br>...oh, but you already have <%=prize.box.vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(dupe) + 1 %></span> times by now. :( <% } %></p>
                     <br>
                     <button class="button button-blue purchase" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;setTimeout(() => {window.location.reload()}, localStorage.getItem('kachingOn') != 'false' ? 1000 : 0);">Buy another one</button>
