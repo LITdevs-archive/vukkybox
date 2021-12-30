@@ -59,8 +59,8 @@
 						<p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %></p>
 					<% } else { %>
 						<p style="color:<%=JSON.parse(level).color %>;"><%=JSON.parse(level).name %> (<%=JSON.parse(level).level %> star)</p>
-					<% } %>
-				<p><%-JSON.parse(vukky).description %></p>
+				<% } %>
+				<p><% if(JSON.parse(vukky).creator) { %>This was made by <%=JSON.parse(vukky).creator %>! <% } %><%-JSON.parse(vukky).description %></p>
 				<br>
 				<button class="button button-blue">Go back</button>
 			</div>

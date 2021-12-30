@@ -47,7 +47,8 @@
 			"1": {
 				"name": "Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukky.webp",
-				"description": "Oh look, it's a standard Vukky! How boring and simple."
+				"description": "Oh look, it's a standard Vukky! How boring and simple.",
+				"creator": "Vukky"
 			},
 			"2": {
 				"name": "Happy Vukky",
