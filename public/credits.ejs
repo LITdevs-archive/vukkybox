@@ -101,7 +101,9 @@
     <li>Credits music (you're listening to it!): <a href="https://freesound.org/people/mistermender/sounds/512340/" class="text-blue-500">"Upbeat loop" by mistermender</a></li>
     </ul>
     <h2 class="pt-8">Vukky creators</h2>
-    These are credited in the Vukky's description. If a creator is not specified, it is either by Vukky or Skelly.<br>
+    <ul class="list-disc list-inside">
+      <li>Loading...</li>
+    </ul>
     Pukkies are made by Pukky Drawers, which include:
     <ul class="list-disc list-inside">
       <li>Alespic</li>
@@ -136,6 +138,7 @@
 <script>
   const devDeps = <%-JSON.stringify(ddeps)%>
   const normalDeps = <%-JSON.stringify(deps)%>
+  const vukkyCreatorData = <%-JSON.stringify(vukkyCreatorData)%>
   document.querySelector("#deps").innerHTML = "";
   document.querySelector("#ddeps").innerHTML = "";
   Object.entries(normalDeps).forEach(function(deppy) {
