@@ -43,9 +43,9 @@
         <input id="vukkaydesc" type="text" name="description" placeholder="description" required/>
         <input id="vukkayurl" type="text" name="url" placeholder="url" required/>
         <input id="vukkaylevel" type="text" name="level" placeholder="1-7 or pukky" required><br>
+        <input id="vukkaycreator" type="text" name="creator" placeholder="creator name" required>
         Optional: 
         <input type="text" name="sfx" placeholder="full audio url (use tellyscript)">
-        <input type="text" name="contribid" placeholder="contributor discord id">
         <input type="submit" value="Execute"/>
     </form>
     <br>
@@ -83,6 +83,7 @@
         if(params.get("uploaded") != null) {
             document.querySelector("#vukkayurl").value = params.get("uploaded");
             if(params.get("uploaded").includes("/pukkies/")) {
+                document.querySelector("#vukkaycreator").value = "do not touch this lol";
                 document.querySelector("#vukkaylevel").value = "pukky";
                 document.querySelector("#vukkayname").value = params.get("uploaded").split("/")[5].split(".")[0] + `'${!params.get("uploaded").split("/")[5].split(".")[0].endsWith("s") ? "s" : ""} Pukky`
                 document.querySelector("#vukkaydesc").value = "This Pukky belongs to " + params.get("uploaded").split("/")[5].split(".")[0]
