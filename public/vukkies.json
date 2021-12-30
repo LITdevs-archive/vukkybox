@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 324,
+	"currentId": 329,
 	"rarity": {
 		"1": {
 			"1": {
@@ -318,6 +318,11 @@
 				"name": "Transparent Outline Vukky",
 				"url": "https://vukkybox.com/resources/vukkyline.webp",
 				"description": "Something horrible happened to this one"
+			},
+			"326": {
+				"name": "AI Upscaled Vukky",
+				"url": "https://vukkybox.com/resources/aivukky.webp",
+				"description": "This was made by Mot! WHAT DID IT DO TO ITS FACE!?!"
 			}
 		},
 		"2": {
@@ -573,6 +578,21 @@
 				"name": "Obby Vukky",
 				"url": "https://vukkybox.com/resources/obbyvukky.webp",
 				"description": "This was made by Synne! Even easy obbies are hard obbies if you haven't obbied before."
+			},
+			"325": {
+				"name": "Dicey",
+				"url": "https://vukkybox.com/resources/dicey.webp",
+				"description": "This was made by Synne! You can roll it, and it will show you some Vukky eyes."
+			},
+			"328": {
+				"name": "Post-it Vukky",
+				"url": "https://vukkybox.com/resources/postitvukky.webp",
+				"description": "It's like a makeshift sticker!"
+			},
+			"329": {
+				"name": "Doodle Vukky",
+				"url": "https://vukkybox.com/resources/doodlevukky.webp",
+				"description": "Vukky <i>loves</i> doodling Vukkies everywhere. This is a pretty good example!"
 			}
 		},
 		"3": {
@@ -1051,6 +1071,11 @@
 				"name": "Runevukk",
 				"url": "https://vukkybox.com/resources/runevukk.webp",
 				"description": "This was made by Synne! You could also call it the Medieval Vukky, but this wouldn't be a Vukky game without a RuneScape reference."
+			},
+			"327": {
+				"name": "Stranded Vukky",
+				"url": "https://vukkybox.com/resources/strandedvukky.webp",
+				"description": "This was made by Synne! Vukky is lost, but Vukky is asleep, so Vukky doesn't know!"
 			}
 		},
 		"5": {
