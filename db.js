@@ -556,7 +556,10 @@ function listEmails() {
 }
 
 function resetPopup() {
-	User.updateMany({}, {$set: {popupAccepted: false}})
+	User.updateMany({}, {$set: {popupAccepted: false}}, function (err, docs) {
+		if (err) return console.log(err)
+		console.log("Updated Docs : ", docs);
+	})
 }
 
 function resetBeta() {
