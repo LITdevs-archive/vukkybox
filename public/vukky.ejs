@@ -1,161 +1,162 @@
 <!DOCTYPE html>
 <html lang="en"  >
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://vukkybox.com/resources/style.css" rel="stylesheet">
-        <script src="https://vukkybox.com/resources/spin.js"></script>
-        <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
-        <title>Vukkybox - <%= box ? "Buy Box BETA" : `${vukky.name} (${vukky.id}) BETA` %></title>
-        <link rel="preload" href="/resources/unboxspinning.ogg" as="audio">
-        <link rel="preload" href="/resources/tada.ogg" as="audio">
-        <link rel="preload" href="/resources/purchase.wav" as="audio">
-        <% if(box) { %>
-        <link rel="preload" href="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" as="image">
-        <% } %>
-        <link rel="preload" href="<%=vukky.url %>" as="image">
-        <style>
-            #share:hover {
-                cursor: pointer
-            }
-        </style>
-    </head>
-    <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
-        <% if (box) { %>
-            <audio type="sfx" autoplay id="unboxSpinSfx" src="/resources/unboxspinning.ogg"></audio>
-            <audio type="sfx" id="unboxAllSfx" src="/resources/tada.ogg"></audio>
-        <% } %>
-        <audio type="sfx" id="unboxSfx" src="/resources/unbox.wav"></audio>
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-        <div class="bg-opacity-10  bg-gray-100 w-full">
-            <nav class="flex justify-between">
-                <div class="inline-flex">
-                    <a href="/"><img id="icon" src="https://vukkybox.com/resources/icons/512.png" class="max-h-20 m-2" /></a>
-                    <% if(user) { %>
-                    <p class="m-auto text-2xl text-bold" id="balance"><%= box ? oldBalance : user.balance %> Vukkybux</p>
-                    <% } %>
-                </div>
-                <ul class="flex flex-row p-10">
-                    <li class="pr-10"><span id="share" class="hidden" onclick="shareDrop()"><%= box ? "Share your pull!" : "Share this Vukky!" %></a></li>
-                    <% if(user) { %>
-                    <div class="dropdown">
-                        <li class="pr-5"><a><%= user.username%></a></li>
-                        <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
-                        <div class="dropdown-content text-white">
-                        <a class="text-white" href="https://vukkybox.com/profile">Profile</a>
-                        <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
-                        <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
-                        <a class="text-white" href="https://vukkybox.com/logout">Log Out</a>
-                        </div>
-                    </div>
-                    <% } else {%>
-                        <li><a href="https://vukkybox.com/login">Log In</a></li>
-                    <% } %>
-                    
-                </ul>
-            </nav>
-        </div>
-            <center class="py-8">
-                <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
-                    <div class="hidden reward" id="reward">
-                        <img class="m-auto" height="128" src="<%=vukky.url %>"/>
-                        <p title="This is the name of the Vukky, and its ID."><%-vukky.name %> (#<%=vukky.id %>)</p>
-                        <% if(parseInt(vukky.rarity.level) == 8) { %>
-                            <p style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %></p>
-                        <% } else { %>
-                        <p title="This is the rarity of the Vukky." style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %> (<%=vukky.rarity.level %> star)</p>
-                        <% } %>
-                        <p title="This is the Vukky's description."><%-vukky.description %></p>
-                        <p class="text-red-500"><%if (box && box.dupe) { %><br>...oh, but you already have <%=vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% } %></p>
-                        <br>
-                        <button class="button button-blue purchase" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;setTimeout(() => {window.location.reload()}, localStorage.getItem('kachingOn') != 'false' ? 1000 : 0);">Buy another one</button>
-                        <a href="/store"><button class="py-5 button button-blue">Return to the storefront</button></a>
-                    </div>
-                    
-                <% if (box) { %>
-                    <div class="opener" id="opener">
-                        <img id="openingicon" src="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" class="max-h-48 m-auto" />
-                    </div>
-                <% } %> 
-                </div>
-            </center>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://vukkybox.com/resources/style.css" rel="stylesheet">
+		<script src="https://vukkybox.com/resources/spin.js"></script>
+		<link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
+		<title>Vukkybox - <%= box ? "Buy Box BETA" : `${vukky.name} (${vukky.id}) BETA` %></title>
+		<link rel="preload" href="/resources/unboxspinning.ogg" as="audio">
+		<link rel="preload" href="/resources/tada.ogg" as="audio">
+		<link rel="preload" href="/resources/purchase.wav" as="audio">
+		<% if(box) { %>
+		<link rel="preload" href="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" as="image">
+		<% } %>
+		<link rel="preload" href="<%=vukky.url %>" as="image">
+		<style>
+			#share:hover {
+				cursor: pointer
+			}
+		</style>
+	</head>
+	<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
+		<% if (box) { %>
+			<audio type="sfx" autoplay id="unboxSpinSfx" src="/resources/unboxspinning.ogg"></audio>
+			<audio type="sfx" id="unboxAllSfx" src="/resources/tada.ogg"></audio>
+		<% } %>
+		<audio type="sfx" id="unboxSfx" src="/resources/unbox.wav"></audio>
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+		<div class="bg-opacity-10  bg-gray-100 w-full">
+			<nav class="flex justify-between">
+				<div class="inline-flex">
+					<a href="/"><img id="icon" src="https://vukkybox.com/resources/icons/512.png" class="max-h-20 m-2" /></a>
+					<% if(user) { %>
+					<p class="m-auto text-2xl text-bold" id="balance"><%= box ? oldBalance : user.balance %> Vukkybux</p>
+					<% } %>
+				</div>
+				<ul class="flex flex-row p-10">
+					<li class="pr-10"><span id="share" class="hidden" onclick="shareDrop()"><%= box ? "Share your pull!" : "Share this Vukky!" %></a></li>
+					<% if(user) { %>
+					<div class="dropdown">
+						<li class="pr-5"><a><%= user.username%></a></li>
+						<li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
+						<div class="dropdown-content text-white">
+						<a class="text-white" href="https://vukkybox.com/profile">Profile</a>
+						<a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
+						<a class="text-white" href="#" id="redeemCode">Redeem Code</a>
+						<a class="text-white" href="https://vukkybox.com/logout">Log Out</a>
+						</div>
+					</div>
+					<% } else {%>
+						<li><a href="https://vukkybox.com/login">Log In</a></li>
+					<% } %>
+					
+				</ul>
+			</nav>
+		</div>
+			<center class="py-8">
+				<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
+					<div class="hidden reward" id="reward">
+						<img class="m-auto" height="128" src="<%=vukky.url %>"/>
+						<p title="This is the name of the Vukky, and its ID."><%-vukky.name %> (#<%=vukky.id %>)</p>
+						<% if(parseInt(vukky.rarity.level) == 8) { %>
+							<p style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %></p>
+						<% } else { %>
+						<p title="This is the rarity of the Vukky." style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %> (<%=vukky.rarity.level %> star)</p>
+						<% } %>
+						<p title="This is the Vukky's description."><%-vukky.description %></p>
+						<p class="text-red-500"><%if (box && box.dupe) { %><br>...oh, but you already have <%=vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% } %></p>
+						<br>
+						<button class="button button-blue purchase" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;setTimeout(() => {window.location.reload()}, localStorage.getItem('kachingOn') != 'false' ? 1000 : 0);">Buy another one</button>
+						<a href="/store"><button class="py-5 button button-blue">Return to the storefront</button></a>
+					</div>
+					
+				<% if (box) { %>
+					<div class="opener" id="opener">
+						<img id="openingicon" src="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" class="max-h-48 m-auto" />
+					</div>
+				<% } %> 
+				</div>
+			</center>
 	</body>
-    <script type="text/javascript">
-    function shareDrop() {
-        if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
-            <% if(parseInt(vukky.rarity.level) == 8) { %>
-            navigator.share({'title': `<%=vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=vukky.id %>'});
-            <% } else { %>
-            navigator.share({'title': `<%=vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/<%=vukky.rarity.level %>/<%=vukky.id %>'});
-            <% } %>
-        } else {
-            <% if(parseInt(vukky.rarity.level) == 8) { %>
-            navigator.clipboard.writeText("https:/\/vukkybox.com/view/pukky/<%=vukky.id %>").then(function() {
-                alert("Copied to clipboard!");
-            });
-            <% } else { %>
-            navigator.clipboard.writeText("https:/\/vukkybox.com/view/<%=vukky.rarity.level %>/<%=vukky.id %>").then(function() {
-                alert("Copied to clipboard!");
-            });
-            <% } %>
-        }
-    }
-    var rarity = <%=vukky.rarity.level %>;
-    const rarityName = "<%=vukky.rarity.name %>";
-    if(rarity == 8) rarity = 3;
+	<script type="text/javascript">
+	function shareDrop() {
+		if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
+			<% if(parseInt(vukky.rarity.level) == 8) { %>
+			navigator.share({'title': `<%=vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/pukky/<%=vukky.id %>'});
+			<% } else { %>
+			navigator.share({'title': `<%=vukky.name %> on Vukkybox!`, 'url': 'https:/\/vukkybox.com/view/<%=vukky.rarity.level %>/<%=vukky.id %>'});
+			<% } %>
+		} else {
+			<% if(parseInt(vukky.rarity.level) == 8) { %>
+			navigator.clipboard.writeText("https:/\/vukkybox.com/view/pukky/<%=vukky.id %>").then(function() {
+				alert("Copied to clipboard!");
+			});
+			<% } else { %>
+			navigator.clipboard.writeText("https:/\/vukkybox.com/view/<%=vukky.rarity.level %>/<%=vukky.id %>").then(function() {
+				alert("Copied to clipboard!");
+			});
+			<% } %>
+		}
+	}
+	var rarity = <%=vukky.rarity.level %>;
+	const rarityName = "<%=vukky.rarity.name %>";
+	if(rarity == 8) rarity = 3;
 	const vukkyID = <%=vukky.id %>;
 	<% if(box) { %> const boxName = "<%=box.type %>"; <% } %>
-    var vukkyAudio = false 
-    <% if(vukky.audio) { %>
-        vukkyAudio = "<%=vukky.audio %>"
-    <% } %>
-    const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
-        let newBalance = <%=user.balance %>;
-        let spinner;
-        if(!noAnim) {
-            spinner = setInterval(function() {
-                document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
-                rotation = rotation * 1.12
-            }, 10);
-            setTimeout(function() {
-                clearInterval(spinner);
-                spinner = setInterval(function() {
-                    document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
-                    rotation = rotation * 0.92
-                    if(rotation > 10000) rotation = 10000
-                }, 10);
-            }, 300 * rarity);
-        }
-        setTimeout(function() {
-            document.querySelector("#unboxSpinSfx").pause();
-            let icon = document.getElementById("openingicon")
-            clearInterval(spinner);
-            if(!noAnim) icon.classList.add("animate-ping");
-            setTimeout(() => {
-                if(!noAnim) icon.classList.remove("animate-ping");
-                icon.style.display = "none";
-                if(rarity >= 6) document.querySelector("#unboxSfx").src = "/resources/unboxrare.wav"
-                if(rarity == 7) document.querySelector("#unboxSfx").src = "/resources/unboxunique.wav"
-                if(rarity <= 2) document.querySelector("#unboxSfx").src = "/resources/unboxcommon.wav"
-	            if(vukkyAudio) document.querySelector("#unboxSfx").src = vukkyAudio
-		        <%if (box && box.dupe) { %>document.querySelector("#unboxSfx").playbackRate = 2<% } %>
-                document.querySelector("#unboxSfx").play();
-                document.querySelector("#share").classList.remove("hidden");
-                document.getElementById("reward").classList.remove("hidden")
-                document.getElementById("opener").classList.add("hidden")
-                document.getElementById("balance").innerHTML = `${parseFloat(newBalance).toLocaleString()} Vukkybux`;
-                if(rarity == 7) {
-                    document.querySelector("#unboxAllSfx").play();
-                    confetti();
-                }
-                <% if(box && box.fullUnlock) { %>
-                    alert(`You have collected all the ${rarity != 8 ? `${rarityName} Vukkies!` : "Pukkies!"}`)
-                    document.querySelector("#unboxAllSfx").play();
-                    confetti();
-                <% } %>
-            }, 200);
-        }, 600 * rarity);
+	var vukkyAudio = false 
+	<% if(vukky.audio) { %>
+		vukkyAudio = "<%=vukky.audio %>"
+	<% } %>
+	<% if (box) { %>
+	const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
+		let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
+		let newBalance = <%=user.balance %>;
+		let spinner;
+		if(!noAnim) {
+			spinner = setInterval(function() {
+				document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
+				rotation = rotation * 1.12
+			}, 10);
+			setTimeout(function() {
+				clearInterval(spinner);
+				spinner = setInterval(function() {
+					document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
+					rotation = rotation * 0.92
+					if(rotation > 10000) rotation = 10000
+				}, 10);
+			}, 300 * rarity);
+		}
+		setTimeout(function() {
+			document.querySelector("#unboxSpinSfx").pause();
+			let icon = document.getElementById("openingicon")
+			clearInterval(spinner);
+			if(!noAnim) icon.classList.add("animate-ping");
+			setTimeout(() => {
+				if(!noAnim) icon.classList.remove("animate-ping");
+				icon.style.display = "none";
+	<% } %>
+				if(rarity >= 6) document.querySelector("#unboxSfx").src = "/resources/unboxrare.wav"
+				if(rarity == 7) document.querySelector("#unboxSfx").src = "/resources/unboxunique.wav"
+				if(rarity <= 2) document.querySelector("#unboxSfx").src = "/resources/unboxcommon.wav"
+				if(vukkyAudio) document.querySelector("#unboxSfx").src = vukkyAudio
+				<%if (box && box.dupe) { %>document.querySelector("#unboxSfx").playbackRate = 2<% } %>
+				document.querySelector("#unboxSfx").play();
+				document.querySelector("#share").classList.remove("hidden");
+				document.getElementById("reward").classList.remove("hidden")
+				document.getElementById("opener").classList.add("hidden")
+				document.getElementById("balance").innerHTML = `${parseFloat(newBalance).toLocaleString()} Vukkybux`;
+				if(rarity == 7) {
+					document.querySelector("#unboxAllSfx").play();
+					confetti();
+				}
+				<% if(box && box.fullUnlock) { %>
+					alert(`You have collected all the ${rarity != 8 ? `${rarityName} Vukkies!` : "Pukkies!"}`)
+					document.querySelector("#unboxAllSfx").play();
+					confetti();
+				<% } %>
+			}, 200);
+		}, 600 * rarity);
 
-
-    </script>
+	</script>
 </html>
