@@ -125,6 +125,7 @@
 		let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
 		let newBalance = <%=newBalance %>;
 		let spinner;
+		console.log("<%= `new ${newBalance} old ${oldBalance} user ${user.balance}` %>")
 		if(!noAnim) {
 			spinner = setInterval(function() {
 				document.getElementById("openingicon").style.transform = `rotate(${rotation}deg)`;
