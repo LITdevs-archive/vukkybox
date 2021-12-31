@@ -123,7 +123,7 @@
 	<% if (box) { %>
 	const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
 		let rotation = (0.285714286 + (Math.random() / 2.5)) * rarity;
-		let newBalance = <%=user.balance %>;
+		let newBalance = <%=newBalance %>;
 		let spinner;
 		if(!noAnim) {
 			spinner = setInterval(function() {
