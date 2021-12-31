@@ -36,7 +36,8 @@ db.once('open', function() {
 	uniqueVukkiesGot: Number,
 	RVNid: String,
 	popupAccepted: Boolean,
-	duplicates: Object
+	duplicates: Object,
+	beta: Boolean
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
@@ -73,7 +74,8 @@ function findOrCreate(service, profile, callback) {
 						boxesOpened: 0,
 						codesRedeemed: 0,
 						uniqueVukkiesGot: 0,
-						popupAccepted: true
+						popupAccepted: true,
+						beta: false
 
 					})
 					user.save(function (err, user) {
@@ -104,7 +106,8 @@ function findOrCreate(service, profile, callback) {
 						boxesOpened: 0,
 						codesRedeemed: 0,
 						uniqueVukkiesGot: 0,
-						popupAccepted: true
+						popupAccepted: true,
+						beta: false
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -138,7 +141,8 @@ function findOrCreate(service, profile, callback) {
 						boxesOpened: 0,
 						codesRedeemed: 0,
 						uniqueVukkiesGot: 0,
-						popupAccepted: true
+						popupAccepted: true,
+						beta: false
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
