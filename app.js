@@ -241,6 +241,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 						let jsonLevel = vukkyJson.levels[vukkyRarity];
 						let vukky = {
 							name: jsonVukky.name,
+							creator: jsonVukky.creator
 							id: vukkyId,
 							url: jsonVukky.url,
 							description: jsonVukky.description,
@@ -421,6 +422,7 @@ app.get("/view/:level/:id", grl, popupMid, function (req, res) {
 	let jsonLevel = vukkyJson.levels[req.params.level];
 	let vukky = {
 		name: jsonVukky.name,
+		creator: jsonVukky.creator,
 		id: req.params.id,
 		url: jsonVukky.url,
 		description: jsonVukky.description,
