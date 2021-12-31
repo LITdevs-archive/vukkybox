@@ -560,7 +560,10 @@ function resetPopup() {
 }
 
 function resetBeta() {
-	User.updateMany({}, {$set: {beta: false}})
+	User.updateMany({}, {$set: {beta: false}}, function (err, docs) {
+		if (err) return console.log(err)
+		console.log("Updated Docs : ", docs);
+	})
 }
 
 function checkPopup(userId, callback) {
