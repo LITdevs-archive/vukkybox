@@ -439,7 +439,7 @@ app.get("/view/:level/:id", grl, popupMid, function (req, res) {
 					color: jsonLevel.color
 				}
 			}
-			res.render(__dirname + '/public/view.ejs', {
+			res.render(__dirname + '/public/vukky.ejs', {
 				user: req.user._id ? req.user : req.user[0],
 				vukky: vukky,
 				box: null,
