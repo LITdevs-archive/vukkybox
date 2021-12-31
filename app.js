@@ -226,7 +226,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 					const vukkies = require("./public/vukkies.json");
 					const boxes = require("./public/boxes.json");
 					if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
-				if(req.user.beta || res.user[0].beta) {
+				if(req.user.beta || req.user[0].beta) {
 						let vukkyId = prize.box.vukkyId
 						let vukkyRarity = prize.box.level.level
 						let jsonVukky = vukkies.rarity[vukkyRarity][vukkyId];
