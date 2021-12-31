@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 329,
+	"currentId": 330,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1436,6 +1436,12 @@
 				"description": "There is no escape from what is about to come.",
 				"creator": "Vukky",
 				"audio": "https://vukkybox.com/resources/silence.ogg"
+			},
+			"330": {
+				"name": "Linky",
+				"url": "https://vukkybox.com/resources/linky.webp",
+				"description": "This Vukky is the chosen hero that wields the blade that seals the darkness",
+				"creator": "synne"
 			}
 		},
 		"7": {
