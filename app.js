@@ -256,7 +256,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 							dupe: dupe,
 							fullUnlock: fullUnlock,
 						}
-					
+						console.log(`req.user ${req.user.balance} newbalance ${newBalance} dupe compensated old balance ${newBalance + 0.1 * boxes[req.params.data].price}`)
 						res.render(__dirname + '/public/vukky.ejs', {
 							user: req.user._id ? req.user : req.user[0],
 							vukky: vukky,
