@@ -261,7 +261,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 							user: req.user._id ? req.user : req.user[0],
 							vukky: vukky,
 							box: box,
-							oldBalance: dupe ? newBalance + 0.1 * boxes[req.params.data].price : newBalance,
+							oldBalance: dupe ? newBalance - 0.1 * boxes[req.params.data].price : newBalance,
 							newBalance: newBalance,
 							gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
 						});
