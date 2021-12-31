@@ -151,7 +151,7 @@
     document.querySelector("#ddeps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500" target="_blank">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
   })
   vukkyCreatorData.forEach(function(vukkyCreator) {
-	  document.querySelector("#vkyc").innerHTML += `<li>${vukkyCreator[0]} <small>(${vukkyCreator[1].length}: ${vukkyCreator[1].sort((a, b) => a.split("/")[1] - b.split("/")[1]).map(el => `<a href="https://vukkybox.com/view/${el}" class="text-blue-500">#` + el.split("/")[1] + "</a>").join(", ")})</small></li>`
+	  document.querySelector("#vkyc").innerHTML += `<li>${vukkyCreator[0]} <span style="font-size: 50%;">(${vukkyCreator[1].length}: ${vukkyCreator[1].sort((a, b) => a.split("/")[1] - b.split("/")[1]).map(el => `<a href="https://vukkybox.com/view/${el}" class="text-blue-500">#` + el.split("/")[1] + "</a>").join(", ")})</span></li>`
   })
 </script>
 </html>
