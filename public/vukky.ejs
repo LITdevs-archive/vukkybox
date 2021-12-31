@@ -147,6 +147,7 @@
 			setTimeout(() => {
 				if(!noAnim) icon.classList.remove("animate-ping");
 				icon.style.display = "none";
+				document.getElementById("opener").classList.add("hidden")
 	<% } %>
 				if(rarity >= 6) document.querySelector("#unboxSfx").src = "/resources/unboxrare.wav"
 				if(rarity == 7) document.querySelector("#unboxSfx").src = "/resources/unboxunique.wav"
@@ -156,7 +157,6 @@
 				document.querySelector("#unboxSfx").play();
 				document.querySelector("#share").classList.remove("hidden");
 				document.getElementById("reward").classList.remove("hidden")
-				document.getElementById("opener").classList.add("hidden")
 				document.getElementById("balance").innerHTML = `${parseFloat(newBalance).toLocaleString()} Vukkybux`;
 	<% if (box) { %>
 				if(rarity == 7) {
