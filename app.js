@@ -369,6 +369,10 @@ app.post("/admin/:action", grl, async function(req, res) {
 				db.resetPopup();
 				res.redirect("/admin?popup=true")
 			break;
+			case "beta_reset":
+				db.resetBeta();
+				res.redirect("/admin?beta=true")
+			break;
 			case "set_balance":
 				if(req.body.userid && req.body.newbalance) {
 					db.setBalance(req.body.userid, req.body.newbalance)

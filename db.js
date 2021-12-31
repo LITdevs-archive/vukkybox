@@ -559,6 +559,10 @@ function resetPopup() {
 	User.updateMany({}, {$set: {popupAccepted: false}})
 }
 
+function resetBeta() {
+	User.updateMany({}, {$set: {beta: false}})
+}
+
 function checkPopup(userId, callback) {
 	User.findOne({_id: userId}, (err, user) => {
 		if (err) console.log(err);
@@ -618,6 +622,7 @@ module.exports = {
 	vukkyTierCount,
 	listEmails,
 	resetPopup,
+	resetBeta,
 	checkPopup,
 	acceptPopup,
 	setBeta
