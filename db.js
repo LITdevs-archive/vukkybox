@@ -241,79 +241,37 @@ function validCode(code, user, callback) { // callback with a boolean representi
 }
 
 function buyBox(user, box, callback) {
+	let userId = user._id ? user._id : user[0]._id;
 	let boxData = boxJson[box]
-	if (user._id) {
-		let oldBalance = user.balance
-		User.findById({_id: user._id}, function (err, doc) {
-			if(err) {
-				callback({"box":"error"}, null, null, null, null)
-				console.log(err)
-			};
-			if(doc.balance >= boxData.price) {
-				doc.balance -= boxData.price;
-				doc.balance = parseFloat(doc.balance).toFixed(1)
-				openBox(box, res => {
-					let dupe = false;
-					if(!doc.gallery.includes(res.vukkyId)) {
-						doc.uniqueVukkiesGot++;
-						doc.gallery.push(res.vukkyId)
-					} else {
-						if (!doc.duplicates) doc.duplicates = {};
-						let duplicates = doc.duplicates
-						if (!duplicates[res.vukkyId]) duplicates[res.vukkyId] = 0
-						duplicates[res.vukkyId] = parseInt(duplicates[res.vukkyId]) + 1
-						dupe = parseInt(duplicates[res.vukkyId]);
-						
-						doc.duplicates = duplicates
-						doc.markModified('duplicates');
-						
-						if (!boxData.noRefund) doc.balance += 0.1 * boxData.price;
-						doc.balance = parseFloat(doc.balance).toFixed(1)
-					}
-					doc.boxesOpened++;
-					doc.save()
-					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe, oldBalance)
-				})
-			} else {
-				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null, null)
-			}
-		})
-	} else {
-		let oldBalance = user[0].balance
-		User.findById({_id: user[0]._id}, function (err, doc) {
-			if(err) {
-				callback({"box":"error"}, null, null, null, null)
-				console.log(err)
-			};
-			if(doc.balance >= boxData.price) {
-				doc.balance -= boxData.price;
-				doc.balance = parseFloat(doc.balance).toFixed(1)
-				openBox(box, res => {
-					let dupe = false;
-					if(!doc.gallery.includes(res.vukkyId)) {
-						doc.uniqueVukkiesGot++;
-						doc.gallery.push(res.vukkyId)
-					} else {
-						if (!doc.duplicates) doc.duplicates = {};
-						let duplicates = doc.duplicates
-						if (!duplicates[res.vukkyId]) duplicates[res.vukkyId] = 0
-						duplicates[res.vukkyId] = parseInt(duplicates[res.vukkyId]) + 1
-						dupe = parseInt(duplicates[res.vukkyId]);
-						
-						doc.duplicates = duplicates
-						doc.markModified('duplicates');
-						if (!boxData.noRefund) doc.balance += 0.1 * boxData.price;
-						doc.balance = parseFloat(doc.balance).toFixed(1)
-					}
-					doc.boxesOpened++;
-					doc.save()
-					callback({"box":res, "error": null}, doc.balance, doc.gallery, dupe, oldBalance)
-				})
-			} else {
-				callback({"box":null, "error":"not enough funds"}, doc.balance, null, null, null)
-			}
-		})
-	}
+	User.findById({_id: user._id}, function (err, user) {
+		if(err) {
+			callback({"box":"error", "error": err}, null, null, null)
+			console.log(err)
+		};
+		if(user.balance >= boxData.price) {
+			user.balance = parseFloat(user.balance - boxData.price).toFixed(1);
+			user.boxesOpened++;
+			openBox(box, res => { //res: {level, vukkyId, vukky}
+				const isDuplicate = doc.gallery.includes(res.vukkyId)
+				let duplicateCount
+				if (isDuplicate) {
+					if (!user.duplicates) user.duplicates = {};
+					if (!user.duplicates[res.vukkyId]) user.duplicates[res.vukkyId] = 0
+					user.duplicates[res.vukkyId] = parseInt(user.duplicates[res.vukkyId]) + 1
+					user.markModified('duplicates')
+					duplicateCount = user.duplicates[res.vukkyId];
+					if (!boxData.noRefund) user.balance = parseFloat(user.balance + 0.1 * boxData.price).toFixed(1);
+				} else {
+					user.uniqueVukkiesGot++;
+					user.gallery.push(res.vukkyId)
+				}
+				user.save()
+				callback({"box": res}, user.balance, user.gallery, duplicateCount);
+			})
+		} else {
+			callback({"box":"poor"}, null, null, null)
+		}
+	})
 }
 
 function openBox(boxname, callback) {
