@@ -585,6 +585,19 @@ function setBalance(userId, newBalance) {
 	})
 }
 
+function setBeta(userId, newBeta, callback) { // callback(response, error, user)
+	User.findOne({_id: userId}, (err, user) => {
+		if (err) return callback(500, err, null)
+		if (typeof newBeta == "boolean") {
+			user.beta = newBeta;
+			user.save()
+			callback(200, null, user)
+		} else {
+			callback(400, "Invalid beta value", null)
+		}
+	})
+}
+
 module.exports = {
 	findOrCreate,
 	changeUsername,
@@ -602,5 +615,6 @@ module.exports = {
 	listEmails,
 	resetPopup,
 	checkPopup,
-	acceptPopup
+	acceptPopup,
+	setBeta
 }

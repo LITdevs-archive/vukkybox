@@ -404,8 +404,6 @@ app.get("/view/:level/:id", grl, popupMid, function (req, res) {
   })
 
 app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
-	  
-	
 	if(req.user.primaryEmail) {
 		db.getUser(req.user._id, function(resp, err) {
 			if(err) return res.send(err)
@@ -417,6 +415,19 @@ app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
 			res.send(resp)
 		})
 	}
+})
+
+app.get('/beta', grl, checkAuth, popupMid, function(req, res) {
+	res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
+})
+
+app.post('/beta', grl, popupMid, function(req, res) {
+	if(!req.isAuthenticated()) return res.status(403).send("Unauthenticated");
+	let newBetaState = req.body.beta;
+	db.setBeta(req.user._id ? req.user._id : req.user[0]._id, newBetaState == "enable" ? true : newBetaState == "disable" ? false : null, function(resp, err, newUser) {
+		if(!err) req.session.passport.user = newUser;
+		res.send(resp ? resp : res.status(500).render(__dirname + "public/error.ejs", {stacktrace: err, friendlyError: "Something went wrong when applying this change to your account."}))
+	});
 })
 
 app.get('/', grl, popupMid, function(req, res) {

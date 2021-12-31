@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"  >
+<title>Vukkybox - Secret Settings</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body style="filter: blur(0px); transition: filter 0.2s ease-out;">
+    <h1>Hey! Nice job finding this page.</h1>
+    <form method="post">
+        <h3>Enable Beta features</h3>
+        <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+        <p>This enables Beta features, we probably wont tell you what they are, but you might notice some issues or new features ahead of time!</p> <br>
+        <p>We initially created this feature for developers, but since you found it, have fun!</p>
+        <input type="radio" id="enable" name="betaState" value="enable" required>
+        <label for="enable">Enable Beta features on my account</label><br>
+        <input type="radio" id="disable" name="betaState" value="disable" required>
+        <label for="disable">Disable Beta features on my account</label><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script>
+    function blur(px) {
+        document.querySelector("body").style.filter = "blur(" + px + "px)"
+    }
+    document.querySelector("input[type=submit]").addEventListener("click", function() {blur("30")})
+</script>
+</html>
