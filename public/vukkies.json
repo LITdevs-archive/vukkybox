@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 330,
+	"currentId": 332,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1062,6 +1062,18 @@
 				"url": "https://vukkybox.com/resources/vukkyshaman.webp",
 				"description": "No cheese for you.",
 				"creator": "Synne"
+			},
+			"331": {
+				"name": "Vukky Washington",
+				"url": "https://vukkybox.com/resources/vukkywashington.webp",
+				"description": "Seems like an important person in some parts of the world.. not here in Vukkyland though!",
+				"creator": "Seysa"
+			},
+			"332": {
+				"name": "Catboy Vukky",
+				"url": "https://vukkybox.com/resources/catboyvukky.webp",
+				"description": "Nya",
+				"creator": "Femboy Nova"
 			}
 		},
 		"4": {
@@ -1441,7 +1453,7 @@
 				"name": "Linky",
 				"url": "https://vukkybox.com/resources/linky.webp",
 				"description": "This Vukky is the chosen hero that wields the blade that seals the darkness",
-				"creator": "Synne"
+				"creator": "synne"
 			}
 		},
 		"7": {
