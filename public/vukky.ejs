@@ -11,7 +11,14 @@
 		<link rel="preload" href="/resources/purchase.wav" as="audio">
 		<% if(box) { %>
 		<link rel="preload" href="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" as="image">
-		<% } %>
+		<meta name="title" content="Vukkybox">
+        <meta name="description" content="Collect Vukkies trapped in boxes!">
+        <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+		<% } else { %>
+			<meta name="title" content="<%=vukky.name %> (#<%=vukky.id %>)">
+			<meta name="description" content="<%=vukky.description %>">
+			<meta property="og:image" content="<%=vukky.url %>">
+		<% } %> 
 		<link rel="preload" href="<%=vukky.url %>" as="image">
 		<style>
 			#share:hover {
