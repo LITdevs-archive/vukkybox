@@ -65,7 +65,7 @@
                         <p title="This is the rarity of the Vukky." style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %> (<%=vukky.rarity.level %> star)</p>
                         <% } %>
                         <p title="This is the Vukky's description."><%-vukky.description %></p>
-                        <p class="text-red-500"><%if (box.dupe) { %><br>...oh, but you already have <%=vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% } %></p>
+                        <p class="text-red-500"><%if (box && box.dupe) { %><br>...oh, but you already have <%=vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% } %></p>
                         <br>
                         <button class="button button-blue purchase" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;setTimeout(() => {window.location.reload()}, localStorage.getItem('kachingOn') != 'false' ? 1000 : 0);">Buy another one</button>
                         <a href="/store"><button class="py-5 button button-blue">Return to the storefront</button></a>
@@ -103,7 +103,7 @@
     const rarityName = "<%=vukky.rarity.name %>";
     if(rarity == 8) rarity = 3;
 	const vukkyID = <%=vukky.id %>;
-	const boxName = "<%=box.type %>";
+	<% if(box) { %> const boxName = "<%=box.type %>"; <% } %>
     var vukkyAudio = false 
     <% if(vukky.audio) { %>
         vukkyAudio = "<%=vukky.audio %>"
