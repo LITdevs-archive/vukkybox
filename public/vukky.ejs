@@ -146,6 +146,7 @@
 				document.getElementById("reward").classList.remove("hidden")
 				document.getElementById("opener").classList.add("hidden")
 				document.getElementById("balance").innerHTML = `${parseFloat(newBalance).toLocaleString()} Vukkybux`;
+	<% if (box) { %>
 				if(rarity == 7) {
 					document.querySelector("#unboxAllSfx").play();
 					confetti();
@@ -157,6 +158,7 @@
 				<% } %>
 			}, 200);
 		}, 600 * rarity);
+	<% } %>
 
 	</script>
 </html>
