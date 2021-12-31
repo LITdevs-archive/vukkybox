@@ -225,6 +225,36 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 					let ownedInTier = db.vukkyTierCount(newGallery)[prize.box.level.level] ? db.vukkyTierCount(newGallery)[prize.box.level.level] : 0
 					const vukkies = require("./public/vukkies.json");
 					if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
+				if(req.user.beta || res.user[0].beta) {
+						let vukkyId = prize.box.vukkyId
+						let vukkyRarity = prize.box.level.level
+						let jsonVukky = vukkies.rarity[vukkyRarity][vukkyId];
+						let jsonLevel = vukkyJson.levels[vukkyRarity];
+						let vukky = {
+							name: jsonVukky.name,
+							id: vukkyId,
+							url: jsonVukky.url,
+							description: jsonVukky.description,
+							audio: jsonVukky.audio,
+							rarity: {
+								level: vukkyRarity,
+								name: jsonLevel.name,
+								color: jsonLevel.color
+							}
+						}
+						let box = {
+							type: req.params.data,
+							dupe: dupe,
+							fullUnlock: fullUnlock,
+						}
+					
+						res.render(__dirname + '/public/vukky.ejs', {
+							user: req.user._id ? req.user : req.user[0],
+							vukky: vukky,
+							box: null,
+							gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
+						});
+				} else {
 					if(req.user.primaryEmail) {
 						req.session.passport.user.balance = newBalance
 						req.session.passport.user.gallery = newGallery
@@ -237,14 +267,13 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 						
 					}
+				}
 				} else {
 					res.redirect("https://vukkybox.com/balance?poor=true")
-					req.session.openingInProgress = false
 				}
 			});
 		} else {
 			return res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a box! <a href='/store'>Check the store</a> to find some boxes that DO exist." });
-			req.session.openingInProgress = false
 		}
 });
 
@@ -394,30 +423,6 @@ app.post("/admin/:action", grl, async function(req, res) {
 app.get("/view/:level/:id", grl, popupMid, function (req, res) { 
 	if(!vukkyJson.levels[req.params.level]) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a rarity! <a href='/gallery'>Check your gallery</a> to find some Vukkies that DO exist." });
 	if(!vukkyJson.rarity[req.params.level][req.params.id]) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, that's not a Vukky! <a href='/gallery'>Check your gallery</a> to find some Vukkies that DO exist." });
-	
-	/*
-	-------------
-	vukky
-	
-	needed properties:
-	name
-	id
-	url
-	description
-	audi
-	rarity
-		level
-		name
-		color
-	-------------
-	box
-	
-	needed properties:
-	null
-	*/
-		/*level: JSON.stringify(vukkyJson.levels[req.params.level]), 
-		vukkyId: req.params.id, 
-		vukky: JSON.stringify(vukkyJson.rarity[req.params.level][req.params.id]),  */
 	let jsonVukky = vukkyJson.rarity[req.params.level][req.params.id];
 	let jsonLevel = vukkyJson.levels[req.params.level];
 	let vukky = {
