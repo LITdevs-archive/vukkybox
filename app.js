@@ -216,7 +216,6 @@ const boxLimiter = rateLimit({
 	}
 });
 app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
-	  
 		let validBoxes = ["veggie", "warped", "classic", "fire", "pukky", "shark", "beggars"]
 		if(validBoxes.includes(req.params.data)) {
 			db.buyBox(req.user, req.params.data, function(prize, newBalance, newGallery, dupe, oldBalance) {
@@ -226,7 +225,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 					const vukkies = require("./public/vukkies.json");
 					const boxes = require("./public/boxes.json");
 					if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
-				if(req.user.beta || req.user[0].beta) {
+				
 						let vukkyId = prize.box.vukkyId
 						let vukkyRarity = prize.box.level.level
 						let jsonVukky = vukkies.rarity[vukkyRarity][vukkyId];
@@ -257,20 +256,6 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 							newBalance: newBalance,
 							gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
 						});
-				} else {
-					if(req.user.primaryEmail) {
-						req.session.passport.user.balance = newBalance
-						req.session.passport.user.gallery = newGallery
-
-						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user, username: req.user.username, gravatarHash: crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex")})	
-					} else {
-						req.session.passport.user[0].balance = newBalance
-						req.session.passport.user[0].gallery = newGallery
-
-						res.render(__dirname + '/public/buyBox.ejs', {fullUnlock: fullUnlock, oldBalance: oldBalance, boxType: req.params.data, dupe: dupe, prize: prize, user: req.user[0], username: req.user[0].username, gravatarHash: crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex")});
-						
-					}
-				}
 				} else {
 					res.redirect("https://vukkybox.com/balance?poor=true")
 				}
