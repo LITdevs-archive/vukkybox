@@ -252,7 +252,7 @@ function buyBox(user, box, callback) {
 			user.balance = parseFloat(user.balance - boxData.price).toFixed(1);
 			user.boxesOpened++;
 			openBox(box, res => { //res: {level, vukkyId, vukky}
-				const isDuplicate = doc.gallery.includes(res.vukkyId)
+				const isDuplicate = user.gallery.includes(res.vukkyId)
 				let duplicateCount
 				if (isDuplicate) {
 					if (!user.duplicates) user.duplicates = {};
