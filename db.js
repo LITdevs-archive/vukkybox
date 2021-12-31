@@ -250,7 +250,6 @@ function buyBox(user, box, callback) {
 		};
 		if(user.balance >= boxData.price) {
 			user.balance = parseFloat(user.balance - boxData.price).toFixed(1);
-			console.log(user.balance)
 			user.boxesOpened++;
 			openBox(box, res => { //res: {level, vukkyId, vukky}
 				const isDuplicate = user.gallery.includes(res.vukkyId)
@@ -262,14 +261,12 @@ function buyBox(user, box, callback) {
 					user.markModified('duplicates')
 					duplicateCount = user.duplicates[res.vukkyId];
 					if (!boxData.noRefund) user.balance = parseFloat(user.balance + 0.1 * boxData.price).toFixed(1);
-					console.log(user.balance)
 				} else {
 					user.uniqueVukkiesGot++;
 					user.gallery.push(res.vukkyId)
 				}
 				user.save()
 				callback({"box": res}, user.balance, user.gallery, duplicateCount);
-				console.log(user.balance)
 			})
 		} else {
 			callback({"box":"poor"}, null, null, null)
