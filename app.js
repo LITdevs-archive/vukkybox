@@ -251,7 +251,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 						res.render(__dirname + '/public/vukky.ejs', {
 							user: req.user._id ? req.user : req.user[0],
 							vukky: vukky,
-							box: null,
+							box: box,
 							gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
 						});
 				} else {
