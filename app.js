@@ -224,6 +224,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 					let fullUnlock = false;
 					let ownedInTier = db.vukkyTierCount(newGallery)[prize.box.level.level] ? db.vukkyTierCount(newGallery)[prize.box.level.level] : 0
 					const vukkies = require("./public/vukkies.json");
+					const boxes = require("./public/boxes.json");
 					if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
 				if(req.user.beta || res.user[0].beta) {
 						let vukkyId = prize.box.vukkyId
@@ -252,6 +253,8 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 							user: req.user._id ? req.user : req.user[0],
 							vukky: vukky,
 							box: box,
+							oldBalance: dupe ? newBalance + 0.1 * boxes[req.params.data].price : newBalance,
+							newBalance: newBalance,
 							gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
 						});
 				} else {
