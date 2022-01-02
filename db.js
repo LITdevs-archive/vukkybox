@@ -243,7 +243,7 @@ function validCode(code, user, callback) { // callback with a boolean representi
 function buyBox(user, box, callback) {
 	let userId = user._id ? user._id : user[0]._id;
 	let boxData = boxJson[box]
-	User.findById({_id: user._id}, function (err, user) {
+	User.findById({_id: userId}, function (err, user) {
 		if(err) {
 			callback({"box":"error", "error": err}, null, null, null)
 			console.log(err)
