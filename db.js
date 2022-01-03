@@ -576,10 +576,15 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 			leaderboard: sorted array containing the top 10/50/100 users
 		}
 	*/
-	let userId = user._id ? user._id : user[0]._id;
+	let getUserRank = false
+	let userId
+	if (user) {
+		userId = user._id ? user._id : user[0]._id;
+		getUserRank = true;
+	}
 	User.find({}, null, {
 		sort: {
-			uniqueVukkiesGot: -1
+			[req.board]: -1
 		}},
 	function(err, allUsers){
 		console.log(allUsers.length)
@@ -594,17 +599,17 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 					data: The requested property
 				}
 				*/
-				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i].uniqueVukkiesGot})
+				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i][req.board]})
 			}
-			if (allUsers[i]._id.toString() == userId.toString()) {
+			if (getUserRank && allUsers[i]._id.toString() == userId.toString()) {
 				userRank = i + 1;
-				if (i + 1 >= req.limit) return callback({userRank: userRank, leaderboard: finalList}); // I know I could probably get away with i > req.limit but this makes it easier for my brain to comprehend
+				if (i + 1 >= req.limit) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList}); // I know I could probably get away with i > req.limit but this makes it easier for my brain to comprehend
 			}
-			if(userRank && i + 1 >= req.limit) {
-				return callback({userRank: userRank, leaderboard: finalList});
+			if(i + 1 >= req.limit) {
+				if (userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
 			}
 			if (i + 1 == allUsers.length) {
-				if(userRank) return callback({userRank: userRank, leaderboard: finalList});
+				if(userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
 				return callback("Something went wrong ELECTRIC BOOGALOO!!");
 			}
 		}

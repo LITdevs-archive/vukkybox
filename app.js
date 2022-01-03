@@ -272,12 +272,18 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 		}
 });
 
-app.get('/leaderboard/:limit', grl, checkAuth, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
-	if(!user.beta) res.send("beta feature, sorry but youre not cool enough.")
-	db.leaderboard({limit: req.params.limit}, user, response => {
-		res.send(response);
-	})
+app.post('/leaderboard', grl, function(req, res) {
+	let user = false
+	if(req.isAuthenticated()) user = req.user._id ? req.user : req.user[0];
+	//if(!user.beta) res.send("beta feature, sorry but youre not cool enough.")
+	let validBoards = ["uniqueVukkiesGot", "rarity", "boxesOpened"]
+	if(validBoards.includes(req.body.board) && req.body.limit != undefined && req.body.limit > 0 && req.body.limit <= 200) {
+		db.leaderboard({limit: req.params.limit}, user, response => {
+			res.send(response);
+		})
+	} else {
+		res.status(400).send("Invalid request")
+	}
 })
 
 app.get('/privacy', function(req, res){
