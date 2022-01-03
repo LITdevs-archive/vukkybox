@@ -280,7 +280,6 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 app.post('/leaderboard', grl, function(req, res) {
 	let user = false
 	if(req.isAuthenticated()) user = req.user._id ? req.user : req.user[0];
-	//if(!user.beta) res.send("beta feature, sorry but youre not cool enough.")
 	let validBoards = ["uniqueVukkiesGot", "rarity", "boxesOpened"]
 	console.log(req.body)
 	if(validBoards.includes(req.body.board) && req.body.limit != undefined && parseInt(req.body.limit) > 0 && parseInt(req.body.limit) <= 200) {
@@ -290,6 +289,10 @@ app.post('/leaderboard', grl, function(req, res) {
 	} else {
 		res.status(400).send("Invalid request")
 	}
+})
+
+app.get('/leaderboard', grl, function(req, res) {
+	res.render(__dirname + '/public/leaderboard.ejs', {user: req.isAuthenticated() ? req.user_id ? req.user : req.user[0] : null, gravatarHash: crypto.createHash("md5").update(req.user._id ? req.user.primaryEmail.toLowerCase() : req.user[0].primaryEmail.toLowerCase()).digest("hex")});
 })
 
 app.get('/privacy', function(req, res){

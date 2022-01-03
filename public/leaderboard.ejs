@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"  >
+		<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<link href="./resources/style.css" rel="stylesheet">
+				<script src="./resources/spin.js"></script>
+				<link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+				<title>Vukkybox - Leaderboards</title>
+				<meta name="title" content="Vukkybox - Login">
+				<meta name="description" content="You need to log into Vukkybox to access this page.">
+				<meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+				<audio type="music" preload="auto" loop autoplay src="/resources/admin.ogg"></audio>
+		</head>
+		<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
+			<div class="bg-opacity-10  bg-gray-100 w-full">
+				<nav class="flex justify-between">
+					<div class="inline-flex">
+						<a href="/"><img id="icon" src="resources/icons/512.png" class="max-h-20 m-2" /></a>
+						<% if(user) { %>
+							<p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
+						<% } %>
+					</div>
+					<ul class="flex flex-row p-10">
+						<% if(user) { %>
+							<div class="dropdown">
+								<li class="pr-5"><a><%= user.username%></a></li>
+								<li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
+								<div class="dropdown-content text-white">
+									<a class="text-white" href="profile">Profile</a>
+									<a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
+									<a class="text-white" href="#" id="redeemCode">Redeem Code</a>
+									<a class="text-white" href="logout">Log Out</a>
+								</div>
+							</div>
+						<% } else {%>
+								<li><a href="/login">Log In</a></li>
+						<% } %>
+								
+					</ul>
+				</nav>
+			</div>
+			<center class="py-8">
+				<div class="">
+					<table id="leaderboard">
+					</table>
+				</div>
+			</center>
+		</body>
+	<script>
+		fetch("https://vukkybox.com/leaderboard", {method: "POST", body: {board: "uniqueVukkiesGot", limit: 50}}).then(res => {
+			leaderboardData = JSON.parse(res)
+			leaderboardData.leaderboard.forEach(user => {
+				document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.username}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.uniqueVukkiesGot}</td></tr>`
+			})
+		});
+	</script>
+</html>
