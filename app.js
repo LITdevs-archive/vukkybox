@@ -292,7 +292,7 @@ app.post('/leaderboard', grl, function(req, res) {
 })
 
 app.get('/leaderboard', grl, function(req, res) {
-	res.render(__dirname + '/public/leaderboard.ejs', {user: req.isAuthenticated() ? req.user_id ? req.user : req.user[0] : null, gravatarHash: crypto.createHash("md5").update(req.user._id ? req.user.primaryEmail.toLowerCase() : req.user[0].primaryEmail.toLowerCase()).digest("hex")});
+	res.render(__dirname + '/public/leaderboard.ejs', {user: req.isAuthenticated() ? req.user_id ? req.user : req.user[0] : null, gravatarHash: req.isAuthenticated() ? crypto.createHash("md5").update(req.user._id ? req.user.primaryEmail.toLowerCase() : req.user[0].primaryEmail.toLowerCase()).digest("hex") : null});
 })
 
 app.get('/privacy', function(req, res){
