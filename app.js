@@ -99,6 +99,10 @@ app.use(express.json())
 app.use(fileUpload())
 app.use(cookieParser())
 app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
+app.use(function (err, req, res, next) {
+	if (err.code !== 'EBADCSRFTOKEN') return next(err)
+	if(req.url != "/leaderboard") res.send("Couldn't verify Cross Site Request Forgery prevention")
+})
 app.set('trust proxy', 1);
 
 function errorHandler (err, req, res, next) {
