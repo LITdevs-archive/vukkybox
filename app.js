@@ -102,6 +102,7 @@ app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
 app.use(function (err, req, res, next) {
 	if (err.code !== 'EBADCSRFTOKEN') return next(err)
 	if(req.url != "/leaderboard") res.send("Couldn't verify Cross Site Request Forgery prevention")
+	if(req.url == "/leaderboard") return next()
 })
 app.set('trust proxy', 1);
 
