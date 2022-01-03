@@ -47,10 +47,10 @@
 			</center>
 		</body>
 	<script>
-		fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: "uniqueVukkiesGot", limit: 50})}).then(res => {
-			let lbData = res.json()
-			console.log(lbData)
-			lbData.leaderboard.forEach(user => {
+		fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: "uniqueVukkiesGot", limit: 50})})
+		.then(res => res.json)
+		.then(res => {
+			res.leaderboard.forEach(user => {
 				document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.username}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.data}</td></tr>`
 			})
 		});
