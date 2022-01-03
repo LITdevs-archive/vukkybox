@@ -608,7 +608,6 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 				if(userRank) return callback({userRank: userRank, leaderboard: finalList});
 				return callback("Something went wrong ELECTRIC BOOGALOO!!");
 			}
-			console.log(`i: ${i} allUsers.length: ${allUsers.length} userRank: ${userRank} finalList.length: ${finalList.length}`)
 		}
 	})
 }
