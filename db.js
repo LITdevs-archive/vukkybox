@@ -596,17 +596,15 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 				}
 				*/
 				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i].uniqueVukkiesGot})
-				console.log({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i].uniqueVukkiesGot, id: allUsers[i]._id})
-				console.log(`_id: ${allUsers[i]._id} compared to ${userId} is ${allUsers[i]._id.toString() == userId.toString()}`)
 			}
-			if (allUsers[i]._id == userId) {
+			if (allUsers[i]._id.toString() == userId.toString()) {
 				userRank = i + 1;
 				if (i + 1 >= req.limit) return callback({userRank: userRank, leaderboard: finalList}); // I know I could probably get away with i > req.limit but this makes it easier for my brain to comprehend
 			}
 			if(userRank && i + 1 >= req.limit) {
 				return callback({userRank: userRank, leaderboard: finalList});
 			}
-			if (i == allUsers.length) {
+			if (i + 1 == allUsers.length) {
 				if(userRank) return callback({userRank: userRank, leaderboard: finalList});
 				return callback("Something went wrong ELECTRIC BOOGALOO!!");
 			}
