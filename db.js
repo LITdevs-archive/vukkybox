@@ -597,7 +597,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 				*/
 				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i].uniqueVukkiesGot})
 				console.log({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i].uniqueVukkiesGot, id: allUsers[i]._id})
-				console.log(`_id: ${allUsers[i]._id} compared to ${userId} is ${allUsers[i]._id == userId}`)
+				console.log(`_id: ${allUsers[i]._id} compared to ${userId} is ${allUsers[i]._id.toString() == userId.toString()}`)
 			}
 			if (allUsers[i]._id == userId) {
 				userRank = i + 1;
