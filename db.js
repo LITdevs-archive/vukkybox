@@ -593,7 +593,9 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		let userRank
 		for (let i = 0; i < allUsers.length; i++) {
 			console.log(`looping ${i}`)
+			console.log(i < req.limit)
 			if(i < req.limit) {
+				console.log(i < req.limit)
 				/*
 				Final list will consist of objects that use the following format:
 				{
