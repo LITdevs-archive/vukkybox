@@ -584,7 +584,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 			uniqueVukkiesGot: -1
 		}},
 	function(err, allUsers){
-		let finalList
+		let finalList = []
 		let userRank
 		for (let i = 0; i < allUsers.length; i++) {
 			if(i < req.limit) {
