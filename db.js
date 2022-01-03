@@ -605,6 +605,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 				return callback({userRank: userRank, leaderboard: finalList});
 			}
 		}
+		return "Something went wrong";
 	})
 }
 
