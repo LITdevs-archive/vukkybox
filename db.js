@@ -588,7 +588,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 			[req.board]: -1
 		}},
 	function(err, allUsers){
-		console.log(allUsers.length)
+		console.log(req)
 		let finalList = []
 		let userRank
 		for (let i = 0; i < allUsers.length; i++) {
