@@ -579,11 +579,13 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		}
 	*/
 	let userId = user._id ? user._id : user[0]._id;
+	console.log(req)
 	User.find({}, null, {
 		sort: {
 			uniqueVukkiesGot: -1
 		}},
 	function(err, allUsers){
+		console.log(allUsers.length)
 		let finalList = []
 		let userRank
 		for (let i = 0; i < allUsers.length; i++) {
@@ -603,6 +605,10 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 			}
 			if(userRank && i + 1 >= req.limit) {
 				return callback({userRank: userRank, leaderboard: finalList});
+			}
+			if (i == allUsers.length) {		
+				if(userRank) callback({userRank: userRank, leaderboard: finalList});
+				return callback("Something went wrong ELECTRIC BOOGALOO!!");
 			}
 		}
 		return callback("Something went wrong");

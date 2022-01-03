@@ -275,7 +275,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 app.get('/leaderboard/:limit', grl, checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	if(!user.beta) res.send("beta feature, sorry but youre not cool enough.")
-	db.leaderboard({limit: req.params.limit}, req.user._id ? req.user : req.user[0], response => {
+	db.leaderboard({limit: req.params.limit}, user, response => {
 		res.send(response);
 	})
 })
