@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 332,
+	"currentId": 333,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1297,6 +1297,12 @@
 				"url": "https://vukkybox.com/resources/strandedvukky.webp",
 				"description": "Vukky is lost, but Vukky is asleep, so Vukky doesn't know!",
 				"creator": "Synne"
+			},
+			"333": {
+				"name": "Strixxy",
+				"url": "https://vukkybox.com/resources/Strixxy.webp",
+				"description": "This Vukky looks a bit Wacky. <img src=\"https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkyamongus.webp\" width=32/>",
+				"creator": "Strixx Em"
 			}
 		},
 		"5": {
