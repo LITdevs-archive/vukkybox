@@ -400,8 +400,6 @@ async function ethermineETH() {
 		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
 		const body = await response.text();
 		const buttonBody = await buttonData.json();
-		console.log(buttonBody)
-		console.log(buttonBody.isAlive)
 		let workers = JSON.parse(body).data.workers
 		let time = Math.round(Date.now()/1000)
 		for (let i = 0; i < workers.length; i++) {
@@ -608,9 +606,10 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 				return callback({userRank: userRank, leaderboard: finalList});
 			}
 			if (i == allUsers.length) {		
-				if(userRank) callback({userRank: userRank, leaderboard: finalList});
+				if(userRank) return callback({userRank: userRank, leaderboard: finalList});
 				return callback("Something went wrong ELECTRIC BOOGALOO!!");
 			}
+			console.log(`i: ${i} allUsers.length: ${allUsers.length} userRank: ${userRank} finalList.length: ${finalList.length}`)
 		}
 	})
 }
