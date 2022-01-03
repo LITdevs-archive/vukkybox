@@ -582,7 +582,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		userId = user._id ? user._id : user[0]._id;
 		getUserRank = true;
 	}
-	if(req.board == "rarity") callback("Im too lazy to implement this yet")
+	if(req.board == "rarity") return callback("Im too lazy to implement this yet")
 	User.find({}, null, {
 		sort: {
 			[req.board]: -1
