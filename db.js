@@ -570,6 +570,44 @@ function setBeta(userId, newBeta, callback) { // callback(response, error, user)
 	})
 }
 
+function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/100}
+	/*
+		Callback object:
+		{
+			userRank: the user's rank on the board
+			leaderboard: sorted array containing the top 10/50/100 users
+		}
+	*/
+	let userId = user._id ? user._id : user[0]._id;
+	User.find({}, null, {
+		sort: {
+			uniqueVukkiesGot: -1
+		}},
+	function(err, allUsers){
+		let finalList
+		let userRank
+		for (let i = 0; i < allUsers.length; i++) {
+			if(i < req.limit) {
+				/*
+				Final list will consist of objects that use the following format:
+				{
+					username: The user's username.. duh. If it is their email, hide it.
+					data: The requested property
+				}
+				*/
+				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i].uniqueVukkiesGot})
+			}
+			if (allUsers[i]._id == userId) {
+				userRank = i + 1;
+				if (i + 1 >= req.limit) return callback({userRank: userRank, leaderboard: finalList}); // I know I could probably get away with i > req.limit but this makes it easier for my brain to comprehend
+			}
+			if(userRank && i + 1 >= req.limit) {
+				return callback({userRank: userRank, leaderboard: finalList});
+			}
+		}
+	})
+}
+
 module.exports = {
 	findOrCreate,
 	changeUsername,
@@ -589,5 +627,6 @@ module.exports = {
 	resetBeta,
 	checkPopup,
 	acceptPopup,
-	setBeta
+	setBeta,
+	leaderboard
 }
