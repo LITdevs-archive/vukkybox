@@ -577,7 +577,6 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		}
 	*/
 	let userId = user._id ? user._id : user[0]._id;
-	console.log(req)
 	User.find({}, null, {
 		sort: {
 			uniqueVukkiesGot: -1
