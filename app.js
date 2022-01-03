@@ -283,7 +283,7 @@ app.post('/leaderboard', grl, function(req, res) {
 	//if(!user.beta) res.send("beta feature, sorry but youre not cool enough.")
 	let validBoards = ["uniqueVukkiesGot", "rarity", "boxesOpened"]
 	if(validBoards.includes(req.body.board) && req.body.limit != undefined && parseInt(req.body.limit) > 0 && parseInt(req.body.limit) <= 200) {
-		db.leaderboard({limit: parseInt(req.params.limit)}, user, response => {
+		db.leaderboard({limit: parseInt(req.params.limit), board: req.body.board}, user, response => {
 			res.send(response);
 		})
 	} else {
