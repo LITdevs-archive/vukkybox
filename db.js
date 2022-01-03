@@ -611,7 +611,6 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 				return callback("Something went wrong ELECTRIC BOOGALOO!!");
 			}
 		}
-		return callback("Something went wrong");
 	})
 }
 
