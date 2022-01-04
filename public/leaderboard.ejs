@@ -55,9 +55,10 @@
 					<option value="boxesOpened">Amount of boxes opened</option>
 					<option value="rarity">rarity</option>
 					</select>
-					<table id="leaderboard" class="lbTable">
-						<br><img width="64" src="https://vukkybox.com/resources/pukkies/skelly.webp">
+					<table id="leaderboard" class="lbTable hidden">
+
 					</table>
+					<span id="vukkyspinner"><br><img width="64" src="https://vukkybox.com/resources/pukkies/skelly.webp"></span>
 				</div>
 			</center>
 		</body>
@@ -81,6 +82,8 @@
 				}
 				rank++;
 			})
+			document.getElementById("leaderboard").classList.remove("hidden");
+			document.getElementById("vukkyspinner").classList.add("hidden");
 		});
 		function addCard(userRankFound, rank, res, user) {
 			document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10"><a href="https://vukkybox.com/guestgallery/${user.userId}">${user.username}</a></td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10">${user.data}</td></tr>\n`
@@ -98,7 +101,6 @@
 						invalidMode = true
 						doNotContinue = true
 					} else {
-						document.getElementById("leaderboard").innerHTML = '<br><img width="64" src="https://vukkybox.com/resources/pukkies/skelly.webp">';
 						invalidMode = false
 						doNotContinue = false
 						board = select.value
@@ -106,7 +108,8 @@
 					break;
 			}
 			if(!doNotContinue) {
-				document.getElementById("leaderboard").innerHTML = "";
+				document.getElementById("leaderboard").classList.add("hidden");
+				document.getElementById("vukkyspinner").classList.remove("hidden");
 				fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
 				.then(res => res.json())
 				.then(res => {
@@ -125,6 +128,8 @@
 						}
 						rank++;
 					})
+					document.getElementById("leaderboard").classList.remove("hidden");
+					document.getElementById("vukkyspinner").classList.add("hidden");
 				});
 			}
 		}
