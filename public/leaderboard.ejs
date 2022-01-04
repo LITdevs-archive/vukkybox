@@ -85,10 +85,16 @@
 		}
 
 		function settingsChange(select) {
-			if(select.name == "limit") {
-				limit = parseInt(select.value);
-			} else {
-				board = select.value;
+			switch(select.name) {
+				case "limit":
+					limit = parseInt(select.value)
+					break;
+				case "board":
+					board = select.value
+					break;
+				case "rarity":
+					return document.getElementById("leaderboard").innerHTML = "Unsupported leaderboard. This feature is still in development.";
+					break;
 			}
 			document.getElementById("leaderboard").innerHTML = "";
 			fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
