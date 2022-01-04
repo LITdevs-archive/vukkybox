@@ -10,10 +10,7 @@
 		<link rel="preload" href="/resources/tada.ogg" as="audio">
 		<link rel="preload" href="/resources/purchase.wav" as="audio">
 		<% if(box) { %>
-		<link rel="preload" href="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" as="image">
-		<meta name="title" content="Vukkybox">
-        <meta name="description" content="Collect Vukkies trapped in boxes!">
-        <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+			<link rel="preload" href="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" as="image">
 		<% } else { %>
 			<meta name="title" content="<%=vukky.name %> (#<%=vukky.id %>)">
 			<meta name="description" content="<%=vukky.description %>">
