@@ -599,7 +599,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 					data: The requested property
 				}
 				*/
-				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, data: allUsers[i][req.board]})
+				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: allUsers[i][req.board]})
 			}
 			if (getUserRank && allUsers[i]._id.toString() == userId.toString()) {
 				userRank = i + 1;
