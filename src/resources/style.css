@@ -66,3 +66,7 @@
     transform: translate(-50%); 
     display: none;
 }
+.lbTable {
+    border-collapse: separate;
+    border-spacing: 20px 10px;
+}

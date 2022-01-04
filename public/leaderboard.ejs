@@ -41,7 +41,7 @@
 			</div>
 			<center class="py-8">
 				<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10 max-w-screen-sm">
-					<table id="leaderboard">
+					<table id="leaderboard" class="lbTable">
 					</table>
 				</div>
 			</center>
@@ -50,10 +50,11 @@
 		fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: "uniqueVukkiesGot", limit: 50})})
 		.then(res => res.json())
 		.then(res => {
-			console.log(res)
+			let rank = 1;
 			res.leaderboard.forEach(user => {
 				console.log(user)
-				document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.username}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.data}</td></tr>`
+				document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${rank}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.username}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10">${user.data}</td></tr>\n`
+				rank++;
 			})
 		});
 		
