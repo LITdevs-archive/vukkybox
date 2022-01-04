@@ -294,6 +294,7 @@ app.post('/leaderboard', grl, function(req, res) {
 app.get('/leaderboard', grl, function(req, res) {
 	let user = null
 	if(req.isAuthenticated()) user = req.user_id ? req.user : req.user[0];
+	console.log(`user ${user}`)
 	res.render(__dirname + '/public/leaderboard.ejs', {user: user, gravatarHash: req.isAuthenticated() ? crypto.createHash("md5").update(req.user._id ? req.user.primaryEmail.toLowerCase() : req.user[0].primaryEmail.toLowerCase()).digest("hex") : null});
 })
 
