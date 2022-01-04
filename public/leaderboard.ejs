@@ -90,6 +90,7 @@
 			} else {
 				board = select.value;
 			}
+			document.getElementById("leaderboard").innerHTML = "";
 			fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
 			.then(res => res.json())
 			.then(res => {
