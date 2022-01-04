@@ -56,6 +56,7 @@
 					<option value="rarity">rarity</option>
 					</select>
 					<table id="leaderboard" class="lbTable">
+						<br><img width="64" src="https://vukkybox.com/resources/pukkies/skelly.webp">
 					</table>
 				</div>
 			</center>
@@ -97,6 +98,7 @@
 						invalidMode = true
 						doNotContinue = true
 					} else {
+						document.getElementById("leaderboard").innerHTML = '<br><img width="64" src="https://vukkybox.com/resources/pukkies/skelly.webp">';
 						invalidMode = false
 						doNotContinue = false
 						board = select.value
@@ -108,6 +110,7 @@
 				fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
 				.then(res => res.json())
 				.then(res => {
+					document.getElementById("leaderboard").innerHTML = '';
 					let rank = 1;
 					let userRankFound = false;
 					if (!res.userRank) userRankFound = true; 
