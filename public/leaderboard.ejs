@@ -65,7 +65,7 @@
 					}
 				}
 				rank++;
-			}).then()
+			})
 		});
 		function addCard(userRankFound, rank, res, user) {
 			document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10"><a href="https://vukkybox.com/guestgallery/${user.userId}">${user.username}</a></td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10">${user.data}</td></tr>\n`
