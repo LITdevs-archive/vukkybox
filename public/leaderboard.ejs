@@ -92,12 +92,13 @@
 					limit = parseInt(select.value)
 					break;
 				case "board":
-					board = select.value
+					if(select.value == "rarity") {
+						document.getElementById("leaderboard").innerHTML = "Unsupported leaderboard. This feature is still in development.";
+						doNotContinue = true
+					} else {
+						board = select.value
+					}
 					break;
-				case "rarity":
-					document.getElementById("leaderboard").innerHTML = "Unsupported leaderboard. This feature is still in development.";
-					doNotContinue = true
-				break;
 			}
 			if(!doNotContinue) {
 				document.getElementById("leaderboard").innerHTML = "";
