@@ -42,14 +42,14 @@
 			<center class="py-8">
 				<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10 max-w-screen-sm">
 					<label for="limit">Entries to show:</label>
-					<select id="limit" name="limit" class="text-black">
+					<select id="limit" name="limit" class="text-black" onchange="settingsChange(this)">
 					<option value="10">10</option>
 					<option value="50" selected>50</option>
 					<option value="100">100</option>
 					<option value="200">200</option>
 					</select>
 					<label for="board">Leaderboard to show:</label>
-					<select id="board" name="board" class="text-black">
+					<select id="board" name="board" class="text-black" onchange="settingsChange(this)">
 					<option value="uniqueVukkiesGot" selected>Different Vukkies</option>
 					<option value="boxesOpened">Amount of boxes opened</option>
 					<option value="rarity">rarity</option>
@@ -82,6 +82,32 @@
 		});
 		function addCard(userRankFound, rank, res, user) {
 			document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10"><a href="https://vukkybox.com/guestgallery/${user.userId}">${user.username}</a></td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10">${user.data}</td></tr>\n`
+		}
+
+		function settingsChange(select) {
+			if(select.name == "limit") {
+				limit = parseInt(select.value);
+			} else {
+				board = select.value;
+			}
+			fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
+			.then(res => res.json())
+			.then(res => {
+				let rank = 1;
+				let userRankFound = false;
+				if (!res.userRank) userRankFound = true; 
+				res.leaderboard.forEach(user => {
+					addCard(userRankFound, rank, res, user);
+					if (!userRankFound && rank == res.userRank.rank) userRankFound = true;
+					if(rank == limit) {
+						//last loop!
+						if(!userRankFound) {
+							addCard(false, res.userRank.rank, res, res.userRank)
+						}
+					}
+					rank++;
+				})
+			});
 		}
 	</script>
 </html>
