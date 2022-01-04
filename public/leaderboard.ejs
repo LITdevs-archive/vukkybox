@@ -41,6 +41,19 @@
 			</div>
 			<center class="py-8">
 				<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 px-10 max-w-screen-sm">
+					<label for="limit">Entries to show:</label>
+					<select id="limit" name="limit">
+					<option value="10">10</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+					<option value="200">200</option>
+					</select>
+					<label for="board">Leaderboard to show:</label>
+					<select id="board" name="board">
+					<option value="uniqueVukkiesGot">Different Vukkies</option>
+					<option value="boxesOpened">Amount of boxes opened</option>
+					<option value="rarity">rarity</option>
+					</select>
 					<table id="leaderboard" class="lbTable">
 					</table>
 				</div>
