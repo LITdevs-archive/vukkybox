@@ -603,6 +603,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 			}
 			if (getUserRank && allUsers[i]._id.toString() == userId.toString()) {
 				userRank = i + 1;
+				userRank = {username: allUsers[i].username, userId: allUsers[i]._id, data: allUsers[i][req.board], rank: userRank}
 				if (i + 1 >= req.limit) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList}); // I know I could probably get away with i > req.limit but this makes it easier for my brain to comprehend
 			}
 			if(i + 1 >= req.limit) {
