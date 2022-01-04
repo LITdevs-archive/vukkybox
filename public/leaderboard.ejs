@@ -51,8 +51,11 @@
 		.then(res => res.json())
 		.then(res => {
 			let rank = 1;
+			let userRankFound = false;
+			if (!res.userRank) userRankFound = true; 
 			res.leaderboard.forEach(user => {
-				document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10"><a href="https://vukkybox.com/guestgallery/${user.userId}">${user.username}</a></td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10">${user.data}</td></tr>\n`
+				if (!userRankFound && rank == res.userRank) userRankFound = true;
+				document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 ${!userRankFound && rank == req.userRank ? "bg-gray-200" : "bg-gray-100"} rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 ${!userRankFound && rank == req.userRank ? "bg-gray-200" : "bg-gray-100"} rounded-lg py-5 px-10"><a href="https://vukkybox.com/guestgallery/${user.userId}">${user.username}</a></td><td class="bg-opacity-30 ${!userRankFound && rank == req.userRank ? "bg-gray-200" : "bg-gray-100"} rounded-lg py-5 px-10">${user.data}</td></tr>\n`
 				rank++;
 			})
 		});
