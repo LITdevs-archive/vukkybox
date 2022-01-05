@@ -120,8 +120,8 @@
 						}
 					<% } else { %>
 						if(select.value == "rarity") {
-							if (document.getElementById("rarity").classList.includes("hidden")) document.getElementById("rarity").classList.remove("hidden");
-							if (!document.getElementById("rarity").classList.includes("hidden")) document.getElementById("rarity").classList.add("hidden");
+							if (document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.remove("hidden");
+							if (!document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.add("hidden");
 							rarity = parseInt(document.getElementById("rarity").value)
 							invalidMode = false
 							doNotContinue = false
@@ -133,7 +133,7 @@
 					break;
 				case "rarity":
 					rarity = parseInt(select.value)
-					if(select.classList.includes("hidden")) doNotContinue = true
+					if(select.classList.contains("hidden")) doNotContinue = true
 					<% } %>
 					break;
 
