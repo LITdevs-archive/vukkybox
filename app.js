@@ -759,7 +759,7 @@ app.get('/crash', grl, function(req, res){
 });
 
 app.get('/statistics', grl, function(req, res){
-	res.status(500).render(`${__dirname}/public/error.ejs`, {friendlyError: "This page hasn't been created yet! In the meantime check out the <a href='https://vukkybox.com/leaderboard'>leaderboards</a> or <a href='https://vukkybox.com/stats'>detailed stats</a>" });
+	res.status(500).render(`${__dirname}/public/error.ejs`, {friendlyError: "This page hasn't been created yet! <small>or maybe youre just not cool enough to see it! Maybe pay some respect to the <a href='https://vukkybox.com/credits'>people who made this site happen</a></small><br>In the meantime check out the <a href='https://vukkybox.com/leaderboard'>leaderboards</a> or <a href='https://vukkybox.com/stats'>detailed stats</a>" });
 });
 
 app.get('*', function(req, res){
