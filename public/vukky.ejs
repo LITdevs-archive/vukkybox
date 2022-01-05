@@ -120,9 +120,9 @@
 			}, 300);
 		}
 	<% } %>
-	var rarity = <%=vukky.rarity.level %>;
+	var rarity = "<%=vukky.rarity.level %>";
 	const rarityName = "<%=vukky.rarity.name %>";
-	if(rarity == 8) rarity = 3;
+	if(rarity == "pukky") rarity = 3;
 	const vukkyID = <%=vukky.id %>;
 	<% if(box) { %> const boxName = "<%=box.type %>"; <% } %>
 	var vukkyAudio = false 
