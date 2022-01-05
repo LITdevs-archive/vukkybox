@@ -631,7 +631,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 					let userRank
 					for (let i = 0; i < allUsersVukkiesInTier.length; i++) {
 						if(i < req.limit) {
-							finalList.push({username: allUsersVukkiesInTier[i].username, userId: allUsersVukkiesInTier[i].userId, data: allUsersVukkiesInTier[i][data]})
+							finalList.push({username: allUsersVukkiesInTier[i].username, userId: allUsersVukkiesInTier[i].userId, data: allUsersVukkiesInTier[i].data})
 						}
 						if (getUserRank && allUsersVukkiesInTier[i].userId.toString() == userId.toString()) {
 							userRank = i + 1;
