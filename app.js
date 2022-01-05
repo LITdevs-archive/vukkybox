@@ -758,6 +758,10 @@ app.get('/crash', grl, function(req, res){
 	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: "CRITICAL SERVER FAULT AT APP.JS:1! QUITTING IMMEDIATELY TO PREVENT FURTHER DAMAGE", friendlyError: null });
 });
 
+app.get('/statistics', grl, function(req, res){
+	res.status(500).render(`${__dirname}/public/error.ejs`, {friendlyError: "This page hasn't been created yet! In the meantime check out the <a href='https://vukkybox.com/leaderboards'>leaderboards</a> or <a href='https://vukkybox.com/stats'>detailed stats</a>" });
+});
+
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 });
