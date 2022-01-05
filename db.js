@@ -303,7 +303,7 @@ function openBox(boxname, callback) {
 		}
 	}
 	let theVukky = vukky()
-	callback({vukky: theVukky, level: vukkyJson.levels[vukkyLevel.toString()], vukkyId: getKeyByValue(vukkyData, theVukky)})
+	callback({vukky: theVukky, level: vukkyJson.levels[vukkyLevel.toString()] == 8 ? "pukky" : vukkyJson.levels[vukkyLevel.toString()], vukkyId: getKeyByValue(vukkyData, theVukky)})
 
 }
 
