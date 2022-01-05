@@ -55,6 +55,17 @@
 					<option value="boxesOpened">Amount of boxes opened</option>
 					<option value="rarity">rarity</option>
 					</select>
+					<label for="rarity">Rarity to show:</label>
+					<select id="rarity" name="rarity" class="text-black hidden" onchange="settingsChange(this)">
+					<option value="1" selected>Common (1 star)</option>
+					<option value="2">Uncommon (2 star)</option>
+					<option value="3">Rare (3 star)</option>
+					<option value="8">Pukky</option>
+					<option value="4">Mythical (4 star)</option>
+					<option value="5">Godly (5 star)</option>
+					<option value="6">bukky (6 star)</option>
+					<option value="7">Unique (7 star)</option>
+					</select>
 					<table id="leaderboard" class="lbTable hidden">
 
 					</table>
@@ -65,6 +76,7 @@
 	<script>
 		let limit = 50
 		let board = "uniqueVukkiesGot"
+		let rarity = 1
 		fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
 		.then(res => res.json())
 		.then(res => {
@@ -96,21 +108,40 @@
 					limit = parseInt(select.value)
 					break;
 				case "board":
-					if(select.value == "rarity") {
-						document.getElementById("leaderboard").innerHTML = "Unsupported leaderboard. This feature is still in development.";
-						invalidMode = true
-						doNotContinue = true
-					} else {
-						invalidMode = false
-						doNotContinue = false
-						board = select.value
-					}
+					<% if(!user || !user.beta) { %>
+						if(select.value == "rarity") {
+							document.getElementById("leaderboard").innerHTML = "Unsupported leaderboard. This feature is still in development.";
+							invalidMode = true
+							doNotContinue = true
+						} else {
+							invalidMode = false
+							doNotContinue = false
+							board = select.value
+						}
+					<% } else { %>
+						if(select.value == "rarity") {
+							if (document.getElementById("rarity").classList.includes("hidden")) document.getElementById("rarity").classList.remove("hidden");
+							if (!document.getElementById("rarity").classList.includes("hidden")) document.getElementById("rarity").classList.add("hidden");
+							rarity = parseInt(document.getElementById("rarity").value)
+							invalidMode = false
+							doNotContinue = false
+						} else {
+							invalidMode = false
+							doNotContinue = false
+							board = select.value
+						}
 					break;
+				case "rarity":
+					rarity = parseInt(select.value)
+					if(select.classList.includes("hidden")) doNotContinue = true
+					<% } %>
+					break;
+
 			}
 			if(!doNotContinue) {
 				document.getElementById("leaderboard").classList.add("hidden");
 				document.getElementById("vukkyspinner").classList.remove("hidden");
-				fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
+				fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit, rarity: board == "rarity" ? rarity : null})})
 				.then(res => res.json())
 				.then(res => {
 					document.getElementById("leaderboard").innerHTML = '';
