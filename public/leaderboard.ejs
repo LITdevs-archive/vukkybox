@@ -108,36 +108,17 @@
 					limit = parseInt(select.value)
 					break;
 				case "board":
-					<% if(!user || !user.beta) { %>
-						if(select.value == "rarity") {
-							document.getElementById("leaderboard").innerHTML = "Unsupported leaderboard. This feature is still in development.";
-							invalidMode = true
-							doNotContinue = true
-						} else {
-							invalidMode = false
-							doNotContinue = false
-							board = select.value
-						}
-					<% } else { %>
-						if(select.value == "rarity") {
-							if (document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.remove("hidden");
-							if (!document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.add("hidden");
-							rarity = parseInt(document.getElementById("rarity").value)
-							board = select.value
-							invalidMode = false
-							doNotContinue = false
-						} else {
-							invalidMode = false
-							doNotContinue = false
-							board = select.value
-						}
+					if (select.value == "rarity" && document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.remove("hidden");
+					if (select.value == "rarity" && !document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.add("hidden");
+					if (select.value == "rarity") rarity = parseInt(document.getElementById("rarity").value)
+					board = select.value
+					invalidMode = false
+					doNotContinue = false
 					break;
 				case "rarity":
 					rarity = parseInt(select.value)
 					if(select.classList.contains("hidden")) doNotContinue = true
-					<% } %>
 					break;
-
 			}
 			if(!doNotContinue) {
 				document.getElementById("leaderboard").classList.add("hidden");

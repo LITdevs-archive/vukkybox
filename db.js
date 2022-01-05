@@ -582,39 +582,74 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		userId = user._id ? user._id : user[0]._id;
 		getUserRank = true;
 	}
-	if(req.board == "rarity") return callback(vukkyTierCount(user.gallery))
-	User.find({}, null, {
-		sort: {
-			[req.board]: -1
-		}},
-	function(err, allUsers){
-		let finalList = []
-		let userRank
-		for (let i = 0; i < allUsers.length; i++) {
-			if(i < req.limit) {
-				/*
-				Final list will consist of objects that use the following format:
-				{
-					username: The user's username.. duh. If it is their email, hide it.
-					data: The requested property
+	if(req.board != "rarity") {
+		User.find({}, null, {
+			sort: {
+				[req.board]: -1
+			}},
+		function(err, allUsers){
+			let finalList = []
+			let userRank
+			for (let i = 0; i < allUsers.length; i++) {
+				if(i < req.limit) {
+					/*
+					Final list will consist of objects that use the following format:
+					{
+						username: The user's username.. duh. If it is their email, hide it.
+						data: The requested property
+					}
+					*/
+					finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: allUsers[i][req.board]})
 				}
-				*/
-				finalList.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: allUsers[i][req.board]})
+				if (getUserRank && allUsers[i]._id.toString() == userId.toString()) {
+					userRank = i + 1;
+					userRank = {username: allUsers[i].username, userId: allUsers[i]._id, data: allUsers[i][req.board], rank: userRank}
+					if (i + 1 >= req.limit) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList}); // I know I could probably get away with i > req.limit but this makes it easier for my brain to comprehend
+				}
+				if(i + 1 >= req.limit) {
+					if (userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
+				}
+				if (i + 1 == allUsers.length) {
+					if(userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
+					return callback("Something went wrong ELECTRIC BOOGALOO!!");
+				}
 			}
-			if (getUserRank && allUsers[i]._id.toString() == userId.toString()) {
-				userRank = i + 1;
-				userRank = {username: allUsers[i].username, userId: allUsers[i]._id, data: allUsers[i][req.board], rank: userRank}
-				if (i + 1 >= req.limit) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList}); // I know I could probably get away with i > req.limit but this makes it easier for my brain to comprehend
+		})
+	} else {
+		User.find({}, function(err, allUsers){
+			let allUsersVukkiesInTier = []
+			for (let i = 0; i < allUsers.length; i++) {
+				allUsersVukkiesInTier.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: vukkyTierCount(allUsers[i].gallery)[req.rarity.toString()]})
+				if (i + 1 == allUsers.length) {
+					//last loop
+					allUsersVukkiesInTier.sort(function compareFn(a, b) {
+						if (a.data < b.data) return -1;
+						if (a.data > b.data) return 1;
+						return 0;
+					}) // mozilla documentation ftw
+					let finalList = []
+					let userRank
+					for (let i = 0; i < allUsersVukkiesInTier.length; i++) {
+						if(i < req.limit) {
+							finalList.push({username: allUsersVukkiesInTier[i].username, userId: allUsersVukkiesInTier[i].userId, data: allUsersVukkiesInTier[i][data]})
+						}
+						if (getUserRank && allUsersVukkiesInTier[i].userId.toString() == userId.toString()) {
+							userRank = i + 1;
+							userRank = {username: allUsersVukkiesInTier[i].username, userId: allUsersVukkiesInTier[i].userId, data: allUsersVukkiesInTier[i].data, rank: userRank}
+							if (i + 1 >= req.limit) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList}); 
+						}
+						if(i + 1 >= req.limit) {
+							if (userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
+						}
+						if (i + 1 == allUsersVukkiesInTier.length) {
+							if(userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
+							return callback("Something went wrong ELECTRIC SHOOGALOO!!");
+						}
+					}
+				}
 			}
-			if(i + 1 >= req.limit) {
-				if (userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
-			}
-			if (i + 1 == allUsers.length) {
-				if(userRank || !getUserRank) return callback({userRank: getUserRank ? userRank : null, leaderboard: finalList});
-				return callback("Something went wrong ELECTRIC BOOGALOO!!");
-			}
-		}
-	})
+		});
+	}
 }
 
 
