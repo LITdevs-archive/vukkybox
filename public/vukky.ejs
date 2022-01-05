@@ -68,7 +68,7 @@
 					<div class="hidden reward" id="reward">
 						<img class="m-auto" height="128" src="<%=vukky.url %>"/>
 						<p title="This is the name of the Vukky, and its ID."><%-vukky.name %> (#<%=vukky.id %>)</p>
-						<% if(parseInt(vukky.rarity.level) == 8) { %>
+						<% if(vukky.rarity.level == "pukky") { %>
 							<p style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %></p>
 						<% } else { %>
 						<p title="This is the rarity of the Vukky." style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %> (<%=vukky.rarity.level %> star)</p>
