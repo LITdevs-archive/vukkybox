@@ -485,8 +485,8 @@ app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
 })
 
 app.get('/beta', grl, checkAuth, popupMid, function(req, res) {
-	console.log(req.headers)
-	res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
+	if(req.headers.referer == "https://vukkybox.com/credits") return res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
+	res.status(404).render(`${__dirname}/public/404.ejs`);
 })
 
 app.post('/beta', grl, popupMid, function(req, res) {
