@@ -242,7 +242,6 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 				
 						let vukkyId = prize.box.vukkyId
 						let vukkyRarity = prize.box.level.level
-						console.log(vukkyRarity, vukkyId)
 						let jsonVukky = vukkies.rarity[vukkyRarity][vukkyId];
 						let jsonLevel = vukkyJson.levels[vukkyRarity];
 						let vukky = {

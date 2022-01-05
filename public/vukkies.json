@@ -36,7 +36,7 @@
 			"color": "#ffbb00"
 		},
 		"pukky": {
-			"level": 8,
+			"level": "pukky",
 			"name": "Pukky",
 			"color": "#00bbff"
 		}
