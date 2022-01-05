@@ -618,8 +618,9 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 	} else {
 		User.find({}, function(err, allUsers){
 			let allUsersVukkiesInTier = []
+			console.log(vukkyTierCount(user._id ? user.gallery : user[0].gallery)[req.rarity])
+			if(vukkyTierCount(user._id ? user.gallery : user[0].gallery)[req.rarity] < 1) getUserRank = false
 			for (let i = 0; i < allUsers.length; i++) {
-				if(vukkyTierCount(user._id ? user.gallery : user[0].gallery)[req.rarity] < 1) getUserRank = false
 				let userRarity = vukkyTierCount(allUsers[i].gallery)[req.rarity];
 				if (userRarity >= 1) allUsersVukkiesInTier.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: userRarity})
 				if (i + 1 == allUsers.length) {
