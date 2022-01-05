@@ -619,12 +619,13 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		User.find({}, function(err, allUsers){
 			let allUsersVukkiesInTier = []
 			for (let i = 0; i < allUsers.length; i++) {
-				allUsersVukkiesInTier.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: vukkyTierCount(allUsers[i].gallery)[req.rarity]})
+				let userRarity = vukkyTierCount(allUsers[i].gallery)[req.rarity];
+				if (userRarity >= 1) allUsersVukkiesInTier.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: userRarity})
 				if (i + 1 == allUsers.length) {
 					//last loop
 					allUsersVukkiesInTier.sort(function compareFn(a, b) {
-						if (a.data < b.data) return -1;
-						if (a.data > b.data) return 1;
+						if (a.data < b.data) return 1;
+						if (a.data > b.data) return -1;
 						return 0;
 					}) // mozilla documentation ftw
 					let finalList = []
