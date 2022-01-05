@@ -15,8 +15,11 @@
 			<meta name="title" content="<%=vukky.name %> (#<%=vukky.id %>)">
 			<meta name="description" content="<%=vukky.description %>">
 			<meta property="og:image" content="<%=vukky.url %>">
+			<% if(vukky.creator) { %>
 			<meta property="og:site_name" content="Vukkybox (Vukky by <%=vukky.creator %>)">
-		<% } %> 
+			<% } else { %>
+			<meta property="og:site_name" content="Vukkybox">
+			<% } %> 
 		<link rel="preload" href="<%=vukky.url %>" as="image">
 		<style>
 			#share:hover {
@@ -116,9 +119,9 @@
 			}, 300);
 		}
 	<% } %>
-	var rarity = <%=vukky.rarity.level %>;
+	var rarity = "<%=vukky.rarity.level %>";
 	const rarityName = "<%=vukky.rarity.name %>";
-	if(rarity == 8) rarity = 3;
+	if(rarity == "pukky") rarity = 3;
 	const vukkyID = <%=vukky.id %>;
 	<% if(box) { %> const boxName = "<%=box.type %>"; <% } %>
 	var vukkyAudio = false 
