@@ -491,6 +491,8 @@ function vukkyTierCount(vukkies) {
 				} else {
 					theOutput[rarity[0]] = 1;
 				}
+			} else {
+				theOutput[rarity[0]] = 0;
 			}
 		})
 	})
