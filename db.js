@@ -619,6 +619,10 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		User.find({}, function(err, allUsers){
 			let allUsersVukkiesInTier = []
 			let actualUserRarity = vukkyTierCount(user._id ? user.gallery : user[0].gallery)[req.rarity] < 1
+			console.log(actualUserRarity)
+			console.log(!actualUserRarity)
+			console.log(isNaN(actualUserRarity))
+			console.log(actualUserRarity < 1)
 			if(!actualUserRarity || isNaN(actualUserRarity) || actualUserRarity < 1) getUserRank = false
 			for (let i = 0; i < allUsers.length; i++) {
 				let userRarity = vukkyTierCount(allUsers[i].gallery)[req.rarity];
