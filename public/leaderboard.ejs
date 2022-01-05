@@ -123,7 +123,7 @@
 			if(!doNotContinue) {
 				document.getElementById("leaderboard").classList.add("hidden");
 				document.getElementById("vukkyspinner").classList.remove("hidden");
-				fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit, rarity: board == "rarity" ? rarity : null})})
+				fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit, rarity: rarity})})
 				.then(res => res.json())
 				.then(res => {
 					document.getElementById("leaderboard").innerHTML = '';
