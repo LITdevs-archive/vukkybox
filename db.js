@@ -619,7 +619,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		User.find({}, function(err, allUsers){
 			let allUsersVukkiesInTier = []
 			for (let i = 0; i < allUsers.length; i++) {
-				allUsersVukkiesInTier.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: vukkyTierCount(allUsers[i].gallery)[req.rarity.toString()]})
+				allUsersVukkiesInTier.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: vukkyTierCount(allUsers[i].gallery)[req.rarity]})
 				if (i + 1 == allUsers.length) {
 					//last loop
 					allUsersVukkiesInTier.sort(function compareFn(a, b) {

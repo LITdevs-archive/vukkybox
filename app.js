@@ -281,6 +281,7 @@ app.post('/leaderboard', grl, function(req, res) {
 	let user = false
 	if(req.isAuthenticated()) user = req.user._id ? req.user : req.user[0];
 	let validBoards = ["uniqueVukkiesGot", "rarity", "boxesOpened"]
+	console.log(req.body)
 	if(validBoards.includes(req.body.board) && req.body.limit != undefined && parseInt(req.body.limit) > 0 && parseInt(req.body.limit) <= 200) {
 		db.leaderboard({limit: parseInt(req.body.limit), board: req.body.board}, user, response => {
 			res.send(response);

@@ -76,7 +76,7 @@
 	<script>
 		let limit = 50
 		let board = "uniqueVukkiesGot"
-		let rarity = 1
+		let rarity = "1"
 		fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
 		.then(res => res.json())
 		.then(res => {
@@ -110,13 +110,13 @@
 				case "board":
 					if (select.value == "rarity" && document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.remove("hidden");
 					if (select.value == "rarity" && !document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.add("hidden");
-					if (select.value == "rarity") rarity = parseInt(document.getElementById("rarity").value)
+					if (select.value == "rarity") rarity = document.getElementById("rarity").value
 					board = select.value
 					invalidMode = false
 					doNotContinue = false
 					break;
 				case "rarity":
-					rarity = parseInt(select.value)
+					rarity = select.value
 					if(select.classList.contains("hidden")) doNotContinue = true
 					break;
 			}
