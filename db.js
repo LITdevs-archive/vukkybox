@@ -590,8 +590,10 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 		function(err, allUsers){
 			let finalList = []
 			let userRank
-			let actualUserData = user._id ? user[req.board] : user[0][req.board]
-			if(!actualUserData || isNaN(actualUserData) || actualUserData < 1) getUserRank = false
+			if(getUserRank) {
+				let actualUserData = user._id ? user[req.board] : user[0][req.board]
+				if(!actualUserData || isNaN(actualUserData) || actualUserData < 1) getUserRank = false
+			}
 			for (let i = 0; i < allUsers.length; i++) {
 				if(i < req.limit) {
 					/*
@@ -620,8 +622,10 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 	} else {
 		User.find({}, function(err, allUsers){
 			let allUsersVukkiesInTier = []
-			let actualUserRarity = vukkyTierCount(user._id ? user.gallery : user[0].gallery)[req.rarity]
-			if(!actualUserRarity || isNaN(actualUserRarity) || actualUserRarity < 1) getUserRank = false
+			if(getUserRank) {
+				let actualUserRarity = vukkyTierCount(user._id ? user.gallery : user[0].gallery)[req.rarity]
+				if(!actualUserRarity || isNaN(actualUserRarity) || actualUserRarity < 1) getUserRank = false
+			}
 			for (let i = 0; i < allUsers.length; i++) {
 				let userRarity = vukkyTierCount(allUsers[i].gallery)[req.rarity];
 				if (userRarity >= 1) allUsersVukkiesInTier.push({username: allUsers[i].username.includes("@") ? "Username Hidden for Privacy" : allUsers[i].username, userId: allUsers[i]._id, data: userRarity})
