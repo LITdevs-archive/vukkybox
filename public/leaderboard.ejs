@@ -108,8 +108,9 @@
 					limit = parseInt(select.value)
 					break;
 				case "board":
-					if (select.value == "rarity" && document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.remove("hidden");
-					if (select.value == "rarity" && !document.getElementById("rarity").classList.contains("hidden")) document.getElementById("rarity").classList.add("hidden");
+					let rh = document.getElementById("rarity").classList.contains("hidden")
+					if (select.value == "rarity" && rh) document.getElementById("rarity").classList.remove("hidden");
+					if (select.value == "rarity" && !rh) document.getElementById("rarity").classList.add("hidden");
 					if (select.value == "rarity") rarity = document.getElementById("rarity").value
 					board = select.value
 					invalidMode = false
