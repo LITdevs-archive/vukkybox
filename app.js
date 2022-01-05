@@ -759,8 +759,10 @@ app.get('/crash', grl, function(req, res){
 	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: "CRITICAL SERVER FAULT AT APP.JS:1! QUITTING IMMEDIATELY TO PREVENT FURTHER DAMAGE", friendlyError: null });
 });
 
-app.get('/statistics', grl, function(req, res){
-	res.status(500).render(`${__dirname}/public/error.ejs`, {friendlyError: "This page hasn't been created yet! <small>or maybe youre just not cool enough to see it! Maybe pay some respect to the <a href='https://vukkybox.com/credits'>people who made this site happen</a></small><br>In the meantime check out the <a href='https://vukkybox.com/leaderboard'>leaderboards</a> or <a href='https://vukkybox.com/stats'>detailed stats</a>" });
+app.get('/statistics', grl, checkAuth, function(req, res){
+	let user = req.user._id ? req.user : req.user[0];
+	if(!user.beta) return res.status(404).render(`${__dirname}/public/error.ejs`, {friendlyError: "This page hasn't been created yet! <small>or maybe youre just not cool enough to see it! Maybe pay some respect to the <a href='https://vukkybox.com/credits'>people who made this site happen</a></small><br>In the meantime check out the <a href='https://vukkybox.com/leaderboard'>leaderboards</a> or <a href='https://vukkybox.com/stats'>detailed stats</a>" });
+	res.render(`${__dirname}/public/statistics.ejs`, {user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 });
 
 app.get('*', function(req, res){
