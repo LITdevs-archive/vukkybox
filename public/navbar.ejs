@@ -1,28 +1,28 @@
 <div class="bg-opacity-10  bg-gray-100 w-full">
     <nav class="flex justify-between">
         <div class="inline-flex">
-            <a href="/"><img id="icon" src="resources/icons/512.png" class="max-h-20 m-2" /></a>
+            <a href="/"><img id="icon" src="https://vukkybox.comresources/icons/512.png" class="max-h-20 m-2" /></a>
             <% if(username != "") { %>
               <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
             <% } %>
         </div>
         <ul class="flex flex-row p-10">
-            <li class="pr-10"><a href="/store">Storefront</a></li>
+            <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
             <% if(username != "") { %>
               <div class="dropdown">
                 
                 <li class="pr-5"><a><%= username%></a></li>
                 <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
                 <div class="dropdown-content text-white">
-                  <a class="text-white" href="profile">Profile</a>
-                  <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
-						      <a class="text-white" href="https://vukkybox.com/statistics">Statistics</a>
-                  <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
-                  <a class="text-white" href="logout">Log Out</a>
+                    <a class="text-white" href="https://vukkybox.com/profile">Profile</a>
+                    <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
+                    <a class="text-white" href="https://vukkybox.com/statistics">Statistics</a>
+                    <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
+                    <a class="text-white" href="https://vukkybox.com/logout">Log Out</a>
                 </div>
               </div>
             <% } else {%>
-                <li><a href="/login">Log In</a></li>
+                <li><a href="https://vukkybox.com/login">Log In</a></li>
             <% } %>
               
         </ul>

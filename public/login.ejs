@@ -13,39 +13,7 @@
         <audio type="music" preload="auto" loop autoplay src="/resources/admin.ogg"></audio>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
-        
- <div class="bg-opacity-10  bg-gray-100 w-full">
-        <nav class="flex justify-between">
-            <div class="inline-flex">
-                <a href="/"><img id="icon" src="resources/icons/512.png" class="max-h-20 m-2" /></a>
-                <% if(username != "") { %>
-                  <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
-                <% } %>
-            </div>
-            <ul class="flex flex-row p-10">
-                <!-- <li class="pr-5"><a> Services </a></li>
-                <li class="pr-5"><a>Porfolio</a></li>
-                <li class="pr-5"><a>About</a></li> -->
-                <% if(username != "") { %>
-                  <div class="dropdown">
-                    
-                    <li class="pr-5"><a><%= username%></a></li>
-                    <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
-                    <div class="dropdown-content text-white">
-                      <a class="text-white" href="profile">Profile</a>
-                      <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
-                      <a class="text-white" href="https://vukkybox.com/statistics">Statistics</a>
-                      <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
-                      <a class="text-white" href="logout">Log Out</a>
-                    </div>
-                  </div>
-                <% } else {%>
-                    <li><a href="/login">Log In</a></li>
-                <% } %>
-                  
-            </ul>
-        </nav>
-    </div>
+      <%- include('navbar.ejs'); %>
         <center class="py-8">
           <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <% if(redirect) { %>
