@@ -485,6 +485,7 @@ app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
 })
 
 app.get('/beta', grl, checkAuth, popupMid, function(req, res) {
+	console.log(req.headers)
 	res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
 })
 
