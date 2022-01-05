@@ -241,7 +241,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
 					if(!dupe && vukkies.rarity[prize.box.level.level] != undefined && ownedInTier == Object.entries(vukkies.rarity[prize.box.level.level]).length) fullUnlock = true;
 				
 						let vukkyId = prize.box.vukkyId
-						let vukkyRarity = prize.box.level.level == 8 ? "pukky" : prize.box.level.level
+						let vukkyRarity = prize.box.level.level
 						let jsonVukky = vukkies.rarity[vukkyRarity][vukkyId];
 						let jsonLevel = vukkyJson.levels[vukkyRarity];
 						let vukky = {
