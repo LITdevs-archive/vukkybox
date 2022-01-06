@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%">
+		<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<link href="./resources/style.css" rel="stylesheet">
+				<script src="./resources/spin.js"></script>
+				<link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+				<script src="https://kit.fontawesome.com/e28851c58c.js" crossorigin="anonymous"></script>
+				<title>Vukkybox - Stats</title>
+				<audio type="music" preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
+		</head>
+		<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
+			<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> 
+			<style>
+				svg.radial-progress {
+					height: auto;
+					max-width: 200px;
+					padding: 1em;
+					transform: rotate(-90deg);
+					width: 100%;
+				}
+				svg.radial-progress circle {
+					fill: rgba(0,0,0,0);
+					stroke: #fff;
+					stroke-dashoffset: 219.91148575129; 
+					stroke-width: 10;
+				}
+				svg.radial-progress circle.incomplete { opacity: 0.25; }
+				svg.radial-progress circle.complete { stroke-dasharray: 219.91148575129; }
+				svg.radial-progress text {
+					fill: #fff;
+					text-anchor: middle;
+				}
+			</style>
+			<%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
+		<div class=" py-10 px-10 ">
+			<img title="Edit your profile picture" class="max-h-50 rounded float-left px-5 py-5" style="cursor: pointer;" onclick="gravatarWarning()" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/>
+			<div class="bg-opacity-30 bg-gray-100 rounded-lg p-5">
+				<svg class="radial-progress" data-percentage="82" viewBox="0 0 80 80">
+					<circle class="incomplete" cx="40" cy="40" r="35"></circle>
+					<circle class="complete" cx="40" cy="40" r="35" style="stroke-dashoffset: 39.58406743523136;"></circle>
+					<text class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">82%</text>
+				</svg>          
+			</div>
+			<br>
+			
+</body>
+<script>
+	$('svg.radial-progress').each(function( index, value ) { 
+		$(this).find($('circle.complete')).removeAttr( 'style' );
+	});
+
+	$(window).scroll(function(){
+		$('svg.radial-progress').each(function( index, value ) { 
+			// If svg.radial-progress is approximately 25% vertically into the window when scrolling from the top or the bottom
+			if ($(window).scrollTop() > $(this).offset().top - ($(window).height() * 0.75) &&
+				$(window).scrollTop() < $(this).offset().top + $(this).height() - ($(window).height() * 0.25)) {
+				// Get percentage of progress
+				percent = $(value).data('percentage');
+				// Get radius of the svg's circle.complete
+				radius = $(this).find($('circle.complete')).attr('r');
+				// Get circumference (2πr)
+				circumference = 2 * Math.PI * radius;
+				// Get stroke-dashoffset value based on the percentage of the circumference
+				strokeDashOffset = circumference - ((percent * circumference) / 100);
+				// Transition progress for 1.25 seconds
+				$(this).find($('circle.complete')).animate({'stroke-dashoffset': strokeDashOffset}, 1250);
+			}
+
+		});
+
+	}).trigger('scroll');
+
+</script>
+</html>
