@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 333,
+	"currentId": 334,
 	"rarity": {
 		"1": {
 			"1": {
@@ -708,6 +708,12 @@
 				"url": "https://vukkybox.com/resources/doodlevukky.webp",
 				"description": "Vukky <i>loves</i> doodling Vukkies everywhere. This is a pretty good example!",
 				"creator": "Vukky"
+			},
+			"334": {
+				"name": "Australian Socket Vukky",
+				"url": "https://vukkybox.com/resources/ausocketvukky.webp",
+				"description": "It's a Vukky, but its not Vukky. It's a wall socket from Australia.",
+				"creator": "skybird2333"
 			}
 		},
 		"3": {
