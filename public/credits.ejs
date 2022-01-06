@@ -56,39 +56,7 @@
     </style>
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
- <div class="bg-opacity-10  bg-gray-100 w-full">
-    <nav class="flex justify-between">
-        <div class="inline-flex">
-            <a href="/"><img id="icon" src="resources/icons/512.png" class="max-h-20 m-2" /></a>
-            <% if(username != "") { %>
-              <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
-            <% } %>
-        </div>
-        <ul class="flex flex-row p-10">
-            <!-- <li class="pr-5"><a> Services </a></li>
-            <li class="pr-5"><a>Porfolio</a></li>
-            <li class="pr-5"><a>About</a></li> -->
-            <li class="pr-10"><a href="/store">Storefront</a></li>
-            <% if(username != "") { %>
-              <div class="dropdown">
-                
-                <li class="pr-5"><a><%= username%></a></li>
-                <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
-                <div class="dropdown-content text-white">
-                  <a class="text-white" href="profile">Profile</a>
-                  <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
-						      <a class="text-white" href="https://vukkybox.com/statistics">Statistics</a>
-                  <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
-                  <a class="text-white" href="logout">Log Out</a>
-                </div>
-              </div>
-            <% } else {%>
-                <li><a href="/login">Log In</a></li>
-            <% } %>
-              
-        </ul>
-    </nav>
-</div>
+<%- include('common/navbar.ejs'); %>
 <div class="p-5" id="titles">
   <div id="titlecontent">
     <img src="https://vukkybox.com/resources/icons/192.png"> Vukkybox <%-vboxVer%> (<%-gitHash%>)
@@ -126,8 +94,8 @@
     <li>Skelly</li>
     <li>Synne</li>
     <li>SharkOfGod</li>
-    <% if(username != "") { %>
-      <li><%= username%> (hey, that's you!)</li>
+    <% if(user.username != "") { %>
+      <li><%= user.username %> (hey, that's you!)</li>
     <% } else {%>
       <li>You!</li>
     <% } %>

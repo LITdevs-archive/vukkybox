@@ -14,11 +14,11 @@
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     
-  <%- include('navbar.ejs'); %>
+  <%- include('common/navbar.ejs'); %>
 
 <div id="welcome" class="p-5">
-<% if(username != "") { %>
-  Hi <%= username%>! Welcome to Vukkybox.<br>
+<% if(user) { %>
+  Hi <%= user.username%>! Welcome to Vukkybox.<br>
   You might want to go to <a href="store" class="text-blue-500">the storefront</a>, or join our epic <a href="https://discord.gg/TJ6BfgXffa" class="text-blue-500">Discord server</a> to chat about the game and submit your own Vukkies!!
 <% } else {%>
   Welcome to Vukkybox, the online gachapon-like game that lets you collect mysterious creatures known as "Vukkies"!<br>

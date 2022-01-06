@@ -35,35 +35,7 @@
 		<% } %>
 		<audio type="sfx" id="unboxSfx" src="/resources/unbox.wav"></audio>
 		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-		<div class="bg-opacity-10  bg-gray-100 w-full">
-			<nav class="flex justify-between">
-				<div class="inline-flex">
-					<a href="/"><img id="icon" src="https://vukkybox.com/resources/icons/512.png" class="max-h-20 m-2" /></a>
-					<% if(user) { %>
-					<p class="m-auto text-2xl text-bold" id="balance"><%= box ? oldBalance : user.balance %> Vukkybux</p>
-					<% } %>
-				</div>
-				<ul class="flex flex-row p-10">
-					<li class="pr-10"><span id="share" class="hidden" onclick="shareDrop()"><%= box ? "Share your pull!" : "Share this Vukky!" %></a></li>
-					<% if(user) { %>
-					<div class="dropdown">
-						<li class="pr-5"><a><%= user.username%></a></li>
-						<li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
-						<div class="dropdown-content text-white">
-						<a class="text-white" href="https://vukkybox.com/profile">Profile</a>
-						<a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
-						<a class="text-white" href="https://vukkybox.com/statistics">Statistics</a>
-						<a class="text-white" href="#" id="redeemCode">Redeem Code</a>
-						<a class="text-white" href="https://vukkybox.com/logout">Log Out</a>
-						</div>
-					</div>
-					<% } else {%>
-						<li><a href="https://vukkybox.com/login">Log In</a></li>
-					<% } %>
-					
-				</ul>
-			</nav>
-		</div>
+		<%- include('common/navbar.ejs', {share: true}); %>
 			<center class="py-8">
 				<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
 					<div class="hidden reward" id="reward">

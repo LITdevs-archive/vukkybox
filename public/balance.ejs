@@ -15,39 +15,7 @@
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     <audio type="sfx" id="sadfalgus" src="/resources/nobalance.wav"></audio>
     <audio type="music" loop id="banger" src="/resources/menumusic.ogg"></audio>
- <div class="bg-opacity-10  bg-gray-100 w-full">
-    <nav class="flex justify-between">
-        <div class="inline-flex">
-            <a href="/"><img id="icon" src="resources/icons/512.png" class="max-h-20 m-2" /></a>
-            <% if(username != "") { %>
-              <p class="m-auto text-2xl text-bold"><%=user.balance %> Vukkybux</p>
-            <% } %>
-        </div>
-        <ul class="flex flex-row p-10">
-            <!-- <li class="pr-5"><a> Services </a></li>
-            <li class="pr-5"><a>Porfolio</a></li>
-            <li class="pr-5"><a>About</a></li> -->
-            <li class="pr-10"><a href="/store">Storefront</a></li>
-            <% if(username != "") { %>
-              <div class="dropdown">
-                
-                <li class="pr-5"><a><%= username%></a></li>
-                <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>"/></li>
-                <div class="dropdown-content text-white">
-                  <a class="text-white" href="profile">Profile</a>
-                  <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
-						      <a class="text-white" href="https://vukkybox.com/statistics">Statistics</a>
-                  <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
-                  <a class="text-white" href="logout">Log Out</a>
-                </div>
-              </div>
-            <% } else {%>
-                <li><a href="/login">Log In</a></li>
-            <% } %>
-              
-        </ul>
-    </nav>
-</div>
+    <%- include('common/navbar.ejs'); %>
 
 <div id="welcome" class="p-5">
 <h1 id="pooruser" class="hidden text-3xl">Oh no, you've run out of Vukkybux!</h1>
@@ -58,7 +26,7 @@
   <li>Redeeming promo codes</li>
 </ul>
 <h2 class="text-2xl pt-8">How long until I get my Vukkybux?</h2>
-<% if(username != "") { %>
+<% if(user) { %>
   <ul class="list-disc list-inside">
     <li>Hourly: Log in after <span id="hourlyTime">LOADING</span></li>
     <li>Daily: Log in after <span id="dailyTime">LOADING</span></li>
@@ -69,7 +37,7 @@
 <h2 class="text-2xl pt-8">Mining for Vukkybux</h2>
   If you want to support this wacky little service so we can keep it running without going bankrupt, thank you so much!<br>
   In case you have a good enough GPU to mine "Ethereum" or "Ravencoin", you can mine them for us using the instructions below.<br><br>
-  <% if(username != "") { %>
+  <% if(user) { %>
     <p>To mine for Vukkybux, you must mine Ethereum on the <a class="text-blue-500" href="https://ethermine.org">Ethermine pool</a> or Ravencoin on <a class="text-blue-500" href="https://ravencoin.flypool.org/">Flypool</a>.<br><b>WARNING! MINING HERE WILL BROADCAST YOUR VUKKYBOX USERNAME IN OUR DISCORD SERVER. CHANGE YOUR USERNAME <a class="text-blue-500" href="/editProfile">HERE</a>.</b><br>You should set the wallet and worker name as follows:</p><br>
     <h2 class="text-xl">Ethereum mining</h2>
     <p>Wallet: 0x7DBc369Ca89A706edCeD47207A806139fb7462e4</p>
@@ -116,7 +84,7 @@ That's a fair question! The money we've made is <a href="https://litdevs.org/fin
 	} else {
     document.querySelector("#banger").play()
   }
-  <% if(username != "") { %>
+  <% if(user) { %>
     let loginHourly = new Date('<%= loginHourly %>');
     let loginDaily = new Date('<%= loginDaily %>');
     loginDaily.setDate(loginDaily.getDate() + 1);
