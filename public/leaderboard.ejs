@@ -29,7 +29,7 @@
 					<option value="boxesOpened">Amount of boxes opened</option>
 					<option value="rarity">rarity</option>
 					</select>
-					<label for="rarity">Rarity to show:</label>
+					<label for="rarity" id="rarity2">Rarity to show:</label>
 					<select id="rarity" name="rarity" class="text-black hidden" onchange="settingsChange(this)">
 					<option value="1" selected>Common (1 star)</option>
 					<option value="2">Uncommon (2 star)</option>
@@ -83,8 +83,10 @@
 					break;
 				case "board":
 					let rh = document.getElementById("rarity").classList.contains("hidden")
-					if (select.value == "rarity" && rh) document.getElementById("rarity").classList.remove("hidden");
-					if (select.value == "rarity" && !rh) document.getElementById("rarity").classList.add("hidden");
+					if (select.value == "rarity") document.getElementById("rarity").classList.remove("hidden");
+					if (select.value == "rarity") document.getElementById("rarity2").classList.remove("hidden");
+					if (select.value != "rarity") document.getElementById("rarity").classList.add("hidden");
+					if (select.value != "rarity") document.getElementById("rarity2").classList.add("hidden");
 					if (select.value == "rarity") rarity = document.getElementById("rarity").value
 					board = select.value
 					invalidMode = false
