@@ -34,7 +34,7 @@
 			</style>
 			<%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
 		
-		<div class="bg-opacity-30 bg-gray-100 rounded-lg p-5  ax-w-screen-sm">
+		<div class="bg-opacity-30 bg-gray-100 rounded-lg p-5 max-w-screen-sm">
 				<p>Total Vukkies:</p>
 				<svg class="radial-progress" data-percentage="<%=Math.round(((user.gallery.length / totalVukkies) * 100)); %>" viewBox="0 0 80 80">
 					<circle class="incomplete" cx="40" cy="40" r="35"></circle>
