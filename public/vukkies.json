@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 333,
+	"currentId": 334,
 	"rarity": {
 		"1": {
 			"1": {
@@ -708,6 +708,12 @@
 				"url": "https://vukkybox.com/resources/doodlevukky.webp",
 				"description": "Vukky <i>loves</i> doodling Vukkies everywhere. This is a pretty good example!",
 				"creator": "Vukky"
+			},
+			"334": {
+				"name": "Australian Socket Vukky",
+				"url": "https://vukkybox.com/resources/ausocketvukky.webp",
+				"description": "It's a Vukky, but its not Vukky. It's a wall socket from Australia.",
+				"creator": "skybird2333"
 			}
 		},
 		"3": {
@@ -1774,9 +1780,9 @@
 				"description": "This Pukky belongs to Me & Your Mom. I swear that's their username, I'm not trying to make a joke here"
 			},
 			"204": {
-				"name": "Pandarose's Pukky",
+				"name": "Pandarose_'s Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/pandarose.webp",
-				"description": "This Pukky belongs to Pandarose"
+				"description": "This Pukky belongs to Pandarose_ underscore is needed..."
 			},
 			"208": {
 				"name": "Ender_'s Pukky",
