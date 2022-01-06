@@ -15,7 +15,7 @@
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     <audio type="sfx" id="sadfalgus" src="/resources/nobalance.wav"></audio>
     <audio type="music" loop id="banger" src="/resources/menumusic.ogg"></audio>
-    <%- include('common/navbar.ejs'); %>
+    <%- include('common/navbar.ejs', {share: false, galleryShare: false}); %>
 
 <div id="welcome" class="p-5">
 <h1 id="pooruser" class="hidden text-3xl">Oh no, you've run out of Vukkybux!</h1>
