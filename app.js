@@ -663,7 +663,7 @@ app.get('/statistics', grl, checkAuth, function(req, res){
 		db.leaderboard({"board": "boxesOpened", "limit": 1, "rarity": 42}, user, function(leaderboardObject) {
 			userRanks.boxesOpened = leaderboardObject.userRank.rank;
 			db.getUser(user._id, user => {
-				res.render(`${__dirname}/public/statistics.ejs`, {user: user, userRanks: userRanks, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+				res.render(`${__dirname}/public/statistics.ejs`, {user: user, totalVukkies: vukkyJson.currentId, userRanks: userRanks, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 })})})});
 
 app.get('*', function(req, res){
