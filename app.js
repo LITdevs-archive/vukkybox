@@ -475,7 +475,7 @@ app.post('/beta', grl, popupMid, function(req, res) {
 app.get('/', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	if(!user) res.render(__dirname + '/public/index.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+	if(!user) return res.render(__dirname + '/public/index.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 	db.lastLogin(user, function(newBalance, newUser) {
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
