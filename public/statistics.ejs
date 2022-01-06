@@ -35,10 +35,11 @@
 			<%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
 		<div class=" py-10 px-10 ">
 		<div class="bg-opacity-30 bg-gray-100 rounded-lg p-5">
+				<p>Total Vukkies:</p>
 				<svg class="radial-progress" data-percentage="<%=Math.round(((user.gallery.length / totalVukkies) * 100)); %>" viewBox="0 0 80 80">
 					<circle class="incomplete" cx="40" cy="40" r="35"></circle>
 					<circle class="complete" cx="40" cy="40" r="35" style="stroke-dashoffset: 39.58406743523136;"></circle>
-					<text class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)"><%=`Total Vukkies: ${user.gallery.length}/${totalVukkies}` %></text>
+					<text class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)"><%=`${user.gallery.length}/${totalVukkies}` %></text>
 				</svg>          
 			</div>
 			<br>
