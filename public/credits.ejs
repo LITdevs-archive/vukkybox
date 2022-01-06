@@ -94,7 +94,7 @@
     <li>Skelly</li>
     <li>Synne</li>
     <li>SharkOfGod</li>
-    <% if(user.username != "") { %>
+    <% if(user) { %>
       <li><%= user.username %> (hey, that's you!)</li>
     <% } else {%>
       <li>You!</li>

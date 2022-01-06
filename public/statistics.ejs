@@ -40,7 +40,14 @@
 					<circle class="incomplete" cx="40" cy="40" r="35"></circle>
 					<circle class="complete" cx="40" cy="40" r="35" style="stroke-dashoffset: 39.58406743523136;"></circle>
 					<text class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)"><%=`${user.gallery.length}/${totalVukkies}` %></text>
-				</svg>          
+				</svg>
+				<br>
+				<% 
+				let oldRange = (100000 - 0)  
+				let newRange = (300 - 10)  
+				var newValue = (((parseInt(user.boxesOpened) - 0) * newRange) / oldRange) + 10;
+				%>
+				<p>Vukkyboxes Opened: <span style="font-size:<%=newValue %>px"><%=user.boxesOpened %></span></p>
 		</div>
 			
 </body>
