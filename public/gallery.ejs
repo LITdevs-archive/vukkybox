@@ -178,122 +178,120 @@
         }
 
         document.querySelector("#vukkyloadname").innerHTML = "Parsing gallery...";
-        window.setTimeout(function () {
-            let loaded = 0;
-            let totalOwned = 0;
-            let totalVukkies = <%=totalVukkies %>;
-            const userGallery = [<%=user.gallery %>]
-            var userDuplicates = false
-            if(document.getElementById("duplicatesjson").innerHTML.length > 0) userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
-            document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
-            const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
-            for(let j = 1; j <= 7; j++) {
-                let owned = 0
-                for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
-                    if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
-                        owned++
-                        totalOwned++
-                        document.getElementById(j).innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`
-                        if(userDuplicates && userDuplicates[Object.keys(vukkies[j])[i]] && parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) >= 1) {
-                            document.getElementById(Object.keys(vukkies[j])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) + 1}')`
-                        }
-                    }
-                }
-                if (owned == 0) {
-                    document.getElementById(j).remove()
-                } else {
-                    document.getElementById(j + "_text").innerHTML += ` (${owned}/${Object.keys(vukkies[j]).length})`
-                    
-                }
-            }
+        let loaded = 0;
+        let totalOwned = 0;
+        let totalVukkies = <%=totalVukkies %>;
+        const userGallery = [<%=user.gallery %>]
+        var userDuplicates = false
+        if(document.getElementById("duplicatesjson").innerHTML.length > 0) userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
+        document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
+        const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
+        for(let j = 1; j <= 7; j++) {
             let owned = 0
-                for(let i = 0; i < Object.keys(vukkies["pukky"]).length; i++) {
-                    if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
-                        owned++
-                        totalOwned++
-                        document.getElementById("pukky").innerHTML += `<a vukkyid="${Object.keys(vukkies["pukky"])[i]}" href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name} (#${Object.keys(vukkies["pukky"])[i]})"/><ins id="${Object.keys(vukkies["pukky"])[i]}p"></ins></a>`
-                        if(userDuplicates && userDuplicates[Object.keys(vukkies["pukky"])[i]] && parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) >= 1) {
-                            document.getElementById(Object.keys(vukkies["pukky"])[i].toString() + "p").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) + 1}')`
-                        }
+            for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
+                if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
+                    owned++
+                    totalOwned++
+                    document.getElementById(j).innerHTML += `<a vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`
+                    if(userDuplicates && userDuplicates[Object.keys(vukkies[j])[i]] && parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) >= 1) {
+                        document.getElementById(Object.keys(vukkies[j])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) + 1}')`
                     }
                 }
-                if (owned == 0) {
-                    document.getElementById("pukky").remove()
-                } else {
-                    document.getElementById("pukky_text").innerHTML += ` (${owned}/${Object.keys(vukkies["pukky"]).length})`
-                    
-                }
-            // id collection sort
-            Array.from(document.querySelectorAll("#collection a[vukkyid]")).sort(function(a, b) {
-                if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return -1;
-                if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return 1;
-            }).forEach(function(vukky) {
-                document.querySelector("#idacollection").innerHTML += vukky.outerHTML
-            })
-            Array.from(document.querySelectorAll("#collection a[vukkyid]")).sort(function(a, b) {
-                if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return -1;
-                if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return 1;
-            }).forEach(function(vukky) {
-                document.querySelector("#iddcollection").innerHTML += vukky.outerHTML
-            })
-            document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
-            document.querySelector("#loadskip").style.display = "";
-            window.addEventListener('load', loadingdone)
-            document.querySelector("#vukkyloadcount").innerHTML = `0/${totalOwned}`;
-            document.querySelector("#vukkyloadname").innerHTML = "Sending requests...";
-            document.querySelectorAll("#collection img").forEach(function(coolimage) {
-                coolimage.onload = function() {
-                    loaded++
-                    document.querySelector("#vukkyloadcount").innerHTML = `${loaded}/${totalOwned}`;
-                    document.querySelector("#vukkyloadname").innerHTML = coolimage.title;
-                    if(localStorage.getItem("fallLoad") == "true") {
-                        let clonedLoader = document.querySelector("#vukkyloadspinner").cloneNode();
-                        clonedLoader.id = "";
-                        clonedLoader.classList.add("clonedloader");
-                        clonedLoader.style.position = "fixed";
-                        document.body.appendChild(clonedLoader);
-                        moveFallingThing(clonedLoader, 2, document.documentElement.scrollHeight);
-                    }
-                    if(loaded == totalOwned) loadingdone();
-                }
-            })
-
-            function confettiGun() {
-                var count = 1000;
-                var defaults = {
-                origin: { y: 0.7 }
-                };
-
-                function fire(particleRatio, opts) {
-                confetti(Object.assign({}, defaults, opts, {
-                    particleCount: Math.floor(count * particleRatio)
-                }));
-                }
-
-                fire(0.25, {
-                spread: 26,
-                startVelocity: 55,
-                });
-                fire(0.2, {
-                spread: 60,
-                });
-                fire(0.35, {
-                spread: 100,
-                decay: 0.91,
-                scalar: 0.8
-                });
-                fire(0.1, {
-                spread: 120,
-                startVelocity: 25,
-                decay: 0.92,
-                scalar: 1.2
-                });
-                fire(0.1, {
-                spread: 120,
-                startVelocity: 45,
-                });
             }
-        }, 0);
+            if (owned == 0) {
+                document.getElementById(j).remove()
+            } else {
+                document.getElementById(j + "_text").innerHTML += ` (${owned}/${Object.keys(vukkies[j]).length})`
+                
+            }
+        }
+        let owned = 0
+            for(let i = 0; i < Object.keys(vukkies["pukky"]).length; i++) {
+                if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
+                    owned++
+                    totalOwned++
+                    document.getElementById("pukky").innerHTML += `<a vukkyid="${Object.keys(vukkies["pukky"])[i]}" href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name} (#${Object.keys(vukkies["pukky"])[i]})"/><ins id="${Object.keys(vukkies["pukky"])[i]}p"></ins></a>`
+                    if(userDuplicates && userDuplicates[Object.keys(vukkies["pukky"])[i]] && parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) >= 1) {
+                        document.getElementById(Object.keys(vukkies["pukky"])[i].toString() + "p").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) + 1}')`
+                    }
+                }
+            }
+            if (owned == 0) {
+                document.getElementById("pukky").remove()
+            } else {
+                document.getElementById("pukky_text").innerHTML += ` (${owned}/${Object.keys(vukkies["pukky"]).length})`
+                
+            }
+        // id collection sort
+        Array.from(document.querySelectorAll("#collection a[vukkyid]")).sort(function(a, b) {
+            if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return -1;
+            if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return 1;
+        }).forEach(function(vukky) {
+            document.querySelector("#idacollection").innerHTML += vukky.outerHTML
+        })
+        Array.from(document.querySelectorAll("#collection a[vukkyid]")).sort(function(a, b) {
+            if(parseInt(a.getAttribute("vukkyid")) > parseInt(b.getAttribute("vukkyid"))) return -1;
+            if(parseInt(a.getAttribute("vukkyid")) < parseInt(b.getAttribute("vukkyid"))) return 1;
+        }).forEach(function(vukky) {
+            document.querySelector("#iddcollection").innerHTML += vukky.outerHTML
+        })
+        document.getElementById("vukkiesjson").innerHTML = "what are you looking for :eyes:"
+        document.querySelector("#loadskip").style.display = "";
+        window.addEventListener('load', loadingdone)
+        document.querySelector("#vukkyloadcount").innerHTML = `0/${totalOwned}`;
+        document.querySelector("#vukkyloadname").innerHTML = "Sending requests...";
+        document.querySelectorAll("#collection img").forEach(function(coolimage) {
+            coolimage.onload = function() {
+                loaded++
+                document.querySelector("#vukkyloadcount").innerHTML = `${loaded}/${totalOwned}`;
+                document.querySelector("#vukkyloadname").innerHTML = coolimage.title;
+                if(localStorage.getItem("fallLoad") == "true") {
+                    let clonedLoader = document.querySelector("#vukkyloadspinner").cloneNode();
+                    clonedLoader.id = "";
+                    clonedLoader.classList.add("clonedloader");
+                    clonedLoader.style.position = "fixed";
+                    document.body.appendChild(clonedLoader);
+                    moveFallingThing(clonedLoader, 2, document.documentElement.scrollHeight);
+                }
+                if(loaded == totalOwned) loadingdone();
+            }
+        })
+
+        function confettiGun() {
+            var count = 1000;
+            var defaults = {
+            origin: { y: 0.7 }
+            };
+
+            function fire(particleRatio, opts) {
+            confetti(Object.assign({}, defaults, opts, {
+                particleCount: Math.floor(count * particleRatio)
+            }));
+            }
+
+            fire(0.25, {
+            spread: 26,
+            startVelocity: 55,
+            });
+            fire(0.2, {
+            spread: 60,
+            });
+            fire(0.35, {
+            spread: 100,
+            decay: 0.91,
+            scalar: 0.8
+            });
+            fire(0.1, {
+            spread: 120,
+            startVelocity: 25,
+            decay: 0.92,
+            scalar: 1.2
+            });
+            fire(0.1, {
+            spread: 120,
+            startVelocity: 45,
+            });
+        }
     });
 </script>
 </html>
