@@ -101,88 +101,88 @@
 <p class="hidden" id="duplicatesjson"><%=JSON.stringify(user.duplicates) %></p>
 </body>
 <script>
-    function shareGallery() {
-        if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
-            navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});
-        } else {
-            navigator.clipboard.writeText("https:/\/vukkybox.com/guestgallery/<%=user._id %>").then(function() {
-                alert("Copied to clipboard!");
-            });
-        }
-    }
-    function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; 
-    }
-    function getOffset(el) {
-        const rect = el.getBoundingClientRect();
-        return {
-            left: rect.left + window.scrollX,
-            top: rect.top + window.scrollY
-        };
-    }
-    const moveFallingThing = (ele, acceleration, ground) => {
-        let xPos = getRandomInt(0, 100);
-        let velocity = acceleration; // speed at a point in time
-        let positionY = getRandomInt(-500, 300); // where we are now
-        const render = () => {
-            positionY += velocity; // move our current position
-            velocity += acceleration; // increment our speed
-            if (getOffset(ele).top < ground) {
-                ele.style.transform = `translateX(${xPos}vw) translateY(${Math.floor(positionY)}px)`;
-                requestAnimationFrame(render);
-            } else {
-                ele.remove()
-            }
-        };
-        requestAnimationFrame(render);
-    };
-    let loaded = 0;
-    let totalOwned = 0;
-    let totalVukkies = <%=totalVukkies %>;
-    function loadingdone() {
-        document.querySelector("#loadingMusic").pause();
-        if(totalOwned == totalVukkies) {
-            document.querySelector("#galleryMusic").src = "/resources/gallerydone.ogg"
-            confettiGun();
-        }
-        document.querySelector("#galleryMusic").play();
-        document.querySelector("#loading_data").style.display = "none";
-        document.querySelector("#collection").style.display = "";
-        document.getElementById("total_text").style.display = "";
-    }
-    function sortUpdate() {
-        let selectedSort = document.querySelector("select").options[document.querySelector("select").selectedIndex].value;
-        document.querySelector("#selectSfx").play();
-        if(selectedSort == "rarity") {
-            document.querySelector("#collection").style.display = "";
-            document.querySelector("#idacollection").style.display = "none";
-            document.querySelector("#iddcollection").style.display = "none";
-        } else if (selectedSort == "ida") {
-            document.querySelector("#collection").style.display = "none";
-            document.querySelector("#idacollection").style.display = "";
-            document.querySelector("#iddcollection").style.display = "none";
-        } else if (selectedSort == "idd") {
-            document.querySelector("#collection").style.display = "none";
-            document.querySelector("#idacollection").style.display = "none";
-            document.querySelector("#iddcollection").style.display = "";
-        } else if (selectedSort == "grav") {
-            document.getElementById("total_text").innerHTML = "Oh no! My Vukkies! HELP!";
-            document.querySelectorAll("a[vukkyid]").forEach(function(node) {
-                if(node.parentNode && node.parentNode.querySelector("p")) node.parentNode.querySelector("p").remove();
-                node.style.position = "fixed";
-                node.classList.add("duration-150")
-                moveFallingThing(node, 0.5, document.documentElement.scrollHeight);
-            })
-        }
-    }
-    const userGallery = [<%=user.gallery %>]
-    var userDuplicates = false
-    if(document.getElementById("duplicatesjson").innerHTML.length > 0) userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
-    document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
     document.querySelector("#loadingMusic").play();
-    document.addEventListener('load', function() {
+        document.addEventListener('load', function() {
+        function shareGallery() {
+            if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
+                navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});
+            } else {
+                navigator.clipboard.writeText("https:/\/vukkybox.com/guestgallery/<%=user._id %>").then(function() {
+                    alert("Copied to clipboard!");
+                });
+            }
+        }
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; 
+        }
+        function getOffset(el) {
+            const rect = el.getBoundingClientRect();
+            return {
+                left: rect.left + window.scrollX,
+                top: rect.top + window.scrollY
+            };
+        }
+        const moveFallingThing = (ele, acceleration, ground) => {
+            let xPos = getRandomInt(0, 100);
+            let velocity = acceleration; // speed at a point in time
+            let positionY = getRandomInt(-500, 300); // where we are now
+            const render = () => {
+                positionY += velocity; // move our current position
+                velocity += acceleration; // increment our speed
+                if (getOffset(ele).top < ground) {
+                    ele.style.transform = `translateX(${xPos}vw) translateY(${Math.floor(positionY)}px)`;
+                    requestAnimationFrame(render);
+                } else {
+                    ele.remove()
+                }
+            };
+            requestAnimationFrame(render);
+        };
+        let loaded = 0;
+        let totalOwned = 0;
+        let totalVukkies = <%=totalVukkies %>;
+        function loadingdone() {
+            document.querySelector("#loadingMusic").pause();
+            if(totalOwned == totalVukkies) {
+                document.querySelector("#galleryMusic").src = "/resources/gallerydone.ogg"
+                confettiGun();
+            }
+            document.querySelector("#galleryMusic").play();
+            document.querySelector("#loading_data").style.display = "none";
+            document.querySelector("#collection").style.display = "";
+            document.getElementById("total_text").style.display = "";
+        }
+        function sortUpdate() {
+            let selectedSort = document.querySelector("select").options[document.querySelector("select").selectedIndex].value;
+            document.querySelector("#selectSfx").play();
+            if(selectedSort == "rarity") {
+                document.querySelector("#collection").style.display = "";
+                document.querySelector("#idacollection").style.display = "none";
+                document.querySelector("#iddcollection").style.display = "none";
+            } else if (selectedSort == "ida") {
+                document.querySelector("#collection").style.display = "none";
+                document.querySelector("#idacollection").style.display = "";
+                document.querySelector("#iddcollection").style.display = "none";
+            } else if (selectedSort == "idd") {
+                document.querySelector("#collection").style.display = "none";
+                document.querySelector("#idacollection").style.display = "none";
+                document.querySelector("#iddcollection").style.display = "";
+            } else if (selectedSort == "grav") {
+                document.getElementById("total_text").innerHTML = "Oh no! My Vukkies! HELP!";
+                document.querySelectorAll("a[vukkyid]").forEach(function(node) {
+                    if(node.parentNode && node.parentNode.querySelector("p")) node.parentNode.querySelector("p").remove();
+                    node.style.position = "fixed";
+                    node.classList.add("duration-150")
+                    moveFallingThing(node, 0.5, document.documentElement.scrollHeight);
+                })
+            }
+        }
+        const userGallery = [<%=user.gallery %>]
+        var userDuplicates = false
+        if(document.getElementById("duplicatesjson").innerHTML.length > 0) userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
+        document.getElementById("total_text").innerHTML += "This user has " + userGallery.length + "/" + totalVukkies + " Vukkies, which are displayed below:"; // "unique" may be confused with the tier, so...
         const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
         for(let j = 1; j <= 7; j++) {
             let owned = 0
