@@ -175,11 +175,11 @@
             })
         }
     }
+    let loaded = 0;
+    let totalOwned = 0;
+    let totalVukkies = <%=totalVukkies %>;
     window.addEventListener('load', (event) => {
         document.querySelector("#vukkyloadname").innerHTML = "Parsing gallery...";
-        let loaded = 0;
-        let totalOwned = 0;
-        let totalVukkies = <%=totalVukkies %>;
         setTimeout(() => {
             const userGallery = [<%=user.gallery %>]
             var userDuplicates = false
