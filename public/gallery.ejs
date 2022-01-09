@@ -102,7 +102,7 @@
 </body>
 <script>
     document.querySelector("#loadingMusic").play();
-        document.addEventListener('load', function() {
+    window.addEventListener('load', (event) => {
         function shareGallery() {
             if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
                 navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});
