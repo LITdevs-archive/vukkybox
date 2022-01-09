@@ -140,9 +140,6 @@
             };
             requestAnimationFrame(render);
         };
-        let loaded = 0;
-        let totalOwned = 0;
-        let totalVukkies = <%=totalVukkies %>;
         function loadingdone() {
             document.querySelector("#loadingMusic").pause();
             if(totalOwned == totalVukkies) {
@@ -179,7 +176,11 @@
                 })
             }
         }
+
         document.querySelector("#vukkyloadname").innerHTML = "Parsing gallery...";
+        let loaded = 0;
+        let totalOwned = 0;
+        let totalVukkies = <%=totalVukkies %>;
         const userGallery = [<%=user.gallery %>]
         var userDuplicates = false
         if(document.getElementById("duplicatesjson").innerHTML.length > 0) userDuplicates = JSON.parse(document.getElementById("duplicatesjson").innerHTML)
