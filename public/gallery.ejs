@@ -241,7 +241,6 @@
             loaded++
             document.querySelector("#vukkyloadcount").innerHTML = `${loaded}/${totalOwned}`;
             document.querySelector("#vukkyloadname").innerHTML = coolimage.title;
-            document.querySelector("#vukkyloadspinner").src = coolimage.src;
             if(localStorage.getItem("fallLoad") == "true") {
                 let clonedLoader = document.querySelector("#vukkyloadspinner").cloneNode();
                 clonedLoader.id = "";
