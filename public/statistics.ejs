@@ -2,12 +2,12 @@
 <html lang="en" style="height:100%">
 		<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link href="./resources/style.css" rel="stylesheet">
-				<script src="./resources/spin.js"></script>
-				<link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+				<link href="https://vukkybox.com/resources/style.css" rel="stylesheet">
+				<script src="https://vukkybox.com/resources/spin.js"></script>
+				<link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
 				<script src="https://kit.fontawesome.com/e28851c58c.js" crossorigin="anonymous"></script>
 				<title>Vukkybox - Stats</title>
-				<audio type="music" preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
+				<audio type="music" preload="auto" loop autoplay src="https://vukkybox.com/resources/menumusic.ogg"></audio>
 		</head>
 		<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
 			<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> 
@@ -41,7 +41,7 @@
 					<circle class="complete" cx="40" cy="40" r="35" style="stroke-dashoffset: 39.58406743523136;"></circle>
 					<text class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)"><%=`${user.gallery.length}/${totalVukkies}` %></text>
 				</svg>
-				<small>Your rank: <%=userRanks.uniqueVukkiesGot %>.</small>
+				<small><a href="https://vukkybox.com/leaderboard">Your rank: <%=userRanks.uniqueVukkiesGot %>.</a></small>
 				<br>
 				<% 
 				let oldRange = (100000 - 0)  
@@ -49,7 +49,7 @@
 				var newValue = (((parseInt(user.boxesOpened) - 0) * newRange) / oldRange) + 10;
 				%>
 				<p>Vukkyboxes Opened: <span style="font-size:<%=newValue %>px"><%=user.boxesOpened %></span></p>
-				<small>Your rank: <%=userRanks.boxesOpened %>.</small>
+				<small><a href="https://vukkybox.com/leaderboard">Your rank: <%=userRanks.boxesOpened %>.</a></small>
 				<br>
 				<% 
 				oldRange = (200 - 0)  
@@ -57,7 +57,7 @@
 				newValue = (((parseInt(user.codesRedeemed) - 0) * newRange) / oldRange) + 10;
 				%>
 				<p>Codes Redeemed: <span style="font-size:<%=newValue %>px"><%=user.codesRedeemed %></span></p>
-				<small>Your rank: <%=userRanks.codesRedeemed %>.</small>
+				<small><a href="https://vukkybox.com/leaderboard">Your rank: <%=userRanks.codesRedeemed %>.</a></small>
 		</div>
 			
 </body>
