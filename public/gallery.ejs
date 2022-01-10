@@ -140,6 +140,7 @@
         requestAnimationFrame(render);
     };
     function loadingdone() {
+        if(document.querySelector("#galleryMusic").paused == false) return;
         document.querySelector("#loadingMusic").pause();
         if(totalOwned == totalVukkies) {
             document.querySelector("#galleryMusic").src = "/resources/gallerydone.ogg"
