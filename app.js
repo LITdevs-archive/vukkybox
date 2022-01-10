@@ -498,7 +498,10 @@ app.get('/balance', grl, popupMid, function(req, res) {
 
 app.get('/gallery', grl, checkAuth, popupMid, function(req, res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+
+	db.getUser(user._id, function(user, err) {
+		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+	})
 });
 
 app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
