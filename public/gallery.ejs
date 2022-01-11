@@ -99,6 +99,7 @@
     </div>
     <p class="hidden" id="vukkiesjson"><%=JSON.stringify(vukkies) %></p>
     <p class="hidden" id="duplicatesjson"><%=JSON.stringify(user.duplicates) %></p>
+    <%- include('common/footer.ejs'); %>
 </body>
 <script>
     document.querySelector("#loadingMusic").play();

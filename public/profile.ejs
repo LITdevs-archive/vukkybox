@@ -32,6 +32,7 @@
       <br><p class="text-bold text-xl">Audio</p>
       Music: <input type="range" step="0.01" min="0" max="1" value="1" setting="musicVolume" onchange="toggleLocalSetting(event)"><br>
       Sound effects: <input type="range" step="0.01" min="0" max="1" value="1" setting="sfxVolume" onchange="toggleLocalSetting(event)">
+      <%- include('common/footer.ejs'); %>
 </body>
 <script>
   function gravatarWarning() {
