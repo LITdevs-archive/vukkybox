@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 334,
+	"currentId": 338,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1086,6 +1086,12 @@
 				"url": "https://vukkybox.com/resources/catboyvukky.webp",
 				"description": "Nya",
 				"creator": "Femboy Nova"
+			},
+			"338": {
+				"name": "Minevukker",
+				"url": "https://vukkybox.com/resources/minevukker.webp",
+				"description": "Do you even know how to play this game?",
+				"creator": "Synne"
 			}
 		},
 		"4": {
@@ -1309,6 +1315,12 @@
 				"url": "https://vukkybox.com/resources/strixxy.webp",
 				"description": "This Vukky looks a bit Wacky. <img src=\"https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkyamongus.webp\" width=32/>",
 				"creator": "Strixx Em"
+			},
+			"337": {
+				"name": "Sharky",
+				"url": "https://vukkybox.com/resources/sharky.webp",
+				"description": "Sharky is a big Vukky. Big Vukkies eat small Vukkies. Sharky is happy. Vukky is... dead. ",
+				"creator": "Synne"
 			}
 		},
 		"5": {
@@ -1472,6 +1484,18 @@
 				"url": "https://vukkybox.com/resources/linky.webp",
 				"description": "Linky is here to save the day, the princess and everyone else yet again.",
 				"creator": "Synne"
+			},
+			"335": {
+				"name": "Contract Stamp Vukky",
+				"url": "https://vukkybox.com/resources/contractsmallvukky.webp",
+				"description": "This little Vukky is used to stamp contracts!",
+				"creator": "Vukky"
+			},
+			"336": {
+				"name": "Shiny Contract Stamp Vukky",
+				"url": "https://vukkybox.com/resources/coloredcontractsmallvukky.webp",
+				"description": "This little Vukky is used to stamp <span style=\"background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);-webkit-background-clip: text;color: transparent;\">extra shiny</span> contracts!",
+				"creator": "Vukky"
 			}
 		},
 		"7": {
@@ -1780,9 +1804,9 @@
 				"description": "This Pukky belongs to Me & Your Mom. I swear that's their username, I'm not trying to make a joke here"
 			},
 			"204": {
-				"name": "Pandarose_'s Pukky",
+				"name": "Pandarose's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/pandarose.webp",
-				"description": "This Pukky belongs to Pandarose_ underscore is needed..."
+				"description": "This Pukky belongs to Pandarose"
 			},
 			"208": {
 				"name": "Ender_'s Pukky",
