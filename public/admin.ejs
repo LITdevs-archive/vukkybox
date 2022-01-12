@@ -5,13 +5,28 @@
     h1, h3 {
         color: gold;
     }
+    #flashy {
+        animation: blinkest 1s steps(5, start) infinite;
+    }
+
+    @keyframes blinkest {
+        from {
+            transform:rotate(0deg);
+        }
+        to {
+            transform:rotate(360deg);
+            visibility: hidden;
+        }
+    }
 </style>
 <body style="background-color: #333333;color:#00ff00;padding-left:50px;padding-top: 50px">
     <div id="sharecode" style="display: none;">
         <button id="sharecodebtn">Share Code</button><br><br>
         <button onclick="document.location.pathname = '/'">Return to Vukkybox</button><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-    <img src="/resources/devvukky.webp"><h1>BOXSTEALER (CONFIDENTIAL!!!)</h1>
+    <span id="flashy">
+        <marquee><img src="/resources/devvukky.webp"></marquee>
+    </span><h1>BOXSTEALER (CONFIDENTIAL!!!)</h1>
     <p>this service is to be used by the vukky black hat hacking organization ONLY!!!</p>
     <br>
     <h3>Inject Vukkybux Generator</h3>
