@@ -283,7 +283,9 @@
                     loaded++
                     document.querySelector("#vukkyloadcount").innerHTML = `${loaded}/${totalOwned}`;
                     document.querySelector("#vukkyloadname").innerHTML = coolimage.title;
-                    document.querySelector(`a[vukkyid='${coolimage.parentNode.getAttribute("vukkyid")}']`).style.display = "";
+                    document.querySelectorAll(`a[vukkyid='${coolimage.parentNode.getAttribute("vukkyid")}']`).forEach(function(node) {
+                        node.style.display = "";
+                    })
                     if(localStorage.getItem("fallLoad") == "true") {
                         let clonedLoader = document.querySelector("#vukkyloadspinner").cloneNode();
                         clonedLoader.id = "";
