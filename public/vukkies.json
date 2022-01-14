@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 340,
+	"currentId": 341,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1098,6 +1098,12 @@
 				"url": "https://vukkybox.com/resources/vukkytnt.webp",
 				"description": "You better watch out, because this Vukky explodes if you come near it!",
 				"creator": "IngvildO"
+			},
+			"341": {
+				"name": "Vukky Now!",
+				"url": "https://vukkybox.com/resources/vukkynow.webp",
+				"description": "Seems like it's a button of some kind.",
+				"creator": "Vukky"
 			}
 		},
 		"4": {
