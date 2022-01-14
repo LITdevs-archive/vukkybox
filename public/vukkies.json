@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 338,
+	"currentId": 340,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1092,6 +1092,12 @@
 				"url": "https://vukkybox.com/resources/minevukker.webp",
 				"description": "Do you even know how to play this game?",
 				"creator": "Synne"
+			},
+			"339": {
+				"name": "TNT Vukky",
+				"url": "https://vukkybox.com/resources/vukkytnt.webp",
+				"description": "You better watch out, because this Vukky explodes if you come near it!",
+				"creator": "IngvildO"
 			}
 		},
 		"4": {
@@ -1321,6 +1327,12 @@
 				"url": "https://vukkybox.com/resources/sharky.webp",
 				"description": "Sharky is a big Vukky. Big Vukkies eat small Vukkies. Sharky is happy. Vukky is... dead. ",
 				"creator": "Synne"
+			},
+			"340": {
+				"name": "Jesus Vukky",
+				"url": "https://vukkybox.com/resources/jesusvukky.webp",
+				"description": "This Vukky has lots of bread and fish!",
+				"creator": "Pandarose_"
 			}
 		},
 		"5": {
