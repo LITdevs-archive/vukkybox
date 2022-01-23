@@ -8,6 +8,7 @@
 </center>
 <script>
 	let transactionLog = <%-transactionLog%>
+	transactionLog.reverse()
 	let transactionTypes = {"urmom": "ur mother"}
 	fetch("https://vukkybox.com/resources/transactionTypes.json", {method: "GET",})
 		.then(res => res.json())
