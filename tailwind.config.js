@@ -2,7 +2,7 @@ module.exports = {
   content: [
 	"./public/*.ejs",
 	"./public/common/*.ejs",
-    	"./public/resources/*.js"
+  "./public/resources/*.js"
   ],
   darkMode: 'media', // or 'media' or 'class'
   theme: {

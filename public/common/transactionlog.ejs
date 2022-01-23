@@ -21,7 +21,7 @@
 			document.getElementById("vukkyspinner").classList.add("hidden");
 		});
 		function addTCard(transaction) {
-			document.getElementById("transactionLog").innerHTML += `<tr><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-5 text-center">${new Date(transaction.timestamp).toLocaleString()}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10">${transactionTypes[transaction.type]}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10 ${parseFloat(transaction.amount) > 0 ? "text-lime-500" : "text-red-600"}">${transaction.amount}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10">${transaction.balance}</td></tr>\n`
+			document.getElementById("transactionLog").innerHTML += `<tr><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-5 text-center">${new Date(transaction.timestamp).toLocaleString()}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10">${transactionTypes[transaction.type]}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10 ${transaction.amount.toString().substr(0, 1) == "+" ? "text-lime-500" : transaction.amount.toString().substr(0, 1) == "-" ? "text-red-600" : ""}">${transaction.amount}</td><td class="bg-opacity-30 bg-gray-100 rounded-lg py-5 px-10">${transaction.balance}</td></tr>\n`
 		}
 	</script>
 </html>
