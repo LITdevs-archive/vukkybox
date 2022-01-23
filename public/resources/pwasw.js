@@ -5,7 +5,7 @@ self.addEventListener('install', (event)=>{
       for (let name of names)
           caches.delete(name);
     }),
-    caches.open('v34').then((cache)=>{
+    caches.open('v35').then((cache)=>{
       return cache.addAll([ // the secrets list :(
         "/resources/spin.js",
         "/resources/offline.html",
