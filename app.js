@@ -685,7 +685,7 @@ app.get('/translog', grl, checkAuth, function(req, res) {
 })
 
 app.post('/cotp', checkAuth, function(req, res){
-	let secret = speakeasy.generateSecret();
+	let secret = speakeasy.generateSecret({label: "Vukkybox 2FA"});
 	req.session.two_factor_temp_secret = secret.base32;
 	qrcode.toDataURL(secret.otpauth_url, function(err, data_url) {
 		console.log(data_url);
