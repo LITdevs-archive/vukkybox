@@ -19,25 +19,24 @@ db.once('open', function() {
 	githubId: String,
 	discordId: String,
 	googleId: String,
-	twitterId: String,
 	primaryEmail: String,
 	githubEmail: String,
 	discordEmail: String,
 	googleEmail: String,
 	LinkedAccounts: Array,
-	twitterEmail: String,
 	username: String,
-	balance: Number,
+	balance: {type: Number, default: 1000},
 	gallery: Array,
-	loginHourly: Date,
-	loginDaily: Date,
-	boxesOpened: Number,
-	codesRedeemed: Number,
-	uniqueVukkiesGot: Number,
+	loginHourly: {type: Date, default: Date.now()},
+	loginDaily: {type: Date, default: Date.now()},
+	boxesOpened: {type: Number, default: 0},
+	codesRedeemed: {type: Number, default: 0},
+	uniqueVukkiesGot: {type: Number, default: 0},
 	RVNid: String,
-	popupAccepted: Boolean,
+	popupAccepted: {type: Boolean, default: true},
 	duplicates: Object,
-	beta: Boolean
+	transactions: Array,
+	beta: {type: Boolean, default: false}
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
@@ -67,16 +66,7 @@ function findOrCreate(service, profile, callback) {
 						googleEmail:profile.emails[0].value,
 						primaryEmail:profile.emails[0].value,
 						LinkedAccounts: ["google"],
-						balance: 1000,
 						username:profile.emails[0].value,
-						loginHourly: Date.now(),
-						loginDaily: Date.now(),
-						boxesOpened: 0,
-						codesRedeemed: 0,
-						uniqueVukkiesGot: 0,
-						popupAccepted: true,
-						beta: false
-
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -99,15 +89,7 @@ function findOrCreate(service, profile, callback) {
 						githubEmail:profile.email,
 						primaryEmail:profile.email,
 						LinkedAccounts: ["github"],
-						balance: 1000,
-						username:profile.username,
-						loginHourly: Date.now(),
-						loginDaily: Date.now(),
-						boxesOpened: 0,
-						codesRedeemed: 0,
-						uniqueVukkiesGot: 0,
-						popupAccepted: true,
-						beta: false
+						username:profile.username
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -133,16 +115,7 @@ function findOrCreate(service, profile, callback) {
 						discordEmail:profile.email,
 						primaryEmail:profile.email,
 						LinkedAccounts: ["discord"],
-						balance: 1000,
-						username:profile.username,
-						VCP: profile.VCP,
-						loginHourly: Date.now(),
-						loginDaily: Date.now(),
-						boxesOpened: 0,
-						codesRedeemed: 0,
-						uniqueVukkiesGot: 0,
-						popupAccepted: true,
-						beta: false
+						username:profile.username
 					})
 					user.save(function (err, user) {
 						if (err) return console.error(err);
@@ -199,6 +172,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 						};
 						doc.balance += savedCode.amount;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
+						transactions(doc._id, {"type": "code", "amount": `${savedCode.amount > 0 ? "+" : ""}${savedCode.amount}`, "balance": doc.balance, "timestamp": Date.now()})
 						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
@@ -211,6 +185,7 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 						};
 						doc.balance += savedCode.amount;
 						doc.balance = parseFloat(doc.balance).toFixed(1)
+						transactions(doc._id, {"type": "code", "amount": `${savedCode.amount > 0 ? "+" : ""}${savedCode.amount}`, "balance": doc.balance, "timestamp": Date.now()})
 						doc.codesRedeemed++;
 						doc.save()
 						callback(true, savedCode.amount)
@@ -250,6 +225,7 @@ function buyBox(user, box, callback) {
 		};
 		if(user.balance >= boxData.price) {
 			user.balance = parseFloat(user.balance - boxData.price).toFixed(1);
+			transactions(user._id, {"type": "boxpurchase", "amount": `-${boxData.price}`, "balance": user.balance, "timestamp": Date.now()})
 			user.boxesOpened++;
 			openBox(box, res => { //res: {level, vukkyId, vukky}
 				const isDuplicate = user.gallery.includes(res.vukkyId)
@@ -261,6 +237,7 @@ function buyBox(user, box, callback) {
 					user.markModified('duplicates')
 					duplicateCount = user.duplicates[res.vukkyId];
 					if (!boxData.noRefund) user.balance = parseFloat(user.balance + 0.1 * boxData.price).toFixed(1);
+					if (!boxData.noRefund) transactions(user._id, {"type": "boxrefund", "amount": `+${0.1 * boxData.price}`, "balance": user.balance, "timestamp": Date.now()})
 				} else {
 					user.uniqueVukkiesGot++;
 					user.gallery.push(res.vukkyId)
@@ -344,11 +321,13 @@ function lastLogin(user, callback) {
 			doc.loginHourly = Date.now()
 			doc.balance += 150
 			doc.balance = parseFloat(doc.balance).toFixed(1)
+			transactions(doc._id, {"type": "hourly", "amount": "+150", "balance": doc.balance, "timestamp": Date.now()})
 		}
 		if(Math.floor(Date.now() - doc.loginDaily) / 1000 / 86400 > 1) {
 			doc.loginDaily = Date.now()
 			doc.balance += 750
 			doc.balance = parseFloat(doc.balance).toFixed(1)
+			transactions(doc._id, {"type": "daily", "amount": "+750", "balance": doc.balance, "timestamp": Date.now()})
 		}
 		doc.save()
 		callback(doc.balance, doc)
@@ -386,6 +365,8 @@ async function ethermineETH() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
+							if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+							if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
 							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
 							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
 							doc.save()
@@ -412,6 +393,8 @@ async function ethermineETH() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
+							if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+							if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
 							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
 							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
 							doc.save()
@@ -442,6 +425,8 @@ async function ethermineRVN() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
+							if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+							if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
 							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
 							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
 							doc.save()
@@ -468,6 +453,8 @@ async function ethermineRVN() {
 							if (err) return err; 
 							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
 							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
+							if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+							if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
 							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
 							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
 							doc.save()
@@ -551,6 +538,7 @@ function setBalance(userId, newBalance) {
 		if (err) console.log(err);
 		if (err) return 500;
 		user.balance = newBalance
+		transactions(user._id, {"type": "balanceset", "amount": newBalance, "balance": user.balance, "timestamp": Date.now()})
 		user.save()
 	})
 }
@@ -661,7 +649,23 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 	}
 }
 
+function transactions(userId, transaction) {
+	User.findOne({"_id": userId}, function(err, user) {
+		if(err) return console.log(err);
+		if(!user.transactions) user.transactions = [];
+		user.transactions.push(transaction);
+		user.save();
+	})
+}
 
+function transLog(userId, callback) {
+	User.findOne({"_id": userId}, function(err, user) {
+		if(err) return console.log(err);
+		if(!user.transactions) user.transactions = [];
+		user.save();
+		callback(user.transactions);
+	})
+}
 
 module.exports = {
 	findOrCreate,
@@ -683,5 +687,7 @@ module.exports = {
 	checkPopup,
 	acceptPopup,
 	setBeta,
-	leaderboard
+	leaderboard,
+	transLog,
+	transactions
 }
