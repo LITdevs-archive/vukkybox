@@ -8,7 +8,7 @@
 </center>
 <script>
 	let transactionLog = <%-transactionLog%>
-	fetch("https://vukkybox.com/transactionTypes.json", {method: "GET",})
+	fetch("https://vukkybox.com/resources/transactionTypes.json", {method: "GET",})
 		.then(res => res.json())
 		.then(transactionTypes => {
 			if(transactionLog.length <= 0) return addTCard({"type": "registration", "amount": 1000, "balance": 1000, "timestamp": Date.now()})
