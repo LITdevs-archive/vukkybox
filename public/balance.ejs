@@ -77,12 +77,12 @@ That's a fair question! The money we've made is <a href="https://litdevs.org/fin
 	if(urlParams.has('poor')) {
     document.querySelector("#pooruser").innerHTML = `${poors[Math.floor(Math.random()*poors.length)]}<br><small>But where did my balance go? Find out <a href="https://vukkybox.com/translog" class="text-blue-500">here!</a>`;
 		document.querySelector("#pooruser").classList.remove("hidden")
-		document.querySelector("#sadfalgus").play()
+		document.querySelector("#sadfalgus").setAttribute("playOnLoad", "true")
     setTimeout(() => {
-      document.querySelector("#banger").play()
+      document.querySelector("#banger").setAttribute("playOnLoad", "true")
     }, 710);
 	} else {
-    document.querySelector("#banger").play()
+    document.querySelector("#banger").setAttribute("playOnLoad", "true")
   }
   <% if(user) { %>
     let loginHourly = new Date('<%= loginHourly %>');

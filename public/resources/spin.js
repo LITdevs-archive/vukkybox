@@ -54,6 +54,9 @@ window.addEventListener('load', (event) => {
         } else if (node.getAttribute("type") == "sfx" && localStorage.getItem("sfxVolume")) {
             node.volume = localStorage.getItem("sfxVolume");
         }
+        if(node.getAttribute("playOnLoad") == "true") {
+            node.play();
+        }
     })
     if(document.querySelector("a[href='/']") && document.querySelector("a[href='/']").parentNode && document.querySelector("a[href='/']").parentNode.querySelector("p")) document.querySelector("a[href='/']").parentNode.querySelector("p").id = "balance";
     if(document.querySelector("#balance")) {
