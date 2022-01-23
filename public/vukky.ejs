@@ -30,7 +30,7 @@
 	</head>
 	<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
 		<% if (box) { %>
-			<audio type="sfx" autoplay id="unboxSpinSfx" src="/resources/unboxspinning.ogg"></audio>
+			<audio type="sfx" playOnLoad="true" id="unboxSpinSfx" src="/resources/unboxspinning.ogg"></audio>
 			<audio type="sfx" id="unboxAllSfx" src="/resources/tada.ogg"></audio>
 		<% } %>
 		<audio type="sfx" id="unboxSfx" src="/resources/unbox.wav"></audio>

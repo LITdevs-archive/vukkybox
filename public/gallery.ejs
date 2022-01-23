@@ -35,7 +35,7 @@
             height: 32px;
         }
     </style>
-    <audio type="music" id="loadingMusic" preload="auto" loop src="/resources/loading.ogg"></audio>
+    <audio type="music" id="loadingMusic" preload="auto" playOnLoad="true" loop src="/resources/loading.ogg"></audio>
     <audio type="music" id="galleryMusic" preload="auto" loop src="/resources/gallery.ogg"></audio>
     <audio type="sfx" id="selectSfx" preload="auto" src="/resources/select.flac"></audio>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
@@ -103,7 +103,6 @@
     <%- include('common/footer.ejs'); %>
 </body>
 <script>
-    document.querySelector("#loadingMusic").play();
     function shareGallery() {
         if(localStorage.getItem('shareMenu') != 'false' && navigator.share) {
             navigator.share({'title': 'My gallery on Vukkybox!', 'url': 'https:/\/vukkybox.com/guestgallery/<%=user._id %>'});
