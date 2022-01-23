@@ -70,3 +70,6 @@
     border-collapse: separate;
     border-spacing: 15px 10px;
 }
+.font-half-bold {
+    font-weight: 500;
+}
