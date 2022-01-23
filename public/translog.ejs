@@ -13,7 +13,7 @@
 		</head>
 		<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
 			<%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
-			<%- include('common/transactionlog.ejs', {transactionLog: transLog}); %>
+			<%- include('common/transactionlog.ejs', {transactionLog: JSON.stringify(transLog)}); %>
 			<%- include('common/footer.ejs'); %>
 		</body>
 </html>
