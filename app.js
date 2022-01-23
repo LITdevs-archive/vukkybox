@@ -684,7 +684,7 @@ app.get('/translog', grl, checkAuth, function(req, res) {
 	})
 })
 
-app.post('cotp', checkAuth, function(req, res){
+app.post('/cotp', checkAuth, function(req, res){
 	let secret = speakeasy.generateSecret();
 	req.session.two_factor_temp_secret = secret.base32;
 	qrcode.toDataURL(secret.otpauth_url, function(err, data_url) {
@@ -693,7 +693,7 @@ app.post('cotp', checkAuth, function(req, res){
 	  });
 });
 
-app.post('totp', checkAuth, function(req, res) {
+app.post('/totp', checkAuth, function(req, res) {
 	let secret = req.body.secret;
 	var verified = speakeasy.totp.verify({ secret: req.session.two_factor_temp_secret,
 		encoding: 'base32',
