@@ -7,7 +7,7 @@
 	</div>
 </center>
 <script>
-	let transactionLog = [<%=transactionLog%>]
+	let transactionLog = <%-transactionLog%>
 	fetch("https://vukkybox.com/transactionTypes.json", {method: "GET",})
 		.then(res => res.json())
 		.then(transactionTypes => {
