@@ -4,6 +4,8 @@ var express  = require('express')
   , DiscordStrategy = require('passport-discord').Strategy
   , app      = express();
 const crypto = require("crypto");
+const qrcode = require('qrcode');
+const speakeasy = require('speakeasy');
 require("dotenv").config();
 var cookieParser = require('cookie-parser')
 const csrf = require("csurf")
@@ -681,6 +683,23 @@ app.get('/translog', grl, checkAuth, function(req, res) {
 	})
 })
 
+app.post('cotp', checkAuth, function(req, res){
+	let secret = speakeasy.generateSecret();
+	req.session.two_factor_temp_secret = secret.base32;
+	qrcode.toDataURL(secret.otpauth_url, function(err, data_url) {
+		console.log(data_url);
+		res.send('<img src="' + data_url + '">');
+	  });
+});
+
+app.post('totp', checkAuth, function(req, res) {
+	let secret = req.body.secret;
+	var verified = speakeasy.totp.verify({ secret: req.session.two_factor_temp_secret,
+		encoding: 'base32',
+		token: secret });
+	res.send(verified);
+});
+
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 });
@@ -692,6 +711,7 @@ app.use(function (err, req, res, next) {
 	}
 	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: err.stack, friendlyError: null });
 });
+
 
 var fs = require('fs');
 var http = require('http');
