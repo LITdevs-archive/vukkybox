@@ -75,7 +75,7 @@ That's a fair question! The money we've made is <a href="https://litdevs.org/fin
 	const urlParams = new URLSearchParams(queryString);
   const poors = ["You tried your best, but couldn't resist.", "Oh no, you've run out of Vukkybux!", "Well, there goes that money.", "Try again later, maybe? :D", "Oops...", "Aww...", "Okay, that's enough.", '"Can I have some more?"', "vukkybux = 0;"]
 	if(urlParams.has('poor')) {
-    document.querySelector("#pooruser").innerHTML = poors[Math.floor(Math.random()*poors.length)];
+    document.querySelector("#pooruser").innerHTML = `${poors[Math.floor(Math.random()*poors.length)]}<br><small>But where did my balance go? Find out <a href="https://vukkybox.com/translog" class="text-blue-500">here!</a>`;
 		document.querySelector("#pooruser").classList.remove("hidden")
 		document.querySelector("#sadfalgus").play()
     setTimeout(() => {

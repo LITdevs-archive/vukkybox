@@ -674,7 +674,7 @@ app.get('/statistics', grl, checkAuth, function(req, res){
 					res.render(`${__dirname}/public/statistics.ejs`, {user: user, totalVukkies: vukkyJson.currentId, userRanks: userRanks, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 })})})})});
 
-app.get('/translog', checkAuth, function(req, res) {
+app.get('/translog', grl, checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	db.transLog(user._id, logs => {
 		res.render(`${__dirname}/public/translog.ejs`, {user: user, transLog: logs, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
