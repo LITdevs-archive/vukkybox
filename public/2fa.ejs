@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"  >
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./resources/style.css" rel="stylesheet">
+        <script src="./resources/spin.js"></script>
+        <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+        <title>Vukkybox - Enable 2FA</title>
+        <meta property="og:site_name" content="Vukkybox">
+        <meta name="title" content="2FA">
+        <meta name="description" content="Enable 2 factor authentication on Vukkybox.">
+        <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+    </head>
+    <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
+      <%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
+        <center class="py-8">
+            <div id="qr" class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
+                <h1>Scan this QR-code on your desired Authenticator application such as Google Authenticator.</h1>
+                <br>
+                <img src="<%=qrDataUrl %>"/>
+                <button class="button button-blue" onclick="requestCode()">I have scanned the QR-code</button>
+            </div>
+            <div id="qr" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
+                <h1>Please enter the 2 factor authentication code from your Authenticator application</h1>
+                <br>
+                <form>
+                    <input type="text" placeholder="000000" id="verificationInput"/>
+                    <input type="submit" class="button button-blue" onclick="verifyCode()" value="Submit"/>
+                </form>
+            </div>
+            <div id="loading" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
+                <span id="vukkyspinner"><br><br><img width="128" src="https://vukkybox.com/resources/pukkies/skelly.webp"></span>
+            </div>
+            <div id="failed" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
+                <h1>Failed to activate 2FA, was the code incorrect?</h1>
+                <span><br><br><img width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyno.png?raw=true"></span>
+                <br><a href="https://vukkybox.com/2fa"><button class="button button-blue">Try again</button></a>
+            </div>
+            <div id="success" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
+                <h1>2FA has been enabled</h1>
+                <span><br><br><img width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true"></span>
+                <br><a href="https://vukkybox.com/store"><button class="button button-blue">Go play the game</button></a>
+            </div>
+        </center>
+        <%- include('common/footer.ejs'); %>
+	</body>
+    <script>
+        function requestCode() {
+            document.getElementById("qr").classList.add("hidden");
+            document.getElementById("codeVerification").classList.remove("hidden");
+        }
+        function verifyCode() {
+            document.getElementById("codeVerification").classList.add("hidden");
+            document.getElementById("loading").classList.remove("hidden");
+            fetch("https://vukkybox.com/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value})})
+            .then(res => res.json())
+            .then(res => {
+                if(!res.valid) {
+                    document.getElementById("loading").classList.add("hidden");
+                    document.getElementById("failed").classList.remove("hidden");
+                } else {
+                    document.getElementById("loading").classList.add("hidden");
+                    document.getElementById("success").classList.remove("hidden");
+                }
+            });
+        }
+    </script>
+</html>

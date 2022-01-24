@@ -684,22 +684,29 @@ app.get('/translog', grl, checkAuth, function(req, res) {
 	})
 })
 
-app.post('/cotp', checkAuth, function(req, res){
+app.get('/2fa', grl, checkAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0];
+	if(user.twofactor) return res.render(`${__dirname}/public/2fareset.ejs`, {user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	let secret = speakeasy.generateSecret({name: "Vukkybox 2FA"});
 	req.session.two_factor_temp_secret = secret.base32;
-	qrcode.toDataURL(secret.otpauth_url, function(err, data_url) {
-		console.log(data_url);
-		res.send('<img src="' + data_url + '">');
-	  });
+	qrcode.toDataURL(secret.otpauth_url, function(err, dataUrl) {
+		if (err) return res.render(__dirname + '/public/error.ejs', {stacktrace: null, friendlyError: "Something went wrong while starting the 2FA flow. <br>For your privacy the stacktrace is hidden, if this happens again please contact us."});
+		res.render(`${__dirname}/public/2fa.ejs`, {user: user, qrDataUrl: dataUrl, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+	});
 });
 
-app.post('/totp', checkAuth, function(req, res) {
-	let secret = req.body.secret;
+app.post('/fotp', checkAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0];
+	if(user.twofactor) return res.status(403).send("2fa already enabled");
+	if(!req.session.two_factor_temp_secret) return res.status(400).send("2fa flow not started");
+	let userInput = req.body.otp;
 	var verified = speakeasy.totp.verify({ secret: req.session.two_factor_temp_secret,
 		encoding: 'base32',
-		token: secret });
-	res.send(verified);
-});
+		token: userInput });
+	if(!verified) return res.status(400).send({valid: false});
+	db.enabletwoFactor(user._id, req.session.two_factor_temp_secret);
+	res.send({valid: true});
+})
 
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);

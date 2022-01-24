@@ -34,6 +34,8 @@ db.once('open', function() {
 	uniqueVukkiesGot: {type: Number, default: 0},
 	RVNid: String,
 	popupAccepted: {type: Boolean, default: true},
+	twoFactor: {type: Boolean, default: false},
+	twoFactorSecret: String,
 	duplicates: Object,
 	transactions: Array,
 	beta: {type: Boolean, default: false}
@@ -667,6 +669,15 @@ function transLog(userId, callback) {
 	})
 }
 
+function enabletwoFactor(userId, secret) {
+	User.findOne({"_id": userId}, function(err, user) {
+		if(err) return console.log(err);
+		user.twoFactor = true
+		user.twoFactorSecret = secret;
+		user.save();
+	})
+}
+
 module.exports = {
 	findOrCreate,
 	changeUsername,
@@ -689,5 +700,6 @@ module.exports = {
 	setBeta,
 	leaderboard,
 	transLog,
-	transactions
+	transactions,
+	enabletwoFactor
 }
