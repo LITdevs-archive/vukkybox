@@ -63,7 +63,7 @@ let transporter = nodemailer.createTransport({
 
 async function sendEmail(user, emailContent, emailSubject) {
 	let parsedEmailContent = emailContent.replaceAll("$username", user.username)
-	if(user.emailCode) parsedEmailContent = emailContent.replaceAll("$emailRecoveryCode", user.emailCode)
+	if(user.emailCode) parsedEmailContent = parsedEmailContent.replaceAll("$emailRecoveryCode", user.emailCode)
 	let info = await transporter.sendMail({
 		from: '"Vukkybox" <vukkybox@litdevs.org>',
 		to: user.primaryEmail,
