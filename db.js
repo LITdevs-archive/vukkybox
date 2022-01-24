@@ -351,34 +351,41 @@ const { updateStrings } = require('yargs');
 
 async function ethermineETH() {
     setInterval(async function() {
-		const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
-		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
-		const body = await response.text();
-		const buttonBody = await buttonData.json();
-		let workers = JSON.parse(body).data.workers
-		let time = Math.round(Date.now()/1000)
-		for (let i = 0; i < workers.length; i++) {
-			if (time - workers[i].time < 600) {
-				//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
-				User.countDocuments({_id: workers[i].worker}, function(err, res) {
-					if (err) return console.log(err)
-					if (res) {
-						User.findOne({_id: workers[i].worker}, function (err, doc) {
-							if (err) return err; 
-							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
-							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
-							if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-							if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
-							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
-							doc.save()
-						})
-					}
-				})
-			} else {console.log("sussy wussy")}
+		try {
+			const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
+			const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
+			const body = await response.text();
+			const buttonBody = await buttonData.json();
+			let workers = JSON.parse(body).data.workers
+			let time = Math.round(Date.now()/1000)
+			for (let i = 0; i < workers.length; i++) {
+				if (time - workers[i].time < 600) {
+					//console.log(`ETH Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+					User.countDocuments({_id: workers[i].worker}, function(err, res) {
+						if (err) return console.log(err)
+						if (res) {
+							User.findOne({_id: workers[i].worker}, function (err, doc) {
+								if (err) return err; 
+								if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))
+								if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))
+								if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+								if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_eth", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+								if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum!`)
+								if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.448028674 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ethereum (3X BONUS!)`)
+								doc.save()
+							})
+						}
+					})
+				} else {console.log("sussy wussy")}
+			}
+		} catch(e) {
+			if (!(e instanceof TypeError)) {
+				throw(e)
+			}
 		}
 	}, 600000) //set to 600000 (10 mins) when using properly. im using 1000 for debug
 	setTimeout(async function () {
+		try {
 		const response = await fetch('https://api.ethermine.org/miner/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard',  {cache: "no-store"});
 		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
 		const body = await response.text();
@@ -406,66 +413,83 @@ async function ethermineETH() {
 			} else {console.log("sussy wussy")}
 	}
 	console.log("eth mining initialized")
+	} catch(e) {
+		if (!(e instanceof TypeError)) {
+			throw(e)
+		}
+	}
 }, 30000)
 }
 
 async function ethermineRVN() {
 	setInterval(async function() {
-		const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
-		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
-		const body = await response.text();
-		const buttonBody = await buttonData.json();
-		let workers = JSON.parse(body).data.workers
-		let time = Math.round(Date.now()/1000)
-		for (let i = 0; i < workers.length; i++) {
-			if (time - workers[i].time < 600) {
-				//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
-				User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
-					if (err) return console.log(err)
-					if (res) {
-						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
-							if (err) return err; 
-							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
-							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
-							if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-							if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
-							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
-							doc.save()
-						})
-					}
-				})
-			} else {console.log("sussy wussy")}
+		try {
+			const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
+			const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
+			const body = await response.text();
+			const buttonBody = await buttonData.json();
+			let workers = JSON.parse(body).data.workers
+			let time = Math.round(Date.now()/1000)
+			for (let i = 0; i < workers.length; i++) {
+				if (time - workers[i].time < 600) {
+					//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+					User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
+						if (err) return console.log(err)
+						if (res) {
+							User.findOne({RVNid: workers[i].worker}, function (err, doc) {
+								if (err) return err; 
+								if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+								if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
+								if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+								if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+								if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
+								if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
+								doc.save()
+							})
+						}
+					})
+				} else {console.log("sussy wussy")}
+			}
+		} catch(e) {
+			if (!(e instanceof TypeError)) {
+				throw(e)
+			}
 		}
 	}, 600000) //set to 600 000 (10 mins) when using properly. im using 1000 for debug 
 	setTimeout(async function () {
-		const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
-		const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
-		const body = await response.text();
-		const buttonBody = await buttonData.json();
-		let workers = JSON.parse(body).data.workers
-		let time = JSON.parse(body).data.workers[0].time
-		for (let i = 0; i < workers.length; i++) {
-			if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
-				//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
-				User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
-					if (err) return console.log(err)
-					if (res) {
-						User.findOne({RVNid: workers[i].worker}, function (err, doc) {
-							if (err) return err; 
-							if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
-							if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
-							if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-							if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-							if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
-							if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
-							doc.save()
-						})
-					}
-				})
-			} else {console.log("sussy wussy")}
+		try {
+			const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
+			const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
+			const body = await response.text();
+			const buttonBody = await buttonData.json();
+			let workers = JSON.parse(body).data.workers
+			let time = JSON.parse(body).data.workers[0].time
+			for (let i = 0; i < workers.length; i++) {
+				if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
+					//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
+					User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
+						if (err) return console.log(err)
+						if (res) {
+							User.findOne({RVNid: workers[i].worker}, function (err, doc) {
+								if (err) return err; 
+								if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))
+								if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))
+								if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+								if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
+								if (!buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin!`)
+								if (buttonBody.isAlive) miningHook.send(`<:aww:919606451004121129> \`${parseFloat(parseFloat(workers[i].currentHashrate / 1000000 * 0.679012347 * 3).toFixed(1))}\` Vukkybux has been mined by ${doc.username} (\`${doc._id}\`) using Ravencoin (3X BONUS!)`)
+								doc.save()
+							})
+						}
+					})
+				} else {console.log("sussy wussy")}
+			}
+			console.log("rvn mining initialized")
+		} catch(e) {
+			if (!(e instanceof TypeError)) {
+				throw(e)
+			}
 		}
-		console.log("rvn mining initialized")
 	}, 30000)
 }	
 
