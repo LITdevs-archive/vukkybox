@@ -713,6 +713,7 @@ function transLog(userId, callback) {
 }
 
 function enabletwoFactor(userId, secret) {
+	let fs = require("fs")
 	User.findOne({"_id": userId}, function(err, user) {
 		if(err) return console.log(err);
 		user.twoFactor = true
