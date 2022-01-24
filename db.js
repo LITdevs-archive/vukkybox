@@ -52,7 +52,7 @@ db.once('open', function() {
   Code = mongoose.model('Code', codeSchema);
 });
 let transporter = nodemailer.createTransport({
-    host: "ssl://smtp.zoho.eu",
+    host: "smtp.zoho.eu",
     port: 465,
     secure: true,
     auth: {
