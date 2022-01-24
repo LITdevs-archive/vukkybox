@@ -6,6 +6,7 @@ nocache("./public/vukkies.json")
 const vukkyJson = require("./public/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST);
 const { Webhook } = require('discord-webhook-node');
+const nodemailer = require("nodemailer");
 const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
 const miningHook = new Webhook(process.env.MINING_DISCORD_WEBHOOK)
@@ -50,7 +51,24 @@ db.once('open', function() {
   });
   Code = mongoose.model('Code', codeSchema);
 });
+let transporter = nodemailer.createTransport({
+    host: "ssl://smtp.zoho.eu",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "vukkybox@litdevs.org",
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
+async function sendEmail(user, emailContent, emailSubject) {
+	let info = await transporter.sendMail({
+		from: '"Vukkybox" <vukkybox@litdevs.org>',
+		to: user.primaryEmail,
+		subject: emailSubject,
+		html: emailContent
+	  });
+}
 
 function findOrCreate(service, profile, callback) {
 	switch (service) {
@@ -725,5 +743,6 @@ module.exports = {
 	leaderboard,
 	transLog,
 	transactions,
-	enabletwoFactor
+	enabletwoFactor,
+	sendEmail
 }

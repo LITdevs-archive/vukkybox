@@ -378,6 +378,12 @@ app.post("/admin/:action", grl, async function(req, res) {
 				db.listEmails();
 				res.redirect("/admin?emails=true")
 			break;
+			case "email_user":
+				db.getUser(req.body.recipient, function(user) {
+					db.sendEmail(user, req.body.message, req.body.subject);
+					res.redirect("/admin?emailuser=true")
+				}) 
+			break;
 			case "popup_reset":
 				db.resetPopup();
 				res.redirect("/admin?popup=true")

@@ -105,6 +105,15 @@
         <input type="submit" value="Execute"/>
     </form>
     <br>
+    <h3>email user</h3>
+    <form method="post" action="https://vukkybox.com/admin/email_user">
+        <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+        <input id="recipient" type="text" name="recipient" placeholder="_id of recipient" required/>
+        <input id="subject" type="text" name="subject" placeholder="subject" required/>
+        <input id="message" type="text" name="mesage" placeholder="email content" required><br>
+        <input type="submit" value="Execute"/>
+    </form>
+    <br>
     <a href="https://vukkybox.com/beta"><h3>Enter experimental change viewing before release program</h3></a>
     <br>
     <a href="https://vukkybox.com" style="color:#00ff00;">DONE HACKING FOR TODAY</a><br><br><small>ok, but actually, this is the admin panel for vukkybox admins. have a nice day, and how did you get here</small>
