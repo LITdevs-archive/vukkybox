@@ -20,8 +20,6 @@
                 if(locals.failure) showFailure = true
                 if(locals.successful) showSuccessful = true    
             %> 
-            <%=showFailure %>
-            <%=showSuccessful %>
             <div id="codeVerification" class="<%= showFailure || showSuccessful ? "hidden" : "" %>bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>To reset your Two-Factor Authentication, please verify your identity below.</h1>
                 <br>
