@@ -557,7 +557,7 @@ app.get('/callbackdiscord', function(req, res, next) {
 	})(req, res, next);
   });
 
-app.get('callbackdiscord2', function(req, res) {
+app.get('/callbackdiscord2', function(req, res) {
 	req.logIn(user, function(err) {
 		if (err) { return next(err); }
 		return res.redirect('/');
