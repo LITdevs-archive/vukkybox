@@ -708,9 +708,8 @@ app.post('/fotp', checkAuth, function(req, res) {
 app.post('/emailCode', checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	let secret = speakeasy.generateSecret({length: 8});
-	console.log(secret)
-	user.emailCode = secret;
-	req.session.emailCode = secret;
+	user.emailCode = secret.base32;
+	req.session.emailCode = secret.base32;
 	db.sendEmail(user, fs.readFileSync(`${__dirname}/public/email/emailCode.html`, "utf8"), "Vukkybox Authenticator recovery code");
 })
 
