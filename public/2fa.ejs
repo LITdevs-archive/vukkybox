@@ -54,7 +54,7 @@
             e.preventDefault();
             document.getElementById("codeVerification").classList.add("hidden");
             document.getElementById("loading").classList.remove("hidden");
-            fetch("https://vukkybox.com/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value, csrfToken: document.getElementById("csrfToken").value})})
+            fetch("https://vukkybox.com/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value, _csrf: document.getElementById("csrfToken").value})})
             .then(res => res.json())
             .then(res => {
                 if(!res.valid) {

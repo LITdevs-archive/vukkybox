@@ -171,7 +171,6 @@ app.get("/editProfile", grl, checkAuth, popupMid, function (req, res) {
 })
 
 app.post("/editProfile", grl ,checkAuth, function(req, res) {
-	console.log(req.body)
 	if(req.body.username != "") {
 	  db.changeUsername(req.user, req.body.username)
 	  req.session.passport.user.username = req.body.username
@@ -696,7 +695,6 @@ app.get('/2fa', grl, checkAuth, function(req, res) {
 });
 
 app.post('/fotp', checkAuth, function(req, res) {
-	console.log(`fotp ${req.body}`)
 	let user = req.user._id ? req.user : req.user[0];
 	if(user.twofactor) return res.status(403).send("2fa already enabled");
 	if(!req.session.two_factor_temp_secret) return res.status(400).send("2fa flow not started");
