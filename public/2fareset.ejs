@@ -14,18 +14,6 @@
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
       <%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
         <center class="py-8">
-            <div id="codeVerification" class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
-                <h1>To reset your Two-Factor Authentication, please verify your identity below.</h1>
-                <br>
-                <form id="verificationForm" action="https://vukkybox.com/2fareset" method="post">
-                    <input type="hidden" name="csrfToken" id="csrfToken" value="<%=csrfToken %>"/>
-                    <label for="verificationInput">Input your 2FA code:</label>
-                    <input type="text" style="color:black" placeholder="000000" name="verificationInput" id="verificationInput"/>
-                    <input type="submit" class="button button-blue" value="Submit"/>
-                </form>
-                <br>
-                <button class="button button-blue" onclick="recoverAuthenticator()">I've lost access to the authenticator</button>
-            </div>
             <div id="emailRecovery" class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>To reset your Two-Factor Authentication, you have been sent an email containing a code</h1>
                 <br>
