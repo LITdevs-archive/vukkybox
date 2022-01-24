@@ -722,6 +722,16 @@ app.post('/emailCheckCode', checkAuth, function(req, res) {
 	res.send({valid: true});
 })
 
+app.post('/2fareset', checkAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0];
+	var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
+		encoding: 'base32',
+		token: req.body.otp });
+	if(!verified) return res.status(400).render(`${__dirname}/public/2fareset.ejs`, {failure: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+	if(verified) db.disabletwoFactor(user._id);
+	if(verified) res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+})
+
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 });
