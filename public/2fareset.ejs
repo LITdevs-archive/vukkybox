@@ -15,8 +15,8 @@
       <%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
         <center class="py-8">
             <% 
-                const showFailure = false   
-                const showSuccessful = false
+                let showFailure = false
+                let showSuccessful = false
                 if(locals.failure) showFailure = true
                 if(locals.successful) showSuccessful = true    
             %> 
@@ -48,7 +48,6 @@
             </div>
             <div id="failed" class="<%= showFailure ? "" : "hidden" %> bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>Failed to reset 2FA, was the code incorrect?</h1>
-                <%=locals.failure %>
                 <span><br><br><img class="object-center" width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyno.png?raw=true"></span>
                 <br><br><a href="https://vukkybox.com/2fa"><button class="button button-blue">Try again</button></a>
             </div>
