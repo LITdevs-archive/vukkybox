@@ -285,7 +285,7 @@ app.get('/delete', grl, checkAuth, function(req,res) {
 
 app.post("/delete", grl, checkAuth, function(req, res) {
 	user = req.user._id ? req.user : req.user[0]
-	if(!user.beta) return res.send("<meta name='viewport' content='width=device-width, initial-scale=1.0'>Due to a bug we have no idea how works where random accounts would be deleted instead of yours, this feature is currently disabled.<br>To delete your account, please contact us at the following email address: contact@vukkybox.com<br><br>For us to accept your deletion request, you must send the email from the email address you used to log in.<br>You can see that email address by navigating to the <a href='https://vukkybox.com/stats'>stats page</a>. (it may be confusing, just skim it until you see your email!)<br>")
+	//if(!user.beta) return res.send("<meta name='viewport' content='width=device-width, initial-scale=1.0'>Due to a bug we have no idea how works where random accounts would be deleted instead of yours, this feature is currently disabled.<br>To delete your account, please contact us at the following email address: contact@vukkybox.com<br><br>For us to accept your deletion request, you must send the email from the email address you used to log in.<br>You can see that email address by navigating to the <a href='https://vukkybox.com/stats'>stats page</a>. (it may be confusing, just skim it until you see your email!)<br>")
 	db.deleteUser(user, function(result) {
 		if(result == 500) {
 			res.redirect('/resources/500.html');
@@ -452,8 +452,8 @@ app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
 })
 
 app.get('/beta', grl, checkAuth, popupMid, function(req, res) {
-	if(req.headers.referer != "https://vukkybox.com/credits") return res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
-	if(req.headers.referer == "https://vukkybox.com/admin") return res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
+	let authorizedReferers = ["https://vukkybox.com/admin, https://vukkybox.com/credits"]
+	if(authorizedReferers.includes(req.headers.referer)) return res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 })
 
