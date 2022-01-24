@@ -63,6 +63,7 @@ let transporter = nodemailer.createTransport({
 
 async function sendEmail(user, emailContent, emailSubject) {
 	let parsedEmailContent = emailContent.replaceAll("$username", user.username)
+	if(user.emailCode) parsedEmailContent = emailContent.replaceAll("$emailRecoveryCode", user.emailCode)
 	let info = await transporter.sendMail({
 		from: '"Vukkybox" <vukkybox@litdevs.org>',
 		to: user.primaryEmail,
@@ -719,7 +720,19 @@ function enabletwoFactor(userId, secret) {
 		user.twoFactor = true
 		user.twoFactorSecret = secret;
 		let twoFactorEmail = fs.readFileSync(__dirname + "/public/email/2faenable.html", "utf8");
-		sendEmail(user, twoFactorEmail, "Two-Factor Authentication Enabled on Vukkybox");
+		sendEmail(user, twoFactorEmail, "Two-Factor Authentication enabled on Vukkybox");
+		user.save();
+	})
+}
+
+function disabletwoFactor(userId) {
+	let fs = require("fs")
+	User.findOne({"_id": userId}, function(err, user) {
+		if(err) return console.log(err);
+		user.twoFactor = false
+		user.twoFactorSecret = null;
+		let twoFactorEmail = fs.readFileSync(__dirname + "/public/email/2fadisable.html", "utf8");
+		sendEmail(user, twoFactorEmail, "Two-Factor Authentication disabled on Vukkybox");
 		user.save();
 	})
 }
@@ -748,5 +761,6 @@ module.exports = {
 	transLog,
 	transactions,
 	enabletwoFactor,
+	disabletwoFactor,
 	sendEmail
 }

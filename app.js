@@ -704,6 +704,23 @@ app.post('/fotp', checkAuth, function(req, res) {
 	res.send({valid: true});
 })
 
+
+app.post('/emailCode', checkAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0];
+	let secret = speakeasy.generateSecret({length: 8});
+	user.emailCode = secret;
+	req.session.emailCode = secret;
+	db.sendEmail(user, fs.readFileSync(`${__dirname}/public/email/emailCode.html`, "utf8"), "Vukkybox Authenticator recovery code");
+})
+
+app.post('/emailCheckCode', checkAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0];
+	if(!req.session.emailCode) return res.status(400).send({valid: false});
+	if(req.body.otp != req.session.emailCode) return res.status(400).send({valid: false});
+	db.disabletwoFactor(user._id);
+	res.send({valid: true});
+})
+
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 });
