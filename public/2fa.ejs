@@ -50,6 +50,7 @@
             document.getElementById("codeVerification").classList.remove("hidden");
         }
         document.getElementById("verificationForm").onsubmit = function(e) {
+            e.preventDefault();
             document.getElementById("codeVerification").classList.add("hidden");
             document.getElementById("loading").classList.remove("hidden");
             fetch("https://vukkybox.com/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value})})
