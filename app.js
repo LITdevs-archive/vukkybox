@@ -120,7 +120,6 @@ function popupMid(req, res, next) {
 	if (/MSIE|Trident/.test(req.headers['user-agent'])) return res.render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Your browser is no longer supported by Vukkybox. Please <a href='https://browser-update.org/update-browser.html'>update your browser</a>." });
 	if (req.headers['user-agent'].indexOf('Safari') != -1 && req.headers['user-agent'].indexOf('CriOS') == -1 && req.headers['user-agent'].indexOf('Macintosh') == -1 && req.headers['user-agent'].indexOf('OPR') == -1 && req.headers['user-agent'].indexOf('Edge') == -1 && req.headers['user-agent'].indexOf('Chrome') == -1) return res.render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Sorry, but Safari for iPhones and iPads is not currently supported by Vukkybox. Please use a different browser, like <a href='https://apps.apple.com/us/app/google-chrome/id535886823'>Google Chrome</a>." });
 	if (!req.isAuthenticated()) {
-		console.log("not authenticated, skipping popup")
 		return next()
 	}
 	if (req.user._id) {
