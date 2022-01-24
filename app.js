@@ -537,8 +537,8 @@ app.get('/callbackgithub',
 		}
 	} // auth success
 );
-app.get('/callbackgoogle', function(req, res) { 
-		console.log(req.user)
+app.get('/callbackgoogle',
+	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
@@ -548,6 +548,22 @@ app.get('/callbackgoogle', function(req, res) {
 		}
 	} // auth success
 );
+
+app.get('/callbackdiscord', function(req, res, next) {
+	passport.authenticate('discord', function(err, user, info) {
+	  if (err) { return next(err); }
+	  if (!user) { return res.redirect('/login'); }
+	  res.send("<a href='/callbackdiscord2'>Finish login</a>");
+	})(req, res, next);
+  });
+
+app.get('callbackdiscord2', function(req, res) {
+	req.logIn(user, function(err) {
+		if (err) { return next(err); }
+		return res.redirect('/');
+	});
+})
+
 app.get('/logout', grl, function(req, res) {
 	req.logout();
 	res.redirect('/');
