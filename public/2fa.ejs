@@ -24,6 +24,7 @@
                 <h1>Please enter the 2 factor authentication code from your Authenticator application</h1>
                 <br>
                 <form id="verificationForm">
+                    <input type="hidden" name="csrfToken" value="<%=csrfToken %>"/>
                     <input type="text" placeholder="000000" id="verificationInput"/>
                     <input type="submit" class="button button-blue" onclick="verifyCode()" value="Submit"/>
                 </form>
@@ -53,7 +54,7 @@
             e.preventDefault();
             document.getElementById("codeVerification").classList.add("hidden");
             document.getElementById("loading").classList.remove("hidden");
-            fetch("https://vukkybox.com/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value})})
+            fetch("https://vukkybox.com/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value, csrfToken: document.getElementById("csrfToken").value})})
             .then(res => res.json())
             .then(res => {
                 if(!res.valid) {

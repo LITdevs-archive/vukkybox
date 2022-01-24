@@ -103,7 +103,7 @@ app.use(cookieParser())
 app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
 app.use(function (err, req, res, next) {
 	if (err.code !== 'EBADCSRFTOKEN') return next(err)
-	let csrfWhitelist = ["/leaderboard", "/cotp", "/totp"]
+	let csrfWhitelist = ["/leaderboard"]
 	if(!csrfWhitelist.includes(req.url)) res.send("Couldn't verify Cross Site Request Forgery prevention")
 	if(csrfWhitelist.includes(req.url)) return next()
 })
@@ -691,7 +691,7 @@ app.get('/2fa', grl, checkAuth, function(req, res) {
 	req.session.two_factor_temp_secret = secret.base32;
 	qrcode.toDataURL(secret.otpauth_url, function(err, dataUrl) {
 		if (err) return res.render(__dirname + '/public/error.ejs', {stacktrace: null, friendlyError: "Something went wrong while starting the 2FA flow. <br>For your privacy the stacktrace is hidden, if this happens again please contact us."});
-		res.render(`${__dirname}/public/2fa.ejs`, {user: user, qrDataUrl: dataUrl, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(`${__dirname}/public/2fa.ejs`, {csrfToken: req.csrfToken(), user: user, qrDataUrl: dataUrl, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	});
 });
 
