@@ -537,8 +537,8 @@ app.get('/callbackgithub',
 		}
 	} // auth success
 );
-app.get('/callbackgoogle',
-	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) { 
+app.get('/callbackgoogle', function(req, res) { 
+		console.log(req.user)
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
