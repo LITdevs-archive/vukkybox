@@ -337,10 +337,10 @@ function lastLogin(user, callback) {
 }
 
 function deleteUser(profile, callback) {
-	User.deleteOne({id:profile._id}, function(err, res) {
+	User.deleteOne({_id:profile._id}, function(err, res) {
 		if(err) {
 			callback(500)
-			return console.error(err); //i might look for a js debugger :D > doesnt support virtual workspaces
+			return console.error(err);
 		}
 		callback("deleted")
 	})
