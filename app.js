@@ -685,7 +685,7 @@ app.get('/translog', grl, checkAuth, function(req, res) {
 
 app.get('/2fa', grl, checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
-	if(user.twofactor) return res.render(`${__dirname}/public/2fareset.ejs`, {user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+	if(user.twoFactor) return res.render(`${__dirname}/public/2fareset.ejs`, {user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	let secret = speakeasy.generateSecret({name: "Vukkybox 2FA"});
 	req.session.two_factor_temp_secret = secret.base32;
 	qrcode.toDataURL(secret.otpauth_url, function(err, dataUrl) {
