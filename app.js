@@ -514,7 +514,7 @@ app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, promp
 app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
 app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
 
-/*app.get('/callbackdiscord',
+app.get('/callbackdiscord',
 	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
@@ -524,7 +524,7 @@ app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
 			res.redirect('/')
 		}
 	} // auth success
-);*/
+);
 
 app.get('/callbackgithub',
 	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
@@ -548,21 +548,6 @@ app.get('/callbackgoogle',
 		}
 	} // auth success
 );
-
-app.get('/callbackdiscord', function(req, res, next) {
-	passport.authenticate('discord', function(err, user, info) {
-	  if (err) { return next(err); }
-	  if (!user) { return res.redirect('/login'); }
-	  res.send("<a href='/callbackdiscord2'>Finish login</a>");
-	})(req, res, next);
-  });
-
-app.get('/callbackdiscord2', function(req, res) {
-	req.logIn(user, function(err) {
-		if (err) { return next(err); }
-		return res.redirect('/');
-	});
-})
 
 app.get('/logout', grl, function(req, res) {
 	req.logout();
