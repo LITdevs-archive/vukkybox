@@ -17,7 +17,7 @@
             <div id="qr" class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>Scan this QR-code on your desired Authenticator application such as Google Authenticator.</h1>
                 <br>
-                <img src="<%=qrDataUrl %>"/>
+                <img class="object-center" src="<%=qrDataUrl %>"/>
                 <button class="button button-blue" onclick="requestCode()">I have scanned the QR-code</button>
             </div>
             <div id="codeVerification" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
@@ -30,16 +30,16 @@
                 </form>
             </div>
             <div id="loading" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
-                <span id="vukkyspinner"><br><br><img width="128" src="https://vukkybox.com/resources/pukkies/skelly.webp"></span>
+                <span id="vukkyspinner"><br><br><img class="object-center" width="128" src="https://vukkybox.com/resources/pukkies/skelly.webp"></span>
             </div>
             <div id="failed" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>Failed to activate 2FA, was the code incorrect?</h1>
-                <span><br><br><img width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyno.png?raw=true"></span>
+                <span><br><br><img class="object-center" width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyno.png?raw=true"></span>
                 <br><a href="https://vukkybox.com/2fa"><button class="button button-blue">Try again</button></a>
             </div>
             <div id="success" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>2FA has been enabled</h1>
-                <span><br><br><img width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true"></span>
+                <span><br><br><img class="object-center" width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true"></span>
                 <br><a href="https://vukkybox.com/store"><button class="button button-blue">Go play the game</button></a>
             </div>
         </center>
