@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 341,
+	"currentId": 344,
 	"rarity": {
 		"1": {
 			"1": {
@@ -714,6 +714,12 @@
 				"url": "https://vukkybox.com/resources/ausocketvukky.webp",
 				"description": "It's a Vukky, but its not Vukky. It's a wall socket from Australia.",
 				"creator": "skybird2333"
+			},
+			"343": {
+				"name": "Vukky Balloon",
+				"url": "https://vukkybox.com/resources/balloonvukky.webp",
+				"description": "Often used during special Vukky birthdays and parties.",
+				"creator": "Synne"
 			}
 		},
 		"3": {
@@ -1104,6 +1110,18 @@
 				"url": "https://vukkybox.com/resources/vukkynow.webp",
 				"description": "Seems like it's a button of some kind.",
 				"creator": "Vukky"
+			},
+			"342": {
+				"name": "Custom Vukky",
+				"url": "https://vukkybox.com/resources/customvukky.webp",
+				"description": "A Vukky originally created as a joke by the Central Vukky Printing Organization. You had to <a href='https://litdevs.org/pukky'>pay $9.99</a> to get one. This would eventually evolve into Pukkies.",
+				"creator": "Vukky"
+			},
+			"344": {
+				"name": "Party Vukky",
+				"url": "https://vukkybox.com/resources/partyvukky.webp",
+				"description": "Woo, there's a party!",
+				"creator": "Synne"
 			}
 		},
 		"4": {
