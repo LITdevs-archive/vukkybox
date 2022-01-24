@@ -25,8 +25,8 @@
                 <br>
                 <form id="verificationForm" action="https://vukkybox.com/2fareset" method="post">
                     <input type="hidden" name="_csrf" id="csrfToken" value="<%=csrfToken %>"/>
-                    <label for="otp">Input your 2FA code:</label>
-                    <input type="text" style="color:black" placeholder="000000" name="otp" id="otp"/>
+                    <label for="otp">Input your 2FA code</label><br>
+                    <input type="text" style="color:black" placeholder="000000" name="otp" id="otp"/><br><br>
                     <input type="submit" class="button button-blue" value="Submit"/>
                 </form>
                 <br>
@@ -37,8 +37,8 @@
                 <br>
                 <form id="emailVerifyForm">
                     <input type="hidden" name="_csrf" id="csrfToken" value="<%=csrfToken %>"/>
-                    <label for="emailCodeInput">Input the verification code:</label>
-                    <input type="text" style="color:black" placeholder="000000" name="emailCodeInput" id="emailCodeInput"/>
+                    <label for="emailCodeInput">Input the verification code:</label><br>
+                    <input type="text" style="color:black" placeholder="000000" name="emailCodeInput" id="emailCodeInput"/><br><br>
                     <small>If you did not receive the code, please check your spam folder.</small>
                     <input type="submit" class="button button-blue" value="Submit"/>
                 </form>
