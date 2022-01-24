@@ -718,7 +718,7 @@ function enabletwoFactor(userId, secret) {
 		if(err) return console.log(err);
 		user.twoFactor = true
 		user.twoFactorSecret = secret;
-		let twoFactorEmail = fs.readFileSync("./email/2faenable.html", "utf8");
+		let twoFactorEmail = fs.readFileSync(__dirname + "/public/email/2faenable.html", "utf8");
 		sendEmail(user, twoFactorEmail, "Two-Factor Authentication Enabled on Vukkybox");
 		user.save();
 	})
