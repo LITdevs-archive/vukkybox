@@ -333,6 +333,7 @@ app.get("/jsoneditor", grl, popupMid, function(req, res) {
 		id: req.body.id
 	}
 
+	if(!vukkyJson.rarity[vukky.rarity][vukky.id]) res.send("sussy baka");
 	vukkyJson.rarity[vukky.rarity][vukky.id] = {
 		name: vukky.name,
 		url: vukky.url,
