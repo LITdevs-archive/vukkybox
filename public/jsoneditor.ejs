@@ -153,6 +153,7 @@
                     document.getElementById("vukkyRarity").value = vukky.rarity;
                     document.getElementById("vukkyUrl").value = vukky.url;
                     document.getElementById("vukkyDescription").value = vukky.description;
+                    if (!vukky.creator) document.getElementById("vukkyCreator").disabled = true;
                     document.getElementById("vukkyCreator").value = vukky.creator;
                     document.getElementById("content").style.filter = "blur(5px)";
                     document.getElementById("content").style.pointerEvents = "none";
