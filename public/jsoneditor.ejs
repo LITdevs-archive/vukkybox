@@ -136,7 +136,7 @@
                 <img id="previewImage" src="https://vukkybox.com/resources/pukkies/skelly.webp">
                 <h2 id="editPopupName"></h2>
                 <form method="post" action="https://vukkybox.com/jsoneditor">
-                    <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+                    <input type="hidden" name="_csrf" value="<%=csrfToken %>" id="csrfToken">
                     <input type="hidden" name="rarity" id="vukkyRarity">
                     <input type="hidden" name="id" id="vukkyId">
                     <input type="text" name="name" id="vukkyName"/>
@@ -266,10 +266,12 @@
     }
 
     function moveVukky(oldRarity, newRarity, vukkyId) {
+        let csrfToken = document.getElementById('csrfToken').value;
         let data = {
             oldRarity: oldRarity,
             newRarity: newRarity,
-            vukkyId: vukkyId
+            vukkyId: vukkyId,
+            _csrf: csrfToken
         }
         $.ajax({
             url: "https://vukkybox.com/jsonraritychange",
