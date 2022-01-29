@@ -361,7 +361,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 		newRarity: req.body.newRarity,
 		id: req.body.vukkyId
 	}
-
+	console.log(postData)
 	if(!vukkyJson.rarity[postData.rarity][postData.id]) return res.send("sussy baka");
 	let vukky = vukkyJson.rarity[postData.rarity][postData.id]
 	delete vukkyJson[postData.rarity][postData.id]
