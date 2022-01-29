@@ -22,51 +22,100 @@
     <hr>
     <div class="container">
         <h1>bukky 6 star</h1>
-        <div draggable="true" class="box">D</div>
-        <div draggable="true" class="box">E</div>
-        <div draggable="true" class="box">F</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["6"]);
+            let rarity = vjson.rarity["6"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img width="128" src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
     <hr>
     <div class="container">
         <h1>godly 5 star</h1>
-        <div draggable="true" class="box">D</div>
-        <div draggable="true" class="box">E</div>
-        <div draggable="true" class="box">F</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["5"]);
+            let rarity = vjson.rarity["5"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img width="128" src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
     <hr>
     <div class="container">
         <h1>mythical 4 star</h1>
-        <div draggable="true" class="box">D</div>
-        <div draggable="true" class="box">E</div>
-        <div draggable="true" class="box">F</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["4"]);
+            let rarity = vjson.rarity["4"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img width="128" src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
     <hr>
     <div class="container">
         <h1>vukky 8 star</h1>
-        <div draggable="true" class="box">D</div>
-        <div draggable="true" class="box">E</div>
-        <div draggable="true" class="box">F</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["pukky"]);
+            let rarity = vjson.rarity["pukky"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img width="128" src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
     <hr>
     <div class="container">
         <h1>rare 3 star</h1>
-        <div draggable="true" class="box">D</div>
-        <div draggable="true" class="box">E</div>
-        <div draggable="true" class="box">F</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["3"]);
+            let rarity = vjson.rarity["3"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img width="128" src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
     <hr>
     <div class="container">
         <h1>uncommon 2 star</h1>
-        <div draggable="true" class="box">D</div>
-        <div draggable="true" class="box">E</div>
-        <div draggable="true" class="box">F</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["2"]);
+            let rarity = vjson.rarity["2"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img width="128" src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
     <hr>
     <div class="container">
         <h1>common 1 star</h1>
-        <div draggable="true" class="box">D</div>
-        <div draggable="true" class="box">E</div>
-        <div draggable="true" class="box">F</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["1"]);
+            let rarity = vjson.rarity["1"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img width="128" src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
   </body>
   <script>
