@@ -52,12 +52,9 @@
         }
         
         if (dragSrcEl != this) {
-            dragSrcEl.parentNode.removeChild(dragSrcEl)
-            this.parentNode.appendChild(dragSrcEl)//e.dataTransfer.getData('text/html');
-            console.log(this)
-            console.log(dragSrcEl)
-            console.log(this.parentNode)
-            dragSrcEl.remove();
+            let newNode = dragSrcEl.cloneNode(true)
+            dragSrcEl.remove()
+            this.parentNode.appendChild(dragSrcEl)
         }
         
         return false;
