@@ -154,6 +154,7 @@
                     document.getElementById("vukkyUrl").value = vukky.url;
                     document.getElementById("vukkyDescription").value = vukky.description;
                     if (!vukky.creator) document.getElementById("vukkyCreator").disabled = true;
+                    if (vukky.creator) document.getElementById("vukkyCreator").disabled = false;
                     document.getElementById("vukkyCreator").value = vukky.creator;
                     document.getElementById("content").style.filter = "blur(5px)";
                     document.getElementById("content").style.pointerEvents = "none";
