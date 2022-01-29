@@ -364,7 +364,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 	if(!vukkyJson.rarity[postData.rarity][postData.id]) return res.status(400).send("sussy baka");
 	let vukky = vukkyJson.rarity[postData.rarity][postData.id]
 	delete vukkyJson.rarity[postData.rarity][postData.id]
-	vukkyJson[postData.newRarity][postData.id] = vukky;
+	vukkyJson.rarity[postData.newRarity][postData.id] = vukky;
 	fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 
 	res.status(200)
