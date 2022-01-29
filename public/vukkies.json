@@ -206,17 +206,17 @@
 				"description": "This Vukky has been to Åland.",
 				"creator": "Vukky"
 			},
+			"72": {
+				"name": "Wikilink Vukky",
+				"url": "https://vukkybox.com/resources/wikilinkvukky.webp",
+				"description": "This Vukky has entered the world of MediaWiki, and can never leave.",
+				"creator": "Vukky"
+			},
 			"141": {
 				"name": "Minevukk",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/minevukk.webp",
 				"description": "Why mine diamonds when you can mine Vukkies?",
 				"creator": "Seysa"
-			},
-			"155": {
-				"name": "Vukkyputer",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkyputer.webp",
-				"description": "The Vukky isn't in the computer anymore, he IS the computer.",
-				"creator": "Alespic"
 			},
 			"158": {
 				"name": "China Vukky",
@@ -539,42 +539,6 @@
 				"description": "This Vukky is so disappointed it doesn't even know what to display.",
 				"creator": "Vukky"
 			},
-			"45": {
-				"name": "Halloween Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyhalloween.webp",
-				"description": "Very very scary!",
-				"creator": "Vukky"
-			},
-			"47": {
-				"name": "New Year Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp",
-				"description": "Yes! It's 2020 2! Uh, I mean 2022. Hold on, what do you mean \"COVID-22\"??",
-				"creator": "Vukky"
-			},
-			"50": {
-				"name": "Valentine Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyvalentine.webp",
-				"description": "What a cute Vukky. Does it have chocolate for me? The description writer?",
-				"creator": "Vukky"
-			},
-			"51": {
-				"name": "Worker's Day Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyworkersday.webp",
-				"description": "This Vukky is a hard worker.",
-				"creator": "Vukky"
-			},
-			"52": {
-				"name": "Yahoo Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyyahoo.webp",
-				"description": "This Vukky has a track record of ruining the internet! Watch out.",
-				"creator": "Vukky"
-			},
-			"72": {
-				"name": "Wikilink Vukky",
-				"url": "https://vukkybox.com/resources/wikilinkvukky.webp",
-				"description": "This Vukky has entered the world of MediaWiki, and can never leave.",
-				"creator": "Vukky"
-			},
 			"74": {
 				"name": "Wiiky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkywiiky.webp",
@@ -597,19 +561,13 @@
 				"name": "Fading Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkyfade.webp",
 				"description": "Mr. Neatnik, i dont feel so good",
-				"creator": "not Skelly"
+				"creator": "Skelly"
 			},
 			"131": {
 				"name": "Shy Vukky",
 				"url": "https://vukkybox.com/resources/shyvukky.webp",
 				"description": "This Vukky doesn't want to be seen right now, nor does it want you to pick it up and put it in your display case!! ...Oh, you're doing that anyway, aren't you?",
 				"creator": "Skelly"
-			},
-			"133": {
-				"name": "Selmersen",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/selmersen.webp",
-				"description": "A tribute to a friend.",
-				"creator": "Vukky"
 			},
 			"142": {
 				"name": "Gift Vukky",
@@ -622,6 +580,12 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/burningvukky.webp",
 				"description": "AAAAAAAAAAAAA!!!!!",
 				"creator": "Seysa"
+			},
+			"155": {
+				"name": "Vukkyputer",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkyputer.webp",
+				"description": "The Vukky isn't in the computer anymore, he IS the computer.",
+				"creator": "Alespic"
 			},
 			"190": {
 				"name": "Butter Vukky",
@@ -714,11 +678,12 @@
 				"creator": "Nancy",
 				"audio": "https://vukkybox.com/resources/unboxnancy.mp3"
 			},
-			"244": {
-				"name": "Vesax Vukky",
-				"url": "https://vukkybox.com/resources/vesax.webp",
-				"description": "This Vukky seems to have weird lines on it.",
-				"creator": "Skelly"
+			"242": {
+				"name": "Nudge Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/nudgevukky.webp",
+				"description": "STOP. NUDGING. ME.",
+				"creator": "Synne",
+				"audio": "https://vukkybox.com/resources/unboxnudge.mp3"
 			},
 			"290": {
 				"name": "Twokky",
@@ -774,6 +739,12 @@
 				"description": "I wonder what's inside!",
 				"creator": "Vukky"
 			},
+			"324": {
+				"name": "Obby Vukky",
+				"url": "https://vukkybox.com/resources/obbyvukky.webp",
+				"description": "Even easy obbies are hard obbies if you haven't obbied before.",
+				"creator": "Synne"
+			},
 			"325": {
 				"name": "Dicey",
 				"url": "https://vukkybox.com/resources/dicey.webp",
@@ -791,12 +762,6 @@
 				"url": "https://vukkybox.com/resources/doodlevukky.webp",
 				"description": "Vukky <i>loves</i> doodling Vukkies everywhere. This is a pretty good example!",
 				"creator": "Vukky"
-			},
-			"332": {
-				"name": "Catboy Vukky",
-				"url": "https://vukkybox.com/resources/catboyvukky.webp",
-				"description": "Nya",
-				"creator": "Femboy Nova"
 			},
 			"334": {
 				"name": "Australian Socket Vukky",
@@ -824,6 +789,42 @@
 				"description": "I don't want a lot for Christmas, there is just one thing I need... Vukkies!",
 				"creator": "Vukky"
 			},
+			"45": {
+				"name": "Halloween Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyhalloween.webp",
+				"description": "Very very scary!",
+				"creator": "Vukky"
+			},
+			"47": {
+				"name": "New Year Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp",
+				"description": "Yes! It's 2020 2! Uh, I mean 2022. Hold on, what do you mean \"COVID-22\"??",
+				"creator": "Vukky"
+			},
+			"50": {
+				"name": "Valentine Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyvalentine.webp",
+				"description": "What a cute Vukky. Does it have chocolate for me? The description writer?",
+				"creator": "Vukky"
+			},
+			"51": {
+				"name": "Worker's Day Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyworkersday.webp",
+				"description": "This Vukky is a hard worker.",
+				"creator": "Vukky"
+			},
+			"52": {
+				"name": "Yahoo Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkyyahoo.webp",
+				"description": "This Vukky has a track record of ruining the internet! Watch out.",
+				"creator": "Vukky"
+			},
+			"75": {
+				"name": "Wiiky U",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkywiikyu.webp",
+				"description": "Not really sure what this is supposed to be. An accessory for the Wiiky?",
+				"creator": "Vukky"
+			},
 			"113": {
 				"name": "Vukky Captcha",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkycaptcha.webp",
@@ -841,6 +842,12 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/farawayvukky.webp",
 				"description": "Oh Vukky, when will I ever see you again...",
 				"creator": "Seysa"
+			},
+			"133": {
+				"name": "Selmersen",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/selmersen.webp",
+				"description": "A tribute to a friend.",
+				"creator": "Vukky"
 			},
 			"138": {
 				"name": "Dream Vukky",
@@ -870,12 +877,6 @@
 				"name": "Squid Game Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/squidgamevukky.webp",
 				"description": "This Vukky is either going to be a millionaire, or die in the first round.",
-				"creator": "Seysa"
-			},
-			"179": {
-				"name": "Norvukk",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/norvukk.webp",
-				"description": "This Vukky has been to Norway way too much.",
 				"creator": "Seysa"
 			},
 			"181": {
@@ -935,6 +936,12 @@
 				"description": "It happens to be the 200th Vukky. Hmm, what does that mean?",
 				"creator": "Synne"
 			},
+			"209": {
+				"name": "Vukky Potter",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkypotter.webp",
+				"description": "Vukgardium leviosa.",
+				"creator": "Seysa"
+			},
 			"213": {
 				"name": "VukVuk",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukvuk.webp",
@@ -946,18 +953,6 @@
 				"url": "https://vukkybox.com/resources/kyky.webp",
 				"description": "Two Vukky heads stitched together, one of many failed experiments. The pain must be unbearable... if they can even feel it... How do they control their limbs?",
 				"creator": "SharkOfGod"
-			},
-			"216": {
-				"name": "Kaiser Vukky",
-				"url": "https://vukkybox.com/resources/kaiservuk.webp",
-				"description": "Long live emperor Vukky!",
-				"creator": "Smokey"
-			},
-			"219": {
-				"name": "lol biscuits",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/lolbiscuits.webp",
-				"description": "your texting puppy will think these lol biscuits are totally omg. why is this here?",
-				"creator": "GANZ"
 			},
 			"220": {
 				"name": "Sliced Among Us Vukky",
@@ -1008,12 +1003,11 @@
 				"description": "pls sell dankvukker all",
 				"creator": "Synne"
 			},
-			"242": {
-				"name": "Nudge Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/nudgevukky.webp",
-				"description": "STOP. NUDGING. ME.",
-				"creator": "Synne",
-				"audio": "https://vukkybox.com/resources/unboxnudge.mp3"
+			"244": {
+				"name": "Vesax Vukky",
+				"url": "https://vukkybox.com/resources/vesax.webp",
+				"description": "This Vukky seems to have weird lines on it.",
+				"creator": "Skelly"
 			},
 			"275": {
 				"name": "KenTukky Fried Chicken",
@@ -1081,17 +1075,23 @@
 				"description": "This Vukky covers up things that would make microsoft sue the shit out of us, whatever that means.",
 				"creator": "Vukky"
 			},
-			"324": {
-				"name": "Obby Vukky",
-				"url": "https://vukkybox.com/resources/obbyvukky.webp",
-				"description": "Even easy obbies are hard obbies if you haven't obbied before.",
+			"322": {
+				"name": "Vukky Shaman",
+				"url": "https://vukkybox.com/resources/vukkyshaman.webp",
+				"description": "No cheese for you.",
 				"creator": "Synne"
 			},
-			"335": {
-				"name": "Contract Stamp Vukky",
-				"url": "https://vukkybox.com/resources/contractsmallvukky.webp",
-				"description": "This little Vukky is used to stamp contracts!",
-				"creator": "Vukky"
+			"331": {
+				"name": "Vukky Washington",
+				"url": "https://vukkybox.com/resources/vukkywashington.webp",
+				"description": "Seems like an important person in some parts of the world.. not here in Vukkyland though!",
+				"creator": "Seysa"
+			},
+			"332": {
+				"name": "Catboy Vukky",
+				"url": "https://vukkybox.com/resources/catboyvukky.webp",
+				"description": "Nya",
+				"creator": "Femboy Nova"
 			},
 			"338": {
 				"name": "Minevukker",
@@ -1116,6 +1116,12 @@
 				"url": "https://vukkybox.com/resources/customvukky.webp",
 				"description": "A Vukky originally created as a joke by the Central Vukky Printing Organization. You had to <a href='https://litdevs.org/pukky'>pay $9.99</a> to get one. This would eventually evolve into Pukkies.",
 				"creator": "Vukky"
+			},
+			"344": {
+				"name": "Party Vukky",
+				"url": "https://vukkybox.com/resources/partyvukky.webp",
+				"description": "Woo, there's a party!",
+				"creator": "Synne"
 			}
 		},
 		"4": {
@@ -1147,12 +1153,6 @@
 				"name": "Smart Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkysmart.webp",
 				"description": "It's been editing Wikipedia a lot. So much knowledge.",
-				"creator": "Vukky"
-			},
-			"75": {
-				"name": "Wiiky U",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkywiikyu.webp",
-				"description": "Not really sure what this is supposed to be. An accessory for the Wiiky?",
 				"creator": "Vukky"
 			},
 			"107": {
@@ -1236,12 +1236,6 @@
 				"description": "What a glorious sunset.",
 				"creator": "Seysa"
 			},
-			"153": {
-				"name": "m9 bayonet freehand",
-				"url": "https://vukkybox.com/resources/m9.webp",
-				"description": "oh god oh fuck its got a m9 bayonet freehand",
-				"creator": "Skelly"
-			},
 			"169": {
 				"name": "Vukky God",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkygod.webp",
@@ -1253,6 +1247,12 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/ghostvukky.webp",
 				"description": "Boo, you can't even see this Vukky! Oh wait, you can?",
 				"creator": "Smokey"
+			},
+			"179": {
+				"name": "Norvukk",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/norvukk.webp",
+				"description": "This Vukky has been to Norway way too much.",
+				"creator": "Seysa"
 			},
 			"182": {
 				"name": "Monkey Vukky",
@@ -1272,23 +1272,29 @@
 				"description": "You feel like you're gonna have a wooing time.",
 				"creator": "Smokey"
 			},
+			"216": {
+				"name": "Kaiser Vukky",
+				"url": "https://vukkybox.com/resources/kaiservuk.webp",
+				"description": "Long live emperor Vukky!",
+				"creator": "Smokey"
+			},
 			"217": {
 				"name": "Vthulhu",
 				"url": "https://vukkybox.com/resources/vthulu.webp",
 				"description": "Looks like Cthulhu has taken over this one...",
 				"creator": "Xotic"
 			},
+			"219": {
+				"name": "lol biscuits",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/lolbiscuits.webp",
+				"description": "your texting puppy will think these lol biscuits are totally omg. why is this here?",
+				"creator": "GANZ"
+			},
 			"222": {
 				"name": "Strong Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/strongvukky.webp",
 				"description": "chad vukky vs virgin among us crewmate",
 				"creator": "Synne"
-			},
-			"245": {
-				"name": "Cupcake Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/cupcakevukky.webp",
-				"description": "CUPCAKES!!",
-				"creator": "Sunset"
 			},
 			"276": {
 				"name": "Bad Santa Vukky",
@@ -1315,18 +1321,18 @@
 				"description": "Despite his sharp edges, he is the softest Numky and loves arts and crafts! Even throwing glitter around when something exciting happens!",
 				"creator": "VocalFan"
 			},
-			"308": {
-				"name": "Vukky Drawing",
-				"url": "https://vukkybox.com/resources/vukkydrawing.webp",
-				"description": "NO DON'T BREAK THE 4TH WALL",
-				"creator": "Alespic"
-			},
 			"316": {
 				"name": "Crusty Vukky",
 				"url": "https://vukkybox.com/resources/crustyvukky.webp",
 				"description": "Delicious.",
 				"creator": "Vukky",
 				"audio": "https://vukkybox.com/resources/unboxcrusty.ogg"
+			},
+			"321": {
+				"name": "Runevukk",
+				"url": "https://vukkybox.com/resources/runevukk.webp",
+				"description": "You could also call it the Medieval Vukky, but this wouldn't be a Vukky game without a RuneScape reference.",
+				"creator": "Synne"
 			},
 			"327": {
 				"name": "Stranded Vukky",
@@ -1340,29 +1346,17 @@
 				"description": "This Vukky looks a bit Wacky. <img src=\"https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkyamongus.webp\" width=32/>",
 				"creator": "Strixx Em"
 			},
-			"336": {
-				"name": "Shiny Contract Stamp Vukky",
-				"url": "https://vukkybox.com/resources/coloredcontractsmallvukky.webp",
-				"description": "This little Vukky is used to stamp <span style=\"background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);-webkit-background-clip: text;color: transparent;\">extra shiny</span> contracts!",
-				"creator": "Vukky"
+			"337": {
+				"name": "Sharky",
+				"url": "https://vukkybox.com/resources/sharky.webp",
+				"description": "Sharky is a big Vukky. Big Vukkies eat small Vukkies. Sharky is happy. Vukky is... dead. ",
+				"creator": "Synne"
 			},
 			"340": {
 				"name": "Jesus Vukky",
 				"url": "https://vukkybox.com/resources/jesusvukky.webp",
 				"description": "This Vukky has lots of bread and fish!",
 				"creator": "Pandarose_"
-			},
-			"344": {
-				"name": "Party Vukky",
-				"url": "https://vukkybox.com/resources/partyvukky.webp",
-				"description": "Woo, there's a party!",
-				"creator": "Synne"
-			},
-			"345": {
-				"name": "Vukky Void",
-				"url": "https://vukkybox.com/resources/ezgif.com-gif-maker.webp",
-				"description": "Leaving is not an option.",
-				"creator": "Vukky"
 			}
 		},
 		"5": {
@@ -1402,22 +1396,10 @@
 				"description": "Looks quite huggable. Not for sale, though.",
 				"creator": "Vukky"
 			},
-			"135": {
-				"name": "Tassen",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/tassen.webp",
-				"description": "WOW!",
-				"creator": "Seysa"
-			},
 			"148": {
 				"name": "Donald Vukk",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/donaldvukk.webp",
 				"description": "QUACK! I'm a duck??",
-				"creator": "Seysa"
-			},
-			"209": {
-				"name": "Vukky Potter",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkypotter.webp",
-				"description": "Vukgardium leviosa.",
 				"creator": "Seysa"
 			},
 			"233": {
@@ -1425,6 +1407,12 @@
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkyteardown.webp",
 				"description": "All the things the Central Vukky Printing Organization uses to print Vukkies. This image is confidential, and must not be shared.",
 				"creator": "Vukky"
+			},
+			"245": {
+				"name": "Cupcake Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/cupcakevukky.webp",
+				"description": "CUPCAKES!!",
+				"creator": "Sunset"
 			},
 			"293": {
 				"name": "Fivekky",
@@ -1436,18 +1424,6 @@
 				"name": "Vukky of Fate",
 				"url": "https://vukkybox.com/resources/vukkyoffate.webp",
 				"description": "Change your plate, change your fate. Not so easy when meteors are trying to kill you.",
-				"creator": "Synne"
-			},
-			"331": {
-				"name": "Vukky Washington",
-				"url": "https://vukkybox.com/resources/vukkywashington.webp",
-				"description": "Seems like an important person in some parts of the world.. not here in Vukkyland though!",
-				"creator": "Seysa"
-			},
-			"337": {
-				"name": "Sharky",
-				"url": "https://vukkybox.com/resources/sharky.webp",
-				"description": "Sharky is a big Vukky. Big Vukkies eat small Vukkies. Sharky is happy. Vukky is... dead. ",
 				"creator": "Synne"
 			},
 			"346": {
@@ -1488,12 +1464,24 @@
 				"description": "This Vukky has gotten stuck in a box! Hmm... This seems strangely familiar... Probably nothing.",
 				"creator": "Vukky"
 			},
+			"135": {
+				"name": "Tassen",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/tassen.webp",
+				"description": "WOW!",
+				"creator": "Seysa"
+			},
 			"136": {
 				"name": "Gnome Vukky",
 				"url": "https://vukkybox.com/resources/gnome.webp",
 				"description": "You've been vukgnomed!",
 				"creator": "Skelly",
 				"audio": "https://vukkybox.com/resources/unboxgnome.wav"
+			},
+			"153": {
+				"name": "m9 bayonet freehand",
+				"url": "https://vukkybox.com/resources/m9.webp",
+				"description": "oh god oh fuck its got a m9 bayonet freehand",
+				"creator": "Skelly"
 			},
 			"176": {
 				"name": "Elf Vukky",
@@ -1513,6 +1501,12 @@
 				"description": "The brightest and shiniest of the Numkies, he gives rewards to the best Vukkies! ...He sure does leave a sparkly mess, though!",
 				"creator": "VocalFan"
 			},
+			"308": {
+				"name": "Vukky Drawing",
+				"url": "https://vukkybox.com/resources/vukkydrawing.webp",
+				"description": "NO DON'T BREAK THE 4TH WALL",
+				"creator": "Alespic"
+			},
 			"312": {
 				"name": "<script src='/resources/reskin/webtv.js'></script><span style=\"text-transform: lowercase; font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;\">Web<span style=\"color:gold;\">TV</span></span> Vukky",
 				"url": "https://vukkybox.com/resources/webtvvukky.webp",
@@ -1527,23 +1521,29 @@
 				"creator": "Vukky",
 				"audio": "https://vukkybox.com/resources/silence.ogg"
 			},
-			"321": {
-				"name": "Runevukk",
-				"url": "https://vukkybox.com/resources/runevukk.webp",
-				"description": "You could also call it the Medieval Vukky, but this wouldn't be a Vukky game without a RuneScape reference.",
-				"creator": "Synne"
-			},
-			"322": {
-				"name": "Vukky Shaman",
-				"url": "https://vukkybox.com/resources/vukkyshaman.webp",
-				"description": "No cheese for you.",
-				"creator": "Synne"
-			},
 			"330": {
 				"name": "Linky",
 				"url": "https://vukkybox.com/resources/linky.webp",
 				"description": "Linky is here to save the day, the princess and everyone else yet again.",
 				"creator": "Synne"
+			},
+			"335": {
+				"name": "Contract Stamp Vukky",
+				"url": "https://vukkybox.com/resources/contractsmallvukky.webp",
+				"description": "This little Vukky is used to stamp contracts!",
+				"creator": "Vukky"
+			},
+			"336": {
+				"name": "Shiny Contract Stamp Vukky",
+				"url": "https://vukkybox.com/resources/coloredcontractsmallvukky.webp",
+				"description": "This little Vukky is used to stamp <span style=\"background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);-webkit-background-clip: text;color: transparent;\">extra shiny</span> contracts!",
+				"creator": "Vukky"
+			},
+			"345": {
+				"name": "Vukky Void",
+				"url": "https://vukkybox.com/resources/ezgif.com-gif-maker.webp",
+				"description": "Leaving is not an option.",
+				"creator": "Vukky"
 			}
 		},
 		"7": {
