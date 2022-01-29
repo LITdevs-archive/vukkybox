@@ -4,6 +4,8 @@
     <title>Vukkybox - JSON Editor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://vukkybox.com/resources/jquery.dnd_page_scroll.js"></script>
   </head>  
   <body>
     <div class="container">
@@ -119,6 +121,9 @@
     </div>
   </body>
   <script>
+    $(document).ready(function() {
+        $().dndPageScroll();
+    });
     document.addEventListener('DOMContentLoaded', (event) => {
         var dragSrcEl = null;
 
@@ -141,34 +146,34 @@
         }
 
         function handleDragEnter(e) {
-        this.classList.add('over');
+            this.classList.add('over');
         }
 
         function handleDragLeave(e) {
-        this.classList.remove('over');
+            this.classList.remove('over');
         }
 
         function handleDrop(e) {
-        e.preventDefault()
-        if (e.stopPropagation) {
-            e.stopPropagation(); // stops the browser from redirecting.
-        }
-        
-        if (dragSrcEl != this) {
-            let newNode = dragSrcEl.cloneNode(true)
-            dragSrcEl.remove()
-            this.parentNode.appendChild(dragSrcEl)
-        }
-        
-        return false;
+            e.preventDefault()
+            if (e.stopPropagation) {
+                e.stopPropagation(); // stops the browser from redirecting.
+            }
+            
+            if (dragSrcEl != this) {
+                let newNode = dragSrcEl.cloneNode(true)
+                dragSrcEl.remove()
+                this.parentNode.appendChild(dragSrcEl)
+            }
+            
+            return false;
         }
 
         function handleDragEnd(e) {
-        this.style.opacity = '1';
-        
-        items.forEach(function (item) {
-            item.classList.remove('over');
-        });
+            this.style.opacity = '1';
+            
+            items.forEach(function (item) {
+                item.classList.remove('over');
+            });
         }
 
 
