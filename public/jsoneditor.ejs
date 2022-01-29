@@ -11,21 +11,13 @@
     <div class="container">
         <h1>unique 7 star</h1>
         <% 
-            function escapeHtml(unsafe){
-                return unsafe
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#039;");
-            }
             // loop through rarity 7 in vjson and __append to the page
             let rarityKeys = Object.keys(vjson.rarity["7"]);
             let rarity = vjson.rarity["7"];
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
@@ -39,7 +31,7 @@
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-               __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+               __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
@@ -53,7 +45,7 @@
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-               __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+               __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
@@ -67,7 +59,7 @@
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-               __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+               __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
@@ -81,7 +73,7 @@
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-               __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+               __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
@@ -95,7 +87,7 @@
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-               __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+               __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
@@ -109,7 +101,7 @@
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-               __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+               __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
@@ -123,7 +115,7 @@
             for (let i = 0; i < rarityKeys.length; i++) {
                 let vukkyId = rarityKeys[i];
                 let vukky = rarity[vukkyId];
-               __append(`<span draggable="true" class="box" id="${escapeHtml(vukkyId)}" data-name="${escapeHtml(vukky.name)}" data-url="${escapeHtml(vukky.url)}" data-description="${escapeHtml(vukky.description)}" data-creator="${escapeHtml(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+               __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
             }
         %> 
     </div>
