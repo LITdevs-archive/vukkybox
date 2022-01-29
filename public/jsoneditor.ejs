@@ -188,13 +188,21 @@
         });
     });
     
+    function parseDataAttribute(unparsedString) {
+        let parser = new DOMParser;
+        let dom = parser.parseFromString(
+            '<!doctype html><body>' + unparsedString,
+            'text/html');
+        return dom.body.textContent;
+    }
+
     function editVukky(dataSpan) {
         let vukky = {
             id: dataSpan.id,
-            name: dataSpan.getAttribute('data-name'),
-            url: dataSpan.getAttribute('data-url'),
-            description: dataSpan.getAttribute('data-description'),
-            creator: dataSpan.getAttribute('data-creator')
+            name: parseDataAttribute(dataSpan.getAttribute('data-name')),
+            url: parseDataAttribute(dataSpan.getAttribute('data-url')),
+            description: parseDataAttribute(dataSpan.getAttribute('data-description')),
+            creator: parseDataAttribute(dataSpan.getAttribute('data-creator'))
         };
         console.log(vukky)
     }
