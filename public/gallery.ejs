@@ -60,9 +60,9 @@
                         //owned++
                         //totalOwned++
                         __append(`<a style="display: none;" vukkyid="${Object.keys(vukkies["7"])[i]}" href="https://vukkybox.com/view/7/${Object.keys(vukkies["7"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["7"][Object.keys(vukkies["7"])[i]].url}" title="${vukkies["7"][Object.keys(vukkies["7"])[i]].name} (#${Object.keys(vukkies["7"])[i]})"/><ins id="${Object.keys(vukkies["7"])[i]}b"></ins></a>`)
-                        /*if(user.duplicates && user.duplicates[Object.keys(vukkies["7"])[i]] && parseInt(user.duplicates[Object.keys(vukkies["7"])[i]]) >= 1) {
+                        if(user.duplicates && user.duplicates[Object.keys(vukkies["7"])[i]] && parseInt(user.duplicates[Object.keys(vukkies["7"])[i]]) >= 1) {
                             document.getElementById(Object.keys(vukkies["7"])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(user.duplicates[Object.keys(vukkies["7"])[i]]) + 1}')`
-                        }*/
+                        }
                     }
                 }
             %> 
