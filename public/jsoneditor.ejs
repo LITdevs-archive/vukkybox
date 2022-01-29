@@ -234,13 +234,15 @@
     });
 
     function editVukky(dataSpan) {
+        let creator = decodeURIComponent(dataSpan.getAttribute('data-creator'))
+        console.log(creator)
         let vukky = {
             id: dataSpan.id,
             name: decodeURIComponent(dataSpan.getAttribute('data-name')),
             url: decodeURIComponent(dataSpan.getAttribute('data-url')),
             description: decodeURIComponent(dataSpan.getAttribute('data-description')),
             rarity: decodeURIComponent(dataSpan.parentNode.getAttribute('data-rarity')),
-            creator: decodeURIComponent(dataSpan.getAttribute('data-creator'))
+            creator: creator ? creator != "undefined" ? creator : null : null
         };
         editPopup(vukky)
     }
