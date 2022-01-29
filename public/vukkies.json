@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 344,
+	"currentId": 347,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1425,6 +1425,12 @@
 				"url": "https://vukkybox.com/resources/vukkyoffate.webp",
 				"description": "Change your plate, change your fate. Not so easy when meteors are trying to kill you.",
 				"creator": "Synne"
+			},
+			"346": {
+				"name": "Vukky Marble",
+				"url": "https://vukkybox.com/resources/vukkymarble.webp",
+				"description": "For use in marble races! It's also nice to look at, I suppose. I wonder how many Vukkies are trapped in there...",
+				"creator": "Mot"
 			}
 		},
 		"6": {
@@ -1467,7 +1473,7 @@
 			"136": {
 				"name": "Gnome Vukky",
 				"url": "https://vukkybox.com/resources/gnome.webp",
-				"description": "its just laughing we cant get it to stop please help us it just keeps laughing please help us help help help",
+				"description": "You've been vukgnomed!",
 				"creator": "Skelly",
 				"audio": "https://vukkybox.com/resources/unboxgnome.wav"
 			},
@@ -1531,6 +1537,12 @@
 				"name": "Shiny Contract Stamp Vukky",
 				"url": "https://vukkybox.com/resources/coloredcontractsmallvukky.webp",
 				"description": "This little Vukky is used to stamp <span style=\"background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);-webkit-background-clip: text;color: transparent;\">extra shiny</span> contracts!",
+				"creator": "Vukky"
+			},
+			"345": {
+				"name": "Vukky Void",
+				"url": "https://vukkybox.com/resources/ezgif.com-gif-maker.webp",
+				"description": "Leaving is not an option.",
 				"creator": "Vukky"
 			}
 		},
@@ -2048,6 +2060,11 @@
 				"name": "Hamoude's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/Hamoude.webp",
 				"description": "This Pukky belongs to Hamoude"
+			},
+			"347": {
+				"name": "SkyCube's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/skycube.webp",
+				"description": "This Pukky belongs to SkyCube"
 			}
 		}
 	}
