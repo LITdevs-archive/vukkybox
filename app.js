@@ -350,12 +350,12 @@ app.post("/jsoneditor", grl, function(req, res) {
 })
 
 app.post("/jsonraritychange", grl, function(req, res) {
-	if(!req.isAuthenticated()) return res.status(403)
-	if(!req.user && !req.user[0]) return res.status(403)
-	if(req.user && !req.user.discordId) return res.status(403)
-	if(req.user[0] && !req.user[0].discordId) return res.status(403)
+	if(!req.isAuthenticated()) return res.sendStatus(403)
+	if(!req.user && !req.user[0]) return res.sendStatus(403)
+	if(req.user && !req.user.discordId) return res.sendStatus(403)
+	if(req.user[0] && !req.user[0].discordId) return res.sendStatus(403)
 	user = req.user._id ? req.user : req.user[0]
-	if(!administrators.includes(user.discordId)) return res.status(403)
+	if(!administrators.includes(user.discordId)) return res.sendStatus(403)
 	let postData = {
 		rarity: req.body.oldRarity,
 		newRarity: req.body.newRarity,
@@ -367,7 +367,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 	vukkyJson.rarity[postData.newRarity][postData.id] = vukky;
 	fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 
-	res.status(200)
+	res.sendStatus(200)
 	
 })
 
