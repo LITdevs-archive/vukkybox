@@ -23,6 +23,7 @@
         var dragSrcEl = null;
 
         function handleDragStart(e) {
+            if (this.parentNode.childElementCount < 2) return false;
             this.style.opacity = '0.4';
             dragSrcEl = this;
             e.dataTransfer.effectAllowed = 'move';
