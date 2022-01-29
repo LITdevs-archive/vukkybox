@@ -146,6 +146,7 @@
                     <input type="text" name="audio" id="vukkyAudio"/>
                     <input type="submit" value="Execute">
                 </form>
+                <button onclick="closePopup()">Wait fuck no</button>
           </div>
           <script>
                 function editPopup(vukky) {
@@ -167,6 +168,12 @@
                     document.getElementById("content").style.userSelect = "none";
                     document.getElementById("editPopup").style.display = "block";
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                function closePopup() {
+                    document.getElementById("content").style.filter = "none";
+                    document.getElementById("content").style.pointerEvents = "auto";
+                    document.getElementById("content").style.userSelect = "auto";
+                    document.getElementById("editPopup").style.display = "none";
                 }
           </script>
       </center>
