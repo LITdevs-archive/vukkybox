@@ -223,7 +223,7 @@
                 dragSrcEl.remove()
                 this.parentNode.appendChild(dragSrcEl)
                 let newRarity = this.parentNode.getAttribute("data-rarity");
-                let vukkyId = dragSrcEl.getAttribute("data-id");
+                let vukkyId = dragSrcEl.id;
                 moveVukky(oldRarity, newRarity, vukkyId);
             }
             
