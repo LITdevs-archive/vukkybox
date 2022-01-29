@@ -317,13 +317,15 @@ app.get("/jsoneditor", grl, popupMid, function(req, res) {
 	if(administrators.includes(req.user.discordId) || administrators.includes(req.user[0].discordId)) return res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
 	res.render(__dirname + "/public/404.ejs")
 })
+	user = req.user._id ? req.user : req.user[0]
 
 app.post("/jsoneditor", grl, popupMid, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
 	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/404.ejs");
-	if(!administrators.includes(req.user.discordId) || !administrators.includes(req.user[0].discordId)) return res.render(__dirname + "/public/404.ejs")
+	user = req.user._id ? req.user : req.user[0]
+	if(!administrators.includes(user.discordId)) return res.render(__dirname + "/public/404.ejs")
 	let vukky = {
 		name: req.body.name,
 		rarity: req.body.rarity,
