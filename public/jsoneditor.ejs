@@ -218,9 +218,13 @@
             }
             
             if (dragSrcEl != this) {
+                let oldRarity = dragSrcEl.parentNode.getAttribute("data-rarity");
                 let newNode = dragSrcEl.cloneNode(true)
                 dragSrcEl.remove()
                 this.parentNode.appendChild(dragSrcEl)
+                let newRarity = this.parentNode.getAttribute("data-rarity");
+                let vukkyId = dragSrcEl.getAttribute("data-id");
+                moveVukky(oldRarity, newRarity, vukkyId);
             }
             
             return false;
@@ -259,6 +263,19 @@
             audio: audio ? audio != "undefined" ? audio : null : null
         };
         editPopup(vukky)
+    }
+
+    function moveVukky(oldRarity, newRarity, vukkyId) {
+        let data = {
+            oldRarity: oldRarity,
+            newRarity: newRarity,
+            vukkyId: vukkyId
+        }
+        $.ajax({
+            url: "https://vukkybox.com/jsonraritychange",
+            type: "POST",
+            data: data
+        });
     }
   </script>
   

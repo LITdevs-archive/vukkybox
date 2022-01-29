@@ -309,7 +309,7 @@ app.get("/admin", grl, popupMid, function(req, res) {
 	}
 })
 
-app.get("/jsoneditor", grl, popupMid, function(req, res) {
+app.get("/jsoneditor", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
@@ -318,7 +318,7 @@ app.get("/jsoneditor", grl, popupMid, function(req, res) {
 	res.render(__dirname + "/public/404.ejs")
 })
 
-app.post("/jsoneditor", grl, popupMid, function(req, res) {
+app.post("/jsoneditor", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
@@ -343,6 +343,29 @@ app.post("/jsoneditor", grl, popupMid, function(req, res) {
 	}
 	if(vukky.creator) vukkyJson.rarity[vukky.rarity][vukky.id].creator = vukky.creator
 	if(vukky.audio) vukkyJson.rarity[vukky.rarity][vukky.id].audio = vukky.audio
+	fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
+
+	res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
+	
+})
+
+app.post("/jsonraritychange", grl, function(req, res) {
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
+	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
+	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
+	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/404.ejs");
+	user = req.user._id ? req.user : req.user[0]
+	if(!administrators.includes(user.discordId)) return res.render(__dirname + "/public/404.ejs")
+	let postData = {
+		rarity: req.body.oldRarity,
+		newRarity: req.body.newRarity,
+		id: req.body.vukkyId
+	}
+
+	if(!vukkyJson.rarity[postData.rarity][postData.id]) return res.send("sussy baka");
+	let vukky = vukkyJson.rarity[postData.rarity][postData.id]
+	delete vukkyJson[postData.rarity][postData.id]
+	vukkyJson[postData.newRarity][postData.id] = vukky;
 	fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 
 	res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
