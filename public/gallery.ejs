@@ -53,7 +53,19 @@
         <div id="7">
             <p class="text-bold text-xl ml-5 mt-5" id="7_text">Unique (7 stars)</p>
             <p class="ml-5">Uniques are <b>unique</b> to the box they are in. They're the rarest type of Vukky in the game!</p>
-            
+            <% 
+                // loop through rarity 7 in vjson and __append to the page
+                for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
+                    if(user.gallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
+                        //owned++
+                        //totalOwned++
+                        __append(`<a style="display: none;" vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`)
+                        if(user.duplicates && user.duplicates[Object.keys(vukkies[j])[i]] && parseInt(user.duplicates[Object.keys(vukkies[j])[i]]) >= 1) {
+                            document.getElementById(Object.keys(vukkies[j])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(user.duplicates[Object.keys(vukkies[j])[i]]) + 1}')`
+                        }
+                    }
+                }
+            %> 
         </div>
         <div id="6">
             <p class="text-bold text-xl ml-5 mt-5" id="6_text">bukky (6 stars)</p>
@@ -225,16 +237,7 @@
             const vukkies = JSON.parse(document.getElementById("vukkiesjson").innerHTML) // This is really hacky, i know. But i couldnt get it to work any other way
             for(let j = 1; j <= 7; j++) {
                 let owned = 0
-                for(let i = 0; i < Object.keys(vukkies[j]).length; i++) {
-                    if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
-                        owned++
-                        totalOwned++
-                        document.getElementById(j).innerHTML += `<a style="display: none;" vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`
-                        if(userDuplicates && userDuplicates[Object.keys(vukkies[j])[i]] && parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) >= 1) {
-                            document.getElementById(Object.keys(vukkies[j])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) + 1}')`
-                        }
-                    }
-                }
+                
                 if (owned == 0) {
                     document.getElementById(j).remove()
                 } else {
