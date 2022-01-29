@@ -133,10 +133,23 @@
     </div>
     <center id="editPopup" class="editPopup hidden">
         <div>        
-              <img src="https://vukkybox.com/resources/pukkies/skelly.webp">
+                <img src="https://vukkybox.com/resources/pukkies/skelly.webp">
+                <h2 id="editPopupName"></h2>
+                <form>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+                    <input type="text" name="name" id="vukkyName"/>
+                    <input type="text" name="url" id="vukkyUrl"/>
+                    <input type="text" name="description" id="vukkyDescription"/>
+                    <input type="text" name="creator" id="vukkyCreator"/>
+                </form>
           </div>
           <script>
-                function editPopup() {
+                function editPopup(vukky) {
+                    document.getElementById("editPopupName").innerHTML = `Editing ${vukky.name} (#${vukky.id})`;
+                    document.getElementById("vukkyName").value = vukky.name
+                    document.getElementById("vukkyUrl").value = vukky.url
+                    document.getElementById("vukkyDescription").value = vukky.description
+                    document.getElementById("vukkyCreator").value = vukky.creator
                     document.getElementById("content").style.filter = "blur(5px)";
                     document.getElementById("content").style.pointerEvents = "none";
                     document.getElementById("content").style.userSelect = "none";
@@ -222,7 +235,7 @@
             description: decodeURIComponent(dataSpan.getAttribute('data-description')),
             creator: decodeURIComponent(dataSpan.getAttribute('data-creator'))
         };
-        console.log(vukky)
+        editPopup(vukky)
     }
   </script>
   
