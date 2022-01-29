@@ -19,7 +19,7 @@
   </style>
   <body style="background-color: #36393E; color:white">
     <div id="content">
-        <div class="container">
+        <div class="container" data-rarity="7">
             <h1>unique 7 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -28,12 +28,12 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                    __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                    __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
         <hr>
-        <div class="container">
+        <div class="container" data-rarity="6">
             <h1>bukky 6 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -42,12 +42,12 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
         <hr>
-        <div class="container">
+        <div class="container" data-rarity="5">
             <h1>godly 5 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -56,12 +56,12 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
         <hr>
-        <div class="container">
+        <div class="container" data-rarity="4">
             <h1>mythical 4 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -70,12 +70,12 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
         <hr>
-        <div class="container">
+        <div class="container" data-rarity="pukky">
             <h1>pukky 8 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -84,12 +84,12 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
         <hr>
-        <div class="container">
+        <div class="container" data-rarity="3">
             <h1>rare 3 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -98,12 +98,12 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
         <hr>
-        <div class="container">
+        <div class="container" data-rarity="2">
             <h1>uncommon 2 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -112,12 +112,12 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
         <hr>
-        <div class="container">
+        <div class="container" data-rarity="1">
             <h1>common 1 star</h1>
             <% 
                 // loop through rarity 7 in vjson and __append to the page
@@ -126,7 +126,7 @@
                 for (let i = 0; i < rarityKeys.length; i++) {
                     let vukkyId = rarityKeys[i];
                     let vukky = rarity[vukkyId];
-                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-rarity="${rarity}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
+                __append(`<span draggable="true" class="box" id="${escape(vukkyId)}" data-name="${escape(vukky.name)}" data-url="${escape(vukky.url)}" data-description="${escape(vukky.description)}" data-creator="${escape(vukky.creator)}"><img width="128" src="${vukky.url}" onclick="editVukky(this.parentNode)"></span>`)
                 }
             %> 
         </div>
@@ -237,7 +237,7 @@
             name: decodeURIComponent(dataSpan.getAttribute('data-name')),
             url: decodeURIComponent(dataSpan.getAttribute('data-url')),
             description: decodeURIComponent(dataSpan.getAttribute('data-description')),
-            rarity: decodeURIComponent(dataSpan.getAttribute('data-rarity')),
+            rarity: decodeURIComponent(dataSpan.parentNode.getAttribute('data-rarity')),
             creator: decodeURIComponent(dataSpan.getAttribute('data-creator'))
         };
         editPopup(vukky)
