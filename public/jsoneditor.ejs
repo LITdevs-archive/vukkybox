@@ -8,9 +8,16 @@
   <body>
     <div class="container">
         <h1>unique 7 star</h1>
-        <div draggable="true" class="box">A</div>
-        <div draggable="true" class="box">B</div>
-        <div draggable="true" class="box">C</div>
+        <% 
+            // loop through rarity 7 in vjson and __append to the page
+            let rarityKeys = Object.keys(vjson.rarity["7"]);
+            let rarity = vjson.rarity["7"];
+            for (let i = 0; i < rarityKeys.length; i++) {
+                let vukkyId = rarityKeys[i];
+                let vukky = rarity[vukkyId];
+                __append(`<div draggable="true" class="box"><img src="${vukky.url}"></div>`)
+            }
+        %> 
     </div>
     <hr>
     <div class="container">
