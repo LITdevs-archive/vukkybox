@@ -318,7 +318,7 @@ app.get("/jsoneditor", grl, popupMid, function(req, res) {
 	res.render(__dirname + "/public/404.ejs")
 })
 
-app.get("/jsoneditor", grl, popupMid, function(req, res) {
+app.post("/jsoneditor", grl, popupMid, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
