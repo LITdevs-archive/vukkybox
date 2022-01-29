@@ -15,6 +15,7 @@ var store = new MongoDBStore({
 	collection: 'sessions',
 	clear_interval: 3600
 });
+let administrators = ["708333380525228082", "125644326037487616"]
 const { Webhook } = require('discord-webhook-node');
 const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
@@ -301,11 +302,21 @@ app.get("/admin", grl, popupMid, function(req, res) {
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/adminfake.ejs");
 	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/adminfake.ejs");
-	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
+	if(administrators.includes(req.user.discordId) || administrators.includes(req.user[0].discordId)) {
 		res.render(__dirname + "/public/admin.ejs", {csrfToken: req.csrfToken()})
 	} else {
 		res.render(__dirname + "/public/adminfake.ejs")
 	}
+})
+
+app.get("/jsoneditor", grl, popupMid, function(req, res) {
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
+	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
+	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
+	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/404.ejs");
+	let vukkies = require("./public/vukkies.json");
+	if(administrators.includes(req.user.discordId) || administrators.includes(req.user[0].discordId)) return res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkies, csrfToken: req.csrfToken()})
+	res.render(__dirname + "/public/404.ejs")
 })
 
 app.get("/admin/**", grl, popupMid, function(req, res) {
