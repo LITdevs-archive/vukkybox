@@ -18,27 +18,24 @@
     </div>
   </body>
   <script>
-      document.addEventListener('DOMContentLoaded', (event) => {
-
+    document.addEventListener('DOMContentLoaded', (event) => {
         var dragSrcEl = null;
 
         function handleDragStart(e) {
-        this.style.opacity = '0.4';
-        
-        dragSrcEl = this;
-
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.innerHTML);
+            this.style.opacity = '0.4';
+            dragSrcEl = this;
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
         }
 
         function handleDragOver(e) {
-        if (e.preventDefault) {
-            e.preventDefault();
-        }
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
 
-        e.dataTransfer.dropEffect = 'move';
-        
-        return false;
+            e.dataTransfer.dropEffect = 'move';
+            
+            return false;
         }
 
         function handleDragEnter(e) {
@@ -55,8 +52,8 @@
         }
         
         if (dragSrcEl != this) {
-            dragSrcEl.innerHTML = this.innerHTML;
-            this.innerHTML = e.dataTransfer.getData('text/html');
+            dragSrcEl.parentNode.innerHtml += this.innerHTML;
+            this.innerHTML = "";
         }
         
         return false;
@@ -73,14 +70,14 @@
 
         let items = document.querySelectorAll('.container .box');
         items.forEach(function(item) {
-        item.addEventListener('dragstart', handleDragStart, false);
-        item.addEventListener('dragenter', handleDragEnter, false);
-        item.addEventListener('dragover', handleDragOver, false);
-        item.addEventListener('dragleave', handleDragLeave, false);
-        item.addEventListener('drop', handleDrop, false);
-        item.addEventListener('dragend', handleDragEnd, false);
+            item.addEventListener('dragstart', handleDragStart, false);
+            item.addEventListener('dragenter', handleDragEnter, false);
+            item.addEventListener('dragover', handleDragOver, false);
+            item.addEventListener('dragleave', handleDragLeave, false);
+            item.addEventListener('drop', handleDrop, false);
+            item.addEventListener('dragend', handleDragEnd, false);
         });
-        });
+    });
   </script>
   
 </html>
