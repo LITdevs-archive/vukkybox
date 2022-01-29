@@ -331,6 +331,7 @@ app.post("/jsoneditor", grl, popupMid, function(req, res) {
 		description: req.body.description,
 		url: req.body.url,
 		creator: req.body.creator ? req.body.creator : null,
+		audio: req.body.audio ? req.body.audio : null,
 		id: req.body.id
 	}
 
