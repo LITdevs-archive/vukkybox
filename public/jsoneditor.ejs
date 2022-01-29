@@ -52,7 +52,7 @@
         }
         
         if (dragSrcEl != this) {
-            this.parentNode.innerHTML += dragSrcEl.innerHTML//e.dataTransfer.getData('text/html');
+            this.parentNode.appendChild(dragSrcEl)//e.dataTransfer.getData('text/html');
             dragSrcEl.remove();
         }
         
