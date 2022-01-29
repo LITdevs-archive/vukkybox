@@ -187,22 +187,14 @@
             item.addEventListener('dragend', handleDragEnd, false);
         });
     });
-    
-    function parseDataAttribute(unparsedString) {
-        let parser = new DOMParser;
-        let dom = parser.parseFromString(
-            '<!doctype html><body>' + unparsedString,
-            'text/html');
-        return dom.body.textContent;
-    }
 
     function editVukky(dataSpan) {
         let vukky = {
             id: dataSpan.id,
-            name: parseDataAttribute(dataSpan.getAttribute('data-name')),
-            url: parseDataAttribute(dataSpan.getAttribute('data-url')),
-            description: parseDataAttribute(dataSpan.getAttribute('data-description')),
-            creator: parseDataAttribute(dataSpan.getAttribute('data-creator'))
+            name: decodeURIComponent(dataSpan.getAttribute('data-name')),
+            url: decodeURIComponent(dataSpan.getAttribute('data-url')),
+            description: decodeURIComponent(dataSpan.getAttribute('data-description')),
+            creator: decodeURIComponent(dataSpan.getAttribute('data-creator'))
         };
         console.log(vukky)
     }
