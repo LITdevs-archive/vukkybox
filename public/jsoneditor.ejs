@@ -54,6 +54,7 @@
         if (dragSrcEl != this) {
             this.parentNode.appendChild(dragSrcEl)//e.dataTransfer.getData('text/html');
             console.log(this)
+            console.log(dragSrcEl)
             console.log(this.parentNode)
             dragSrcEl.remove();
         }
