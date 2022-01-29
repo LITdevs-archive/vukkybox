@@ -11,7 +11,6 @@
         <div draggable="true" class="box">B</div>
         <div draggable="true" class="box">C</div>
     </div>
-    <hr>
     <div class="container">
         <div draggable="true" class="box">D</div>
         <div draggable="true" class="box">E</div>
@@ -53,8 +52,8 @@
         }
         
         if (dragSrcEl != this) {
-            dragSrcEl.parentNode.innerHTML += this;
-            this.innerHTML = "";
+            this.parentNode.innerHTML += dragSrcEl.innerHTML//e.dataTransfer.getData('text/html');
+            dragSrcEl.remove();
         }
         
         return false;
@@ -70,7 +69,7 @@
 
 
         let items = document.querySelectorAll('.container .box');
-        items.forEach(function(item) {
+            items.forEach(function(item) {
             item.addEventListener('dragstart', handleDragStart, false);
             item.addEventListener('dragenter', handleDragEnter, false);
             item.addEventListener('dragover', handleDragOver, false);
