@@ -790,10 +790,6 @@ app.post('/2fareset', checkAuth, function(req, res) {
 	})
 })
 
-app.get('*', function(req, res){
-	res.status(404).render(`${__dirname}/public/404.ejs`);
-});
-
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
 	if(err.message == 'Invalid "code" in request.') {
@@ -875,6 +871,9 @@ app.get('/.well-known/autoconfig/xrp-ledger.toml', function (req, res) {
 app.get('/.well-known/security.txt', function (req, res) {
     res.type('text/plain');
     res.send("Contact: mailto:contact@litdevs.org");
+});
+app.get('*', function(req, res){
+	res.status(404).render(`${__dirname}/public/404.ejs`);
 });
 
 var fs = require('fs');
