@@ -862,7 +862,7 @@ app.get('/.well-known/autoconfig/mail', function (req, res) {
     res.send("Vukkybox is not an email site.");
 });
 
-app.get('/.well-known/autoconfig/xrp-ledger.toml', function (req, res) {
+app.get('/.well-known/xrp-ledger.toml', function (req, res) {
     res.type('text/plain');
     res.send("Get sued, lol!");
 });
