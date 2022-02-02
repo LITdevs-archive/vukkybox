@@ -711,14 +711,6 @@ function checkAuth(req, res, next) {
 	res.redirect(`/login`)
 }
 
-app.get('/sus', function(req, res){
-	res.redirect('https://i.imgur.com/IEl9NzL.gif');
-});
-
-app.get('/crash', grl, function(req, res){
-	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: "CRITICAL SERVER FAULT AT APP.JS:1! QUITTING IMMEDIATELY TO PREVENT FURTHER DAMAGE", friendlyError: null });
-});
-
 app.get('/statistics', grl, checkAuth, function(req, res){
 	let user = req.user._id ? req.user : req.user[0];
 	let userRanks = {}
@@ -810,6 +802,80 @@ app.use(function (err, req, res, next) {
 	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: err.stack, friendlyError: null });
 });
 
+// EASTER EGGS, HERE AT THE BOTTOM FOR ORGANIZATION PURPOSES //
+
+app.get('/sus', function(req, res){
+	res.redirect('https://i.imgur.com/IEl9NzL.gif');
+});
+
+app.get('/crash', grl, function(req, res){
+	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: "CRITICAL SERVER FAULT AT APP.JS:1! QUITTING IMMEDIATELY TO PREVENT FURTHER DAMAGE", friendlyError: null });
+});
+
+app.get('/humans.txt', function(req, res){
+	res.redirect('https://github.com/LITdevs/.github/blob/main/profile/README.md#-');
+});
+
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("# All robots allowed\n# Unless you're a rude one\n\nUser-agent: *\nDisallow:");
+});
+
+app.get('/.well-known/keybase.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("Who would want a base containing keys? Secret bases with cool weapons are much cooler.");
+});
+
+app.get('/.well-known/void', function (req, res) {
+    res.type('text/plain');
+    res.send("No! I don't want to go there!");
+});
+
+app.get('/.well-known/dat', function (req, res) {
+    res.type('text/plain');
+    res.send("dat browser is lokin real sus!");
+});
+
+app.get('/.well-known/matrix', function (req, res) {
+    res.type('text/plain');
+    res.send("Which one?");
+});
+
+app.get('/.well-known/webfinger', function (req, res) {
+    res.type('text/plain');
+    res.send("Fingers are already scary in real life, we don't need them on the Web as well.");
+});
+
+app.get('/.well-known/est', function (req, res) {
+    res.type('text/plain');
+    res.send("I prefer CET.");
+});
+
+app.get('/.well-known/acme-challenge', function (req, res) {
+    res.type('text/plain');
+    res.send("They turned the fictional corporation into a challenge? Wow, I'm amazed by what that website named after the sound of a clock can do.");
+});
+
+app.get('/.well-known/browserid', function (req, res) {
+    res.type('text/plain');
+    res.send("You are stuck in time, but thanks for trying.");
+});
+
+app.get('/.well-known/autoconfig/mail', function (req, res) {
+    res.type('text/plain');
+    res.send("Vukkybox is not an email site.");
+});
+
+app.get('/.well-known/autoconfig/xrp-ledger.toml', function (req, res) {
+    res.type('text/plain');
+    res.send("Get sued, lol!");
+});
+
+// and now for something completely different
+app.get('/.well-known/security.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("Contact: mailto:contact@litdevs.org");
+});
 
 var fs = require('fs');
 var http = require('http');
