@@ -17,7 +17,7 @@
         <div class="inline-block">
           <a href="/editProfile" title="Edit your username"><p class=" pl-5 hover:bg-opacity-30 hover:bg-gray-900"><%= user.username %><i class="fa pl-3 s fa-edit"></i></p></a>
           <p title="This is your Vukkybox email address. You can't change it." class="pl-5 text-gray-200"><%= user.primaryEmail %></p> <br>
-
+          <% if (user.twoFactor) { %> <i class="fas fa-lock"></i> <% } %>
           <% if(user.LinkedAccounts.includes("github")) { %><i title="You've linked your Vukkybox account to GitHub!" class="fab pl-5 fa-github"></i><% } if(user.LinkedAccounts.includes("google")) { %><i title="You've linked your Vukkybox account to Google!" class="fab pl-3 fa-google"></i><% } if(user.LinkedAccounts.includes("discord")) { %><i title="You've linked your Vukkybox account to Discord!" class="fab pl-3 fa-discord"></i><% } if(user.LinkedAccounts.length == 3) { %><i title="Link your Vukkybox account to more services" class="fas pl-3 fa-plus-circle"></i> <% } %>
         </div>
       </div>
