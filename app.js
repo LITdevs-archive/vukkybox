@@ -787,16 +787,19 @@ app.get('/validate2fa', grl, function(req, res) {
 
 app.post('/votp', checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
+	console.log(req.body)
 	db.getUser(user._id, user => {
 		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 			encoding: 'base32',
 			token: req.body.otp });
 		if(!verified) {
 			req.logout();
+			console.log("failed 2fa")
 			return res.send({valid: false});
 		}
 		if(verified) {
 			res.send({valid: true});
+			console.log("passed 2fa")
 			req.session.twoFactorValidated = true;
 			req.session.twoFactorLastValidated = Date.now();
 			req.session.save();
