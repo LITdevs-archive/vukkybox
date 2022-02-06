@@ -579,7 +579,7 @@ app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
 
 app.get('/callbackdiscord',
 	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
-		if(req.user.twoFactor) return res.redirect('/2favalidate')
+		if(req.user.twoFactor) return res.redirect('/validate2fa')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
@@ -592,7 +592,7 @@ app.get('/callbackdiscord',
 
 app.get('/callbackgithub',
 	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
-		if(req.user.twoFactor) return res.redirect('/2favalidate')
+		if(req.user.twoFactor) return res.redirect('/validate2fa')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
@@ -604,7 +604,7 @@ app.get('/callbackgithub',
 );
 app.get('/callbackgoogle',
 	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
-		if(req.user.twoFactor) return res.redirect('/2favalidate')
+		if(req.user.twoFactor) return res.redirect('/validate2fa')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
@@ -617,7 +617,7 @@ app.get('/callbackgoogle',
 app.get('/otpcallback', function(req, res) {
 	if(!req.isAuthenticated()) return res.redirect('/login')
 	if(!req.user.twoFactor) return res.redirect('/2fa')
-	if(!req.session.twoFactorValidated) return res.redirect('/2favalidate')
+	if(!req.session.twoFactorValidated) return res.redirect('/validate2fa')
 	if(req.session.redirectTo) {
 		let dest = req.session.redirectTo;
 		req.session.redirectTo = "/"
