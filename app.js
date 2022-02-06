@@ -197,7 +197,7 @@ const boxLimiter = rateLimit({
 		}
 	}
 });
-app.get('/buyBox/:data', boxLimiter, checkAuth, popupMid, (req, res) => {
+app.get('/buyBox/:data', boxLimiter, checkAuthtime, popupMid, (req, res) => {
 		const vukkies = require("./public/vukkies.json");
 		const boxes = require("./public/boxes.json");
 		let validBoxes = []
