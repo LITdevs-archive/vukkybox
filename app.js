@@ -727,6 +727,19 @@ function checkAuth(req, res, next) {
 	res.redirect(`/login`)
 }
 
+function checkAuthnofa(req, res, next) {
+	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	if(user) {
+		db.lastLogin(user, function(newBalance, newUser) {
+			req.session.passport.user = newUser
+			req.session.passport.user.balance = newBalance
+		})
+		return next();
+	}
+	req.session.redirectTo = req.path;
+	res.redirect(`/login`)
+}
+
 app.get('/statistics', grl, checkAuth, function(req, res){
 	let user = req.user._id ? req.user : req.user[0];
 	let userRanks = {}
@@ -750,7 +763,7 @@ app.get('/translog', grl, checkAuth, function(req, res) {
 	})
 })
 
-app.get('/2fa', grl, checkAuth, function(req, res) {
+app.get('/2fa', grl, checkAuthnofa, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		if(user.twoFactor) return res.render(`${__dirname}/public/2fareset.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
@@ -793,7 +806,7 @@ app.post('/votp', checkAuth, function(req, res) {
 
 app.post('/fotp', checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
-	if(user.twofactor) return res.status(403).send("2fa already enabled");
+	if(user.twoFactor) return res.status(403).send("2fa already enabled");
 	if(!req.session.two_factor_temp_secret) return res.status(400).send("2fa flow not started");
 	let userInput = req.body.otp;
 	var verified = speakeasy.totp.verify({ secret: req.session.two_factor_temp_secret,
@@ -805,7 +818,7 @@ app.post('/fotp', checkAuth, function(req, res) {
 })
 
 
-app.post('/emailCode', checkAuth, function(req, res) {
+app.post('/emailCode', checkAuthnofa, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	let secret = speakeasy.generateSecret({length: 8});
 	user.emailCode = secret.base32;
@@ -814,7 +827,7 @@ app.post('/emailCode', checkAuth, function(req, res) {
 	db.sendEmail(user, fs.readFileSync(`${__dirname}/public/email/emailCode.html`, "utf8"), "Vukkybox Authenticator recovery code");
 })
 
-app.post('/emailCheckCode', checkAuth, function(req, res) {
+app.post('/emailCheckCode', checkAuthnofa, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	if(!req.session.emailCode) return res.status(400).send({valid: false});
 	if(req.body.otp != req.session.emailCode) return res.status(400).send({valid: false});
@@ -822,7 +835,7 @@ app.post('/emailCheckCode', checkAuth, function(req, res) {
 	res.send({valid: true});
 })
 
-app.post('/2fareset', checkAuth, function(req, res) {
+app.post('/2fareset', checkAuthnofa, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
