@@ -741,6 +741,7 @@ function checkAuth(req, res, next) {
 		db.lastLogin(user, function(newBalance, newUser) {
 			req.session.passport.user = newUser
 			req.session.passport.user.balance = newBalance
+			req.session.save()
 		})
 		return next();
 	}
@@ -754,11 +755,31 @@ function checkAuthnofa(req, res, next) {
 		db.lastLogin(user, function(newBalance, newUser) {
 			req.session.passport.user = newUser
 			req.session.passport.user.balance = newBalance
+			req.session.save()
 		})
 		return next();
 	}
 	req.session.redirectTo = req.path;
 	res.redirect(`/login`)
+}
+
+function checkAuthtime(req, res, next) {
+	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	if(!user) return res.redirect("/login")
+	if(user) {
+		db.lastLogin(user, function(newBalance, newUser) {
+			req.session.passport.user = newUser
+			req.session.passport.user.balance = newBalance
+			req.session.save()
+		})
+		if(!user.twoFactor) return next();
+		if(!req.session.twoFactorValidated) return res.redirect("/validate2fa")
+		let diffMins = Math.round((((req.session.twoFactorLastValidated - Date.now()) % 86400000) % 3600000) / 60000);
+		if (diffMins > 30) return res.redirect("/validate2fa")
+		console.log(diffMins)
+		return next();
+	}
+	res.send("what")
 }
 
 app.get('/statistics', grl, checkAuth, function(req, res){
