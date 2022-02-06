@@ -573,12 +573,27 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 	})
 })
 
-app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {});
-app.get('/loginGithub', passport.authenticate('github'), function(req, res) {});
-app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
+app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {
+	req.session.twoFactorValidated = false
+	req.session.twoFactorLastValidated = 0
+	req.session.save()
+});
+app.get('/loginGithub', passport.authenticate('github'), function(req, res) {
+	req.session.twoFactorValidated = false
+	req.session.twoFactorLastValidated = 0
+	req.session.save()
+});
+app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {
+	req.session.twoFactorValidated = false
+	req.session.twoFactorLastValidated = 0
+	req.session.save()
+});
 
 app.get('/callbackdiscord',
 	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
+		req.session.twoFactorValidated = false
+		req.session.twoFactorLastValidated = 0
+		req.session.save()
 		if(req.user.twoFactor) return res.redirect('/validate2fa')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
@@ -592,6 +607,9 @@ app.get('/callbackdiscord',
 
 app.get('/callbackgithub',
 	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
+		req.session.twoFactorValidated = false
+		req.session.twoFactorLastValidated = 0
+		req.session.save()
 		if(req.user.twoFactor) return res.redirect('/validate2fa')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
@@ -604,6 +622,9 @@ app.get('/callbackgithub',
 );
 app.get('/callbackgoogle',
 	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
+		req.session.twoFactorValidated = false
+		req.session.twoFactorLastValidated = 0
+		req.session.save()
 		if(req.user.twoFactor) return res.redirect('/validate2fa')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
