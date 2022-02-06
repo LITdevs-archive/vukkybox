@@ -579,6 +579,7 @@ app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {});
 
 app.get('/callbackdiscord',
 	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
+		if(req.user.twoFactor) return res.redirect('/2favalidate')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
@@ -591,6 +592,7 @@ app.get('/callbackdiscord',
 
 app.get('/callbackgithub',
 	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
+		if(req.user.twoFactor) return res.redirect('/2favalidate')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
@@ -601,7 +603,8 @@ app.get('/callbackgithub',
 	} // auth success
 );
 app.get('/callbackgoogle',
-	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) { 
+	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
+		if(req.user.twoFactor) return res.redirect('/2favalidate')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
 			req.session.redirectTo = "/"
@@ -611,6 +614,18 @@ app.get('/callbackgoogle',
 		}
 	} // auth success
 );
+app.get('/otpcallback', function(req, res) {
+	if(!req.isAuthenticated()) return res.redirect('/login')
+	if(!req.user.twoFactor) return res.redirect('/2fa')
+	if(!req.session.twoFactorValidated) return res.redirect('/2favalidate')
+	if(req.session.redirectTo) {
+		let dest = req.session.redirectTo;
+		req.session.redirectTo = "/"
+		res.redirect(dest) 
+	} else {
+		res.redirect('/')
+	}
+})
 
 app.get('/logout', grl, function(req, res) {
 	req.logout();
@@ -752,10 +767,28 @@ app.get('/validate2fa', grl, checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		if(!user.twoFactor) return res.send("you dont even have 2FA enabled lol");
-		
+		res.render(`${__dirname}/public/validate2fa.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});	
 	})
 });
 
+app.post('/votp', checkAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0];
+	db.getUser(user._id, user => {
+		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
+			encoding: 'base32',
+			token: req.body.otp });
+		if(!verified) {
+			req.logout();
+			return res.send({valid: false});
+		}
+		if(verified) {
+			res.send({valid: true});
+			req.session.twoFactorValidated = true;
+			req.session.twoFactorLastValidated = Date.now();
+			req.session.save();
+		}
+	})
+})
 
 app.post('/fotp', checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
