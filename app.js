@@ -981,6 +981,11 @@ app.get('/.well-known/security.txt', function (req, res) {
     res.type('text/plain');
     res.send("Contact: mailto:contact@litdevs.org");
 });
+
+app.get('/nuke', function (req, res) {
+    res.send("<script>while (true) {window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}</script>");
+});
+
 app.get('*', function(req, res){
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 });
