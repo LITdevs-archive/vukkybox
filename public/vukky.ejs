@@ -47,7 +47,7 @@
 						<p title="This is the rarity of the Vukky." style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %> (<%=vukky.rarity.level %> star)</p>
 						<% } %>
 						<p title="This is the Vukky's description."><% if(vukky.creator) { %>This was made by <%=vukky.creator %>! <% } %><%-vukky.description %></p>
-						<p class="text-red-500"><%if (box && box.dupe) { %><br>...oh, but you already have <%-vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% } %></p>
+						<p class="text-red-500"><%if (box && box.dupe) { %><br>...oh, but you already have <%-vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% }; if(user.beta && !user.twoFactor) { %> <br> You've been refunded 5% of the box price, but if you enable <a class="text-blue-500" href="https://vukkybox.com/2fa">Two Factor Authentication</a> you can receive 10% in refunds! <% } %></p>
 						<br>
 						<% if (box) { %>
 						<button class="button button-blue purchase" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;setTimeout(() => {window.location.reload()}, localStorage.getItem('kachingOn') != 'false' ? 1000 : 0);">Buy another one</button>
