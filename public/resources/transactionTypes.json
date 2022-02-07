@@ -7,5 +7,6 @@
     "boxpurchase": "Box purchase",
     "boxrefund": "Duplicate Vukky refund",
     "code": "Promo code",
-    "registration": "Registration bonus"
+    "registration": "Registration bonus",
+    "twofactor": "Two factor authentication enabled"
 }

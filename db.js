@@ -39,7 +39,8 @@ db.once('open', function() {
 	twoFactorSecret: String,
 	duplicates: Object,
 	transactions: Array,
-	beta: {type: Boolean, default: false}
+	beta: {type: Boolean, default: false},
+	twoFactorClaimed: {type: Boolean, default: false}
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
@@ -719,6 +720,11 @@ function enabletwoFactor(userId, secret) {
 		if(err) return console.log(err);
 		user.twoFactor = true
 		user.twoFactorSecret = secret;
+		if (!user.twoFactorClaimed) {
+			user.twoFactorClaimed = true;
+			user.balance += 2000;
+			transactions(user._id, {"type": "twofactor", "amount": "+2000", "balance": user.balance, "timestamp": Date.now()})
+		}
 		let twoFactorEmail = fs.readFileSync(__dirname + "/public/email/2faenable.html", "utf8");
 		sendEmail(user, twoFactorEmail, "Two-Factor Authentication enabled on Vukkybox");
 		user.save();
