@@ -260,7 +260,7 @@ function buyBox(user, box, callback) {
 					user.markModified('duplicates')
 					duplicateCount = user.duplicates[res.vukkyId];
 					if (!boxData.noRefund && user.twoFactor) user.balance = parseFloat(user.balance + 0.1 * boxData.price).toFixed(1);
-					if (!boxData.noRefund && user.twoFactor) transactions(user._id, {"type": "boxrefund", "amount": `+${0.1 * boxData.price}`, "balance": user.balance, "timestamp": Date.now()})
+					if (!boxData.noRefund && user.twoFactor) transactions(user._id, {"type": "boxrefund2fa", "amount": `+${0.1 * boxData.price}`, "balance": user.balance, "timestamp": Date.now()})
 					if (!boxData.noRefund && !user.twoFactor) user.balance = parseFloat(user.balance + 0.05 * boxData.price).toFixed(1);
 					if (!boxData.noRefund && !user.twoFactor) transactions(user._id, {"type": "boxrefundno2fa", "amount": `+${0.05 * boxData.price}`, "balance": user.balance, "timestamp": Date.now()})
 				} else {
