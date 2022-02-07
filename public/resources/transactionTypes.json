@@ -5,7 +5,8 @@
     "daily": "Daily login bonus",
     "hourly": "Hourly login bonus",
     "boxpurchase": "Box purchase",
-    "boxrefund": "Duplicate Vukky refund",
+    "boxrefund": "Duplicate Vukky refund (10%)",
+    "boxrefundno2fa": "Duplicate Vukky refund (no 2FA, 5%)",
     "code": "Promo code",
     "registration": "Registration bonus",
     "twofactor": "Two factor authentication enabled"
