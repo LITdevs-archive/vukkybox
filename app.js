@@ -132,6 +132,7 @@ function popupMid(req, res, next) {
 			db.checkNews(user._id, accepted => {
 				if (!accepted) req.session.news = true;
 				if (accepted) req.session.news = false;
+				req.session.save();
 				return next()
 			})
 		}
