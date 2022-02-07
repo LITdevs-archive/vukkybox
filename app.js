@@ -696,7 +696,7 @@ app.post('/popup', grl, checkAuth, function (req, res) {
 app.get('/store', grl, popupMid, function(req,res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if (!user) return res.render(__dirname + '/public/store.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
-	db.lastLogin(req.user, function(newBalance, newUser) {
+	db.lastLogin(user, function(newBalance, newUser) {
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		user.balance = newBalance
