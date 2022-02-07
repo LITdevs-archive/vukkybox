@@ -820,6 +820,7 @@ app.get('/2fa', grl, checkAuthnofa, function(req, res) {
 		if(user.twoFactor) return res.render(`${__dirname}/public/2fareset.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 		let secret = speakeasy.generateSecret({name: "Vukkybox 2FA"});
 		req.session.two_factor_temp_secret = secret.base32;
+		req.session.save()
 		qrcode.toDataURL(secret.otpauth_url, function(err, dataUrl) {
 			if (err) return res.render(__dirname + '/public/error.ejs', {stacktrace: null, friendlyError: "Something went wrong while starting the 2FA flow. <br>For your privacy the stacktrace is hidden, if this happens again please contact us."});
 			res.render(`${__dirname}/public/2fa.ejs`, {csrfToken: req.csrfToken(), user: user, qrDataUrl: dataUrl, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
