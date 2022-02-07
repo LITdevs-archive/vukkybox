@@ -1,7 +1,7 @@
 <center id="newsPopup" class="py-8 loginPopup">
     <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">        
         <input type="hidden" name="csrfToken" id="csrfToken" value="<%=csrfToken %>"/>
-        <p class="text-2xl">Vukkybox now has 2-Factor Authentication.</p>
+        <p class="text-2xl text-bold">Vukkybox now has 2-Factor Authentication.</p>
         <br>
         <p class="text-xl">Ok, but why should I care?</p>
         <p>Great that you asked! 2FA on Vukkybox comes with several benefits:</p>
@@ -12,6 +12,7 @@
             <li>No annoying reminders</li>
             <li>Fancy lock symbol on your profile page</li>
         </ul>
+        <br>
         <button onclick="accept()" class="button button-blue">Ok i read this but dont care</button>
         <a href="/2fa"><button onclick="accept()" class="button button-blue">Cool! Let's enable it</button></a>
     </div>
