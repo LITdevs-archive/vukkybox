@@ -40,7 +40,8 @@ db.once('open', function() {
 	duplicates: Object,
 	transactions: Array,
 	beta: {type: Boolean, default: false},
-	twoFactorClaimed: {type: Boolean, default: false}
+	twoFactorClaimed: {type: Boolean, default: false},
+	newsPopup: {type: Boolean, default: true},
   });
   User = mongoose.model('User', userSchema);
   const codeSchema = new mongoose.Schema({
@@ -554,6 +555,13 @@ function resetPopup() {
 	})
 }
 
+function resetNews() {
+	User.updateMany({}, {$set: {newsPopup: false}}, function (err, docs) {
+		if (err) return console.log(err)
+		console.log("Updated Docs : ", docs);
+	})
+}
+
 function resetBeta() {
 	User.updateMany({}, {$set: {beta: false}}, function (err, docs) {
 		if (err) return console.log(err)
@@ -573,11 +581,32 @@ function checkPopup(userId, callback) {
 	})
 }
 
+function checkNews(userId, callback) {
+	User.findOne({_id: userId}, (err, user) => {
+		if (err) console.log(err);
+		if (err) return callback(500);
+		if(user.newsPopup) {
+			callback(true)
+		} else {
+			callback(false)
+		}
+	})
+}
+
 function acceptPopup(userId) {
 	User.findOne({_id: userId}, (err, user) => {
 		if (err) console.log(err);
 		if (err) return 500;
 		user.popupAccepted = true
+		user.save()
+	})
+}
+
+function acceptNews(userId) {
+	User.findOne({_id: userId}, (err, user) => {
+		if (err) console.log(err);
+		if (err) return 500;
+		user.newsPopup = true
 		user.save()
 	})
 }
@@ -763,6 +792,9 @@ module.exports = {
 	resetPopup,
 	resetBeta,
 	checkPopup,
+	checkNews,
+	resetNews,
+	acceptNews,
 	acceptPopup,
 	setBeta,
 	leaderboard,

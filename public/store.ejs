@@ -15,6 +15,7 @@
 	</head>
 	<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
 		<%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
+		<%- news ? include('common/news.ejs', {csrfToken: csrfToken}) : '' %>
 		<center id="content">
 		<table class="">
 			<tr>

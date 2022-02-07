@@ -123,25 +123,21 @@ function popupMid(req, res, next) {
 	if (!req.isAuthenticated()) {
 		return next()
 	}
-	if (req.user._id) {
-		db.checkPopup(req.user._id, function (accepted) {
-			if (accepted == 500) return res.send("500: Internal Server Error");
-			if (!accepted) {
-				res.redirect("/popup")
-			} else {
+	let user = req.user._id ? req.user : req.user[0]
+	db.checkPopup(user._id, function (accepted) {
+		if (accepted == 500) return res.send("500: Internal Server Error");
+		if (!accepted) {
+			return res.redirect("/popup")
+		} else {
+			if (!user.beta) req.session.news = false;
+			if (!user.beta) return next();
+			db.checkNews(user._id, accepted => {
+				if (!accepted) req.session.news = true;
+				if (accepted) req.session.news = false;
 				return next()
-			}
-		})
-	} else {
-		db.checkPopup(req.user[0]._id, function (accepted) {
-			if (accepted == 500) return res.send("500: Internal Server Error");
-			if (!accepted) {
-				res.redirect("/popup")
-			} else {
-				return next()
-			}
-		})
-	}
+			})
+		}
+	})
 }
 
 const grl = rateLimit({
@@ -241,6 +237,8 @@ app.get('/buyBox/:data', boxLimiter, checkAuthtime, popupMid, (req, res) => {
 						}
 						res.render(__dirname + '/public/vukky.ejs', {
 							user: req.user._id ? req.user : req.user[0],
+							news: req.session.news, 
+							csrfToken: req.csrfToken(),
 							vukky: vukky,
 							box: box,
 							oldBalance: dupe ? newBalance - 0.1 * boxes[req.params.data].price : newBalance,
@@ -450,6 +448,10 @@ app.post("/admin/:action", grl, async function(req, res) {
 				db.resetPopup();
 				res.redirect("/admin?popup=true")
 			break;
+			case "news_reset":
+				db.resetNews();
+				res.redirect("/admin?news=true")
+			break;
 			case "beta_reset":
 				db.resetBeta();
 				res.redirect("/admin?beta=true")
@@ -493,12 +495,16 @@ app.get("/view/:level/:id", grl, popupMid, function (req, res) {
 	if(!req.user) return res.render(__dirname + '/public/vukky.ejs', {
 		user: null,
 		vukky: vukky,
+		news: false,
+		csrfToken: req.csrfToken(),
 		box: null,
 		gravatarHash: null 
 	});
 
 	res.render(__dirname + '/public/vukky.ejs', {
 		user: req.user._id ? req.user : req.user[0],
+		csrfToken: req.csrfToken(),
+		news: req.session.news, 
 		vukky: vukky,
 		box: null,
 		gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
@@ -537,11 +543,11 @@ app.post('/beta', grl, popupMid, function(req, res) {
 app.get('/', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	if(!user) return res.render(__dirname + '/public/index.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+	if(!user) return res.render(__dirname + '/public/index.ejs', {news: false, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 	db.lastLogin(user, function(newBalance, newUser) {
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
-		res.render(__dirname + '/public/index.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+		res.render(__dirname + '/public/index.ejs', {news: req.session.news, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 	})
 });
 
@@ -693,14 +699,20 @@ app.post('/popup', grl, checkAuth, function (req, res) {
 	res.redirect("/")
 })
 
+app.post('/acceptnews', grl, checkAuth, function (req, res) {
+	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	db.acceptNews(user._id)
+	res.redirect("/")
+})
+
 app.get('/store', grl, popupMid, function(req,res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	if (!user) return res.render(__dirname + '/public/store.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+	if (!user) return res.render(__dirname + '/public/store.ejs', {news: false, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 	db.lastLogin(user, function(newBalance, newUser) {
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		user.balance = newBalance
-		res.render(__dirname + '/public/store.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+		res.render(__dirname + '/public/store.ejs', {news: req.session.news, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 	})
 });
 

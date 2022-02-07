@@ -15,7 +15,8 @@
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     
   <%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
-
+  <%- news ? include('common/news.ejs', {csrfToken: csrfToken}) : '' %>
+<div id="content">
 <div id="welcome" class="p-5">
 <% if(user) { %>
   Hi <%= user.username%>! Welcome to Vukkybox.<br>
@@ -27,6 +28,7 @@
   <a href="/store"><button class="button button-blue font-bold">Check out the storefront!</button></a><br>
 <% } %>
 <br><br>Some assets used on this site have been made by volunteers! If you'd like to know who they are, <a href="/credits" class="text-blue-500">view our credits</a>.<br>You can also suggest new things to be added into the game or report bugs! Just go to our <a href="https://github.com/LITdevs/vukkybox/issues/new/choose" class="text-blue-500">GitHub page</a>.
+</div>
 </div>
 <%- include('common/footer.ejs'); %>
 </body>

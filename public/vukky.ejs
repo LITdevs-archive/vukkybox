@@ -36,7 +36,8 @@
 		<audio type="sfx" id="unboxSfx" src="/resources/unbox.wav"></audio>
 		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 		<%- include('common/navbar.ejs', {share: true, galleryShare: false, box: box ? box : null}); %>
-			<center class="py-8">
+		<%- news ? include('common/news.ejs', {csrfToken: csrfToken}) : '' %>
+			<center class="py-8" id="content">
 				<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
 					<div class="hidden reward" id="reward">
 						<img class="m-auto" height="128" src="<%=vukky.url %>"/>
