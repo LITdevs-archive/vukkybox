@@ -81,7 +81,7 @@ passport.use(new GoogleStrategy({
 	callbackURL: "https://vukkybox.com/callbackgoogle",
 	scope: ["profile", "email"]
   },
-  function(token, tokenSecret, profile, cb) {
+  function(token, tokenSecret, profile, cbl) {
 	
 	db.findOrCreate(profile.provider, profile, function(user) {
 	  cb(null, user)
@@ -626,6 +626,7 @@ app.get('/callbackgithub',
 );
 app.get('/callbackgoogle',
 	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
+		console.log("login success")
 		req.session.twoFactorValidated = false
 		req.session.twoFactorLastValidated = 0
 		req.session.save()
