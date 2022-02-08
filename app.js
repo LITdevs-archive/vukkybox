@@ -81,7 +81,7 @@ passport.use(new GoogleStrategy({
 	callbackURL: "https://vukkybox.com/callbackgoogle",
 	scope: ["profile", "email"]
   },
-  function(token, tokenSecret, profile, cbl) {
+  function(token, tokenSecret, profile, cb) {
 	
 	db.findOrCreate(profile.provider, profile, function(user) {
 	  cb(null, user)
