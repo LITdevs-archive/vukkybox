@@ -147,7 +147,7 @@
             document.querySelector("#galleryMusic").src = "/resources/gallerydone.ogg"
             confettiGun();
         }
-        document.querySelector("#galleryMusic").play();
+        if(document.querySelectorAll("#collection img").length != 0) document.querySelector("#galleryMusic").play();
         document.querySelector("#loading_data").style.display = "none";
         document.querySelector("#collection").style.display = "";
         document.getElementById("total_text").style.display = "";
