@@ -3,15 +3,44 @@
 <title>Vukkybox - Delete Account</title>
 <audio type="music" preload="auto" loop autoplay src="/resources/menumusic.ogg"></audio>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<data id="twoFactor" data-twoFactor="<%=twoFactor %>"/>
 <body style="filter: blur(0px); transition: filter 0.2s ease-out;">
-    <form method="post">
-        <input type="hidden" name="_csrf" value="<%=csrfToken %>">
-        <h1>You're about to delete your Vukkybox account.</h1>
-        <p>You will lose all your Vukkies and earned Vukkybux. No refunds will be given for donations.</p>
-        <input type="submit" value="I'm sure about this."> <input type="button" value="Wait, cancel!" id="poopoo"/>
-    </form>
+    <div id="content">
+        <form method="post">
+            <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+            <h1>You're about to delete your Vukkybox account.</h1>
+            <p>You will lose all your Vukkies and earned Vukkybux. No refunds will be given for donations.</p>
+            <input type="submit" value="I'm sure about this."> <input type="button" value="Wait, cancel!" id="poopoo"/>
+        </form>
+    </div>
+    <div id="twoFactorVerification">
+        <form id="verificationForm">
+            <h1>Enter your 2-Factor Verification code</h1>
+            <input type="hidden" name="csrfToken" id="csrfToken" value="<%=csrfToken %>"/>
+            <input type="text" style="color:black" placeholder="000000" id="verificationInput"/><br><br>
+            <input type="submit" class="button button-blue" value="Submit"/>
+        </form>
+    </div>
 </body>
 <script>
+    if(document.getElementById("twoFactor").getAttribute("data-twoFactor")) {
+        document.getElementById("content").style.display = "none";
+        document.getElementById("twoFactorVerification").style.display = "";
+        document.getElementById("verificationForm").onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById("twoFactorVerification").style.display = "none";
+            fetch("https://vukkybox.com/delete2fa", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value, _csrf: document.getElementById("csrfToken").value})})
+                .then(res => res.json())
+                .then(res => {
+                    if(!res.valid) {
+                        document.write("Invalid code");
+                    } else {
+                        document.getElementById("content").style.display = "";
+                        document.getElementById("twoFactorVerification").style.display = "none";
+                    }
+                });
+        }
+    }
     function blur(px) {
         document.querySelector("body").style.filter = "blur(" + px + "px)"
     }

@@ -277,11 +277,34 @@ app.get('/terms', function(req, res){
 });
 
 app.get('/delete', grl, checkAuth, function(req,res) {
-	res.render(__dirname + "/public/deleteConfirm.ejs", {csrfToken: req.csrfToken()})
+	user = req.user._id ? req.user : req.user[0]
+	res.render(__dirname + "/public/deleteConfirm.ejs", {csrfToken: req.csrfToken(), twoFactor: user.twoFactor})
+})
+
+app.post('/delete2fa', grl, checkAuth, function(req, res) {
+	user = req.user._id ? req.user : req.user[0]
+	if(!twoFactor) res.status(400).send("what are you doing.")
+	var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
+		encoding: 'base32',
+		token: req.body.otp });
+	if(!verified) {
+		req.session.twoFactorValidated = false;
+		req.session.delete2fa = false; //lets make sure that it is absolutely for sure not allowed to delete without 2fa
+		req.session.save();
+		res.send({verified: false})
+	}
+	if(verified) {
+		req.session.delete2fa = true;
+		req.session.save();
+		res.send({verified: true})
+	}
+	
+	
 })
 
 app.post("/delete", grl, checkAuth, function(req, res) {
 	user = req.user._id ? req.user : req.user[0]
+	if(user.twoFactor && !req.session.delete2fa) res.redirect("/logout");
 	db.deleteUser(user, function(result) {
 		if(result == 500) {
 			res.redirect('/resources/500.html');
