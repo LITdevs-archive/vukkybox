@@ -23,7 +23,7 @@
     </div>
 </body>
 <script>
-    if(document.getElementById("twoFactor").getAttribute("data-twoFactor")) {
+    if(document.getElementById("twoFactor").getAttribute("data-twoFactor") == "true") {
         document.getElementById("content").style.display = "none";
         document.getElementById("twoFactorVerification").style.display = "";
         document.getElementById("verificationForm").onsubmit = function(e) {
