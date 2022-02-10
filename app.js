@@ -305,7 +305,7 @@ app.post('/delete2fa', grl, checkAuth, function(req, res) {
 app.post("/delete", grl, checkAuth, function(req, res) {
 	user = req.user._id ? req.user : req.user[0]
 	db.getUser(user._id, user => {
-		if(user.twoFactor && !req.session.delete2fa) res.redirect("/logout");
+		if(user.twoFactor && !req.session.delete2fa) return res.redirect("/logout");
 		db.deleteUser(user, function(result) {
 			if(result == 500) {
 				res.redirect('/resources/500.html');
