@@ -551,21 +551,18 @@ function listEmails() {
 function resetPopup() {
 	User.updateMany({}, {$set: {popupAccepted: false}}, function (err, docs) {
 		if (err) return console.log(err)
-		console.log("Updated Docs : ", docs);
 	})
 }
 
 function resetNews() {
 	User.updateMany({}, {$set: {newsPopup: false}}, function (err, docs) {
 		if (err) return console.log(err)
-		console.log("Updated Docs : ", docs);
 	})
 }
 
 function resetBeta() {
 	User.updateMany({}, {$set: {beta: false}}, function (err, docs) {
 		if (err) return console.log(err)
-		console.log("Updated Docs : ", docs);
 	})
 }
 

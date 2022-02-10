@@ -626,7 +626,6 @@ app.get('/callbackgithub',
 );
 app.get('/callbackgoogle',
 	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
-		console.log("login success")
 		req.session.twoFactorValidated = false
 		req.session.twoFactorLastValidated = 0
 		req.session.save()
@@ -658,9 +657,7 @@ app.get('/logout', grl, function(req, res) {
 	res.redirect('/');
 });
 app.get('/info', grl, checkAuth, function(req, res) {
-	//console.log(req.user
 	res.redirect("/")
-	//db.findOrCreate(req.user.provider, req.user)
 });
 app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
 	  
@@ -678,8 +675,6 @@ app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
 				adminHook.send(`<a:hahah:919608495576326174> A user tried to redeem \`${req.params["code"]}\`, but it was ${isValid}.`);
-				if (req.user._id) console.log(req.user._id)
-				if (req.user[0]) console.log(req.user[0]._id)
 			}
 		});
 	});
@@ -786,7 +781,7 @@ function checkAuthtime(req, res, next) {
 		if(!user.twoFactor) return next();
 		if(!req.session.twoFactorValidated) return res.redirect("/validate2fa")
 		let diffMs = Date.now() - req.session.twoFactorLastValidated;
-		console.log(diffMs)
+
 		if (diffMs > 1800000) return res.redirect("/validate2fa")
 		return next();
 	}
