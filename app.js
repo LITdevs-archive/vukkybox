@@ -119,7 +119,7 @@ db.ethermineETH()
 
 function popupMid(req, res, next) {
 	if (/MSIE|Trident/.test(req.headers['user-agent'])) return res.render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Your browser is no longer supported by Vukkybox. Please <a href='https://browser-update.org/update-browser.html'>update your browser</a>." });
-	if (req.headers['user-agent'].indexOf('Safari') != -1 && req.headers['user-agent'].indexOf('CriOS') == -1 && req.headers['user-agent'].indexOf('Macintosh') == -1 && req.headers['user-agent'].indexOf('OPR') == -1 && req.headers['user-agent'].indexOf('Edge') == -1 && req.headers['user-agent'].indexOf('Chrome') == -1) return res.render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Sorry, but Safari for iPhones and iPads is not currently supported by Vukkybox. Please use a different browser, like <a href='https://apps.apple.com/us/app/google-chrome/id535886823'>Google Chrome</a>." });
+	if (req.headers['user-agent'].indexOf('Safari') != -1 && req.headers['user-agent'].indexOf('Macintosh') == -1 && req.headers['user-agent'].indexOf('OPR') == -1 && req.headers['user-agent'].indexOf('Edge') == -1 && req.headers['user-agent'].indexOf('Chrome') == -1) return res.render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Sorry, but iPhones and iPads is not currently supported by Vukkybox, because Safari is terrible, and all web browsers there are Safari in a trench coat.<br>Please buy a good device, such as an Android phone or a computer.<br><br><img src='https://dokodemo.neocities.org/images/buttons/phonechump.gif'>" });
 	if (!req.isAuthenticated()) {
 		return next()
 	}
@@ -283,7 +283,7 @@ app.get('/delete', grl, checkAuth, function(req,res) {
 
 app.post('/delete2fa', grl, checkAuth, function(req, res) {
 	user = req.user._id ? req.user : req.user[0]
-	if(!user.twoFactor) return res.status(400).send("what are you doing.")
+	if(!twoFactor) res.status(400).send("what are you doing.")
 	var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 		encoding: 'base32',
 		token: req.body.otp });
@@ -304,17 +304,15 @@ app.post('/delete2fa', grl, checkAuth, function(req, res) {
 
 app.post("/delete", grl, checkAuth, function(req, res) {
 	user = req.user._id ? req.user : req.user[0]
-	db.getUser(user._id, user => {
-		if(user.twoFactor && !req.session.delete2fa) return res.redirect("/logout");
-		db.deleteUser(user, function(result) {
-			if(result == 500) {
-				res.redirect('/resources/500.html');
-			} else {
-				req.logout();
-				res.redirect('/resources/deleted.html');
-			}
-		});
-	})
+	if(user.twoFactor && !req.session.delete2fa) res.redirect("/logout");
+	db.deleteUser(user, function(result) {
+		if(result == 500) {
+			res.redirect('/resources/500.html');
+		} else {
+			req.logout();
+			res.redirect('/resources/deleted.html');
+		}
+	});
 })
 
 app.get("/admin", grl, popupMid, function(req, res) {
