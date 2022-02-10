@@ -300,7 +300,14 @@
                     if(loaded == totalOwned) loadingdone();
                 }
             })
-            if(document.querySelectorAll("#collection img").length == 0) loadingdone();
+            if(document.querySelectorAll("#collection img").length == 0) {
+                if(document.location.href.includes("/guestgallery/")) {
+                    document.getElementById("total_text").innerHTML = "This user has no Vukkies! How sad..."
+                } else {
+                    document.getElementById("total_text").innerHTML = "You don't have any Vukkies! <a href='store' class='text-blue-500'>Go get some</a>."
+                }
+                loadingdone();
+            }
         }, 20);
     });
 </script>
