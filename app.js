@@ -463,6 +463,14 @@ app.post("/admin/:action", grl, async function(req, res) {
 					return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you're missing some arguments there! Would you mind <a href='/admin'>trying again</a>?" });
 				}
 			break;
+			case "mass_email":
+				if(req.body.template && req.body.subject) {
+					db.sendEmails(req.body.template, req.body.subject);
+					res.redirect("/admin?massemail=true")
+				} else {
+					return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you're missing some arguments there! Would you mind <a href='/admin'>trying again</a>?" });
+				}
+			break;
 			default:
 				res.render(__dirname + "/public/adminfake.ejs");
 				break;

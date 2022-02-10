@@ -545,6 +545,18 @@ function listEmails() {
 		if(err) return console.log(err);
 	});
 	})
+}
+
+function sendEmails(template, subject) {
+	let allEmails = [];
+	let fs = require("fs")
+	User.find({}, (err, users) => {
+	users.map(user => {
+		allEmails.push(user.primaryEmail);
+		sendEmail(user, fs.readFileSync(`${__dirname}/public/email/${template}.html`, "utf8", subject));
+	})
+	
+	})
 
 }
 
@@ -799,5 +811,6 @@ module.exports = {
 	transactions,
 	enabletwoFactor,
 	disabletwoFactor,
-	sendEmail
+	sendEmail,
+	sendEmails
 }
