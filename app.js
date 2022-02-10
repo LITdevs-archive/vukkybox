@@ -786,6 +786,7 @@ function checkAuthtime(req, res, next) {
 		if(!user.twoFactor) return next();
 		if(!req.session.twoFactorValidated) return res.redirect("/validate2fa")
 		let diffMins = Math.round((((Date.now() - req.session.twoFactorLastValidated) % 86400000) % 3600000) / 60000);
+		console.log(diffMins)
 		if (diffMins > 30) return res.redirect("/validate2fa")
 		return next();
 	}
