@@ -32,7 +32,7 @@
             fetch("https://vukkybox.com/delete2fa", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value, _csrf: document.getElementById("csrfToken").value})})
                 .then(res => res.json())
                 .then(res => {
-                    if(!res.valid) {
+                    if(!res.verified) {
                         document.write("Invalid code");
                     } else {
                         document.getElementById("content").style.display = "";
