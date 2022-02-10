@@ -283,7 +283,7 @@ app.get('/delete', grl, checkAuth, function(req,res) {
 
 app.post('/delete2fa', grl, checkAuth, function(req, res) {
 	user = req.user._id ? req.user : req.user[0]
-	if(!twoFactor) res.status(400).send("what are you doing.")
+	if(!user.twoFactor) return res.status(400).send("what are you doing.")
 	var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 		encoding: 'base32',
 		token: req.body.otp });
