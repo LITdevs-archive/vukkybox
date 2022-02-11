@@ -37,6 +37,9 @@ window.addEventListener('load', (event) => {
                 icon.src = "https://vukkybox.com/resources/firevukkybox.webp";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
             }
+            if(new Date().getMonth() == 1 && new Date().getDate() == 14) {
+                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkylove.webp'>"], 12);
+            }
         }
         icon.classList.add("duration-150");
         icon.onclick = function(){

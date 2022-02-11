@@ -60,6 +60,7 @@
         <%- include('common/footer.ejs'); %>
 	</body>
     <script>
+        if (document.location.search == "?recover") recoverAuthenticator();
         function recoverAuthenticator() {
             document.getElementById("codeVerification").classList.add("hidden");
             document.getElementById("emailRecovery").classList.remove("hidden");
