@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 347,
+	"currentId": 349,
 	"rarity": {
 		"1": {
 			"1": {
@@ -809,6 +809,12 @@
 				"url": "https://vukkybox.com/resources/balloonvukky.webp",
 				"description": "Often used during special Vukky birthdays and parties.",
 				"creator": "Synne"
+			},
+			"348": {
+				"name": "Cubed Vukky",
+				"url": "https://vukkybox.com/resources/cubed%20vukky.webp",
+				"description": "There seem to be 6 Vukkies stuck inside this cube",
+				"creator": "Skelly"
 			}
 		},
 		"3": {
@@ -1116,6 +1122,12 @@
 				"url": "https://vukkybox.com/resources/customvukky.webp",
 				"description": "A Vukky originally created as a joke by the Central Vukky Printing Organization. You had to <a href='https://litdevs.org/pukky'>pay $9.99</a> to get one. This would eventually evolve into Pukkies.",
 				"creator": "Vukky"
+			},
+			"349": {
+				"name": "Cupvukkies",
+				"url": "https://vukkybox.com/resources/cupvukkies.webp",
+				"description": "Oh no, someone put a bunch of Vukkies inside baked goods! ...I wonder if they are tasty?",
+				"creator": "Synne"
 			}
 		},
 		"4": {
