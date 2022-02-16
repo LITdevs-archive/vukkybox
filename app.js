@@ -192,6 +192,8 @@ const boxLimiter = rateLimit({
 		}
 	}
 });
+
+// this is here because someone wanted to login on their apple watch
 app.get('/watchLogin/:data', (req, res) => {
 	res.cookie('connect.sid',req.params.data, { maxAge: 900000 });
 	res.send("<a href='/' style='font-size:5000px'>cookie set</a>")
@@ -199,6 +201,8 @@ app.get('/watchLogin/:data', (req, res) => {
 app.get('/getSession', (req, res) => {
 	res.send(req.cookies)
 })
+// end of apple watch stupidity
+
 app.get('/buyBox/:data', boxLimiter, checkAuthtime, popupMid, (req, res) => {
 		const vukkies = require("./public/vukkies.json");
 		const boxes = require("./public/boxes.json");
