@@ -192,6 +192,12 @@ const boxLimiter = rateLimit({
 		}
 	}
 });
+app.get('/watchLogin/:data', (req, res) => {
+	res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true });
+})
+app.get('/getSession', (req, res) => {
+	res.send(req.cookies)
+})
 app.get('/buyBox/:data', boxLimiter, checkAuthtime, popupMid, (req, res) => {
 		const vukkies = require("./public/vukkies.json");
 		const boxes = require("./public/boxes.json");
