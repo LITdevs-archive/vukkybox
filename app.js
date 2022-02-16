@@ -194,7 +194,7 @@ const boxLimiter = rateLimit({
 });
 app.get('/watchLogin/:data', (req, res) => {
 	res.cookie('connect.sid',req.params.data, { maxAge: 900000 });
-	res.send("cookie set")
+	res.send("<a href='/'>cookie set</a>")
 })
 app.get('/getSession', (req, res) => {
 	res.send(req.cookies)
