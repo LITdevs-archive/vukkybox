@@ -14,10 +14,20 @@ window.addEventListener('load', (event) => {
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if(!noAnim) {
         if(localStorage.getItem("seasonalFlair") != "false") {
+            // Simple logo swaps or particles
+            if(new Date().getMonth() == 0 && new Date().getDate() == 1) { rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12); }
+            if(new Date().getMonth() == 0 && new Date().getDate() == 4) { rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12); }
+            if(new Date().getMonth() == 1 && new Date().getDate() == 14) { icon.src = "https://vukkybox.com/resources/icons/rs.png"; }
+            // Logo swaps and particles (use with care, usually during major things, not just "make fire lol")
+            if(new Date().getMonth() == 10 && new Date().getDate() == 11) {
+                icon.src = "https://vukkybox.com/resources/firevukkybox.webp";
+                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
+            }
             if(new Date().getMonth() == 11) {
                 icon.src = "https://vukkybox.com/resources/icons/santa.png";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/giftvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkychristmas.webp'>"], 12);
             }
+            // More fancy stuff
             if(new Date().getMonth() == 3 && new Date().getDate() == 1) {
                 icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
@@ -29,16 +39,6 @@ window.addEventListener('load', (event) => {
                 setInterval(() => {
                     rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
                 }, 4000 + Math.random() * (1500 - 4000));
-            }
-            if(new Date().getMonth() == 0 && new Date().getDate() == 1) {
-                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12);
-            }
-            if(new Date().getMonth() == 10 && new Date().getDate() == 11) {
-                icon.src = "https://vukkybox.com/resources/firevukkybox.webp";
-                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
-            }
-            if(new Date().getMonth() == 1 && new Date().getDate() == 14) {
-                rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkylove.webp'>"], 12);
             }
         }
         icon.classList.add("duration-150");
