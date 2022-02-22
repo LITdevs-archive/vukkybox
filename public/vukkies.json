@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 349,
+	"currentId": 355,
 	"rarity": {
 		"1": {
 			"1": {
@@ -1128,6 +1128,18 @@
 				"url": "https://vukkybox.com/resources/cupvukkies.webp",
 				"description": "Oh no, someone put a bunch of Vukkies inside baked goods! ...I wonder if they are tasty?",
 				"creator": "Synne"
+			},
+			"350": {
+				"name": "Vukky hat",
+				"url": "https://vukkybox.com/resources/vukkyhat.webp",
+				"description": "Woo -Vykky",
+				"creator": "Vukky"
+			},
+			"351": {
+				"name": "Vukkybox Watch",
+				"url": "https://vukkybox.com/resources/vukkyboxwatch.webp",
+				"description": "Buy now! Only ∞ Vukkybux per Vukkybox Watch. Limitations may apply.",
+				"creator": "AnnoyingRains"
 			}
 		},
 		"4": {
@@ -1375,6 +1387,30 @@
 				"url": "https://vukkybox.com/resources/ezgif.com-gif-maker.webp",
 				"description": "Leaving is not an option.",
 				"creator": "Vukky"
+			},
+			"352": {
+				"name": "Vukkybox Watch... in a watch?",
+				"url": "https://vukkybox.com/resources/vukkyboxwatchwatch.webp",
+				"description": "The Vukkybox Watch is inside the Vukkybox Watch!",
+				"creator": "AnnoyingRains"
+			},
+			"353": {
+				"name": "ASCII Art Vukky",
+				"url": "https://vukkybox.com/resources/asciiartvukky.webp",
+				"description": "\"looks kinda weird, but i'll take it\" -Vukky",
+				"creator": "Vukky"
+			},
+			"354": {
+				"name": "Oversimplified Vukky",
+				"url": "https://vukkybox.com/resources/oversimplifiedvukky.webp",
+				"description": "A square, and some lines. It's a masterpiece.",
+				"creator": "Vukky"
+			},
+			"355": {
+				"name": "Emoji Vukky",
+				"url": "https://vukkybox.com/resources/emojivukky.webp",
+				"description": "😂🛑 💀✅ ⚫🔵⚪⚫⚪⚫⚪🔵⚫",
+				"creator": "Vukky and Sydney"
 			}
 		},
 		"5": {
