@@ -110,10 +110,6 @@ app.use(function (err, req, res, next) {
 })
 app.set('trust proxy', 1);
 
-function errorHandler (err, req, res, next) {
-	res.status(500).send(`<h1>The Vukkies are on fire!<h1>Please send a screenshot of this page to Vukkybox Support, including the error below in its entirety.<br><pre>${err.stack}</pre>`)
-}
-
 db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
 db.ethermineETH() 
 
@@ -173,9 +169,6 @@ app.post("/editProfile", grl ,checkAuth, function(req, res) {
 	res.redirect("/profile")
 })
 
-function getKeyByValue(object, value) {
-	return Object.keys(object).find(key => object[key] === value);
-} // Why is this here?
 
 const boxLimiter = rateLimit({
 	windowMs: 1000,
@@ -696,6 +689,7 @@ app.get('/otpcallback', function(req, res) {
 
 app.get('/logout', grl, function(req, res) {
 	req.logout();
+	req.session.destroy();
 	res.redirect('/');
 });
 app.get('/info', grl, checkAuth, function(req, res) {

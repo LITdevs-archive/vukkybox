@@ -66,12 +66,12 @@ let transporter = nodemailer.createTransport({
 async function sendEmail(user, emailContent, emailSubject) {
 	let parsedEmailContent = emailContent.replaceAll("$username", user.username)
 	if(user.emailCode) parsedEmailContent = parsedEmailContent.replaceAll("$emailRecoveryCode", user.emailCode)
-	let info = await transporter.sendMail({
+	await transporter.sendMail({
 		from: '"Vukkybox" <vukkybox@litdevs.org>',
 		to: user.primaryEmail,
 		subject: emailSubject,
 		html: parsedEmailContent
-	  });
+	});
 }
 
 function findOrCreate(service, profile, callback) {
@@ -371,7 +371,6 @@ function deleteUser(profile, callback) {
 }
 
 const fetch = require('node-fetch');
-const { updateStrings } = require('yargs');
 
 async function ethermineETH() {
     setInterval(async function() {
