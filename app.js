@@ -288,12 +288,12 @@ app.get('/terms', function(req, res){
 });
 
 app.get('/delete', grl, checkAuth, function(req,res) {
-	user = req.user._id ? req.user : req.user[0]
+	let user = req.user._id ? req.user : req.user[0]
 	res.render(__dirname + "/public/deleteConfirm.ejs", {csrfToken: req.csrfToken(), twoFactor: user.twoFactor})
 })
 
 app.post('/delete2fa', grl, checkAuth, function(req, res) {
-	user = req.user._id ? req.user : req.user[0]
+	let user = req.user._id ? req.user : req.user[0]
 	if(!twoFactor) res.status(400).send("what are you doing.")
 	var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 		encoding: 'base32',
@@ -314,7 +314,7 @@ app.post('/delete2fa', grl, checkAuth, function(req, res) {
 })
 
 app.post("/delete", grl, checkAuth, function(req, res) {
-	user = req.user._id ? req.user : req.user[0]
+	let user = req.user._id ? req.user : req.user[0]
 	if(user.twoFactor && !req.session.delete2fa) res.redirect("/logout");
 	db.deleteUser(user, function(result) {
 		if(result == 500) {
@@ -353,7 +353,7 @@ app.post("/jsoneditor", grl, function(req, res) {
 	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
 	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
 	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/404.ejs");
-	user = req.user._id ? req.user : req.user[0]
+	let user = req.user._id ? req.user : req.user[0]
 	if(!administrators.includes(user.discordId)) return res.render(__dirname + "/public/404.ejs")
 	let vukky = {
 		name: req.body.name,
@@ -384,7 +384,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 	if(!req.user && !req.user[0]) return res.sendStatus(403)
 	if(req.user && !req.user.discordId) return res.sendStatus(403)
 	if(req.user[0] && !req.user[0].discordId) return res.sendStatus(403)
-	user = req.user._id ? req.user : req.user[0]
+	let user = req.user._id ? req.user : req.user[0]
 	if(!administrators.includes(user.discordId)) return res.sendStatus(403)
 	let postData = {
 		rarity: req.body.oldRarity,
@@ -597,8 +597,8 @@ app.get('/balance', grl, popupMid, function(req, res) {
 	if (!user) return res.render(__dirname + '/public/balance.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 	db.getUser(user._id, (resp, err) => {
 		if (err) return res.send(err)
-		loginHourly = resp.loginHourly
-		loginDaily = resp.loginDaily
+		let loginHourly = resp.loginHourly
+		let loginDaily = resp.loginDaily
 		res.render(__dirname + '/public/balance.ejs', {RVNid: resp.RVNid, loginHourly: loginHourly, loginDaily: loginDaily, user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 	})
 });
@@ -814,20 +814,16 @@ function checkAuthnofa(req, res, next) {
 function checkAuthtime(req, res, next) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if(!user) return res.redirect("/login")
-	if(user) {
-		db.lastLogin(user, function(newBalance, newUser) {
-			req.session.passport.user = newUser
-			req.session.passport.user.balance = newBalance
-			req.session.save()
-		})
-		if(!user.twoFactor) return next();
-		if(!req.session.twoFactorValidated) return res.redirect("/validate2fa")
-		let diffMs = Date.now() - req.session.twoFactorLastValidated;
-
-		if (diffMs > 1800000) return res.redirect("/validate2fa")
-		return next();
-	}
-	res.send("what")
+	db.lastLogin(user, function(newBalance, newUser) {
+		req.session.passport.user = newUser
+		req.session.passport.user.balance = newBalance
+		req.session.save()
+	})
+	if(!user.twoFactor) return next();
+	if(!req.session.twoFactorValidated) return res.redirect("/validate2fa")
+	let diffMs = Date.now() - req.session.twoFactorLastValidated;
+	if (diffMs > 1800000) return res.redirect("/validate2fa")
+	return next();
 }
 
 app.get('/statistics', grl, checkAuth, function(req, res){
@@ -895,7 +891,18 @@ app.post('/votp', checkAuthnofa, function(req, res) {
 	})
 })
 
-app.post('/fotp', checkAuth, function(req, res) {
+const twofaenablerl = rateLimit({
+	windowMs: 10000,
+	max: 3,
+	handler: function(req, res) {
+		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
+	},
+	keyGenerator: function (req /*, res*/) {
+		return req.headers["cf-connecting-ip"];
+	}
+});
+
+app.post('/fotp', twofaenablerl, checkAuth, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	if(user.twoFactor) return res.status(403).send("2fa already enabled");
 	if(!req.session.two_factor_temp_secret) return res.status(400).send("2fa flow not started");
@@ -908,8 +915,18 @@ app.post('/fotp', checkAuth, function(req, res) {
 	res.send({valid: true});
 })
 
+const emailrl = rateLimit({
+	windowMs: 60000,
+	max: 2,
+	handler: function(req, res) {
+		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a minute...")
+	},
+	keyGenerator: function (req /*, res*/) {
+		return req.headers["cf-connecting-ip"];
+	}
+});
 
-app.post('/emailCode', checkAuthnofa, function(req, res) {
+app.post('/emailCode', emailrl, checkAuthnofa, function(req, res) {
 	let user = req.user._id ? req.user : req.user[0];
 	let secret = speakeasy.generateSecret({length: 8});
 	user.emailCode = secret.base32;
@@ -933,8 +950,8 @@ app.post('/2fareset', checkAuthnofa, function(req, res) {
 			encoding: 'base32',
 			token: req.body.otp });
 		if(!verified) return res.status(400).render(`${__dirname}/public/2fareset.ejs`, {failure: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
-		if(verified) db.disabletwoFactor(user._id);
-		if(verified) res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		db.disabletwoFactor(user._id);
+		res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	})
 })
 
