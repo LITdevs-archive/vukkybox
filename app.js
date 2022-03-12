@@ -821,7 +821,7 @@ function checkAuthtime(req, res, next) {
 }
 
 app.get('/statistics', grl, checkAuth, function(req, res){
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	let userRanks = {}
 	db.leaderboard({"board": "uniqueVukkiesGot", "limit": 1, "rarity": 42}, user, function(leaderboardObject) {
 		if (leaderboardObject.userRank) userRanks.uniqueVukkiesGot = leaderboardObject.userRank.rank;
@@ -837,14 +837,14 @@ app.get('/statistics', grl, checkAuth, function(req, res){
 })})})})});
 
 app.get('/translog', grl, checkAuth, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	db.transLog(user._id, logs => {
 		res.render(`${__dirname}/public/translog.ejs`, {user: user, transLog: logs, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	})
 })
 
 app.get('/2fa', grl, checkAuthnofa, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		if(user.twoFactor) return res.render(`${__dirname}/public/2fareset.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 		let secret = speakeasy.generateSecret({name: "Vukkybox 2FA"});
@@ -859,7 +859,7 @@ app.get('/2fa', grl, checkAuthnofa, function(req, res) {
 
 app.get('/validate2fa', grl, function(req, res) {
 	if (!req.isAuthenticated) return res.redirect("/login");
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		if(!user.twoFactor) return res.send("you dont even have 2FA enabled lol");
 		res.render(`${__dirname}/public/validate2fa.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});	
@@ -867,7 +867,7 @@ app.get('/validate2fa', grl, function(req, res) {
 });
 
 app.post('/votp', checkAuthnofa, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 			encoding: 'base32',
@@ -897,7 +897,7 @@ const twofaenablerl = rateLimit({
 });
 
 app.post('/fotp', twofaenablerl, checkAuth, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	if(user.twoFactor) return res.status(403).send("2fa already enabled");
 	if(!req.session.two_factor_temp_secret) return res.status(400).send("2fa flow not started");
 	let userInput = req.body.otp;
@@ -921,7 +921,7 @@ const emailrl = rateLimit({
 });
 
 app.post('/emailCode', emailrl, checkAuthnofa, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	let secret = speakeasy.generateSecret({length: 8});
 	user.emailCode = secret.base32;
 	req.session.emailCode = secret.base32;
@@ -930,7 +930,7 @@ app.post('/emailCode', emailrl, checkAuthnofa, function(req, res) {
 })
 
 app.post('/emailCheckCode', checkAuthnofa, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	if(!req.session.emailCode) return res.status(400).send({valid: false});
 	if(req.body.otp != req.session.emailCode) return res.status(400).send({valid: false});
 	db.disabletwoFactor(user._id);
@@ -938,7 +938,7 @@ app.post('/emailCheckCode', checkAuthnofa, function(req, res) {
 })
 
 app.post('/2fareset', checkAuthnofa, function(req, res) {
-	let user = req.user._id ? req.user : req.user[0];
+	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 			encoding: 'base32',
