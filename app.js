@@ -404,7 +404,7 @@ app.get("/adminauthed", grl, popupMid, function(req, res) {
 
 app.get("/adminfailed",grl, popupMid,  function(req, res) { 
 	res.render(__dirname + "/public/adminfakefailed.ejs");
-	await adminHook.send(`${req.user} just tried to access the admin page!1!1!! Very sussy!!`)
+	adminHook.send(`${req.session.passport.user.username} just tried to access the admin page!1!1!! Very sussy!!`)
 })
 
 app.post("/admin/:action", grl, async function(req, res) {
