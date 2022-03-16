@@ -710,7 +710,8 @@ app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
 				adminHook.send(`<a:clappy:919605268902469662> A user has redeemed \`${code}\` for ${amount} Vukkybux!`);
 			} else {
 				res.render(__dirname + '/public/redeem.ejs', {invalid: isValid, code: null, amount: null});
-				adminHook.send(`<a:hahah:919608495576326174> A user tried to redeem \`${req.params["code"]}\`, but it was ${isValid}.`);
+				if (isValid == "redeemed") adminHook.send(`<a:hahah:919608495576326174> A user tried to redeem \`${req.params["code"]}\`, but they have already used it.`);
+				if (isValid == "used") adminHook.send(`<a:hahah:919608495576326174> A user tried to redeem \`${req.params["code"]}\`, but it has no uses left.`);
 			}
 		});
 	});
