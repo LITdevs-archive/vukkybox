@@ -41,7 +41,7 @@
     "express-session": "^1.17.2",
     "mongoose": "^6.2.5",
     "node-fetch": "^2.6.7",
-    "nodemailer": "^6.7.2",
+    "nodemailer": "^6.7.3",
     "passport": "^0.5.2",
     "passport-discord": "^0.1.4",
     "passport-github": "^1.1.0",
