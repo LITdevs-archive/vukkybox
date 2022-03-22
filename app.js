@@ -395,7 +395,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 })
 
 app.get("/admin/**", grl, popupMid, function(req, res) {
-	return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "You're gonna have to be <i>properly</i> logged in if you wanna do that... ;)" });
+	return res.redirect("https://www.youtube.com/watch?v=kBKr8YLuVgs");
 })
 
 app.get("/adminauthed", grl, popupMid, function(req, res) {
