@@ -859,7 +859,7 @@ app.get('/2fa', grl, checkAuthnofa, function(req, res) {
 });
 
 app.get('/validate2fa', grl, function(req, res) {
-	if (!req.isAuthenticated) return res.redirect("/login");
+	if (!req.isAuthenticated()) return res.redirect("/login");
 	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		if(!user.twoFactor) return res.send("you dont even have 2FA enabled lol");
