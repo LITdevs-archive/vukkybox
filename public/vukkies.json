@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 355,
+	"currentId": 369,
 	"rarity": {
 		"1": {
 			"1": {
@@ -597,7 +597,7 @@
 				"name": "Fading Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/vukkyfade.webp",
 				"description": "Mr. Neatnik, i dont feel so good",
-				"creator": "not Skelly"
+				"creator": "Vukky"
 			},
 			"131": {
 				"name": "Shy Vukky",
@@ -815,6 +815,24 @@
 				"url": "https://vukkybox.com/resources/cubed%20vukky.webp",
 				"description": "There seem to be 6 Vukkies stuck inside this cube",
 				"creator": "Skelly"
+			},
+			"362": {
+				"name": "Earbleed Vukky",
+				"url": "https://vukkybox.com/resources/earbleedvukky.webp",
+				"description": "When you hear unboxsussy.mp3 at 100% volume...",
+				"creator": "Qther"
+			},
+			"364": {
+				"name": "Contrast Vukky",
+				"url": "https://vukkybox.com/resources/contrastvukky.webp",
+				"description": "Here's your NFT! It's a bit crispy, but surely you'll like it.",
+				"creator": "Toby"
+			},
+			"365": {
+				"name": "Business Vukky",
+				"url": "https://vukkybox.com/resources/businessvukky.webp",
+				"description": "Do this, do that, do all the things!",
+				"creator": "Toby"
 			}
 		},
 		"3": {
@@ -1130,7 +1148,7 @@
 				"creator": "Synne"
 			},
 			"350": {
-				"name": "Vukky hat",
+				"name": "Vukky Hat",
 				"url": "https://vukkybox.com/resources/vukkyhat.webp",
 				"description": "Woo -Vykky",
 				"creator": "Vukky"
@@ -1140,6 +1158,48 @@
 				"url": "https://vukkybox.com/resources/vukkyboxwatch.webp",
 				"description": "Buy now! Only ∞ Vukkybux per Vukkybox Watch. Limitations may apply.",
 				"creator": "AnnoyingRains"
+			},
+			"357": {
+				"name": "Clumsy Vukky",
+				"url": "https://vukkybox.com/resources/clumsyvukky.webp",
+				"description": "This Vukky is having a really bad day. Not the best start of the day to slip on a banana peel... ouch!",
+				"creator": "IngvildO"
+			},
+			"360": {
+				"name": "Pizza Vukkyroni",
+				"url": "https://vukkybox.com/resources/vukkypizza.webp",
+				"description": "Mmmmmelted cheese!",
+				"creator": "Synne"
+			},
+			"361": {
+				"name": "School Vukky",
+				"url": "https://vukkybox.com/resources/schoolvukky.webp",
+				"description": "This Vukky doesn't know what to do. Please help him with his tasks!",
+				"creator": "IngvildO"
+			},
+			"363": {
+				"name": "Excited Vukky",
+				"url": "https://vukkybox.com/resources/excitedvukky.webp",
+				"description": "Excited Vukky, but in Qther's style!",
+				"creator": "Qther"
+			},
+			"366": {
+				"name": "Happy Meal Vukky",
+				"url": "https://vukkybox.com/resources/vukkyhappymeal.webp",
+				"description": "This Vukky is about to get very fat! But it doesn't care.",
+				"creator": "IngvildO"
+			},
+			"367": {
+				"name": "Vukkit",
+				"url": "https://vukkybox.com/resources/vukkit.webp",
+				"description": "It looks... familiar...",
+				"creator": "Vukky"
+			},
+			"369": {
+				"name": "Vukky \"leaving\"",
+				"url": "https://vukkybox.com/resources/vukkybyebye.webp",
+				"description": "Uh, okay then... See you later, Vukky!",
+				"creator": "mitch"
 			}
 		},
 		"4": {
@@ -1411,6 +1471,18 @@
 				"url": "https://vukkybox.com/resources/emojivukky.webp",
 				"description": "😂🛑 💀✅ ⚫🔵⚪⚫⚪⚫⚪🔵⚫",
 				"creator": "Vukky and Sydney"
+			},
+			"356": {
+				"name": "Moonvukky",
+				"url": "https://vukkybox.com/resources/moonvukky.webp",
+				"description": "A Vukky based off of the Starkidz series, seems he lost his memory!",
+				"creator": "VocalFan"
+			},
+			"358": {
+				"name": "RimVukky",
+				"url": "https://vukkybox.com/resources/rimvukky.webp",
+				"description": "RimVukky is trying to survive the night and not get eaten by nightlings.",
+				"creator": "Synne"
 			}
 		},
 		"5": {
@@ -1592,6 +1664,12 @@
 				"url": "https://vukkybox.com/resources/linky.webp",
 				"description": "Linky is here to save the day, the princess and everyone else yet again.",
 				"creator": "Synne"
+			},
+			"359": {
+				"name": "Zeldy",
+				"url": "https://vukkybox.com/resources/zeldy.webp",
+				"description": "Keeps getting into trouble with really bad guys. Zeldy has a sword, though, so why not use it more?",
+				"creator": "Synne"
 			}
 		},
 		"7": {
@@ -1760,7 +1838,7 @@
 			"98": {
 				"name": "Mot's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/mot.webp",
-				"description": "This Pukky belongs to Mot. why pukky wen eg?"
+				"description": "This Pukky belongs to Mot. y pukky wen eg?"
 			},
 			"99": {
 				"name": "isavc's Pukky",
@@ -2113,6 +2191,11 @@
 				"name": "SkyCube's Pukky",
 				"url": "https://vukkybox.com/resources/pukkies/skycube.webp",
 				"description": "This Pukky belongs to SkyCube"
+			},
+			"368": {
+				"name": "CentaurusLaCrux's Pukky",
+				"url": "https://vukkybox.com/resources/pukkies/centauruslacrux.webp",
+				"description": "This Pukky belongs to CentaurusLaCrux"
 			}
 		}
 	}
