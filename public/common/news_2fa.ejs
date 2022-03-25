@@ -1,16 +1,21 @@
 <center id="newsPopup" class="py-8 loginPopup">
     <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">        
         <input type="hidden" name="csrfToken" id="csrfToken" value="<%=csrfToken %>"/>
-        <p class="text-2xl text-bold">We now have a Reddit subreddit! (reddit reddit reddit.)</p>
+        <p class="text-2xl text-bold">Vukkybox now has 2-Factor Authentication.</p>
         <br>
         <p class="text-xl">Ok, but why should I care?</p>
-        If you subscribe to it before April 1st, you will get a special 10,000 Vukkybux code delivered to your Reddit inbox!
-        So what are you waiting for? Join now! <a href="https://reddit.com/r/vukkybox">https://reddit.com/r/vukkybox</a>
-
-        Please note that it will take an hour for the code to arrive.
+        <p>Great that you asked! 2FA on Vukkybox comes with several benefits:</p>
+        <ul>
+            <li>Increased account security, only <span class="text-bold">you</span> can access it.</li>
+            <li>Balance cannot be spent unless you have entered your verification code in the past 30 minutes</li>
+            <li>2000 Vukkybux bonus for enabling it</li>
+            <li>10% refund on duplicates instead of 5%</li>
+            <li>No annoying reminders</li>
+            <li>Fancy lock symbol on your profile page</li>
+        </ul>
         <br>
         <button onclick="accept()" class="button button-blue">Ok i read this but dont care</button>
-        <a href="https://reddit.com/r/vukkybox"><button onclick="accept()" class="button button-blue">Cool! Let's go there</button></a>
+        <a href="/2fa"><button onclick="accept()" class="button button-blue">Cool! Let's enable it</button></a>
     </div>
       <script>
             document.getElementById("content").style.filter = "blur(5px)";
