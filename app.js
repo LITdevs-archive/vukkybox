@@ -38,7 +38,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 var scopes = ['identify', 'email'];
-var prompt = 'consent'
+var prompt = 'none'
 app.set("view egine", "ejs")
 passport.use(new DiscordStrategy({
 	clientID: process.env.CLIENT_ID,
