@@ -395,7 +395,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 })
 
 app.get("/admin/**", grl, popupMid, function(req, res) {
-	return res.redirect("https://www.youtube.com/watch?v=kBKr8YLuVgs");
+	return res.redirect("https://www.youtube.com/watch?v=jhFDyDgMVUI&list=PLGb68_lt_kIAPpo18Z76QFjIWwGDq8d-N");
 })
 
 app.get("/adminauthed", grl, popupMid, function(req, res) {
