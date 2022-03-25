@@ -862,7 +862,7 @@ app.get('/validate2fa', grl, function(req, res) {
 	if (!req.isAuthenticated()) return res.redirect("/login");
 	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
-		if(!user.twoFactor) return res.send("you dont even have 2FA enabled lol");
+		if(!user.twoFactor) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you don't have 2FA enabled! You should <a href='/2fa'>enable it</a> first..." });
 		res.render(`${__dirname}/public/validate2fa.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});	
 	})
 });
