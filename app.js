@@ -395,7 +395,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 })
 
 app.get("/admin/**", grl, popupMid, function(req, res) {
-	return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "You're gonna have to be <i>properly</i> logged in if you wanna do that... ;)" });
+	return res.redirect("https://www.youtube.com/watch?v=jhFDyDgMVUI&list=PLGb68_lt_kIAPpo18Z76QFjIWwGDq8d-N");
 })
 
 app.get("/adminauthed", grl, popupMid, function(req, res) {
@@ -859,7 +859,7 @@ app.get('/2fa', grl, checkAuthnofa, function(req, res) {
 });
 
 app.get('/validate2fa', grl, function(req, res) {
-	if (!req.isAuthenticated) return res.redirect("/login");
+	if (!req.isAuthenticated()) return res.redirect("/login");
 	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		if(!user.twoFactor) return res.send("you dont even have 2FA enabled lol");
