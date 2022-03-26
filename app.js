@@ -605,11 +605,15 @@ app.get('/gallery', grl, checkAuth, popupMid, function(req, res) {
 });
 
 app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
+	try {
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
 		if (user.username == user.primaryEmail) user.username = "A Vukkybox User";
 		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	})
+	} catch(err) {
+		res.status(500).send("500 " + err)
+	}
 })
 
 app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {

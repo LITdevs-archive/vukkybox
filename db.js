@@ -328,6 +328,7 @@ function createCode(code, amount, uses, callback) {
 }
 
 function getUser(userId, callback) {
+	try {
 	User.findById({_id: userId}, function (err, doc) {
 		if(err) {
 			callback(null, err)
@@ -336,6 +337,9 @@ function getUser(userId, callback) {
 		if(!doc.RVNid) doc.RVNid = doc._id.toString().substr(8); doc.save();
 		callback(doc, null)
 	})
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 function lastLogin(user, callback) {
