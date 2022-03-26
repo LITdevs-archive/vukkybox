@@ -921,7 +921,7 @@ const emailrl = rateLimit({
 	}
 });
 
-app.post('/emailCode', emailrl checkAuthnofa, function(req, res) {
+app.post('/emailCode', emailrl, checkAuthnofa, function(req, res) {
 	let user = req.user?._id ? req.user : req.user[0];
 	let secret = speakeasy.generateSecret({length: 8});
 	user.emailCode = secret.base32;
