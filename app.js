@@ -612,7 +612,7 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
 	})
 	} catch(err) {
-		res.status(500).send("500 " + err)
+
 	}
 })
 
