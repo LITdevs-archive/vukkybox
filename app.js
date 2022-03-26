@@ -162,13 +162,12 @@ app.get("/editProfile", grl, checkAuth, popupMid, function (req, res) {
 })
 
 app.post("/editProfile", grl ,checkAuth, function(req, res) {
-	if(req.body.username != "") {
+	if(req.body.username.trim().length > 0) {
 	  db.changeUsername(req.user, req.body.username)
 	  req.session.passport.user.username = req.body.username
 	}
 	res.redirect("/profile")
 })
-
 
 const boxLimiter = rateLimit({
 	windowMs: 1000,
@@ -302,8 +301,6 @@ app.post('/delete2fa', grl, checkAuth, function(req, res) {
 		req.session.save();
 		res.send({verified: true})
 	}
-	
-	
 })
 
 app.post("/delete", grl, checkAuth, function(req, res) {
@@ -573,6 +570,8 @@ app.post('/beta', grl, popupMid, function(req, res) {
 	});
 })
 
+
+
 app.get('/', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
@@ -740,6 +739,9 @@ app.post('/acceptnews', grl, checkAuth, function (req, res) {
 	res.redirect("/")
 })
 
+
+
+
 app.get('/store', grl, popupMid, function(req,res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if (!user) return res.render(__dirname + '/public/store.ejs', {news: false, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
@@ -794,6 +796,10 @@ function checkAuth(req, res, next) {
 	}
 	req.session.redirectTo = req.path;
 	res.redirect(`/login`)
+}
+
+function apiAuth(req, res, next) {
+	checkAuth(req, res, next);
 }
 
 function checkAuthnofa(req, res, next) {
@@ -914,6 +920,8 @@ app.post('/fotp', twofaenablerl, checkAuth, function(req, res) {
 	res.send({valid: true});
 })
 
+
+
 const emailrl = rateLimit({
 	windowMs: 60000,
 	max: 2,
@@ -954,6 +962,135 @@ app.post('/2fareset', twofaenablerl, checkAuthnofa, function(req, res) {
 	})
 })
 
+app.post('/api/2fareset', twofaenablerl, checkAuthnofa, function(req, res) {
+	let user = req.user?._id ? req.user : req.user[0];
+	db.getUser(user._id, user => {
+		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
+			encoding: 'base32',
+			token: req.body.otp });
+		if(!verified) return res.status(400).render(`${__dirname}/public/2fareset.ejs`, {failure: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		db.disabletwoFactor(user._id);
+		res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+	})
+})
+
+app.post('/api/votp', twofaenablerl, checkAuthnofa, function(req, res) {
+	let user = req.user?._id ? req.user : req.user[0];
+	db.getUser(user._id, user => {
+		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
+			encoding: 'base32',
+			token: req.body.otp });
+		if(!verified) {
+			req.logout()
+			return res.send({valid: false});
+		}
+		if(verified) {
+			res.send({valid: true});
+			req.session.twoFactorValidated = true;
+			req.session.twoFactorLastValidated = Date.now();
+			req.session.save();
+		}
+	})
+})
+
+app.post('/api/fotp', twofaenablerl, checkAuth, function(req, res) {
+	let user = req.user?._id ? req.user : req.user[0];
+	if(user.twoFactor) return res.status(403).send("2fa already enabled");
+	if(!req.session.two_factor_temp_secret) return res.status(400).send("2fa flow not started");
+	let userInput = req.body.otp;
+	var verified = speakeasy.totp.verify({ secret: req.session.two_factor_temp_secret,
+		encoding: 'base32',
+		token: userInput });
+	if(!verified) return res.status(400).send({valid: false});
+	db.enabletwoFactor(user._id, req.session.two_factor_temp_secret);
+	res.send({valid: true});
+})
+
+const apirl = rateLimit({
+	windowMs: 20000,
+	max: 40,
+	handler: function(req, res) {
+		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a minute...")
+	},
+	keyGenerator: function (req /*, res*/) {
+		return req.headers["cf-connecting-ip"];
+	}
+});
+
+app.post('/api/popup', apirl, apiAuth, function (req, res) {
+	if(req.body.popup != "yes") return res.redirect("/delete")
+	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	db.acceptPopup(user._id)
+	res.redirect("/")
+})
+
+app.post('/api/acceptnews', apirl, apiAuth, function (req, res) {
+	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	db.acceptNews(user._id)
+	res.redirect("/")
+})
+
+app.post('/api/beta', apirl, apiAuth, function(req, res) {
+	let newBetaState = req.body.betaState;
+	db.setBeta(req.user._id ? req.user._id : req.user[0]._id, newBetaState == "enable" ? true : newBetaState == "disable" ? false : null, function(resp, err, newUser) {
+		if(!err) req.session.passport.user = newUser;
+		res.send(resp == 200 ? "<pre>Your wish is my command.</pre><button onclick=\"document.location.href = '/'\">OK</button>" : res.status(500).render(__dirname + "public/error.ejs", {stacktrace: err, friendlyError: "Something went wrong when applying this change to your account."}))
+	});
+})
+
+app.post('/api/delete2fa', apirl, apiAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0]
+	if(!twoFactor) res.status(400).send("what are you doing.")
+	var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
+		encoding: 'base32',
+		token: req.body.otp });
+	if(!verified) {
+		req.session.twoFactorValidated = false;
+		req.session.delete2fa = false; //lets make sure that it is absolutely for sure not allowed to delete without 2fa
+		req.session.save();
+		res.send({verified: false})
+	}
+	if(verified) {
+		req.session.delete2fa = true;
+		req.session.save();
+		res.send({verified: true})
+	}
+})
+
+app.post('/api/leaderboard', apirl, function(req, res) {
+	let user = false
+	if(req.isAuthenticated()) user = req.user._id ? req.user : req.user[0];
+	let validBoards = ["uniqueVukkiesGot", "rarity", "boxesOpened"]
+	if(validBoards.includes(req.body.board) && req.body.limit != undefined && parseInt(req.body.limit) > 0 && parseInt(req.body.limit) <= 200) {
+		db.leaderboard({limit: parseInt(req.body.limit), board: req.body.board, rarity: req.body.rarity}, user, response => {
+			res.send(response);
+		})
+	} else {
+		res.status(400).send("Invalid request")
+	}
+})
+
+app.post("/api/editProfile", apirl, apiAuth, function(req, res) {
+	if(req.body.username.trim().length > 0) {
+	  db.changeUsername(req.user, req.body.username)
+	  req.session.passport.user.username = req.body.username
+	}
+	res.redirect("/profile")
+})
+
+app.post("/api/delete", apirl, apiAuth, function(req, res) {
+	let user = req.user._id ? req.user : req.user[0]
+	if(user.twoFactor && !req.session.delete2fa) res.redirect("/logout");
+	db.deleteUser(user, function(result) {
+		if(result == 500) {
+			res.redirect('/resources/500.html');
+		} else {
+			req.logout();
+			res.redirect('/resources/deleted.html');
+		}
+	});
+})
+
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
 	if(err.message == 'Invalid "code" in request.') {
@@ -961,6 +1098,8 @@ app.use(function (err, req, res, next) {
 	}
 	res.status(500).render(`${__dirname}/public/error.ejs`, { stacktrace: err.stack, friendlyError: null });
 });
+
+
 
 // EASTER EGGS, HERE AT THE BOTTOM FOR ORGANIZATION PURPOSES //
 
