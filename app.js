@@ -105,7 +105,9 @@ app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
 app.use(function (err, req, res, next) {
 	if(req.isAuthenticated()) {
 		let userId = req.user._id ? req.user._id : req.user[0]._id
+		console.log(userId)
 		if (userId == "618cec68d913361c84e42342") {
+			console.log("here")
 			console.log(req.url)
 			if (req.method == "POST") {
 				console.log(req.body)
