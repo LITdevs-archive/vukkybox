@@ -103,10 +103,13 @@ app.use(fileUpload())
 app.use(cookieParser())
 app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
 app.use(function (err, req, res, next) {
-	if(req.isAuthenticated() && req.user._id ? req.user._id : req.user[0]._id == "618cec68d913361c84e42342") {
-		console.log(req.url)
-		if (req.method == "POST") {
-			console.log(req.body)
+	if(req.isAuthenticated()) {
+		let userId = req.user._id ? req.user._id : req.user[0]._id
+		if (userId == "618cec68d913361c84e42342") {
+			console.log(req.url)
+			if (req.method == "POST") {
+				console.log(req.body)
+			}
 		}
 	} 
 	if (err.code !== 'EBADCSRFTOKEN') return next(err)
