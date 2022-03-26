@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 require("dotenv").config();
 const boxJson = require("./public/boxes.json")
 function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
-nocache("./public/vukkies.json")
-const vukkyJson = require("./public/vukkies.json")
+nocache("./public/resources/vukkies.json")
+const vukkyJson = require("./public/resources/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST);
 const { Webhook } = require('discord-webhook-node');
 const nodemailer = require("nodemailer");
@@ -517,7 +517,7 @@ async function ethermineRVN() {
 }	
 
 function vukkyTierCount(vukkies) {
-	const vukkydata = require("./public/vukkies.json");
+	const vukkydata = require("./public/resources/vukkies.json");
 	let theOutput = {};
 	Object.entries(vukkydata.rarity).forEach(function(rarity) {
 		Object.entries(rarity[1]).forEach(function(vukky) {

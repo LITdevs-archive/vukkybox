@@ -26,8 +26,8 @@ webp.grant_permission();
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
-nocache("./public/vukkies.json")
-const vukkyJson = require("./public/vukkies.json")
+nocache("./public/resources/vukkies.json")
+const vukkyJson = require("./public/resources/vukkies.json")
 var db = require('./db')
 var fetch = require("node-fetch")
 passport.serializeUser(function(user, done) {
@@ -197,7 +197,7 @@ app.get('/getSession', (req, res) => {
 // end of apple watch stupidity
 
 app.get('/buyBox/:data', boxLimiter, checkAuthtime, popupMid, (req, res) => {
-		const vukkies = require("./public/vukkies.json");
+		const vukkies = require("./public/resources/vukkies.json");
 		const boxes = require("./public/boxes.json");
 		let validBoxes = []
 		Object.keys(boxes).forEach(box => {
@@ -366,7 +366,7 @@ app.post("/jsoneditor", grl, function(req, res) {
 	}
 	if(vukky.creator) vukkyJson.rarity[vukky.rarity][vukky.id].creator = vukky.creator
 	if(vukky.audio) vukkyJson.rarity[vukky.rarity][vukky.id].audio = vukky.audio
-	fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
+	fs.writeFileSync("./public/resources/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 
 	res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
 	
@@ -388,7 +388,7 @@ app.post("/jsonraritychange", grl, function(req, res) {
 	let vukky = vukkyJson.rarity[postData.rarity][postData.id]
 	delete vukkyJson.rarity[postData.rarity][postData.id]
 	vukkyJson.rarity[postData.newRarity][postData.id] = vukky;
-	fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
+	fs.writeFileSync("./public/resources/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 
 	res.sendStatus(200)
 	
@@ -451,7 +451,7 @@ app.post("/admin/:action", grl, async function(req, res) {
 				}
 				if(req.body.level != "pukky") vukkyJson.rarity[req.body.level][newId].creator = req.body.creator;
 				if(req.body.sfx.length != 0) vukkyJson.rarity[req.body.level][newId].audio = req.body.sfx;
-				fs.writeFileSync("./public/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
+				fs.writeFileSync("./public/resources/vukkies.json", JSON.stringify(vukkyJson, null, "\t"));
 				res.redirect("/view/" + req.body.level + "/" + newId)
 				if(req.body.level != "pukky") {
 					hook.send("<a:eagersplode:902938979563884584> A new Vukky by " + req.body.creator + " has been made! https://vukkybox.com/view/" + req.body.level + "/" + newId)
@@ -752,7 +752,7 @@ app.get('/credits', grl, popupMid, function(req,res) {
 	const gitHash = require('child_process').execSync('git rev-parse --short HEAD').toString().trim()
 	const deps = require("./package.json").dependencies;
 	const ddeps = require("./package.json").devDependencies;
-	const vukkies = require("./public/vukkies.json").rarity;
+	const vukkies = require("./public/resources/vukkies.json").rarity;
 	let vukkyCreatorData = {};
 	Object.keys(vukkies).forEach(function(key) {
 		Object.keys(vukkies[key]).forEach(function(keytoo) {
