@@ -858,6 +858,17 @@ app.get('/2fa', grl, checkAuthnofa, function(req, res) {
 	})
 });
 
+const twofaenablerl = rateLimit({
+	windowMs: 10000,
+	max: 3,
+	handler: function(req, res) {
+		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
+	},
+	keyGenerator: function (req /*, res*/) {
+		return req.headers["cf-connecting-ip"];
+	}
+});
+
 app.get('/validate2fa', twofaenablerl, function(req, res) {
 	if (!req.isAuthenticated()) return res.redirect("/login");
 	let user = req.user?._id ? req.user : req.user[0];
@@ -885,17 +896,6 @@ app.post('/votp', twofaenablerl, checkAuthnofa, function(req, res) {
 		}
 	})
 })
-
-const twofaenablerl = rateLimit({
-	windowMs: 10000,
-	max: 3,
-	handler: function(req, res) {
-		res.status(429).send("Hang on, you're going too fast for us to violently stuff Vukkies in boxes!<br>Please give us a second or five...<script>setTimeout(function() { window.location.reload() },2500)</script>")
-	},
-	keyGenerator: function (req /*, res*/) {
-		return req.headers["cf-connecting-ip"];
-	}
-});
 
 app.post('/fotp', twofaenablerl, checkAuth, function(req, res) {
 	let user = req.user?._id ? req.user : req.user[0];
