@@ -103,19 +103,6 @@ app.use(fileUpload())
 app.use(cookieParser())
 app.use(csrf({cookie: true, sessionKey: process.env.SESSION_SECRET}))
 app.use(function (err, req, res, next) {
-	console.log("here2")
-	if(req.isAuthenticated()) {
-		console.log("here")
-		let userId = req.user._id ? req.user._id : req.user[0]._id
-		console.log(userId)
-		if (userId == "618cec68d913361c84e42342") {
-			console.log("here")
-			console.log(req.url)
-			if (req.method == "POST") {
-				console.log(req.body)
-			}
-		}
-	} 
 	if (err.code !== 'EBADCSRFTOKEN') return next(err)
 	let csrfWhitelist = ["/leaderboard"]
 	if(!csrfWhitelist.includes(req.url)) res.send("Couldn't verify Cross Site Request Forgery prevention")
