@@ -338,7 +338,6 @@ function getUser(userId, callback) {
 			if(!doc.RVNid) doc.RVNid = doc._id.toString().substr(8); doc.save();
 			callback(doc, null)	
 		} catch (err) {
-			callback(null, err)
 		}
 	})
 	} catch (err) {
