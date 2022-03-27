@@ -556,7 +556,7 @@ app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
 })
 
 app.get('/beta', grl, checkAuth, popupMid, function(req, res) {
-	let authorizedReferers = ["https://vukkybox.com/admin, https://vukkybox.com/credits"]
+	let authorizedReferers = ["https://vukkybox.com/admin", "https://vukkybox.com/credits"]
 	if(authorizedReferers.includes(req.headers.referer)) return res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
 	res.status(404).render(`${__dirname}/public/404.ejs`);
 })
