@@ -698,7 +698,7 @@ app.get('/logout', grl, function(req, res) {
 app.get('/info', grl, checkAuth, function(req, res) {
 	res.redirect("/")
 });
-app.get('/redeem/:code', grl, checkAuth, popupMid, function (req, res) {
+app.get('/redeem/:code', grl, checkAuthnofa, popupMid, function (req, res) {
 	  
 	let code = req.params["code"];
 	db.validCode(code, req.user, (isValid) => {
