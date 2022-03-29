@@ -82,7 +82,7 @@ passport.use(new GoogleStrategy({
 	scope: ["profile", "email"]
   },
   function(token, tokenSecret, profile, cb) {
-	
+	  console.log(profile)
 	db.findOrCreate(profile.provider, profile, function(user) {
 	  cb(null, user)
 	})
