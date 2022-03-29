@@ -667,6 +667,7 @@ app.get('/callbackgoogle',
 		req.session.twoFactorValidated = false
 		req.session.twoFactorLastValidated = 0
 		req.session.save()
+		console.log(req.session)
 		if(req.user.twoFactor) return res.redirect('/validate2fa')
 		if(req.session.redirectTo) {
 			let dest = req.session.redirectTo;
