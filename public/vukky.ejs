@@ -40,7 +40,7 @@
 			<center class="py-8" id="content">
 				<div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
 					<div class="hidden reward" id="reward">
-						<img class="m-auto" height="128" src="<%=vukky.url %>"/>
+						<img class="m-auto" height="128" style="filter: blur(5px) hue-rotate(20deg);" src="<%=vukky.url %>"/>
 						<p title="This is the name of the Vukky, and its ID."><%-vukky.name %> (#<%=vukky.id %>)</p>
 						<% if(vukky.rarity.level == "pukky") { %>
 							<p style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %></p>
@@ -60,7 +60,7 @@
 					
 				<% if (box) { %>
 					<div class="opener" id="opener">
-						<img id="openingicon" src="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" class="max-h-48 m-auto" />
+						<img id="openingicon" src="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" style="filter: blur(5px) hue-rotate(20deg);" class="max-h-48 m-auto" />
 					</div>
 				<% } %> 
 				</div>
