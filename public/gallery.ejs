@@ -40,7 +40,7 @@
     <audio type="sfx" id="selectSfx" preload="auto" src="/resources/select.flac"></audio>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
-<body class="bg-gradient-to-br from-green-800 to-purple-200 text-white">
+<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     <%- include('common/navbar.ejs', {share: false, galleryShare: true, box: null}); %>
     <span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<img id="vukkyloadspinner" class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.webp"><br><pre class="ml-5">Printed <span id="vukkyloadcount">0/<%=user.gallery.length %></span>: <span id="vukkyloadname">Preparing helper functions...</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
     <p class="text-bold text-2xl ml-5 mt-5" id="total_text" style="display: none;"><select style="color: black;" onchange="sortUpdate()">
