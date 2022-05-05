@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 372,
+	"currentId": 379,
 	"rarity": {
 		"1": {
 			"1": {
@@ -839,6 +839,12 @@
 				"url": "https://vukkybox.com/resources/tinyvukky.webp",
 				"description": "Look how cute it is! So much effort has been put into this one.",
 				"creator": "Mot"
+			},
+			"373": {
+				"name": "Box Vukky",
+				"url": "https://vukkybox.com/resources/boxvukky.webp",
+				"description": "This vukky wanted some style, and put a box on their head!",
+				"creator": "Username42"
 			}
 		},
 		"3": {
@@ -1206,6 +1212,24 @@
 				"url": "https://vukkybox.com/resources/vukkybyebye.webp",
 				"description": "Uh, okay then... See you later, Vukky!",
 				"creator": "mitch"
+			},
+			"375": {
+				"name": "Quote Vukky",
+				"url": "https://vukkybox.com/resources/quotevukky.webp",
+				"description": "Haha, it's the funny cave game!",
+				"creator": "Mot"
+			},
+			"376": {
+				"name": "Leakky",
+				"url": "https://vukkybox.com/resources/leakky.webp",
+				"description": "Oh no, our Vukky, it's leaking!",
+				"creator": "Ash"
+			},
+			"379": {
+				"name": "Vukkuma",
+				"url": "https://vukkybox.com/resources/Vukkuma.webp",
+				"description": "They didn't provide a description, so I'm just gonna pretend I get the reference...",
+				"creator": "Phrotonz"
 			}
 		},
 		"4": {
@@ -1449,7 +1473,7 @@
 				"creator": "Synne"
 			},
 			"345": {
-				"name": "Vukky Void",
+				"name": "Vukky Void (Animated)",
 				"url": "https://vukkybox.com/resources/ezgif.com-gif-maker.webp",
 				"description": "Leaving is not an option.",
 				"creator": "Vukky"
@@ -1495,6 +1519,18 @@
 				"url": "https://vukkybox.com/resources/Viko.webp",
 				"description": "Cat-Vukky that tries their best to bring a lightbulb to a very high tower...",
 				"creator": "Synne"
+			},
+			"374": {
+				"name": "RayVukky",
+				"url": "https://vukkybox.com/resources/RayVukky.webp",
+				"description": "Why aren't his limbs attached? How can he move them still??",
+				"creator": "SocialDalek"
+			},
+			"377": {
+				"name": "Leankky",
+				"url": "https://vukkybox.com/resources/leankky.webp",
+				"description": "Wow, what a funny looking Vukky! Hope it doesn't mess with our age rating so we remove it!",
+				"creator": "Ash"
 			}
 		},
 		"5": {
@@ -1583,7 +1619,7 @@
 				"creator": "Synne"
 			},
 			"346": {
-				"name": "Vukky Marble",
+				"name": "Vukky Marble (Animated)",
 				"url": "https://vukkybox.com/resources/vukkymarble.webp",
 				"description": "For use in marble races! It's also nice to look at, I suppose. I wonder how many Vukkies are trapped in there...",
 				"creator": "Mot"
@@ -1593,6 +1629,12 @@
 				"url": "https://vukkybox.com/resources/vukkyastley.webp",
 				"description": "Rolls whenever you least expect it...",
 				"creator": "Synne"
+			},
+			"378": {
+				"name": "VukkyCam (Animated)",
+				"url": "https://vukkybox.com/resources/vukkcam.webp",
+				"description": "Wait, this game can access your camera?",
+				"creator": "Mot"
 			}
 		},
 		"6": {
@@ -1659,7 +1701,7 @@
 				"audio": "https://vukkybox.com/resources/unboxwebtv.ogg"
 			},
 			"318": {
-				"name": "<script src='/resources/reskin/corrupted.js'></script>Corrupted Vukky",
+				"name": "<script src='/resources/reskin/corrupted.js'></script>Corrupted Vukky (Animated)",
 				"url": "https://vukkybox.com/resources/corruptedvukky.webp",
 				"description": "There is no escape from what is about to come.",
 				"creator": "Vukky",
