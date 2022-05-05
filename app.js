@@ -1035,7 +1035,7 @@ app.post('/api/beta', apirl, apiAuth, function(req, res) {
 	let newBetaState = req.body.betaState;
 	db.setBeta(req.user._id ? req.user._id : req.user[0]._id, newBetaState == "enable" ? true : newBetaState == "disable" ? false : null, function(resp, err, newUser) {
 		if(!err) req.session.passport.user = newUser;
-		res.send(resp == 200 ? "<pre>Your wish is my command.</pre><button onclick=\"document.location.href = '/'\">OK</button>" : res.status(500).render(__dirname + "public/error.ejs", {stacktrace: err, friendlyError: "Something went wrong when applying this change to your account."}))
+		res.send(resp == 200 ? "<pre>[Your wish is my command.]</pre><button onclick=\"document.location.href = '/'\">OK</button>" : res.status(500).render(__dirname + "public/error.ejs", {stacktrace: err, friendlyError: "Something went wrong when applying this change to your account."}))
 	});
 })
 
