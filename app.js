@@ -317,12 +317,8 @@ app.post("/delete", grl, checkAuth, function(req, res) {
 })
 
 app.get("/admin", grl, popupMid, function(req, res) {
-	  
-	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
-	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
-	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/adminfake.ejs");
-	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/adminfake.ejs");
-	if(administrators.includes(req.user.discordId) || administrators.includes(req.user[0].discordId)) {
+	if (!req.isAuthenticated() || !req.user || !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
+	if(administrators.includes(req.user?.discordId) || administrators.includes(req.user[0]?.discordId)) {
 		res.render(__dirname + "/public/admin.ejs", {csrfToken: req.csrfToken()})
 	} else {
 		res.render(__dirname + "/public/adminfake.ejs")
