@@ -54,11 +54,11 @@ db.once('open', function() {
   Code = mongoose.model('Code', codeSchema);
 });
 let transporter = nodemailer.createTransport({
-    host: "smtp.zoho.eu",
+    host: "mail.wanderers.cloud",
     port: 465,
-    secure: true,
+    secure: false,
     auth: {
-      user: "vukkybox@litdevs.org",
+      user: "vukkybox",
       pass: process.env.EMAIL_PASS,
     },
   });
@@ -67,7 +67,7 @@ async function sendEmail(user, emailContent, emailSubject) {
 	let parsedEmailContent = emailContent.replaceAll("$username", user.username)
 	if(user.emailCode) parsedEmailContent = parsedEmailContent.replaceAll("$emailRecoveryCode", user.emailCode)
 	await transporter.sendMail({
-		from: '"Vukkybox" <vukkybox@litdevs.org>',
+		from: '"Vukkybox" <system@vukkybox.com>',
 		to: user.primaryEmail,
 		subject: emailSubject,
 		html: parsedEmailContent
