@@ -79,7 +79,7 @@ function findOrCreate(service, profile, callback) {
 		case "google":
 			User.countDocuments({googleId:profile.id},function(err, res){
 				if (res) {
-					return User.find({googleId:profile.id}, function(err, user) {
+					return User.findOne({googleId:profile.id}, function(err, user) {
 						if(!err) callback(user)
 						if(err) console.log(err)
 					})
@@ -102,7 +102,7 @@ function findOrCreate(service, profile, callback) {
 		case "github":
 			User.countDocuments({githubId:profile.id},function(err, res){
 				if (res) {
-					return User.find({githubId:profile.id}, function(err, user) {
+					return User.findOne({githubId:profile.id}, function(err, user) {
 						if(!err) callback(user)
 						if(err) console.log(err)
 					})
@@ -127,10 +127,7 @@ function findOrCreate(service, profile, callback) {
 				if (res) {
 					User.findOne({discordId:profile.id}, function (err, doc) {
 						if(err) throw err;
-						doc.VCP = profile.VCP;
-						doc.save().then(savedDoc => {
-							return callback(savedDoc)
-						  });
+						return callback(savedDoc)
 					})
 				} else {
 					adminHook.send("<:woaha:904051837605408788> A new user has registered with Discord!")
