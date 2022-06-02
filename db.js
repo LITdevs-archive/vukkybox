@@ -127,7 +127,7 @@ function findOrCreate(service, profile, callback) {
 				if (res) {
 					User.findOne({discordId:profile.id}, function (err, doc) {
 						if(err) throw err;
-						return callback(savedDoc)
+						return callback(doc)
 					})
 				} else {
 					adminHook.send("<:woaha:904051837605408788> A new user has registered with Discord!")
