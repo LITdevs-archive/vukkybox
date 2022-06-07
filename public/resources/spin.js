@@ -116,7 +116,7 @@ let splashies = [
     "Fun fact! Egg text does **not** support Markdown!", // annoyingrains
     "Fun fact! Egg text <b>does<b> support HTML!", // vukky
     "Fun fact! we are torturing vukky by forcing him to add more and more egg text", // skelly
-    "[ROBOTS EAT BATTERIES]" //skelly
+    "[ROBOTS EAT BATTERIES]" // skelly
 ];
 tippy('#icon', {
     content: splashies[Math.floor(Math.random()*splashies.length)],
