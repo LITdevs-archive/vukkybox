@@ -119,11 +119,14 @@ window.addEventListener('load', (event) => {
         "Fun fact! we are torturing vukky by forcing him to add more and more egg text", // skelly
         "[ROBOTS EAT BATTERIES]" // skelly
     ];
-    tippy('#icon', {
+    let eggtippy = tippy('#icon', {
         content: splashies[Math.floor(Math.random()*splashies.length)],
         placement: 'left',
         allowHTML: true
     });
+    if(document.querySelector("#icon:hover") != null) {
+        eggtippy.show();
+    }
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if(!noAnim) {
         if(localStorage.getItem("seasonalFlair") != "false") {
