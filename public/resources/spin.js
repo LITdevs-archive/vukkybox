@@ -115,7 +115,7 @@ window.addEventListener('load', (event) => {
         "We are currently arguing in our Discord! Come join in and pick a side!", // annoyingrains
         "Fun fact! More than one hour has been spent developing this website!", // annoyingrains
         "Fun fact! Egg text does **not** support Markdown!", // annoyingrains
-        "Fun fact! Egg text <b>does<b> support HTML!", // vukky
+        "Fun fact! Egg text <b>does</b> support HTML!", // vukky
         "Fun fact! we are torturing vukky by forcing him to add more and more egg text", // skelly
         "[ROBOTS EAT BATTERIES]" // skelly
     ];
