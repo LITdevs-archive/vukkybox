@@ -125,7 +125,7 @@ window.addEventListener('load', (event) => {
         allowHTML: true
     });
     if(document.querySelector("#icon:hover") != null) {
-        window.eggtippy.show();
+        window.eggtippy[0].show();
     }
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if(!noAnim) {
