@@ -11,6 +11,11 @@ function rainParticles(particles, amount) {
 }
 
 window.addEventListener('load', (event) => {
+    let splashies = ["[SEND US FUNNY TEXT IF YOU WANT FUNNY TEXT]"];
+    tippy('#logo', {
+        content: splashies[Math.floor(Math.random()*splashies.length)],
+        placement: 'left'
+    });
     const noAnim = !window.matchMedia("(prefers-reduced-motion: reduce)") || window.matchMedia("(prefers-reduced-motion: reduce)").matches
     if(!noAnim) {
         if(localStorage.getItem("seasonalFlair") != "false") {
