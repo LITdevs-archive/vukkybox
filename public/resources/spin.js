@@ -99,6 +99,7 @@ window.addEventListener('load', (event) => {
     if(document.querySelector("#redeemCode")) {
         document.querySelector("#redeemCode").onclick = function() {
             let codename = prompt("Enter the code you would like to redeem.");
+            if (codename == "sharkbox") return document.location.pathname = "/buyBox/shark";
             if(codename != null && codename != "") {
                 document.location.pathname = `/redeem/${codename}`
             }
