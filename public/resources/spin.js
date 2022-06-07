@@ -12,7 +12,7 @@ function rainParticles(particles, amount) {
 
 window.addEventListener('load', (event) => {
     let splashies = ["[SEND US FUNNY TEXT IF YOU WANT FUNNY TEXT]"];
-    tippy('#logo', {
+    tippy('#icon', {
         content: splashies[Math.floor(Math.random()*splashies.length)],
         placement: 'left'
     });
