@@ -255,7 +255,8 @@ window.addEventListener('load', (event) => {
         "I'm too full to eat more.", // silje
         "So what's the deal with airline food?", // socialdalek
         function() { return `There are ${splashies.length} different egg texts!` }, // skelly
-        "How much ground could a groundhog hog if a groundhog could hog ground?" // phrotonz
+        "How much ground could a groundhog hog if a groundhog could hog ground?", // phrotonz
+        "Vukkybox is so eggciting!"
     ];
     window.eggtippy = tippy('#icon', {
         content: splashies[Math.floor(Math.random()*splashies.length)],
