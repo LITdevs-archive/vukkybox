@@ -111,13 +111,151 @@ window.addEventListener('load', (event) => {
         "Remember, grass exists.", // havefunrich
         "We need more egg text!", // annoyingrains
         "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ONESHOT IS A COOL GAME AND YOU SHOULD PROBABLY PLAY IT :))))))))))))))))))))))))))))", // skelly
-        "We leak stuff into their Discord a bit too often.", // annoyingrains
+        "We leak stuff into our Discord a bit too often.", // annoyingrains
         "We are currently arguing in our Discord! Come join in and pick a side!", // annoyingrains
         "Fun fact! More than one hour has been spent developing this website!", // annoyingrains
         "Fun fact! Egg text does **not** support Markdown!", // annoyingrains
         "Fun fact! Egg text <b>does</b> support HTML!", // vukky
         "Fun fact! we are torturing vukky by forcing him to add more and more egg text", // skelly
-        "[ROBOTS EAT BATTERIES]" // skelly
+        "[ROBOTS EAT BATTERIES]", // skelly
+        "According to all known laws of aviation Vukkies should not be able to fly, but they can.", // skelly
+        "Some god you are. Please let more Vukkies out of their boxes.", // vukky
+        "Today's word of the day is: Vukky!", // socialdalek
+        "Why don't you take the Vukky out of the box? It doesn't look very comfortable.", // synne
+        "Vinyl is the best audio listening format.", // socialdalek
+        "Digital is the best audio listening format.", // socialdalek
+        "1D", // vukky
+        "Did you know that boxes are made of cardboard?", // synne
+        "Fun fact! Boxes have six sides.", // vukky
+        "Live long and prosper 🖖", // socialdalek
+        "May the force be with you!", // socialdalek
+        "<span style='position:fixed;z-index:10000;font-size:10px'>I hate CSS!</span>", // skelly
+        "Help me, Vukky-Van Vukkobi. You're my only hope.", // synne
+        "123.456.789.10", // socialdalek
+        "The force is strong with this Vukky...", // socialdalek
+        "May the Vukky be with you.", // skelly
+        "Once you start down the Vukky path, forever will it dominate your destiny.", // synne
+        "Vukkybox should be a religion.", // mot
+        "All rise for the Honorable Vukky", // synne
+        "Unfortunately you are Vukkyless.", // skelly
+        "Don't blink. Don't even blink. Blink and you're dead. They are fast, faster than you can believe. Don't turn your back, don't look away, and don't blink. Good luck.", // socialdalek
+        "We may not have much in common, you and I. Still, I consider you as a friend.", // socialdalek
+        "Science demands we explode the sun!", // socialdalek
+        "The future depends on the past, even if we don't get to see it.", // socialdalek
+        "Do you even Vukkybox bro?", // synne
+        "Hypothesis: Vukkies are actually extremely powerful creatures.", // skelly
+        "I warned you about those Vukkies bro! I told you dawg!!", // socialdalek
+        "can i haz vukyz?", // vukky
+        "Hypothesis: Vukkies are the source of all ghost matter in the universe.", // skelly
+        "Can you close the tab, please? I want to sleep now...", // vukky
+        "As a child, I considered such unknowns sinister. Now, though, I understand they bear no ill will. The universe is, and we are.", // socialdalek
+        "Are Vukkies the littlefish, or are they blind?", // skelly
+        "You destroyed the fabric of spacetime.",  // skelly
+        "(McMuffin) Egg (&) text(ing sounds nice...)", // nancy
+        "A concious observer has entered the Vukkybox.", // vukky
+        "McDonald's or Burger King?", // vukky
+        "How long have you been here? Minutes? Years? You are unsure but it seems your journey has reached its end.", // socialdalek
+        "AM I NOT REAL?", // vukky
+        "Pancakes...", // vukky
+        "Fun fact! The chance of getting a unique Vukky in the shark box is less than 0.1%!", // skelly
+        "uwu", // 3of
+        "The final choice is up to you.", // socialdalek
+        "Why are you reading this? Go back to opening boxes!", // 3of
+        "Vukky Funko Pop when?", // socialdalek
+        "Fun fact! The chance of obtaining a unique Vukky from a Beggars box is definitely 100%, not 0%.", // 3of
+        "Now with less furries!", // 3of
+        "Now with extra furries!", // socialdalek
+        "Now with extra caffeine!", // 3of
+        "*snap* yep that one's going into the cringe compilation", // socialdalek
+        "Mint now! Vukky NFTs are being sold out quickly. Only 69 remain! Only for 420 ETH!", // 3of
+        "Vukky used box... It's super effective!", // synne
+        "All your Vukky are belong to us", // synne
+        "Boxyvuk when", // mot
+        "Now gluten free!", // 3of
+        "This Summer don't forget to buy Vukkybox Deluxe Edition! Only on Nintendo Wii U.", // socialdalek
+        "Buy 3 Get 2 Vukkies!", // synne
+        "Buy 1 Get 0, because you ran out of Vukkybux!", // vukky
+        "Peeps help I'm trapped in the Metaverse!", // socialdalek
+        "Anybody there? Please help me I am stuck in a box", // 3of
+        "Look for the Vukkybox album in stores on November 13th with lots of music, videos, and extras.", // socialdalek
+        "All my friends are being sold in boxes... Is this how Animal Crossing works?", // vukky
+        "All right, I've been thinking, when life gives you Vukkies, don't make Vukkyaid! Make life take the Vukkies back! Get mad! I don't want your damn Vukkies! What am I supposed to do with these? Demand to see life's manager! Make life rue the day it thought it could give Cave Johnson Vukkies! Do you know who I am? I'm the man whose gonna burn your house down - with the Vukkies!", // annoyingrains
+        "Bring back r/place", // synne
+        "Posture check!", // mot
+        "Free the vukkies from the boxes by opening more boxes.", // 3of
+        "Help! I can't breathe in here...", // mitch
+        "Vukkybox addiction is proven to be better than a gambling addiction.", // 3of
+        "r/place was better", // annoyingrains
+        "blame vukky", // 3of
+        "What is this, some kinda Bored Apes ripoff?", // socialdalek
+        "Life is like a box of Vukkies. You never know what you're gonna get.", // synne
+        "why are you buying VUKKIES at the SOUP STORE?", // laker
+        "if you are reading this you are cute", // 3of
+        "If you are reading this, you can read.", // synne
+        "If you are reading this, you might not be blind!", // mitch
+        "If you are reading this, you are reading this.", // socialdalek
+        "Fun fact! Vukkies are made of [REDACTED].", // synne
+        "Vukkybox includes now more fursuits than ever in the boxes!", // 3of
+        "If you are reading this, you are lucky! You got this egg text out of hundreds! I think you used up your luck for today on that, though.", // vukky
+        "Thanks to Vukkybox, my life's never been better!", // socialdalek
+        "Just like copper, bad things happen when you microwave a Vukky.", // mitch
+        "what", // mot
+        "I'm stupid.", // vukky
+        "You can't escape Vukky and its boxes.", // 3of
+        "I forgor",
+        "Periwinkle > Orangered", // synne
+        "Congratulations, you just advanced an Egg Text level. Your Egg Text level is now 99.", // vukky
+        "get a free 14 day trial of vukkybox+ by buying this stupid jpeg on some nature destroying blockchain thingy", // 3of
+        "\"If you put Vukkies in a box, they can't hurt you\" - Sun Tzu", // vukky
+        "Vukkybox: still a better love story than Twilight.", // synne
+        "Use code actuallyfree for free Vukkybux!", // vukky
+        "its scientifically proven you are cute!", // 3of
+        "One single Vukky contains all the vitamins and minerals your body needs daily to function well.", // synne
+        "<img src='https://i.imgur.com/XTVHgGl.png'>", // vukky
+        "Don't forget to apply sunscreen! A burnt Vukky is a sad Vukky.", // synne
+        "vukkybox pro series is the official vukkybox esports league!", // 3of
+        "Fun fact! This text is called the \"egg text\".", // skelly
+        "Are ya winning son?", // havefunrich
+        "this is where we put bad jokes we couldnt fit elsewhere on the site", // skelly
+        "the backend of this site is a giant mess :D",
+        "CSS is #000000 magic", // skelly
+        "<span style='transform: scale(-1, -1); display: inline-block'>This egg text goes out for all of the Aussies out there!</span>", // socialdalek
+        "English is an awful language I'm so glad to be here speaking it", // socialdalek
+        "Fortnite is actually cool y'all just like hating on it because it's popular", // socialdalek
+        "<span style='transform: scale(-1, -1); display: inline-block'>lift your monitor up from the desk and rotate it to read this useless piece of egg text", // 3of
+        "They aren't thigh highs! They're just highly optimized programmer socks.", // socialdalek
+        "No", // silje
+        "I swear it's just a maid outfit and programming socks I am definitely not a femboy.", // 3of
+        "Gachapon games are the 8th deadly sin.", // socialdalek
+        "Feed me.", // silje
+        "Now with more lean!", // 3of
+        "Don't forget to buy your Vukky themed programmer socks from the official Vukky store!", // socialdalek
+        "Click on me!", // silje
+        "dont play with fire please", // 3of
+        "Chewing on ice cubes is bad for your teeth", // socialdalek
+        "omnomnomnomnomnomnomnom mcdonalds ice cubes", // vukky
+        "I love cheese.", // silje
+        "404 egg text not found", // 3of
+        "the vending machine is missing item number 404, why is everyone around me dying??", // skelly
+        "Welcome!", // silje
+        "You'll never find out where we keep all the boxed up Vukkies.", // socialdalek
+        "<span style=\"background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);-webkit-background-clip: text;color: transparent;\">extra shiny</span>", // skelly
+        "Reject humanity. Become Vukky.", // socialdalek
+        "noclips & glitches out of vukkybox cutely", // 3of
+        "Fun fact! Egg Text stands for Egg Gg G Text Ext Xt T.", // skelly
+        "Text Egg", // socialdalek
+        "Now with more eggs!", // 3of
+        function() { // mitch
+			document.querySelector("#icon").style.filter="invert()"
+			return "Spooky!"
+		},
+        "USB-C is the superior charging connector.", // 3of
+        "Omelette", // socialdalek
+        "Do you think you could take over for me? It's really hard work up in this corner is all.", // socialdalek
+        "I'm too full to eat more.", // silje
+        "So what's the deal with airline food?", // socialdalek
+        function() { return `There are ${splashies.length} different egg texts!` }, // skelly
+        "How much ground could a groundhog hog if a groundhog could hog ground?" // phrotonz
     ];
     window.eggtippy = tippy('#icon', {
         content: splashies[Math.floor(Math.random()*splashies.length)],
@@ -143,7 +281,7 @@ window.addEventListener('load', (event) => {
                 icon.src = "https://vukkybox.com/resources/icons/santa.png";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/giftvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkychristmas.webp'>"], 12);
             }
-            // More fancy stuff
+            // More fancy stuff (use with extreme care, like you know er erm april fool'd lol)
             if(new Date().getMonth() == 3 && new Date().getDate() == 1) {
                 icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
