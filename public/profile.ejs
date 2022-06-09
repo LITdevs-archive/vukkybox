@@ -22,16 +22,16 @@
       </div>
       <br>
       <!--- settings crap starts here lol -->
+      <button class="button button-blue"><a href="/2fa"><%= user.twoFactor ? "Disable" : "Enable" %> Two Factor Authentication</a></button>
+      <br>
       <p class="text-bold text-2xl">Per-device settings</p>
       <p>You can hover over the checkboxes for more information, when available.</p><br>
       Enable "ka-ching" sound effect: <input type="checkbox" setting="kachingOn" default="true" onchange="toggleLocalSetting(event)" title='A "ka-ching!" sound effect will play when you click on purchase buttons in the Storefront and when buying another Vukky.'><br>
       Use fancy share menu instead of copying to clipboard: <input type="checkbox" setting="shareMenu" default="true" onchange="toggleLocalSetting(event)" title="When sharing your gallery and a Vukky pull, a fancy share menu will appear instead of copying to the clipboard. What this menu looks like depends on your operating system's implementation. Turn this off if you don't like it."><br>
       Add seasonal flair to pages: <input type="checkbox" setting="seasonalFlair" default="true" onchange="toggleLocalSetting(event)" title="On special days, the pages may look different! Turn this off if you don't like that very much."><br>
       <br><p class="text-bold text-xl">Audio</p>
-      Music: <input type="range" step="0.01" min="0" max="1" value="1" setting="musicVolume" onchange="toggleLocalSetting(event)"><br>
-      Sound effects: <input type="range" step="0.01" min="0" max="1" value="1" setting="sfxVolume" onchange="toggleLocalSetting(event)">
-      <br>
-      <button class="button button-blue"><a href="/2fa"><%= user.twoFactor ? "Disable" : "Enable" %> Two Factor Authentication</a></button>
+      Music: <input type="range" step="0.01" min="0" max="1" value="1" setting="musicVolume" oninput="toggleLocalSetting(event)"><br>
+      Sound effects: <input type="range" step="0.01" min="0" max="1" value="1" setting="sfxVolume" oninput="toggleLocalSetting(event)">
       </div>
 
       <%- include('common/footer.ejs'); %>
@@ -44,10 +44,14 @@
   }
   function toggleLocalSetting(e) {
     let audioEffectThing = new Audio('https://vukkybox.com/resources/select.flac');
+    localStorage.setItem(e.target.getAttribute("setting"), e.target.type == "checkbox" ? e.target.checked : e.target.value);
     if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
-    audioEffectThing.play();
-    localStorage.setItem(e.target.getAttribute("setting"), e.target.type == "checkbox" ? e.target.checked : e.target.value)
-    if(e.target.getAttribute("setting").includes("Volume") || e.target.getAttribute("setting") == "seasonalFlair") document.location.reload();
+    if(e.target.getAttribute("setting") == "musicVolume") {
+      document.querySelector("audio[type=music]").volume = e.target.value;
+    } else {
+      audioEffectThing.play();
+    }
+    if(e.target.getAttribute("setting") == "seasonalFlair") document.location.reload();
   }
   document.querySelectorAll("input[setting]").forEach(function(node) {
     if(node.type == "checkbox") {
