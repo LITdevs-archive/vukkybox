@@ -256,7 +256,11 @@ window.addEventListener('load', (event) => {
         "So what's the deal with airline food?", // socialdalek
         function() { return `There are ${splashies.length} different egg texts!` }, // skelly
         "How much ground could a groundhog hog if a groundhog could hog ground?", // phrotonz
-        "Vukkybox is so eggciting!"
+        "Vukkybox is so eggciting!", // nancy,
+        "You don't have to send that meme to your friend. They already reddit.", // synne
+        "The fun will never end!", // socialdalek
+        "Nothing interesting happens.", // vukky
+        "Send this egg text to 10 friends for a free nothing!" // vukky
     ];
     window.eggtippy = tippy('#icon', {
         content: splashies[Math.floor(Math.random()*splashies.length)],
