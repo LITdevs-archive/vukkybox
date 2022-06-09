@@ -48,7 +48,7 @@
     if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
     if(e.target.getAttribute("setting") == "musicVolume") {
       document.querySelector("audio[type=music]").volume = e.target.value;
-    } else {
+    } else if (!e.target.getAttribute("setting") == "sfxVolume") {
       audioEffectThing.play();
     }
     if(e.target.getAttribute("setting") == "seasonalFlair") document.location.reload();
