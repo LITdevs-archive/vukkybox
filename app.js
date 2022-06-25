@@ -1,7 +1,7 @@
 var express  = require('express')
   , session  = require('express-session')
   , passport = require('passport')
-  , DiscordStrategy = require('passport-discord').Strategy
+  , Strategy = require('passport-litauth').Strategy
   , app      = express();
 const crypto = require("crypto");
 const qrcode = require('qrcode');
@@ -23,8 +23,6 @@ const rateLimit = require("express-rate-limit");
 const fileUpload = require("express-fileupload")
 const webp = require('webp-converter');
 webp.grant_permission();
-var GitHubStrategy = require('passport-github').Strategy;
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
 function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
 nocache("./public/resources/vukkies.json")
 const vukkyJson = require("./public/resources/vukkies.json")
@@ -38,56 +36,18 @@ passport.deserializeUser(function(obj, done) {
 });
 
 var scopes = ['identify', 'email'];
-var prompt = 'none'
-app.set("view egine", "ejs")
-passport.use(new DiscordStrategy({
+app.set("view engine", "ejs")
+
+passport.use(new Strategy({
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
-	callbackURL: 'https://vukkybox.com/callbackdiscord',
+	callbackURL: 'https://vukkybox.com/callbacklitauth',
 	scope: scopes,
-	prompt: prompt
 }, function(accessToken, refreshToken, profile, done) {
-  db.findOrCreate(profile.provider, profile, function(user) {
+	db.findOrCreate(profile, function(user) {
 		done(null, user)
-	  })
-  
+	})
 }));
-passport.use(new GitHubStrategy({
-	clientID: process.env.GITHUB_CLIENT_ID,
-	clientSecret: process.env.GITHUB_CLIENT_SECRET,
-	callbackURL: "https://vukkybox.com/callbackgithub",
-	scope: ["user:email"]
-  },
-  function(accessToken, refreshToken, profile, cb) {
-	fetch("https://api.github.com/user/emails", {
-						headers: {
-			  Accept: "application/json",
-							Authorization: `token ${accessToken}`,
-						},
-		}).then(res => res.json()).then(res => {
-	  let filtered = res.reduce((a, o) => (o.primary && a.push(o.email), a), [])      
-	  profile.email = filtered[0]
-	}).then (h => {
-	  db.findOrCreate(profile.provider, profile, function(user) {
-		cb(null, user)
-	  })
-	})
-	
-  }
-));
-passport.use(new GoogleStrategy({
-	clientID: process.env.GOOGLE_CLIENT_ID,
-	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	callbackURL: "https://vukkybox.com/callbackgoogle",
-	scope: ["profile", "email"]
-  },
-  function(token, tokenSecret, profile, cb) {
-	  console.log(profile)
-	db.findOrCreate(profile.provider, profile, function(user) {
-	  cb(null, user)
-	})
-  }
-));
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: true,
@@ -147,17 +107,17 @@ const grl = rateLimit({
 });
 
 app.get('/login', grl, function(req, res) {
-	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	let user = req.isAuthenticated() ? req.user : null
 	res.render(__dirname + '/public/login.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null, redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
 });
 
 app.get("/profile", grl, checkAuth, popupMid, function (req, res) {
-	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	let user = req.isAuthenticated() ? req.user : null
 	res.render(__dirname + '/public/profile.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
 });
 
 app.get("/editProfile", grl, checkAuth, popupMid, function (req, res) { 
-	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
+	let user = req.isAuthenticated() ? req.user : null
 	res.render(__dirname + '/public/editProfile.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null, csrfToken: req.csrfToken()});
 })
 

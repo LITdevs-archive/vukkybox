@@ -74,93 +74,31 @@ async function sendEmail(user, emailContent, emailSubject) {
 	});
 }
 
-function findOrCreate(service, profile, callback) {
-	switch (service) {
-		case "google":
-			User.countDocuments({googleId:profile.id},function(err, res){
-				if (res) {
-					return User.findOne({googleId:profile.id}, function(err, user) {
-						if(!err) callback(user)
-						if(err) console.log(err)
-					})
-				} else {
-					adminHook.send("<:woaha:904051837605408788> A new user has registered with Google!")
-					let user = new User({
-						googleId:profile.id,
-						googleEmail:profile.emails[0].value,
-						primaryEmail:profile.emails[0].value,
-						LinkedAccounts: ["google"],
-						username:profile.emails[0].value,
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
+function findOrCreate(profile, callback) {
+	User.countDocuments({litauthId:profile.id},function(err, res){
+		if (res) {
+			User.findOne({litauthId:profile.id}, function(err, user) {
+				user.primaryEmail = profile.email;
+				user.username = profile.username;
+				user.save(errr => {
+					if(!err && !errr) callback(user)
+					if(err) console.error(err)
+					if(errr) console.error(errr)
+				})
 			})
-		break;
-		case "github":
-			User.countDocuments({githubId:profile.id},function(err, res){
-				if (res) {
-					return User.findOne({githubId:profile.id}, function(err, user) {
-						if(!err) callback(user)
-						if(err) console.log(err)
-					})
-				} else {
-					adminHook.send("<:woaha:904051837605408788> A new user has registered with GitHub!")
-					let user = new User({
-						githubId:profile.id,
-						githubEmail:profile.email,
-						primaryEmail:profile.email,
-						LinkedAccounts: ["github"],
-						username:profile.username
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
+		} else {
+			adminHook.send("<:woaha:904051837605408788> A new user has registered with LITauth!")
+			let user = new User({
+				litauthId:profile.id,
+				primaryEmail:profile.emails[0].value,
+				username:profile.emails[0].value,
 			})
-		break;
-		case "discord":
-			User.countDocuments({discordId:profile.id},function(err, res){
-				if (res) {
-					User.findOne({discordId:profile.id}, function (err, doc) {
-						if(err) throw err;
-						return callback(doc)
-					})
-				} else {
-					adminHook.send("<:woaha:904051837605408788> A new user has registered with Discord!")
-					let user = new User({
-						discordId:profile.id,
-						discordEmail:profile.email,
-						primaryEmail:profile.email,
-						LinkedAccounts: ["discord"],
-						username:profile.username
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
-			})
-	}
-}
-
-function changeUsername(user, newUsername) {
-	if (user._id) {
-	User.findById({_id: user._id}, function (err, doc) {
-		if(err) throw err;
-		doc.username = newUsername
-		doc.save()
+			user.save(function (err, user) {
+				if (err) return console.error(err);
+				callback(user)
+			});
+		}
 	})
-} else {
-	User.findById({_id: user[0]._id}, function (err, doc) {
-		if(err) throw err;
-		doc.username = newUsername
-		doc.save()
-	})
-}
 }
 
 function redeemCode(user, code, callback) { // callback with a boolean representing if the code was used successfully
@@ -332,7 +270,6 @@ function getUser(userId, callback) {
 				callback(null, err)
 				console.log(err)
 			};
-			if(!doc.RVNid) doc.RVNid = doc._id.toString().substr(8); doc.save();
 			callback(doc, null)	
 		} catch (err) {
 		}
