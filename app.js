@@ -70,7 +70,6 @@ app.use(function (err, req, res, next) {
 })
 app.set('trust proxy', 1);
 
-db.ethermineRVN() //worker ids got shortened to 20 characters only for some reason.. pissy!!
 db.ethermineETH() 
 
 function popupMid(req, res, next) {
@@ -532,7 +531,8 @@ app.get('/', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if(!user) return res.render(__dirname + '/public/index.ejs', {news: false, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
-	db.lastLogin(user, function(newBalance, newUser) {
+	db.lastLogin(user, function(newBalance, newUser, err) {
+		if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		res.render(__dirname + '/public/index.ejs', {news: req.session.news, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
@@ -702,7 +702,8 @@ app.post('/acceptnews', grl, checkAuth, function (req, res) {
 app.get('/store', grl, popupMid, function(req,res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if (!user) return res.render(__dirname + '/public/store.ejs', {news: false, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
-	db.lastLogin(user, function(newBalance, newUser) {
+	db.lastLogin(user, function(newBalance, newUser, err) {
+		if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		user.balance = newBalance
@@ -728,7 +729,8 @@ app.get('/credits', grl, popupMid, function(req,res) {
 	vukkyCreatorData = Object.entries(vukkyCreatorData).sort((a, b) => b[1].length - a[1].length);
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if(!user) return res.render(__dirname + '/public/credits.ejs', {vukkyCreatorData: vukkyCreatorData, vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: null, gravatarHash: null});
-	db.lastLogin(user, function(newBalance, newUser) {
+	db.lastLogin(user, function(newBalance, newUser, err) {
+		if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		user.balance = newBalance
@@ -744,7 +746,8 @@ function checkAuth(req, res, next) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if(user) {
 		if (user.twoFactor && !req.session.twoFactorValidated) return res.redirect("/validate2fa")
-		db.lastLogin(user, function(newBalance, newUser) {
+		db.lastLogin(user, function(newBalance, newUser, err) {
+			if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 			req.session.passport.user = newUser
 			req.session.passport.user.balance = newBalance
 			req.session.save()
@@ -762,7 +765,8 @@ function apiAuth(req, res, next) {
 function checkAuthnofa(req, res, next) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if(user) {
-		db.lastLogin(user, function(newBalance, newUser) {
+		db.lastLogin(user, function(newBalance, newUser, err) {
+			if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 			req.session.passport.user = newUser
 			req.session.passport.user.balance = newBalance
 			req.session.save()
@@ -776,7 +780,8 @@ function checkAuthnofa(req, res, next) {
 function checkAuthtime(req, res, next) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 	if(!user) return res.redirect("/login")
-	db.lastLogin(user, function(newBalance, newUser) {
+	db.lastLogin(user, function(newBalance, newUser, err) {
+		if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		req.session.save()
