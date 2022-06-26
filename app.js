@@ -1105,6 +1105,6 @@ var http = require('http');
 
 const httpServer = http.createServer(app);
 
-httpServer.listen(81, () => {
-	console.log('HTTP Server running on port 81');
+httpServer.listen(5002, () => {
+	console.log('HTTP Server running on port 5002');
 });
