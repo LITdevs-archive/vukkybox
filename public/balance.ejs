@@ -34,37 +34,7 @@
 <% } else {%> 
   You need to sign in first.
 <% } %>
-<!--<h2 class="text-2xl pt-8">Mining for Vukkybux</h2>
-  If you want to support this wacky little service so we can keep it running without going bankrupt, thank you so much!<br>
-  In case you have a good enough GPU to mine "Ethereum" or "Ravencoin", you can mine them for us using the instructions below.<br><br>
-  <% if(user) { %>
-    <p>To mine for Vukkybux, you must mine Ethereum on the <a class="text-blue-500" href="https://ethermine.org">Ethermine pool</a> or Ravencoin on <a class="text-blue-500" href="https://ravencoin.flypool.org/">Flypool</a>.<br><b>WARNING! MINING HERE WILL BROADCAST YOUR VUKKYBOX USERNAME IN OUR DISCORD SERVER. CHANGE YOUR USERNAME <a class="text-blue-500" href="/editProfile">HERE</a>.</b><br>You should set the wallet and worker name as follows:</p><br>
-    <h2 class="text-xl">Ethereum mining</h2>
-    <p>Wallet: 0x7DBc369Ca89A706edCeD47207A806139fb7462e4</p>
-    <p>Worker: <%=user._id %></p>
-    <br>
-    <p>Alternatively you can use <a href="https://github.com/LITdevs/SaladBind#readme">SaladBind</a> with the following settings:</p>
-    Algorithm: ethash<br>
-    Pool: Ethermine (any region)<br> 
-    Advanced commands for NBMiner/TeamRedMiner: -u 0x7DBc369Ca89A706edCeD47207A806139fb7462e4.<%=user._id %><br>
-    Advanced commands for T-Rex: -u 0x7DBc369Ca89A706edCeD47207A806139fb7462e4.<%=user._id %> -w <%=user._id %><br><br>
-    You'll get your Vukkybux automatically when we get your Ethereum, which can take up to 30-45 minutes, you will be compensated for this duration after you stop mining.
-    You can see the dashboard <a class="text-blue-500" href="https://ethermine.org/miners/0x7DBc369Ca89A706edCeD47207A806139fb7462e4/dashboard">here</a>.
-    <br><br>
-    <h2 class="text-xl">Ravencoin mining</h2>
-    <p>Wallet: RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT</p>
-    <p>Worker: <%=RVNid %></p>
-    <br>
-    <p>Alternatively you can use <a href="https://github.com/LITdevs/SaladBind#readme">SaladBind</a> with the following settings:</p>
-    Algorithm: kawpow<br> 
-    Pool: Any, we override this in the advanced commands<br>
-    Advanced commands for NBMiner/TeamRedMiner: -o stratum://stratum-ravencoin.flypool.org:3333 -u RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT.<%=RVNid %><br>
-    Advanced commands for T-Rex: -o stratum://stratum-ravencoin.flypool.org:3333 -u RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT.<%=RVNid %> -w <%=RVNid %><br><br>
-    You'll get your Vukkybux automatically when we get your Ravencoin, which can take up to 30-45 minutes, you will be compensated for this duration after you stop mining.
-    You can see the dashboard <a class="text-blue-500" href="https://ravencoin.flypool.org/miners/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard">here</a>.
-    <% } else {%> 
-    You need to sign in, so we can show you your Worker ID.
-  <% } %>-->
+</div>
 <%- include('common/footer.ejs'); %>
 </body>
 <script>
