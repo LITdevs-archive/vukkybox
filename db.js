@@ -69,9 +69,9 @@ async function sendEmail(user, emailContent, emailSubject) {
 }
 
 function findOrCreate(profile, callback) {
-	User.countDocuments({litauthId:profile.id},function(err, res){
+	User.countDocuments({litauthId:profile._id},function(err, res){
 		if (res) {
-			User.findOne({litauthId:profile.id}, function(err, user) {
+			User.findOne({litauthId:profile._id}, function(err, user) {
 				user.primaryEmail = profile.email;
 				user.username = profile.username;
 				user.save(errr => {
@@ -83,7 +83,7 @@ function findOrCreate(profile, callback) {
 		} else {
 			adminHook.send("<:woaha:904051837605408788> A new user has registered with LITauth!")
 			let user = new User({
-				litauthId:profile.id,
+				litauthId:profile._id,
 				primaryEmail:profile.email,
 				username:profile.username,
 			})

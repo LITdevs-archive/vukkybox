@@ -260,8 +260,9 @@ app.post("/delete", grl, checkAuth, function(req, res) {
 		if(result == 500) {
 			res.redirect('/resources/500.html');
 		} else {
-			req.logout();
-			res.redirect('/resources/deleted.html');
+			req.logout({keepSessionInfo: false}, err => {
+				res.redirect('/resources/deleted.html');
+			})
 		}
 	});
 })
@@ -597,9 +598,10 @@ app.get('/otpcallback', function(req, res) {
 })
 
 app.get('/logout', grl, function(req, res) {
-	req.logout();
-	req.session.destroy();
-	res.redirect('/');
+	req.logout({keepSessionInfo: false}, err => {
+		req.session.destroy();
+		res.redirect('/');
+	})
 });
 app.get('/info', grl, checkAuth, function(req, res) {
 	res.redirect("/")
@@ -806,8 +808,9 @@ app.post('/votp', twofaenablerl, checkAuthnofa, function(req, res) {
 			encoding: 'base32',
 			token: req.body.otp });
 		if(!verified) {
-			req.logout()
-			return res.send({valid: false});
+			req.logout({keepSessionInfo: false}, err => {
+				return res.send({valid: false});
+			})
 		}
 		if(verified) {
 			res.send({valid: true});
@@ -892,8 +895,9 @@ app.post('/api/votp', twofaenablerl, checkAuthnofa, function(req, res) {
 			encoding: 'base32',
 			token: req.body.otp });
 		if(!verified) {
-			req.logout()
-			return res.send({valid: false});
+			req.logout({keepSessionInfo: false}, err => {
+				return res.send({valid: false});
+			})
 		}
 		if(verified) {
 			res.send({valid: true});
@@ -996,8 +1000,9 @@ app.post("/api/delete", apirl, apiAuth, function(req, res) {
 		if(result == 500) {
 			res.redirect('/resources/500.html');
 		} else {
-			req.logout();
-			res.redirect('/resources/deleted.html');
+			req.logout({keepSessionInfo: false}, err => {
+				res.redirect('/resources/deleted.html');
+			})
 		}
 	});
 })
