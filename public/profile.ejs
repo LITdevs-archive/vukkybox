@@ -11,7 +11,7 @@
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
 		<%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
     <div class=" py-10 px-10 ">
-      <img title="Edit your profile picture" class="max-h-50 rounded float-left px-5 py-5" style="cursor: pointer;" onclick="gravatarWarning()" src="https://auth.litdevs.org/api/avatar/<%=user.litauthId%>"/>
+      <img title="Edit your profile picture" class="max-h-[8rem] rounded float-left px-5 py-5" style="cursor: pointer;" onclick="gravatarWarning()" src="https://auth.litdevs.org/api/avatar/<%=user.litauthId%>"/>
       <div class="bg-opacity-30 bg-gray-100 rounded-lg p-5">
         <div class="inline-block">
           <a href="/editProfile" title="Edit your username"><p class=" pl-5 hover:bg-opacity-30 hover:bg-gray-900"><%= user.username %><i class="fa pl-3 s fa-edit"></i></p></a>
