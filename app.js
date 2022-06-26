@@ -41,7 +41,7 @@ app.set("view engine", "ejs")
 passport.use(new Strategy({
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
-	callbackURL: 'http://localhost:81/callbacklitauth',
+	callbackURL: 'https://dev.vukkybox.com/callbacklitauth',
 	scope: scopes,
 }, function(accessToken, refreshToken, profile, done) {
 	db.findOrCreate(profile, function(user) {
