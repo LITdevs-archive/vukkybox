@@ -107,12 +107,12 @@ const grl = rateLimit({
 
 app.get('/login', grl, function(req, res) {
 	let user = req.isAuthenticated() ? req.user : null
-	res.render(__dirname + '/public/login.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null, redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
+	res.render(__dirname + '/public/login.ejs', {user: user, redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
 });
 
 app.get("/profile", grl, checkAuth, popupMid, function (req, res) {
 	let user = req.isAuthenticated() ? req.user : null
-	res.render(__dirname + '/public/profile.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+	res.render(__dirname + '/public/profile.ejs', {user: user});
 });
 
 app.get("/editProfile", grl, checkAuth, popupMid, function (req, res) { 
@@ -195,8 +195,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuthtime, popupMid, (req, res) => {
 							box: box,
 							oldBalance: dupe ? newBalance - 0.1 * boxes[req.params.data].price : newBalance,
 							newBalance: newBalance,
-							gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
-						});
+							});
 				}
 			});
 		} else {
@@ -218,7 +217,7 @@ app.post('/leaderboard', grl, function(req, res) {
 })
 
 app.get('/leaderboard', grl, function(req, res) {
-	res.render(__dirname + '/public/leaderboard.ejs', {user: req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null, gravatarHash: req.isAuthenticated() ? crypto.createHash("md5").update(req.user._id ? req.user.primaryEmail.toLowerCase() : req.user[0].primaryEmail.toLowerCase()).digest("hex") : null});
+	res.render(__dirname + '/public/leaderboard.ejs', {user: req.isAuthenticated() ? req.user : null});
 })
 
 app.get('/privacy', function(req, res){
@@ -475,7 +474,6 @@ app.get("/view/:level/:id", grl, popupMid, function (req, res) {
 		news: false,
 		csrfToken: req.csrfToken(),
 		box: null,
-		gravatarHash: null 
 	});
 
 	res.render(__dirname + '/public/vukky.ejs', {
@@ -484,7 +482,6 @@ app.get("/view/:level/:id", grl, popupMid, function (req, res) {
 		news: req.session.news, 
 		vukky: vukky,
 		box: null,
-		gravatarHash: req.user._id ? crypto.createHash("md5").update(req.user.primaryEmail.toLowerCase()).digest("hex") : crypto.createHash("md5").update(req.user[0].primaryEmail.toLowerCase()).digest("hex") 
 	});
   })
 
@@ -522,24 +519,24 @@ app.post('/beta', grl, popupMid, function(req, res) {
 app.get('/', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	if(!user) return res.render(__dirname + '/public/index.ejs', {news: false, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+	if(!user) return res.render(__dirname + '/public/index.ejs', {news: false, csrfToken: req.csrfToken(), user: user});
 	db.lastLogin(user, function(newBalance, newUser, err) {
 		if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
-		res.render(__dirname + '/public/index.ejs', {news: req.session.news, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+		res.render(__dirname + '/public/index.ejs', {news: req.session.news, csrfToken: req.csrfToken(), user: user});
 	})
 });
 
 app.get('/balance', grl, popupMid, function(req, res) {
 	req.session.redirectTo = "/"
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	if (!user) return res.render(__dirname + '/public/balance.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+	if (!user) return res.render(__dirname + '/public/balance.ejs', {user: user});
 	db.getUser(user._id, (resp, err) => {
 		if (err) return res.send(err)
 		let loginHourly = resp.loginHourly
 		let loginDaily = resp.loginDaily
-		res.render(__dirname + '/public/balance.ejs', {RVNid: resp.RVNid, loginHourly: loginHourly, loginDaily: loginDaily, user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+		res.render(__dirname + '/public/balance.ejs', {RVNid: resp.RVNid, loginHourly: loginHourly, loginDaily: loginDaily, user: user});
 	})
 });
 
@@ -547,7 +544,7 @@ app.get('/gallery', grl, checkAuth, popupMid, function(req, res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
 
 	db.getUser(user._id, function(user, err) {
-		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, username: user.username});
 	})
 });
 
@@ -556,7 +553,7 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
 		if (user.username == user.primaryEmail) user.username = "A Vukkybox User";
-		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user});
 	})
 	} catch(err) {
 
@@ -630,7 +627,7 @@ app.get('/redeem/:code', grl, checkAuthnofa, popupMid, function (req, res) {
 
 app.get("/popup", grl, checkAuth, function (req, res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex"), redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
+	res.render(__dirname + '/public/popup.ejs', {csrfToken: req.csrfToken(), user: user, redirect: req.session.redirectTo != undefined && req.session.redirectTo.length > 1 ? true : false});
 	
 })
 
@@ -652,13 +649,13 @@ app.post('/acceptnews', grl, checkAuth, function (req, res) {
 
 app.get('/store', grl, popupMid, function(req,res) {
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	if (!user) return res.render(__dirname + '/public/store.ejs', {news: false, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+	if (!user) return res.render(__dirname + '/public/store.ejs', {news: false, csrfToken: req.csrfToken(), user: user});
 	db.lastLogin(user, function(newBalance, newUser, err) {
 		if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		user.balance = newBalance
-		res.render(__dirname + '/public/store.ejs', {news: req.session.news, csrfToken: req.csrfToken(), user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null});
+		res.render(__dirname + '/public/store.ejs', {news: req.session.news, csrfToken: req.csrfToken(), user: user});
 	})
 });
 
@@ -679,13 +676,13 @@ app.get('/credits', grl, popupMid, function(req,res) {
 	});
 	vukkyCreatorData = Object.entries(vukkyCreatorData).sort((a, b) => b[1].length - a[1].length);
 	let user = req.isAuthenticated() ? req.user._id ? req.user : req.user[0] : null
-	if(!user) return res.render(__dirname + '/public/credits.ejs', {vukkyCreatorData: vukkyCreatorData, vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: null, gravatarHash: null});
+	if(!user) return res.render(__dirname + '/public/credits.ejs', {vukkyCreatorData: vukkyCreatorData, vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: null});
 	db.lastLogin(user, function(newBalance, newUser, err) {
 		if (err) return res.status(500).render(__dirname + "/public/error.ejs", {stacktrace: err, friendlyError: "Internal Server Error."});
 		req.session.passport.user = newUser
 		req.session.passport.user.balance = newBalance
 		user.balance = newBalance
-		res.render(__dirname + '/public/credits.ejs', {vukkyCreatorData: vukkyCreatorData, vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(__dirname + '/public/credits.ejs', {vukkyCreatorData: vukkyCreatorData, vboxVer: vboxVer, gitHash: gitHash, deps: deps, ddeps: ddeps, user: user});
 	})
 });
 
@@ -757,26 +754,26 @@ app.get('/statistics', grl, checkAuth, function(req, res){
 				db.leaderboard({"board": "codesRedeemed", "limit": 1, "rarity": 42}, user, function(leaderboardObject) {
 					if (leaderboardObject.userRank) userRanks.codesRedeemed = leaderboardObject.userRank.rank;
 					if (!leaderboardObject.userRank) userRanks.codesRedeemed = "LOSER!! You dont even have a rank!";
-					res.render(`${__dirname}/public/statistics.ejs`, {user: user, totalVukkies: vukkyJson.currentId, userRanks: userRanks, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+					res.render(`${__dirname}/public/statistics.ejs`, {user: user, totalVukkies: vukkyJson.currentId, userRanks: userRanks});
 })})})})});
 
 app.get('/translog', grl, checkAuth, function(req, res) {
 	let user = req.user?._id ? req.user : req.user[0];
 	db.transLog(user._id, logs => {
-		res.render(`${__dirname}/public/translog.ejs`, {user: user, transLog: logs, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(`${__dirname}/public/translog.ejs`, {user: user, transLog: logs});
 	})
 })
 
 app.get('/2fa', grl, checkAuthnofa, function(req, res) {
 	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
-		if(user.twoFactor) return res.render(`${__dirname}/public/2fareset.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		if(user.twoFactor) return res.render(`${__dirname}/public/2fareset.ejs`, {csrfToken: req.csrfToken(), user: user});
 		let secret = speakeasy.generateSecret({name: "Vukkybox 2FA"});
 		req.session.two_factor_temp_secret = secret.base32;
 		req.session.save()
 		qrcode.toDataURL(secret.otpauth_url, function(err, dataUrl) {
 			if (err) return res.render(__dirname + '/public/error.ejs', {stacktrace: null, friendlyError: "Something went wrong while starting the 2FA flow. <br>For your privacy the stacktrace is hidden, if this happens again please contact us."});
-			res.render(`${__dirname}/public/2fa.ejs`, {csrfToken: req.csrfToken(), user: user, qrDataUrl: dataUrl, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+			res.render(`${__dirname}/public/2fa.ejs`, {csrfToken: req.csrfToken(), user: user, qrDataUrl: dataUrl});
 		});
 	})
 });
@@ -797,7 +794,7 @@ app.get('/validate2fa', twofaenablerl, function(req, res) {
 	let user = req.user?._id ? req.user : req.user[0];
 	db.getUser(user._id, user => {
 		if(!user.twoFactor) return res.status(400).render(`${__dirname}/public/error.ejs`, { stacktrace: null, friendlyError: "Silly goose, you don't have 2FA enabled! You should <a href='/2fa'>enable it</a> first..." });
-		res.render(`${__dirname}/public/validate2fa.ejs`, {csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});	
+		res.render(`${__dirname}/public/validate2fa.ejs`, {csrfToken: req.csrfToken(), user: user});	
 	})
 });
 
@@ -870,9 +867,9 @@ app.post('/2fareset', twofaenablerl, checkAuthnofa, function(req, res) {
 		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 			encoding: 'base32',
 			token: req.body.otp });
-		if(!verified) return res.status(400).render(`${__dirname}/public/2fareset.ejs`, {failure: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		if(!verified) return res.status(400).render(`${__dirname}/public/2fareset.ejs`, {failure: true, csrfToken: req.csrfToken(), user: user});
 		db.disabletwoFactor(user._id);
-		res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user});
 	})
 })
 
@@ -882,9 +879,9 @@ app.post('/api/2fareset', twofaenablerl, checkAuthnofa, function(req, res) {
 		var verified = speakeasy.totp.verify({ secret: user.twoFactorSecret,
 			encoding: 'base32',
 			token: req.body.otp });
-		if(!verified) return res.status(400).render(`${__dirname}/public/2fareset.ejs`, {failure: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		if(!verified) return res.status(400).render(`${__dirname}/public/2fareset.ejs`, {failure: true, csrfToken: req.csrfToken(), user: user});
 		db.disabletwoFactor(user._id);
-		res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user, gravatarHash: crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex")});
+		res.render(`${__dirname}/public/2fareset.ejs`, {successful: true, csrfToken: req.csrfToken(), user: user});
 	})
 })
 
