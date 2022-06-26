@@ -1,10 +1,6 @@
 <center id="loginPopup" class="py-8 loginPopup">
     <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
-        <% if(redirect) { %>
         <p>Woo, thank you for your interest! In order to do that, you must sign in.</p>
-        <% } else { %>
-          <p>Woo! Please sign in with one of these methods.</p>
-        <% } %>
         <br><br><a id="login1" href="#"><button disabled id="litauthLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="https://auth.litdevs.org/resources/litauth.png" width="32px">&nbsp;Sign in with LITauth</button></a>
         <br><br><input type="checkbox" id="terms" name="terms" value="terms"/>
         <label for="terms">I agree to the <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>.</label>
