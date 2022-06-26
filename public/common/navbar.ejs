@@ -3,7 +3,7 @@
 <div class="bg-opacity-10  bg-gray-100 w-full">
     <nav class="flex justify-between">
         <div class="inline-flex">
-            <a href="/"><img id="icon" src="https://vukkybox.com/resources/icons/512.png" class="max-h-20 m-2" /></a>
+            <a href="/"><img id="icon" src="/resources/icons/512.png" class="max-h-20 m-2" /></a>
             <% if(user) { %>
                 <p class="m-auto text-2xl text-bold" id="balance"><%= box ? oldBalance : user.balance %> Vukkybux</p>
             <% } %>
@@ -11,23 +11,23 @@
         <ul class="flex flex-row p-10">
 					  <% if(share) { %><li class="pr-10"><span id="share" class="hidden" onclick="shareDrop()"><%= box ? "Share your pull!" : "Share this Vukky!" %></a></li><% } %>
             <% if(galleryShare) { %><li class="pr-10"><span id="share" onclick="shareGallery()">Share Collection</a></li><% } %>
-            <li class="pr-10"><a href="https://vukkybox.com/store">Storefront</a></li>
+            <li class="pr-10"><a href="/store">Storefront</a></li>
             <% if(user) { %>
               <div class="dropdown">
                 <li class="pr-5"><a><%= user.username %></a></li>
                 <li class=""><img class="max-h-5 rounded" src="https://www.gravatar.com/avatar/<%= gravatarHash%>?d=monsterid&r=pg"/></li>
                 <div class="dropdown-content text-white">
-                    <a class="text-white" href="https://vukkybox.com/profile">Profile</a>
-                    <a class="text-white" href="https://vukkybox.com/gallery">Collection</a>
-                    <a class="text-white" href="https://vukkybox.com/statistics">Statistics</a>
-                    <a class="text-white" href="https://vukkybox.com/translog">Transaction Log</a>
+                    <a class="text-white" href="/profile">Profile</a>
+                    <a class="text-white" href="/gallery">Collection</a>
+                    <a class="text-white" href="/statistics">Statistics</a>
+                    <a class="text-white" href="/translog">Transaction Log</a>
                     <a class="text-white" href="#" id="redeemCode">Redeem Code</a>
-                    <a class="text-white" href="https://vukkybox.com/logout">Log Out</a>
+                    <a class="text-white" href="/logout">Log Out</a>
                 </div>
               </div>
               <data id="loggedIn" value="1"></data>
             <% } else {%>
-                <li><a href="https://vukkybox.com/login">Log In</a></li>
+                <li><a href="/login">Log In</a></li>
                 <data id="loggedIn" value="0"></data>
             <% } %>
         </ul>

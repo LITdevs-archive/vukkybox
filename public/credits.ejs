@@ -9,7 +9,7 @@
     <meta property="og:site_name" content="Vukkybox">
     <meta name="title" content="Credits">
     <meta name="description" content="Want to know who helped with Vukkybox? Here you go!">
-    <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+    <meta property="og:image" content="/resources/icons/512.png">
     <audio type="music" preload="auto" loop playOnLoad="true" src="/resources/credits.ogg"></audio>
     <audio type="sfx" id="selectSfx" preload="auto" src="/resources/select.flac"></audio>
     <style>
@@ -59,7 +59,7 @@
 <%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
 <div class="p-5" id="titles">
   <div id="titlecontent">
-    <img src="https://vukkybox.com/resources/icons/192.png"> Vukkybox <%-vboxVer%> (<%-gitHash%>)
+    <img src="/resources/icons/192.png"> Vukkybox <%-vboxVer%> (<%-gitHash%>)
     <h2>Vukky creators</h2>
     <ul id="vkyc" class="list-disc list-inside"><li>Loading...</li></ul>
     Pukkies are made by Pukky Drawers, which include:
@@ -140,7 +140,7 @@
     document.querySelector("#ddeps").innerHTML += `<li><a href="https://npmjs.com/${deppy[0]}" class="text-blue-500" target="_blank">${deppy[0]}</a> ${deppy[1].split("^")[1]}</li>`
   })
   vukkyCreatorData.forEach(function(vukkyCreator) {
-	  document.querySelector("#vkyc").innerHTML += `<li>${vukkyCreator[0]} <span style="font-size: 50%;">(${vukkyCreator[1].length}: ${vukkyCreator[1].sort((a, b) => a.split("/")[1] - b.split("/")[1]).map(el => `<a href="https://vukkybox.com/view/${el}" class="text-blue-500">#` + el.split("/")[1] + "</a>").join(", ")})</span></li>`
+	  document.querySelector("#vkyc").innerHTML += `<li>${vukkyCreator[0]} <span style="font-size: 50%;">(${vukkyCreator[1].length}: ${vukkyCreator[1].sort((a, b) => a.split("/")[1] - b.split("/")[1]).map(el => `<a href="/view/${el}" class="text-blue-500">#` + el.split("/")[1] + "</a>").join(", ")})</span></li>`
   })
 </script>
 </html>

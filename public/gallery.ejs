@@ -2,17 +2,17 @@
 <html lang="en"  >
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://vukkybox.com/resources/style.css" rel="stylesheet">
-    <script src="https://vukkybox.com/resources/spin.js"></script>
-    <link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
+    <link href="/resources/style.css" rel="stylesheet">
+    <script src="/resources/spin.js"></script>
+    <link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
     <title>Vukkybox - Collection</title>
     <meta property="og:site_name" content="Vukkybox">
     <meta name="title" content="<%= user.username%>'s Vukky collection">
     <meta name="description" content="View all the Vukkies <%= user.username%> has collected!">
-    <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+    <meta property="og:image" content="/resources/icons/512.png">
     <meta name="robots" content="noindex">
-    <link rel="preload" href="https://vukkybox.com/resources/pukkies/skelly.webp" as="image">
-    <link rel="preload" href="https://vukkybox.com/resources/spin.js" as="script">
+    <link rel="preload" href="/resources/pukkies/skelly.webp" as="image">
+    <link rel="preload" href="/resources/spin.js" as="script">
     <style>
         #share:hover {
             cursor: pointer
@@ -42,7 +42,7 @@
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
     <%- include('common/navbar.ejs', {share: false, galleryShare: true, box: null}); %>
-    <span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<img id="vukkyloadspinner" class="max-h-20 ml-5 my-2 inline-block" src="https://vukkybox.com/resources/pukkies/skelly.webp"><br><pre class="ml-5">Printed <span id="vukkyloadcount">0/<%=user.gallery.length %></span>: <span id="vukkyloadname">Finding employee...</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
+    <span class="text-bold text-2xl ml-5 mt-5" id="loading_data">Printing Vukkies...<img id="vukkyloadspinner" class="max-h-20 ml-5 my-2 inline-block" src="/resources/pukkies/skelly.webp"><br><pre class="ml-5">Printed <span id="vukkyloadcount">0/<%=user.gallery.length %></span>: <span id="vukkyloadname">Finding employee...</span></pre><br><button id="loadskip" class="button button-blue ml-5" onclick="loadingdone()" style="display: none;">Skip</button><br></span>
     <p class="text-bold text-2xl ml-5 mt-5" id="total_text" style="display: none;"><select style="color: black;" onchange="sortUpdate()">
         <option value="rarity">Sort by Rarity</option>
         <option value="ida">Sort by ID (Ascending)</option>
@@ -233,7 +233,7 @@
                     if(userGallery.includes(parseInt(Object.keys(vukkies[j])[i]))) {
                         owned++
                         totalOwned++
-                        document.getElementById(j).innerHTML += `<a style="display: none;" vukkyid="${Object.keys(vukkies[j])[i]}" href="https://vukkybox.com/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`
+                        document.getElementById(j).innerHTML += `<a style="display: none;" vukkyid="${Object.keys(vukkies[j])[i]}" href="/view/${j}/${Object.keys(vukkies[j])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies[j][Object.keys(vukkies[j])[i]].url}" title="${vukkies[j][Object.keys(vukkies[j])[i]].name} (#${Object.keys(vukkies[j])[i]})"/><ins id="${Object.keys(vukkies[j])[i]}b"></ins></a>`
                         if(userDuplicates && userDuplicates[Object.keys(vukkies[j])[i]] && parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) >= 1) {
                             document.getElementById(Object.keys(vukkies[j])[i].toString() + "b").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies[j])[i]]) + 1}')`
                         }
@@ -251,7 +251,7 @@
                 if(userGallery.includes(parseInt(Object.keys(vukkies["pukky"])[i]))) {
                     owned++
                     totalOwned++
-                    document.getElementById("pukky").innerHTML += `<a style="display: none;" vukkyid="${Object.keys(vukkies["pukky"])[i]}" href="https://vukkybox.com/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name} (#${Object.keys(vukkies["pukky"])[i]})"/><ins id="${Object.keys(vukkies["pukky"])[i]}p"></ins></a>`
+                    document.getElementById("pukky").innerHTML += `<a style="display: none;" vukkyid="${Object.keys(vukkies["pukky"])[i]}" href="/view/pukky/${Object.keys(vukkies["pukky"])[i]}"><img class="max-h-20 ml-5 my-2 inline-block" src="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].url}" title="${vukkies["pukky"][Object.keys(vukkies["pukky"])[i]].name} (#${Object.keys(vukkies["pukky"])[i]})"/><ins id="${Object.keys(vukkies["pukky"])[i]}p"></ins></a>`
                     if(userDuplicates && userDuplicates[Object.keys(vukkies["pukky"])[i]] && parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) >= 1) {
                         document.getElementById(Object.keys(vukkies["pukky"])[i].toString() + "p").style.backgroundImage = `url('https://dummyimage.com/32/ee4444/FFFFFF&text=${parseInt(userDuplicates[Object.keys(vukkies["pukky"])[i]]) + 1}')`
                     }

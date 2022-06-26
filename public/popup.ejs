@@ -12,9 +12,9 @@
 	<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
 		<%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
 		<div class="p-5">
-			<form method="post" action="https://vukkybox.com/popup">
+			<form method="post" action="/popup">
 				<h1 class="text-2xl">Our legal documents have changed.</h1>
-				<p>Do you agree to our updated <a href="https://vukkybox.com/terms" class="text-blue-500">Terms of Service</a> and <a href="https://vukkybox.com/privacy" class="text-blue-500">Privacy Policy</a>?</p>
+				<p>Do you agree to our updated <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>?</p>
 				<input type="hidden" name="_csrf" value="<%=csrfToken %>">
 				<input type="radio" id="yes" name="popup" value="yes" required onchange="acceptConfetti(event)">
 				<label for="yes">Yes, I accept the Terms of Service and the Privacy Policy</label><br>
@@ -22,7 +22,7 @@
 				<label for="no">No, I do not accept and would like to delete my account</label><br><br>
 				<input type="submit" class="button button-blue" value="Send Confirmation" style="cursor: pointer;" />
 			</form>
-			<br><small>You are seeing this because we updated one or both of the above documents.<br><br><img src="https://vukkybox.com/resources/elfvukky.webp" width="52"></small></small>
+			<br><small>You are seeing this because we updated one or both of the above documents.<br><br><img src="/resources/elfvukky.webp" width="52"></small></small>
 		</div>
 		<%- include('common/footer.ejs'); %>
 	</body>

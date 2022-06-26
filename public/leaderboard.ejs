@@ -2,14 +2,14 @@
 <html lang="en"  >
 		<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link href="./resources/style.css" rel="stylesheet">
-				<script src="./resources/spin.js"></script>
-				<link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+				<link href="/resources/style.css" rel="stylesheet">
+				<script src="/resources/spin.js"></script>
+				<link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 				<title>Vukkybox - Leaderboards</title>
 				<meta property="og:site_name" content="Vukkybox">
 				<meta name="title" content="Leaderboards">
 				<meta name="description" content="See who has the highest stats on Vukkybox!">
-				<meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+				<meta property="og:image" content="/resources/icons/512.png">
 				<audio type="music" preload="auto" loop playOnLoad="true" src="/resources/leaderboard.ogg"></audio>
 		</head>
 		<body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
@@ -43,7 +43,7 @@
 					<table id="leaderboard" class="lbTable hidden">
 
 					</table>
-					<span id="vukkyspinner"><br><br><img width="64" src="https://vukkybox.com/resources/pukkies/skelly.webp"></span>
+					<span id="vukkyspinner"><br><br><img width="64" src="/resources/pukkies/skelly.webp"></span>
 				</div>
 			</center>
 			<%- include('common/footer.ejs'); %>
@@ -52,7 +52,7 @@
 		let limit = 50
 		let board = "uniqueVukkiesGot"
 		let rarity = "1"
-		fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
+		fetch("/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit})})
 		.then(res => res.json())
 		.then(res => {
 			let rank = 1;
@@ -73,7 +73,7 @@
 			document.getElementById("vukkyspinner").classList.add("hidden");
 		});
 		function addCard(userRankFound, rank, res, user) {
-			document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10"><a href="https://vukkybox.com/guestgallery/${user.userId}">${user.username}</a></td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10">${parseFloat(user.data).toLocaleString()}</td></tr>\n`
+			document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10"><a href="/guestgallery/${user.userId}">${user.username}</a></td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10">${parseFloat(user.data).toLocaleString()}</td></tr>\n`
 		}
 		let invalidMode = false
 		function settingsChange(select) {
@@ -101,7 +101,7 @@
 			if(!doNotContinue) {
 				document.getElementById("leaderboard").classList.add("hidden");
 				document.getElementById("vukkyspinner").classList.remove("hidden");
-				fetch("https://vukkybox.com/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit, rarity: rarity})})
+				fetch("/leaderboard", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({board: board, limit: limit, rarity: rarity})})
 				.then(res => res.json())
 				.then(res => {
 					document.getElementById("leaderboard").innerHTML = '';

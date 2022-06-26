@@ -619,7 +619,6 @@ function disabletwoFactor(userId) {
 
 module.exports = {
 	findOrCreate,
-	changeUsername,
 	redeemCode,
 	setBalance,
 	createCode,
@@ -629,7 +628,6 @@ module.exports = {
 	lastLogin,
 	deleteUser,
 	ethermineETH,
-	ethermineRVN,
 	vukkyTierCount,
 	listEmails,
 	resetPopup,

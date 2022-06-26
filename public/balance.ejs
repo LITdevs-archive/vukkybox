@@ -9,7 +9,7 @@
     <meta property="og:site_name" content="Vukkybox">
     <meta name="title" content="Vukkybux Information">
     <meta name="description" content="Learn more about how Vukkybux work.">
-    <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+    <meta property="og:image" content="/resources/icons/512.png">
     <link rel="preload" href="/resources/nobalance.wav" as="audio">
 </head>
 <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
@@ -72,7 +72,7 @@
 	const urlParams = new URLSearchParams(queryString);
   const poors = ["You tried your best, but couldn't resist.", "Oh no, you've run out of Vukkybux!", "Well, there goes that money.", "Try again later, maybe? :D", "Oops...", "Aww...", "Okay, that's enough.", '"Can I have some more?"', "vukkybux = 0;"]
 	if(urlParams.has('poor')) {
-    document.querySelector("#pooruser").innerHTML = `${poors[Math.floor(Math.random()*poors.length)]}<br><small>But where did my balance go? Find out <a href="https://vukkybox.com/translog" class="text-blue-500">here!</a>`;
+    document.querySelector("#pooruser").innerHTML = `${poors[Math.floor(Math.random()*poors.length)]}<br><small>But where did my balance go? Find out <a href="/translog" class="text-blue-500">here!</a>`;
 		document.querySelector("#pooruser").classList.remove("hidden")
 		document.querySelector("#sadfalgus").setAttribute("playOnLoad", "true")
     setTimeout(() => {

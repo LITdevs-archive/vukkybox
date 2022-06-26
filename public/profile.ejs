@@ -43,8 +43,8 @@
     }
   }
   function toggleLocalSetting(e) {
-    let audioEffectThing = new Audio('https://vukkybox.com/resources/select.flac');
-    if(e.target.getAttribute("setting") == "kachingOn" && e.target.checked == true) audioEffectThing.src = 'https://vukkybox.com/resources/purchase.wav';
+    let audioEffectThing = new Audio('/resources/select.flac');
+    if(e.target.getAttribute("setting") == "kachingOn" && e.target.checked == true) audioEffectThing.src = '/resources/purchase.wav';
     localStorage.setItem(e.target.getAttribute("setting"), e.target.type == "checkbox" ? e.target.checked : e.target.value);
     if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
     if(e.target.getAttribute("setting") == "musicVolume") {

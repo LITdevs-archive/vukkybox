@@ -41,7 +41,7 @@ app.set("view engine", "ejs")
 passport.use(new Strategy({
 	clientID: process.env.CLIENT_ID,
 	clientSecret: process.env.CLIENT_SECRET,
-	callbackURL: 'https://vukkybox.com/callbacklitauth',
+	callbackURL: 'http://localhost:81/callbacklitauth',
 	scope: scopes,
 }, function(accessToken, refreshToken, profile, done) {
 	db.findOrCreate(profile, function(user) {
@@ -116,16 +116,7 @@ app.get("/profile", grl, checkAuth, popupMid, function (req, res) {
 });
 
 app.get("/editProfile", grl, checkAuth, popupMid, function (req, res) { 
-	let user = req.isAuthenticated() ? req.user : null
-	res.render(__dirname + '/public/editProfile.ejs', {user: user, gravatarHash: user ? crypto.createHash("md5").update(user.primaryEmail.toLowerCase()).digest("hex") : null, csrfToken: req.csrfToken()});
-})
-
-app.post("/editProfile", grl ,checkAuth, function(req, res) {
-	if(req.body.username.trim().length > 0) {
-	  db.changeUsername(req.user, req.body.username)
-	  req.session.passport.user.username = req.body.username
-	}
-	res.redirect("/profile")
+	res.redirect("https://auth.litdevs.org/editprofile")
 })
 
 const boxLimiter = rateLimit({
@@ -167,7 +158,7 @@ app.get('/buyBox/:data', boxLimiter, checkAuthtime, popupMid, (req, res) => {
 					return res.status(500).render(__dirname + "error.ejs", {stacktrace: false, error: prize.error});
 				}
 				if(prize.box == "poor") {
-					return res.redirect("https://vukkybox.com/balance?poor=true");
+					return res.redirect("/balance?poor=true");
 				}
 				if(prize.box) {
 					let fullUnlock = false;
@@ -571,24 +562,14 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 	}
 })
 
-app.get('/loginDiscord', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {
-	req.session.twoFactorValidated = false
-	req.session.twoFactorLastValidated = 0
-	req.session.save()
-});
-app.get('/loginGithub', passport.authenticate('github'), function(req, res) {
-	req.session.twoFactorValidated = false
-	req.session.twoFactorLastValidated = 0
-	req.session.save()
-});
-app.get('/loginGoogle', passport.authenticate('google'), function(req, res) {
+app.get('/loginLit', passport.authenticate('litauth'), function(req, res) {
 	req.session.twoFactorValidated = false
 	req.session.twoFactorLastValidated = 0
 	req.session.save()
 });
 
-app.get('/callbackdiscord',
-	passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { 
+app.get('/callbacklitauth',
+	passport.authenticate('litauth', { failureRedirect: '/login' }), function(req, res) { 
 		req.session.twoFactorValidated = false
 		req.session.twoFactorLastValidated = 0
 		req.session.save()
@@ -600,39 +581,7 @@ app.get('/callbackdiscord',
 		} else {
 			res.redirect('/')
 		}
-	} // auth success
-);
-
-app.get('/callbackgithub',
-	passport.authenticate('github', { failureRedirect: '/' }), function(req, res) { 
-		req.session.twoFactorValidated = false
-		req.session.twoFactorLastValidated = 0
-		req.session.save()
-		if(req.user.twoFactor) return res.redirect('/validate2fa')
-		if(req.session.redirectTo) {
-			let dest = req.session.redirectTo;
-			req.session.redirectTo = "/"
-			res.redirect(dest) 
-		} else {
-			res.redirect('/')
-		}
-	} // auth success
-);
-app.get('/callbackgoogle',
-	passport.authenticate('google', { failureRedirect: '/' }), function(req, res) {
-		req.session.twoFactorValidated = false
-		req.session.twoFactorLastValidated = 0
-		req.session.save()
-		console.log(req.session)
-		if(req.user.twoFactor) return res.redirect('/validate2fa')
-		if(req.session.redirectTo) {
-			let dest = req.session.redirectTo;
-			req.session.redirectTo = "/"
-			res.redirect(dest) 
-		} else {
-			res.redirect('/')
-		}
-	} // auth success
+	}
 );
 app.get('/otpcallback', function(req, res) {
 	if(!req.isAuthenticated()) return res.redirect('/login')

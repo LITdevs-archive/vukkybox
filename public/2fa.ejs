@@ -9,7 +9,7 @@
         <meta property="og:site_name" content="Vukkybox">
         <meta name="title" content="2FA">
         <meta name="description" content="Enable 2 factor authentication on Vukkybox.">
-        <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+        <meta property="og:image" content="/resources/icons/512.png">
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
       <%- include('common/navbar.ejs', {share: false, galleryShare: false, box: null}); %>
@@ -31,17 +31,17 @@
                 </form>
             </div>
             <div id="loading" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
-                <span id="vukkyspinner"><br><br><img class="m-auto" width="128" src="https://vukkybox.com/resources/pukkies/skelly.webp"></span>
+                <span id="vukkyspinner"><br><br><img class="m-auto" width="128" src="/resources/pukkies/skelly.webp"></span>
             </div>
             <div id="failed" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>Failed to activate Two-Factor Authentication! Was the code incorrect?</h1>
                 <span><br><br><img class="m-auto" width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyno.png?raw=true"></span>
-                <br><br><a href="https://vukkybox.com/2fa"><button class="button button-blue">Try again</button></a>
+                <br><br><a href="/2fa"><button class="button button-blue">Try again</button></a>
             </div>
             <div id="success" class="hidden bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
                 <h1>Two-Factor Authentication has been enabled on your account.</h1>
                 <span><br><br><img class="m-auto" width="128" src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true"></span>
-                <br><br><a href="https://vukkybox.com/store"><button class="button button-blue">Go play the game</button></a>
+                <br><br><a href="/store"><button class="button button-blue">Go play the game</button></a>
             </div>
         </center>
         <%- include('common/footer.ejs'); %>
@@ -55,7 +55,7 @@
             e.preventDefault();
             document.getElementById("codeVerification").classList.add("hidden");
             document.getElementById("loading").classList.remove("hidden");
-            fetch("https://vukkybox.com/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value, _csrf: document.getElementById("csrfToken").value})})
+            fetch("/fotp", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({otp: document.getElementById("verificationInput").value, _csrf: document.getElementById("csrfToken").value})})
                 .then(res => res.json())
                 .then(res => {
                     if(!res.valid) {
