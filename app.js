@@ -219,7 +219,7 @@ app.post('/leaderboard', grl, function(req, res) {
 })
 
 app.get('/leaderboard', grl, function(req, res) {
-	res.render(__dirname + '/public/leaderboard.ejs', {user: req.isAuthenticated() ? req.user : null});
+	res.render(__dirname + '/public/leaderboard.ejs', {user: req.isAuthenticated() ? req.user : null, admins: administrators});
 })
 
 app.get('/privacy', function(req, res){
