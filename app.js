@@ -15,7 +15,7 @@ var store = new MongoDBStore({
 	collection: 'sessions',
 	clear_interval: 3600
 });
-let administrators = ["708333380525228082", "125644326037487616"]
+let administrators = ["62b841be40235dff258e124e", "62b3515989cdb45c9e06e010"]
 const { Webhook } = require('discord-webhook-node');
 const adminHook = new Webhook(process.env.ADMIN_DISCORD_WEBHOOK);
 const hook = new Webhook(process.env.DISCORD_WEBHOOK);
