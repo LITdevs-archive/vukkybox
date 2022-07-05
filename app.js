@@ -68,6 +68,10 @@ app.use(function (err, req, res, next) {
 	if(!csrfWhitelist.includes(req.url)) res.send("Couldn't verify Cross Site Request Forgery prevention")
 	if(csrfWhitelist.includes(req.url)) return next()
 })
+app.use((req, res, next) => {
+	if (req.isAuthenticated()) req.user.admin = req.user.admin
+	next()
+})
 app.set('trust proxy', 1);
 
 function popupMid(req, res, next) {
@@ -266,7 +270,7 @@ app.post("/delete", grl, checkAuth, function(req, res) {
 
 app.get("/admin", grl, popupMid, function(req, res) {
 	if (!req.isAuthenticated() || !req.user) return res.render(__dirname + "/public/adminfake.ejs");
-	if(administrators.includes(req.user.litauthId)) {
+	if(req.user.admin) {
 		res.render(__dirname + "/public/admin.ejs", {csrfToken: req.csrfToken()})
 	} else {
 		res.render(__dirname + "/public/adminfake.ejs")
@@ -276,15 +280,15 @@ app.get("/admin", grl, popupMid, function(req, res) {
 app.get("/jsoneditor", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
 	if(!req.user) return res.render(__dirname + "/public/404.ejs");
-	if(administrators.includes(req.user.litauthId)) return res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
+	if(req.user.admin) return res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
 	res.render(__dirname + "/public/404.ejs")
 })
 
 app.post("/jsoneditor", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
 	if(!req.user) return res.render(__dirname + "/public/404.ejs");
+	if(!req.user.admin) return res.render(__dirname + "/public/404.ejs");
 	let user = req.user
-	if(!administrators.includes(user.litauthId)) return res.render(__dirname + "/public/404.ejs")
 	let vukky = {
 		name: req.body.name,
 		rarity: req.body.rarity,
@@ -344,7 +348,7 @@ app.get("/adminfailed",grl, popupMid,  function(req, res) {
 app.post("/admin/:action", grl, async function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
 	if(!req.user) return res.render(__dirname + "/public/adminfake.ejs");
-	if(administrators.includes(req.user.litauthId)) {
+	if(req.user.admin) {
 		switch(req.params.action) {
 			case "create_code":
 				db.createCode(req.body.code, req.body.amount, req.body.uses, (resp, err) => {
