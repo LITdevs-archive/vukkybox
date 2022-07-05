@@ -71,7 +71,7 @@
 		$(this).find($('circle.complete')).removeAttr( 'style' );
 	});
 
-	/*$(window).scroll(function(){ //I do not know how this works, I copied it off the internet, but it does work so I am happy with that.
+	$(window).scroll(function(){ //I do not know how this works, I copied it off the internet, but it does work so I am happy with that.
 		$('svg.radial-progress').each(function( index, value ) { 
 			if ($(window).scrollTop() > $(this).offset().top - ($(window).height() * 0.75) &&
 				$(window).scrollTop() < $(this).offset().top + $(this).height() - ($(window).height() * 0.25)) {
@@ -79,12 +79,12 @@
 				radius = $(this).find($('circle.complete')).attr('r');
 				circumference = 2 * Math.PI * radius;
 				strokeDashOffset = circumference - ((percent * circumference) / 100);
-				$(this).find($('circle.complete')).animate({'stroke-dashoffset': strokeDashOffset}, 1250);
+				$(this).find($('circle.complete')).css('stroke-dashoffset', strokeDashOffset)
 			}
 
 		});
 
-	}).trigger('scroll');*/
+	}).trigger('scroll');
 
 </script>
 </html>
