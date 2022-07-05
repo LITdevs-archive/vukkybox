@@ -1,5 +1,5 @@
 function fardedLol() {
-    navigator.clipboard.writeText("/view/6/312").then(function() {
+    navigator.clipboard.writeText("https://vukkybox.com/view/6/312").then(function() {
         alert("Copied to clipboard!");
         document.location.href = "/view/6/312";
     });
