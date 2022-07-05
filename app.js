@@ -69,7 +69,7 @@ app.use(function (err, req, res, next) {
 	if(csrfWhitelist.includes(req.url)) return next()
 })
 app.use((req, res, next) => {
-	if (req.isAuthenticated()) req.user.admin = req.user.admin
+	if (req.isAuthenticated()) req.user.admin = administrators.includes(req.user.litauthId)
 	next()
 })
 app.set('trust proxy', 1);
