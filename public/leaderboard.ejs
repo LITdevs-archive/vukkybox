@@ -73,7 +73,7 @@
 			document.getElementById("vukkyspinner").classList.add("hidden");
 		});
 		function addCard(userRankFound, rank, res, user) {
-			let admins = [<%= admins %>]
+			let admins = <%=JSON.stringify(admins)%>
 			document.getElementById("leaderboard").innerHTML += `<tr><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-5 text-center">${rank}</td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10"><a href="/guestgallery/${user.userId}">${user.username}</a> ${admins.includes(user.userId) ? "<img src='/resources/vukkied.svg' class='inline'>" : ""}</td><td class="bg-opacity-30 ${!userRankFound && rank == res.userRank.rank ? "bg-gray-300" : "bg-gray-100"} rounded-lg py-5 px-10">${parseFloat(user.data).toLocaleString()}</td></tr>\n`
 		}
 		let invalidMode = false
