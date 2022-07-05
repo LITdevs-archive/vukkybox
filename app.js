@@ -549,6 +549,7 @@ app.get("/guestgallery/:userId", grl, popupMid, function(req, res) {
 	db.getUser(req.params.userId, function(user, err) {
 		if(err) return res.status(500).send("500 " + err)
 		if (user.username == user.primaryEmail) user.username = "A Vukkybox User";
+		user.admin = administrators.includes(user.litauthId) 
 		res.render(__dirname + '/public/gallery.ejs', {totalVukkies: vukkyJson.currentId, vukkies: vukkyJson.rarity, user: user});
 	})
 	} catch(err) {
