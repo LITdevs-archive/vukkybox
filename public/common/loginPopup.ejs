@@ -1,13 +1,11 @@
 <center id="loginPopup" class="py-8 loginPopup">
-    <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">        
-          <p>Woo, thank you for your interest! Please sign in to start playing.</p>
-          <br><br><a id="login" href="/loginDiscord"><button disabled="" id="discordLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/discord.svg" width="32px">&nbsp;Sign in with Discord</button></a>
-          <br><br><a id="login" href="/loginGoogle"><button disabled="" id="googleLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/google.svg" width="32px">&nbsp;Sign in with Google</button></a>
-          <br><br><a id="login" href="/loginGithub"><button disabled="" id="githubLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/github.svg" width="32px">&nbsp;Sign in with GitHub</button></a>
-          <br><br><b>Been here before?</b> Use what you used back then to keep your Vukkies!<br>
-          <input type="checkbox" id="terms" name="terms" value="terms">
-          <label for="terms">I agree to the <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>.</label>
-      </div>
+    <div class="bg-opacity-30 bg-gray-100 rounded-lg py-10 max-w-screen-sm px-10 align-middle text-center justify-center">
+        <p>Woo, thank you for your interest! In order to do that, you must sign in.</p>
+        <br><br><a id="login1" href="#"><button disabled id="litauthLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="https://auth.litdevs.org/resources/litauth.png" width="32px">&nbsp;Sign in with LITauth</button></a>
+        <br><br><input type="checkbox" id="terms" name="terms" value="terms"/>
+        <label for="terms">I agree to the <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>.</label>
+        <br><b>LITauth??? What's that??</b> We have changed to a new login method. You can migrate your account <a href="https://auth.litdevs.org/migrate" class="text-blue-500">here</a><br>
+        </div>
       <script>
             function loginPopup() {
                 document.getElementById("content").style.filter = "blur(5px)";
@@ -20,13 +18,11 @@
             let checkbox = document.getElementById("terms");
             checkbox.addEventListener('change', function() {
                 if (this.checked) {
-                        document.getElementById("discordLogin").disabled = false
-                        document.getElementById("githubLogin").disabled = false
-                        document.getElementById("googleLogin").disabled = false
+                        document.getElementById("litauthLogin").disabled = false
+                        document.getElementById("login1").href = "/loginLit"
                 } else {
-                        document.getElementById("discordLogin").disabled = true
-                        document.getElementById("githubLogin").disabled = true
-                        document.getElementById("googleLogin").disabled = true
+                        document.getElementById("litauthLogin").disabled = true
+                        document.getElementById("login1").href = "#"
                 }
             })
       </script>

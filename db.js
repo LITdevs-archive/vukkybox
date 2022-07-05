@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
 const boxJson = require("./public/boxes.json")
-function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
+const fs = require("fs")
+function nocache(module) {fs.watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
 nocache("./public/resources/vukkies.json")
 const vukkyJson = require("./public/resources/vukkies.json")
 mongoose.connect(process.env.MONGODB_HOST);
@@ -17,14 +18,8 @@ var User
 var Code
 db.once('open', function() {
   const userSchema = new mongoose.Schema({
-	githubId: String,
-	discordId: String,
-	googleId: String,
+	litauthId: String,
 	primaryEmail: String,
-	githubEmail: String,
-	discordEmail: String,
-	googleEmail: String,
-	LinkedAccounts: Array,
 	username: String,
 	balance: {type: Number, default: 1000},
 	gallery: Array,
@@ -33,7 +28,6 @@ db.once('open', function() {
 	boxesOpened: {type: Number, default: 0},
 	codesRedeemed: {type: Number, default: 0},
 	uniqueVukkiesGot: {type: Number, default: 0},
-	RVNid: String,
 	popupAccepted: {type: Boolean, default: true},
 	twoFactor: {type: Boolean, default: false},
 	twoFactorSecret: String,
@@ -74,93 +68,31 @@ async function sendEmail(user, emailContent, emailSubject) {
 	});
 }
 
-function findOrCreate(service, profile, callback) {
-	switch (service) {
-		case "google":
-			User.countDocuments({googleId:profile.id},function(err, res){
-				if (res) {
-					return User.findOne({googleId:profile.id}, function(err, user) {
-						if(!err) callback(user)
-						if(err) console.log(err)
-					})
-				} else {
-					adminHook.send("<:woaha:904051837605408788> A new user has registered with Google!")
-					let user = new User({
-						googleId:profile.id,
-						googleEmail:profile.emails[0].value,
-						primaryEmail:profile.emails[0].value,
-						LinkedAccounts: ["google"],
-						username:profile.emails[0].value,
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
+function findOrCreate(profile, callback) {
+	User.countDocuments({litauthId:profile._id},function(err, res){
+		if (res) {
+			User.findOne({litauthId:profile._id}, function(err, user) {
+				user.primaryEmail = profile.email;
+				user.username = profile.username;
+				user.save(errr => {
+					if(!err && !errr) callback(user)
+					if(err) console.error(err)
+					if(errr) console.error(errr)
+				})
 			})
-		break;
-		case "github":
-			User.countDocuments({githubId:profile.id},function(err, res){
-				if (res) {
-					return User.findOne({githubId:profile.id}, function(err, user) {
-						if(!err) callback(user)
-						if(err) console.log(err)
-					})
-				} else {
-					adminHook.send("<:woaha:904051837605408788> A new user has registered with GitHub!")
-					let user = new User({
-						githubId:profile.id,
-						githubEmail:profile.email,
-						primaryEmail:profile.email,
-						LinkedAccounts: ["github"],
-						username:profile.username
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
+		} else {
+			adminHook.send("<:woaha:904051837605408788> A new user has registered with LITauth!")
+			let user = new User({
+				litauthId:profile._id,
+				primaryEmail:profile.email,
+				username:profile.username,
 			})
-		break;
-		case "discord":
-			User.countDocuments({discordId:profile.id},function(err, res){
-				if (res) {
-					User.findOne({discordId:profile.id}, function (err, doc) {
-						if(err) throw err;
-						return callback(doc)
-					})
-				} else {
-					adminHook.send("<:woaha:904051837605408788> A new user has registered with Discord!")
-					let user = new User({
-						discordId:profile.id,
-						discordEmail:profile.email,
-						primaryEmail:profile.email,
-						LinkedAccounts: ["discord"],
-						username:profile.username
-					})
-					user.save(function (err, user) {
-						if (err) return console.error(err);
-						callback(user)
-					  });
-				}
-			})
-	}
-}
-
-function changeUsername(user, newUsername) {
-	if (user._id) {
-	User.findById({_id: user._id}, function (err, doc) {
-		if(err) throw err;
-		doc.username = newUsername
-		doc.save()
+			user.save(function (err, user) {
+				if (err) return console.error(err);
+				callback(user)
+			});
+		}
 	})
-} else {
-	User.findById({_id: user[0]._id}, function (err, doc) {
-		if(err) throw err;
-		doc.username = newUsername
-		doc.save()
-	})
-}
 }
 
 function redeemCode(user, code, callback) { // callback with a boolean representing if the code was used successfully
@@ -185,33 +117,18 @@ function redeemCode(user, code, callback) { // callback with a boolean represent
 				code.redeemedBy.push(user[0]._id.toString());
 			}
 			code.save().then(savedCode => {
-				if (user._id) {
-					User.findById({_id: user._id}, function (err, doc) {
-						if(err) {
-							callback(false, null)
-							console.log(err)
-						};
-						doc.balance += savedCode.amount;
-						doc.balance = parseFloat(doc.balance).toFixed(1)
-						transactions(doc._id, {"type": "code", "amount": `${savedCode.amount > 0 ? "+" : ""}${savedCode.amount}`, "balance": doc.balance, "timestamp": Date.now()})
-						doc.codesRedeemed++;
-						doc.save()
-						callback(true, savedCode.amount)
-					})
-				} else {
-					User.findById({_id: user[0]._id}, function (err, doc) {
-						if(err) {
-							callback(false, null)
-							console.log(err)
-						};
-						doc.balance += savedCode.amount;
-						doc.balance = parseFloat(doc.balance).toFixed(1)
-						transactions(doc._id, {"type": "code", "amount": `${savedCode.amount > 0 ? "+" : ""}${savedCode.amount}`, "balance": doc.balance, "timestamp": Date.now()})
-						doc.codesRedeemed++;
-						doc.save()
-						callback(true, savedCode.amount)
-					})
-				}
+				User.findById({_id: user._id}, function (err, doc) {
+					if(err) {
+						callback(false, null)
+						console.log(err)
+					};
+					doc.balance += savedCode.amount;
+					doc.balance = parseFloat(doc.balance).toFixed(1)
+					transactions(doc._id, {"type": "code", "amount": `${savedCode.amount > 0 ? "+" : ""}${savedCode.amount}`, "balance": doc.balance, "timestamp": Date.now()})
+					doc.codesRedeemed++;
+					doc.save()
+					callback(true, savedCode.amount)
+				})
 			});
 		} else {
 			callback(false, null)
@@ -237,7 +154,7 @@ function validCode(code, user, callback) { // callback with a boolean representi
 }
 
 function buyBox(user, box, callback) {
-	let userId = user._id ? user._id : user[0]._id;
+	let userId = user._id
 	let boxData = boxJson[box]
 	User.findById({_id: userId}, function (err, user) {
 		if(err) {
@@ -325,27 +242,20 @@ function createCode(code, amount, uses, callback) {
 }
 
 function getUser(userId, callback) {
-	try {
-	User.findById({_id: userId}, function (err, doc) {
-		try {
-			if(err) {
-				callback(null, err)
-				console.log(err)
-			};
-			if(!doc.RVNid) doc.RVNid = doc._id.toString().substr(8); doc.save();
-			callback(doc, null)	
-		} catch (err) {
-		}
+	User.findOne({_id: userId}, function (err, doc) {
+		if(err) {
+			callback(null, err)
+			return console.error(err)
+		};
+		callback(doc, null)	
 	})
-	} catch (err) {
-		console.log(err)
-	}
 }
 
 function lastLogin(user, callback) {
-	User.findById({_id: user._id}, function (err, doc) {
+	User.findOne({_id: user._id}, function (err, doc) {
 		if(err) {
-			console.log(err)
+			callback(null, null, err)
+			return console.error(err)
 		}
 		if(Math.floor(Date.now() - doc.loginHourly) / 1000 / 3600 > 1) {
 			doc.loginHourly = Date.now()
@@ -360,7 +270,7 @@ function lastLogin(user, callback) {
 			transactions(doc._id, {"type": "daily", "amount": "+750", "balance": doc.balance, "timestamp": Date.now()})
 		}
 		doc.save()
-		callback(doc.balance, doc)
+		callback(doc.balance, doc, null)
 	})
 }
 
@@ -444,74 +354,6 @@ async function ethermineETH() {
 }, 30000)
 }
 
-async function ethermineRVN() {
-	setInterval(async function() {
-		try {
-			const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
-			const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
-			const body = await response.text();
-			const buttonBody = await buttonData.json();
-			let workers = JSON.parse(body).data.workers
-			let time = Math.round(Date.now()/1000)
-			for (let i = 0; i < workers.length; i++) {
-				if (time - workers[i].time < 600) {
-					//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
-					User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
-						if (err) return console.log(err)
-						if (res) {
-							User.findOne({RVNid: workers[i].worker}, function (err, doc) {
-								if (err) return err; 
-								if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347).toFixed(1))
-								if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347 * 3).toFixed(1))
-								if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-								if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-								doc.save()
-							})
-						}
-					})
-				} else {console.log("sussy wussy")}
-			}
-		} catch(e) {
-			if (!(e instanceof TypeError)) {
-				throw(e)
-			}
-		}
-	}, 600000) //set to 600 000 (10 mins) when using properly. im using 1000 for debug 
-	setTimeout(async function () {
-		try {
-			const response = await fetch('https://api-ravencoin.flypool.org/miner/RSEWKvswFjzvofZuaRqBPRQes3dr4eNTfT/dashboard',  {cache: "no-store"});
-			const buttonData = await fetch('https://button.vukkybox.com/health',  {cache: "no-store"});
-			const body = await response.text();
-			const buttonBody = await buttonData.json();
-			let workers = JSON.parse(body).data.workers
-			let time = JSON.parse(body).data.workers[0].time
-			for (let i = 0; i < workers.length; i++) {
-				if (workers[i].time == time && (time - workers[i].lastSeen) < 600) {
-					//console.log(`RVN Worker ${workers[i].worker} has a current hashrate of ${workers[i].currentHashrate} h/s in the last 10 mins (${time})`)
-					User.countDocuments({RVNid: workers[i].worker}, function(err, res) {
-						if (err) return console.log(err)
-						if (res) {
-							User.findOne({RVNid: workers[i].worker}, function (err, doc) {
-								if (err) return err; 
-								if (!buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347).toFixed(1))
-								if (buttonBody.isAlive) doc.balance = parseInt(doc.balance) + parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347 * 3).toFixed(1))
-								if (!buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-								if (buttonBody.isAlive) transactions(doc._id, {"type": "mining_rvn", "amount": `+${parseFloat(parseFloat(workers[i].currentHashrate / 100000 * 0.679012347 * 3).toFixed(1))}`, "balance": doc.balance, "timestamp": Date.now()})
-								doc.save()
-							})
-						}
-					})
-				} else {console.log("sussy wussy")}
-			}
-			console.log("rvn mining initialized")
-		} catch(e) {
-			if (!(e instanceof TypeError)) {
-				throw(e)
-			}
-		}
-	}, 30000)
-}	
-
 function vukkyTierCount(vukkies) {
 	const vukkydata = require("./public/resources/vukkies.json");
 	let theOutput = {};
@@ -531,26 +373,27 @@ function vukkyTierCount(vukkies) {
 
 function listEmails() {
 	let commaSeperatedEmails = "";
-	let fs = require("fs")
+	let emails = []
 	User.find({}, (err, users) => {
-	users.map(user => {
-		commaSeperatedEmails += `${user.primaryEmail}, `
+	users.forEach(user => {
+		emails.push(user.primaryEmail)
 	})
+	commaSeperatedEmails = emails.join(", ")
+
 	fs.writeFile("./emails.txt", commaSeperatedEmails, function(err) {
 		if(err) return console.log(err);
 	});
 	})
 }
 
+// Needs rewrite, https://nodemailer.com/usage/bulk-mail/
 function sendEmails(template, subject) {
 	let allEmails = [];
-	let fs = require("fs")
 	User.find({}, (err, users) => {
 	users.map(user => {
 		allEmails.push(user.primaryEmail);
 		sendEmail(user, fs.readFileSync(`${__dirname}/public/email/${template}.html`, "utf8", subject));
 	})
-	
 	})
 
 }
@@ -575,13 +418,11 @@ function resetBeta() {
 
 function checkPopup(userId, callback) {
 	User.findOne({_id: userId}, (err, user) => {
-		if (err) console.log(err);
-		if (err) return callback(500);
-		if(user.popupAccepted) {
-			callback(true)
-		} else {
-			callback(false)
+		if (err) {
+			console.error(err);
+			return callback(500);
 		}
+		callback(user.popupAccepted);
 	})
 }
 
@@ -638,6 +479,10 @@ function setBeta(userId, newBeta, callback) { // callback(response, error, user)
 	})
 }
 
+
+// Needs rewrite... this is horrible
+// ok seriously though What The FUCK is this
+// hours_wasted = 0
 function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/100}
 	/*
 		Callback object:
@@ -646,12 +491,8 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 			leaderboard: sorted array containing the top 10/50/100 users
 		}
 	*/
-	let getUserRank = false
-	let userId
-	if (user) {
-		userId = user._id ? user._id : user[0]._id;
-		getUserRank = true;
-	}
+	let getUserRank = user ? true : false;
+	let userId = user?._id;
 	if(req.board != "rarity") {
 		User.find({}, null, {
 			sort: {
@@ -661,7 +502,7 @@ function leaderboard(req, user, callback) { // req: {board: board, limit: 10/50/
 			let finalList = []
 			let userRank
 			if(getUserRank) {
-				let actualUserData = user._id ? user[req.board] : user[0][req.board]
+				let actualUserData = user[req.board]
 				if(!actualUserData || isNaN(actualUserData) || actualUserData < 1) getUserRank = false
 			}
 			for (let i = 0; i < allUsers.length; i++) {
@@ -745,12 +586,11 @@ function transLog(userId, callback) {
 		if(err) return console.log(err);
 		if(!user.transactions) user.transactions = [];
 		user.save();
-		callback(user.transactions);
+		callback(user.transactions.slice(-100));
 	})
 }
 
 function enabletwoFactor(userId, secret) {
-	let fs = require("fs")
 	User.findOne({"_id": userId}, function(err, user) {
 		if(err) return console.log(err);
 		user.twoFactor = true
@@ -767,7 +607,6 @@ function enabletwoFactor(userId, secret) {
 }
 
 function disabletwoFactor(userId) {
-	let fs = require("fs")
 	User.findOne({"_id": userId}, function(err, user) {
 		if(err) return console.log(err);
 		user.twoFactor = false
@@ -780,7 +619,6 @@ function disabletwoFactor(userId) {
 
 module.exports = {
 	findOrCreate,
-	changeUsername,
 	redeemCode,
 	setBalance,
 	createCode,
@@ -790,7 +628,6 @@ module.exports = {
 	lastLogin,
 	deleteUser,
 	ethermineETH,
-	ethermineRVN,
 	vukkyTierCount,
 	listEmails,
 	resetPopup,

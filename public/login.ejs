@@ -9,7 +9,7 @@
         <meta property="og:site_name" content="Vukkybox">
         <meta name="title" content="Login">
         <meta name="description" content="You need to log into Vukkybox to access this page.">
-        <meta property="og:image" content="https://vukkybox.com/resources/icons/512.png">
+        <meta property="og:image" content="/resources/icons/512.png">
         <audio type="music" preload="auto" loop playOnLoad="true" src="/resources/admin.ogg"></audio>
     </head>
     <body class="bg-gradient-to-br from-green-500 to-purple-400 text-white">
@@ -21,13 +21,11 @@
                 <% } else { %>
                   <p>Woo! Please sign in with one of these methods.</p>
                 <% } %>
-                <br><br><a id="login1" href="#"><button disabled id="discordLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/discord.svg" width="32px">&nbsp;Sign in with Discord</button></a>
-                <br><br><a id="login2" href="#"><button disabled id="googleLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/google.svg" width="32px">&nbsp;Sign in with Google</button></a>
-                <br><br><a id="login3" href="#"><button disabled id="githubLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="./resources/github.svg" width="32px">&nbsp;Sign in with GitHub</button></a>
+                <br><br><a id="login1" href="#"><button disabled id="litauthLogin" class="button button-blue text-2xl font-bold"><img decoding="async" srcset="https://auth.litdevs.org/resources/litauth.png" width="32px">&nbsp;Sign in with LITauth</button></a>
                 <br><br><input type="checkbox" id="terms" name="terms" value="terms"/>
                 <label for="terms">I agree to the <a href="/terms" class="text-blue-500">Terms of Service</a> and <a href="/privacy" class="text-blue-500">Privacy Policy</a>.</label>
-                <br><b>Been here before?</b> Use what you used back then to keep your Vukkies!<br>
-                </div>
+                <br><b>LITauth??? What's that??</b> We have changed to a new login method. You can migrate your account <a href="https://auth.litdevs.org/migrate" class="text-blue-500">here</a><br>
+              </div>
             <%- include('common/footer.ejs'); %>
           </center>
 	</body>
@@ -35,19 +33,11 @@
     var checkbox = document.getElementById("terms");
     checkbox.addEventListener('change', function() {
       if (this.checked) {
-        document.getElementById("discordLogin").disabled = false
-        document.getElementById("githubLogin").disabled = false
-        document.getElementById("googleLogin").disabled = false
-        document.getElementById("login1").href = "/loginDiscord"
-        document.getElementById("login2").href = "/loginGoogle"
-        document.getElementById("login3").href = "/loginGithub"
+        document.getElementById("litauthLogin").disabled = false
+        document.getElementById("login1").href = "/loginLit"
       } else {
-        document.getElementById("discordLogin").disabled = true
-        document.getElementById("githubLogin").disabled = true
-        document.getElementById("googleLogin").disabled = true
+        document.getElementById("litauthLogin").disabled = true
         document.getElementById("login1").href = "#"
-        document.getElementById("login2").href = "#"
-        document.getElementById("login3").href = "#"
       }
 });
   </script>

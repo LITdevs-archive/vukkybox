@@ -2,15 +2,15 @@
 <html lang="en"  >
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="https://vukkybox.com/resources/style.css" rel="stylesheet">
-		<script src="https://vukkybox.com/resources/spin.js"></script>
-		<link rel="icon" href="https://vukkybox.com/resources/favicon.ico" type="image/x-icon">
+		<link href="/resources/style.css" rel="stylesheet">
+		<script src="/resources/spin.js"></script>
+		<link rel="icon" href="/resources/favicon.ico" type="image/x-icon">
 		<title>Vukkybox - <%= box ? "Buy Box" : `${vukky.name} (#${vukky.id})` %></title>
 		<link rel="preload" href="/resources/unboxspinning.ogg" as="audio">
 		<link rel="preload" href="/resources/tada.ogg" as="audio">
 		<link rel="preload" href="/resources/purchase.wav" as="audio">
 		<% if(box) { %>
-			<link rel="preload" href="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" as="image">
+			<link rel="preload" href="/resources/<%=box.type %>vukkybox.webp" as="image">
 		<% } else { %>
 			<meta name="title" content="<%=vukky.name %> (#<%=vukky.id %>)">
 			<meta name="description" content="<%=vukky.description %>">
@@ -48,7 +48,7 @@
 						<p title="This is the rarity of the Vukky." style="color:<%=vukky.rarity.color %>;"><%=vukky.rarity.name %> (<%=vukky.rarity.level %> star)</p>
 						<% } %>
 						<p title="This is the Vukky's description."><% if(vukky.creator) { %>This was made by <%=vukky.creator %>! <% } %><%-vukky.description %></p>
-						<p class="text-red-500"><%if (box && box.dupe) { %><br>...oh, but you already have <%-vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% if(!user.twoFactor) { %> <br> You've been refunded 5% of the box price, but if you enable <a class="text-blue-500" href="https://vukkybox.com/2fa">Two Factor Authentication</a> you can receive 10% in refunds! <% }}; %></p>
+						<p class="text-red-500"><%if (box && box.dupe) { %><br>...oh, but you already have <%-vukky.name %>...<br> You have gotten it <span style="border-bottom: 1px dotted; cursor: help;" title="Only Vukkies collected on and after December 12, 2021 are counted."><%=parseInt(box.dupe) + 1 %></span> times by now. :( <% if(!user.twoFactor) { %> <br> You've been refunded 5% of the box price, but if you enable <a class="text-blue-500" href="/2fa">Two Factor Authentication</a> you can receive 10% in refunds! <% }}; %></p>
 						<br>
 						<% if (box) { %>
 						<button class="button button-blue purchase" id="buyButton" onclick="document.getElementById('buyButton').disabled = true;setTimeout(() => {window.location.reload()}, localStorage.getItem('kachingOn') != 'false' ? 1000 : 0);">Buy another one</button>
@@ -60,7 +60,7 @@
 					
 				<% if (box) { %>
 					<div class="opener" id="opener">
-						<img id="openingicon" src="https://vukkybox.com/resources/<%=box.type %>vukkybox.webp" class="max-h-48 m-auto" />
+						<img id="openingicon" src="/resources/<%=box.type %>vukkybox.webp" class="max-h-48 m-auto" />
 					</div>
 				<% } %> 
 				</div>

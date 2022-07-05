@@ -1,7 +1,7 @@
 function fardedLol() {
-    navigator.clipboard.writeText("https://vukkybox.com/view/6/312").then(function() {
+    navigator.clipboard.writeText("/view/6/312").then(function() {
         alert("Copied to clipboard!");
-        document.location.href = "https://vukkybox.com/view/6/312";
+        document.location.href = "/view/6/312";
     });
 }
 if(document.location.search == "?copytv") {
@@ -13,21 +13,21 @@ if(document.location.search != "?notv" && document.location.search != "?copytv")
     script.setAttribute('src', '/resources/imagemap.js');
     script.setAttribute('type', 'text/javascript');
     script.onload = function() { 
-        document.body.innerHTML = `<audio loop="" autoplay="" src="https://vukkybox.com/resources/unboxwebtv.ogg"></audio><img src="https://vukkybox.com/resources/webtvvukky.webp" usemap="#webtvui" width="100%" height="100%">
+        document.body.innerHTML = `<audio loop="" autoplay="" src="/resources/unboxwebtv.ogg"></audio><img src="/resources/webtvvukky.webp" usemap="#webtvui" width="100%" height="100%">
         <map name="webtvui">
-            <area target="" alt="VIEW BALANCE" title="VIEW BALANCE" href="https://vukkybox.com/balance" coords="0,117,138,143" shape="rect">
-            <area target="" alt="COPY LINK TO HILARIOUS PAGE" title="COPY LINK TO HILARIOUS PAGE" href="https://vukkybox.com/view/6/312?copytv" coords="139,175,0,145" shape="rect">
-            <area target="" alt="GO HOME (I DON'T LIKE YOU)" title="GO HOME (I DON'T LIKE YOU)" href="https://vukkybox.com" coords="133,106,7,5" shape="rect">
+            <area target="" alt="VIEW BALANCE" title="VIEW BALANCE" href="/balance" coords="0,117,138,143" shape="rect">
+            <area target="" alt="COPY LINK TO HILARIOUS PAGE" title="COPY LINK TO HILARIOUS PAGE" href="/view/6/312?copytv" coords="139,175,0,145" shape="rect">
+            <area target="" alt="GO HOME (I DON'T LIKE YOU)" title="GO HOME (I DON'T LIKE YOU)" href="/" coords="133,106,7,5" shape="rect">
             <area target="" alt="SEND EMAIL TO CREATORS OF FUNNY CREATION" title="SEND EMAIL TO CREATORS OF FUNNY CREATION" href="mailto:contact@vukkybox.com" coords="239,103,154,7" shape="rect">
-            <area target="" alt="VIEW GALLERY" title="VIEW GALLERY" href="https://vukkybox.com/gallery" coords="253,9,338,101" shape="rect">
+            <area target="" alt="VIEW GALLERY" title="VIEW GALLERY" href="/gallery" coords="253,9,338,101" shape="rect">
             <area target="" alt="VIEW SOURCE CODE" title="VIEW SOURCE CODE" href="https://github.com/litdevs/vukkybox" coords="437,101,366,8" shape="rect">
-            <area target="" alt="YOU SHALL BUY THESE THINGS" title="YOU SHALL BUY THESE THINGS" href="https://vukkybox.com/store" coords="531,102,449,8" shape="rect">
+            <area target="" alt="YOU SHALL BUY THESE THINGS" title="YOU SHALL BUY THESE THINGS" href="/store" coords="531,102,449,8" shape="rect">
             <area target="" alt="JOIN DISCORD...?" title="JOIN DISCORD...?" href="https://discord.gg/TJ6BfgXffa" coords="249,381,157,293" shape="rect">
-            <area target="" alt="UPDATE TO THE LATEST VUKKYTV VERSION" title="UPDATE TO THE LATEST VUKKYTV VERSION" href="https://vukkybox.com/view/6/312?notv" coords="528,261,172,137" shape="rect">
-            <area target="" alt="WEB-TV GUIDE (HA HA)" title="WEB-TV GUIDE (HA HA)" href="https://vukkybox.com/credits" coords="268,295,352,379" shape="rect">
+            <area target="" alt="UPDATE TO THE LATEST VUKKYTV VERSION" title="UPDATE TO THE LATEST VUKKYTV VERSION" href="/view/6/312?notv" coords="528,261,172,137" shape="rect">
+            <area target="" alt="WEB-TV GUIDE (HA HA)" title="WEB-TV GUIDE (HA HA)" href="/credits" coords="268,295,352,379" shape="rect">
             <area target="" alt="EDUCATIONAL CONTENT" title="EDUCATIONAL CONTENT" href="https://www.gwern.net/docs/cs/2001-12-02-treginaldgibbons-isyoursonacomputerhacker.html" coords="362,297,440,378" shape="rect">
             <area target="" alt="E" title="E" href="https://www.youtube.com/watch?v=74qsaPK6TCc" coords="453,297,546,379" shape="rect">
-            <area target="" alt="..." title="..." href="https://vukkybox.com/admin" coords="511,394,545,412" shape="rect">
+            <area target="" alt="..." title="..." href="/admin" coords="511,394,545,412" shape="rect">
         </map>`
         imageMapResize() 
     }
@@ -36,9 +36,9 @@ if(document.location.search != "?notv" && document.location.search != "?copytv")
 if(document.location.search == "?notv") {
     document.title = "Vukkybox - WebTV Vukky (#312)";
     window.addEventListener('load', (event) => {
-        document.querySelector("img[class=m-auto]").src = "https://vukkybox.com/resources/msntvvukky.webp";
+        document.querySelector("img[class=m-auto]").src = "/resources/msntvvukky.webp";
         document.querySelector("i").innerHTML = "Thank you for \"upgrading\".";
-        document.querySelector("audio").src = "https://vukkybox.com/resources/unboxmsntv.ogg";
+        document.querySelector("audio").src = "/resources/unboxmsntv.ogg";
         document.querySelector("audio").loop = true;
         document.querySelector("audio").play();
     });
