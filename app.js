@@ -265,8 +265,8 @@ app.post("/delete", grl, checkAuth, function(req, res) {
 })
 
 app.get("/admin", grl, popupMid, function(req, res) {
-	if (!req.isAuthenticated() || !req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
-	if(administrators.includes(req.user?.discordId) || administrators.includes(req.user[0]?.discordId)) {
+	if (!req.isAuthenticated() || !req.user) return res.render(__dirname + "/public/adminfake.ejs");
+	if(administrators.includes(req.user.litauthId)) {
 		res.render(__dirname + "/public/admin.ejs", {csrfToken: req.csrfToken()})
 	} else {
 		res.render(__dirname + "/public/adminfake.ejs")
@@ -275,20 +275,16 @@ app.get("/admin", grl, popupMid, function(req, res) {
 
 app.get("/jsoneditor", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
-	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
-	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
-	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/404.ejs");
-	if(administrators.includes(req.user.discordId) || administrators.includes(req.user[0].discordId)) return res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
+	if(!req.user) return res.render(__dirname + "/public/404.ejs");
+	if(administrators.includes(req.user.litauthId)) return res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
 	res.render(__dirname + "/public/404.ejs")
 })
 
 app.post("/jsoneditor", grl, function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
-	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/404.ejs");
-	if(req.user && !req.user.discordId) return res.render(__dirname + "/public/404.ejs");
-	if(req.user[0] && !req.user[0].discordId) return res.render(__dirname + "/public/404.ejs");
-	let user = req.user._id ? req.user : req.user[0]
-	if(!administrators.includes(user.discordId)) return res.render(__dirname + "/public/404.ejs")
+	if(!req.user) return res.render(__dirname + "/public/404.ejs");
+	let user = req.user
+	if(!administrators.includes(user.litauthId)) return res.render(__dirname + "/public/404.ejs")
 	let vukky = {
 		name: req.body.name,
 		rarity: req.body.rarity,
@@ -314,12 +310,10 @@ app.post("/jsoneditor", grl, function(req, res) {
 })
 
 app.post("/jsonraritychange", grl, function(req, res) {
-	if(!req.isAuthenticated()) return res.sendStatus(403)
-	if(!req.user && !req.user[0]) return res.sendStatus(403)
-	if(req.user && !req.user.discordId) return res.sendStatus(403)
-	if(req.user[0] && !req.user[0].discordId) return res.sendStatus(403)
-	let user = req.user._id ? req.user : req.user[0]
-	if(!administrators.includes(user.discordId)) return res.sendStatus(403)
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
+	if(!req.user) return res.render(__dirname + "/public/404.ejs");
+	let user = req.user
+	if(!administrators.includes(user.litauthId)) return res.render(__dirname + "/public/404.ejs")
 	let postData = {
 		rarity: req.body.oldRarity,
 		newRarity: req.body.newRarity,
@@ -349,8 +343,8 @@ app.get("/adminfailed",grl, popupMid,  function(req, res) {
 
 app.post("/admin/:action", grl, async function(req, res) {
 	if(!req.isAuthenticated()) return res.render(__dirname + "/public/adminfake.ejs");
-	if(!req.user && !req.user[0]) return res.render(__dirname + "/public/adminfake.ejs");
-	if(["708333380525228082", "125644326037487616"].includes(req.user.discordId) || ["708333380525228082", "125644326037487616"].includes(req.user[0].discordId)) {
+	if(!req.user) return res.render(__dirname + "/public/adminfake.ejs");
+	if(administrators.includes(req.user.litauthId)) {
 		switch(req.params.action) {
 			case "create_code":
 				db.createCode(req.body.code, req.body.amount, req.body.uses, (resp, err) => {
