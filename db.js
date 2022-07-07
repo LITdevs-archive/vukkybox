@@ -58,7 +58,7 @@ let transporter = nodemailer.createTransport({
     port: 465,
     secure: false,
     auth: {
-      user: "vukkybox",
+      user: "vukkybox@litdevs.org",
       pass: process.env.EMAIL_PASS,
     },
   });
