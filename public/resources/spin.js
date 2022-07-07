@@ -276,19 +276,19 @@ window.addEventListener('load', (event) => {
             // Simple logo swaps or particles
             if(new Date().getMonth() == 0 && new Date().getDate() == 1) { rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12); }
             if(new Date().getMonth() == 0 && new Date().getDate() == 4) { rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkynewyear.webp'>"], 12); }
-            if(new Date().getMonth() == 1 && new Date().getDate() == 14) { icon.src = "https://vukkybox.com/resources/icons/rs.png"; }
+            if(new Date().getMonth() == 1 && new Date().getDate() == 14) { icon.src = "/resources/icons/rs.png"; }
             // Logo swaps and particles (use with care, usually during major things, not just "make fire lol")
             if(new Date().getMonth() == 10 && new Date().getDate() == 11) {
-                icon.src = "https://vukkybox.com/resources/firevukkybox.webp";
+                icon.src = "/resources/firevukkybox.webp";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp'>"], 12);
             }
             if(new Date().getMonth() == 11) {
-                icon.src = "https://vukkybox.com/resources/icons/santa.png";
+                icon.src = "/resources/icons/santa.png";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/giftvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkychristmas.webp'>"], 12);
             }
             // More fancy stuff (use with extreme care, like you know er erm april fool'd lol)
             if(new Date().getMonth() == 3 && new Date().getDate() == 1) {
-                icon.src = "https://vukkybox.com/resources/beggarsvukkybox.webp";
+                icon.src = "/resources/beggarsvukkybox.webp";
                 rainParticles(["<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/glitchedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deformedvukky.webp'>", "<img width='32' src='https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/deepfriedvukky.webp'>"], 12);
                 setInterval(function() {
                     document.querySelectorAll("audio[type=music]").forEach(function(node) {
@@ -335,7 +335,7 @@ window.addEventListener('load', (event) => {
     }
     document.querySelectorAll("a").forEach(function(node) {
         node.addEventListener("click", function() {
-            let audioEffectThing = new Audio('https://vukkybox.com/resources/select.flac');
+            let audioEffectThing = new Audio('/resources/select.flac');
             if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
             audioEffectThing.play();
         })
@@ -344,7 +344,7 @@ window.addEventListener('load', (event) => {
         if(localStorage.getItem("kachingOn") != "false") {
             if(window.location.pathname == "/store" && document.getElementById("loggedIn").value == "0") return false;
             node.addEventListener("click", function() {
-                let audioEffectThing = new Audio('https://vukkybox.com/resources/purchase.wav');
+                let audioEffectThing = new Audio('/resources/purchase.wav');
                 if(localStorage.getItem("sfxVolume")) audioEffectThing.volume = localStorage.getItem("sfxVolume");
                 audioEffectThing.play();
             })

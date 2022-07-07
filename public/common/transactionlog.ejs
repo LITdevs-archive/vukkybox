@@ -3,14 +3,14 @@
 		<table id="transactionLog" class="lbTable hidden">
 	
 		</table>
-		<span id="vukkyspinner"><br><br><img width="64" src="https://vukkybox.com/resources/pukkies/skelly.webp"></span>
+		<span id="vukkyspinner"><br><br><img width="64" src="/resources/pukkies/skelly.webp"></span>
 	</div>
 </center>
 <script>
 	let transactionLog = <%-transactionLog%>
 	transactionLog.reverse()
 	let transactionTypes = {"urmom": "ur mother"}
-	fetch("https://vukkybox.com/resources/transactionTypes.json", {method: "GET",})
+	fetch("/resources/transactionTypes.json", {method: "GET",})
 		.then(res => res.json())
 		.then(tt => {
 			transactionTypes = tt

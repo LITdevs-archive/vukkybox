@@ -42,7 +42,7 @@
     <p>this service is to be used by the vukky black hat hacking organization ONLY!!!</p>
     <br>
     <h3>Inject Vukkybux Generator</h3>
-    <form method="post" action="https://vukkybox.com/admin/create_code">
+    <form method="post" action="/admin/create_code">
         <input type="text" name="code" placeholder="code" required/>
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input type="number" name="amount" placeholder="vukkybux" required>
@@ -52,7 +52,7 @@
     <br>
     <h3>TellyScript</h3>
     <a href="http://google.com/xss?script=matrixcomputergosad" onclick="alert('OOPS! OYU HAVE BEEN HACKED by Anonymouse Vukyk! WE WLl make your Matrix COmputer go SAD,!)4:(ff.')"><img src="/resources/hacktoolad.jpg" height="400" style="float:right;"></a>
-    <form method="post" action="https://vukkybox.com/admin/upload_file" encType="multipart/form-data">
+    <form method="post" action="/admin/upload_file" encType="multipart/form-data">
         <input name="image" type="file" required accept="image/webp, image/png, image/jpeg, image/gif"/><br>
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input type="radio" id="vukky" name="vukkytype" value="vukky" required>
@@ -65,7 +65,7 @@
     </form>
     <br>
     <h3>/summon vukky</h3>
-    <form method="post" action="https://vukkybox.com/admin/create_vukky">
+    <form method="post" action="/admin/create_vukky">
         <input id="vukkayname" type="text" name="name" placeholder="name" required/>
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input id="vukkaydesc" type="text" name="description" placeholder="description" required/>
@@ -77,10 +77,10 @@
         <input type="submit" value="Execute"/>
     </form>
     <br>
-    <a href="https://vukkybox.com/jsoneditor"><h3>"ok i added a vukky and fucked up"</h3></a>
+    <a href="/jsoneditor"><h3>"ok i added a vukky and fucked up"</h3></a>
     <br>
     <h3>wtv-setup:/accounts</h3>
-    <form style="display: inline;" method="post" action="https://vukkybox.com/admin/set_balance">
+    <form style="display: inline;" method="post" action="/admin/set_balance">
         <input id="userid" type="text" name="userid" placeholder="_id" required=""><br>
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input type="radio" id="newbalanceswitch" name="action" value="newbalance" required=""> <label for="newbalanceswitch">Change balance</label> <input id="newbalance" type="float" name="newbalance" placeholder="New Balance" required="">
@@ -90,7 +90,7 @@
     </form><br>
     <br>
     <h3>send email to everyone lol</h3>
-    <form style="display: inline;" method="post" action="https://vukkybox.com/admin/mass_email">
+    <form style="display: inline;" method="post" action="/admin/mass_email">
         <input id="template" type="text" name="template" placeholder="template name (dont include file extension)" required=""><br>
         <input id="subject" type="text" name="subject" placeholder="email subject" required=""><br>
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
@@ -98,31 +98,31 @@
     </form><br>
     <br>
     <h3>Remote E-Mail Database Access</h3>
-    <form method="post" action="https://vukkybox.com/admin/emails">
+    <form method="post" action="/admin/emails">
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input type="submit" value="Execute"/>
     </form>
     <br>
     <h3>unTOS users</h3>
-    <form method="post" action="https://vukkybox.com/admin/popup_reset">
+    <form method="post" action="/admin/popup_reset">
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input type="submit" value="Execute"/>
     </form>
     <br>
     <h3>uneducate users</h3>
-    <form method="post" action="https://vukkybox.com/admin/news_reset">
+    <form method="post" action="/admin/news_reset">
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input type="submit" value="Execute"/>
     </form>
     <br>
     <h3>Reset experimental change viewing before release program</h3>
-    <form method="post" action="https://vukkybox.com/admin/beta_reset">
+    <form method="post" action="/admin/beta_reset">
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input type="submit" value="Execute"/>
     </form>
     <br>
     <h3>email user</h3>
-    <form method="post" action="https://vukkybox.com/admin/email_user">
+    <form method="post" action="/admin/email_user">
         <input type="hidden" name="_csrf" value="<%=csrfToken %>">
         <input id="recipient" type="text" name="recipient" placeholder="_id of recipient" required/>
         <input id="subject" type="text" name="subject" placeholder="subject" required/>
@@ -130,9 +130,9 @@
         <input type="submit" value="Execute"/>
     </form>
     <br>
-    <a href="https://vukkybox.com/beta"><h3>Enter experimental change viewing before release program</h3></a>
+    <a href="/beta"><h3>Enter experimental change viewing before release program</h3></a>
     <br>
-    <a href="https://vukkybox.com" style="color:#00ff00;">DONE HACKING FOR TODAY</a><br><br><small>ok, but actually, this is the admin panel for vukkybox admins. have a nice day, and how did you get here</small>
+    <a href="/" style="color:#00ff00;">DONE HACKING FOR TODAY</a><br><br><small>ok, but actually, this is the admin panel for vukkybox admins. have a nice day, and how did you get here</small>
     <script>
         let params = new URL(document.location.href).searchParams;
         if(params.get("code") != null) {

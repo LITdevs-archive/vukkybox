@@ -23,7 +23,7 @@
                 document.getElementById("content").style.filter = "none";
                 document.getElementById("content").style.pointerEvents = "auto";
                 document.getElementById("content").style.userSelect = "auto";
-                fetch("https://vukkybox.com/acceptnews", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({_csrf: document.getElementById("csrfToken").value})});
+                fetch("/acceptnews", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({_csrf: document.getElementById("csrfToken").value})});
             }
       </script>
   </center>

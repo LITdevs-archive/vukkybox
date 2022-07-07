@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="https://vukkybox.com/resources/jquery.dnd_page_scroll.js"></script>
+    <script type="text/javascript" src="/resources/jquery.dnd_page_scroll.js"></script>
+    <audio autoplay loop src="/resources/jsoneditor.ogg"></audio>
   </head>
   <style>
     .editPopup {
@@ -135,9 +136,9 @@
     </div>
     <center id="editPopup" class="editPopup hidden">
         <div>        
-                <img id="previewImage" src="https://vukkybox.com/resources/pukkies/skelly.webp">
+                <img id="previewImage" src="/resources/pukkies/skelly.webp">
                 <h2 id="editPopupName"></h2>
-                <form method="post" action="https://vukkybox.com/jsoneditor">
+                <form method="post" action="/jsoneditor">
                     <input type="hidden" name="_csrf" value="<%=csrfToken %>" id="csrfToken">
                     <input type="hidden" name="rarity" id="vukkyRarity">
                     <input type="hidden" name="id" id="vukkyId">
@@ -279,7 +280,7 @@
             _csrf: csrfToken
         }
         $.ajax({
-            url: "https://vukkybox.com/jsonraritychange",
+            url: "/jsonraritychange",
             type: "POST",
             data: data
         });
