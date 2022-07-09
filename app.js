@@ -1071,9 +1071,17 @@ app.get('/.well-known/browserid', function (req, res) {
 });
 
 app.get('/.well-known/autoconfig/mail', function (req, res) {
-    res.type('text/plain');
-    res.send("Vukkybox is not an email site.");
+    //res.type('text/plain');
+    //res.send("Vukkybox is not an email site."); now it is lol
+	res.redirect("/.well-known/autoconfig/mail/config-v1.1.xml")
 });
+
+app.get('/.well-known/autoconfig/mail/config-v1.1.xml', function (req, res) {
+    //res.type('text/plain');
+    //res.send("Vukkybox is not an email site."); now it is lol
+	res.redirect("https://litdevs.org/.well-known/autoconfig/mail/config-v1.1.xml")
+});
+
 
 app.get('/.well-known/xrp-ledger.toml', function (req, res) {
     res.type('text/plain');
