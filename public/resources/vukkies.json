@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 379,
+	"currentId": 386,
 	"rarity": {
 		"1": {
 			"1": {
@@ -735,7 +735,7 @@
 			"299": {
 				"name": "Email Vukky Cube",
 				"url": "https://vukkybox.com/resources/vukkycube.webp",
-				"description": "This was made by VocalFan. There is a minor difference with this one, and that's its contents - it contains a lot of emails!",
+				"description": "There is a minor difference with this one, and that's its contents - it contains a lot of emails!",
 				"creator": "VocalFan"
 			},
 			"300": {
@@ -795,7 +795,7 @@
 			"332": {
 				"name": "Catboy Vukky",
 				"url": "https://vukkybox.com/resources/catboyvukky.webp",
-				"description": "Nya",
+				"description": "Nya!",
 				"creator": "Femboy Nova"
 			},
 			"334": {
@@ -845,6 +845,12 @@
 				"url": "https://vukkybox.com/resources/boxvukky.webp",
 				"description": "This vukky wanted some style, and put a box on their head!",
 				"creator": "Username42"
+			},
+			"382": {
+				"name": "Missing Vukky",
+				"url": "https://vukkybox.com/resources/vukkydeleted.webp",
+				"description": "Huh... Where'd Vukky go? Oh well.",
+				"creator": "Vukky"
 			}
 		},
 		"3": {
@@ -990,10 +996,10 @@
 				"creator": "Smokey"
 			},
 			"219": {
-				"name": "lol biscuits",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/lolbiscuits.webp",
-				"description": "your texting puppy will think these lol biscuits are totally omg. why is this here?",
-				"creator": "GANZ"
+				"name": "DELETED VUKKY",
+				"url": "https://vukkybox.com/resources/vukkydeleted.webp",
+				"description": "This Vukky has been deleted by LIT Devs. It will be replaced by a new one soon.",
+				"creator": "Unknown"
 			},
 			"220": {
 				"name": "Sliced Among Us Vukky",
@@ -1230,6 +1236,24 @@
 				"url": "https://vukkybox.com/resources/Vukkuma.webp",
 				"description": "They didn't provide a description, so I'm just gonna pretend I get the reference...",
 				"creator": "Phrotonz"
+			},
+			"381": {
+				"name": "Couch Vuktato",
+				"url": "https://vukkybox.com/resources/couchvuktato.webp",
+				"description": "This Vukky is having a lazy day at home. I wonder what they're watching?",
+				"creator": "SocialDalek"
+			},
+			"384": {
+				"name": "Dunce Vukky",
+				"url": "https://vukkybox.com/resources/duncevukky.webp",
+				"description": "Who needs kidneys anyway?",
+				"creator": "Phrotonz"
+			},
+			"385": {
+				"name": "Verified Vukky",
+				"url": "https://vukkybox.com/resources/vukkied.webp",
+				"description": "Hmm... Verified Vukky you say? Aren't all Vukkies Vukkies?",
+				"creator": "Vukky"
 			}
 		},
 		"4": {
@@ -1303,16 +1327,16 @@
 				"creator": "Vukky"
 			},
 			"120": {
-				"name": "Ethereum Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/ethvukky.webp",
-				"description": "Gas gas gas!",
-				"creator": "Vukky"
+				"name": "DELETED VUKKY",
+				"url": "https://vukkybox.com/resources/vukkydeleted.webp",
+				"description": "This Vukky has been deleted by LIT Devs. It will be replaced by a new one soon.",
+				"creator": "Unknown"
 			},
 			"122": {
-				"name": "Raven Vukky",
-				"url": "https://vukkybox.com/resources/ravenvukky.webp",
-				"description": "This Vukky seems to have gotten very much into Ravencoin!",
-				"creator": "zNime"
+				"name": "DELETED VUKKY",
+				"url": "https://vukkybox.com/resources/vukkydeleted.webp",
+				"description": "This Vukky has been deleted by LIT Devs. It will be replaced by a new one soon.",
+				"creator": "Unknown"
 			},
 			"134": {
 				"name": "Reunited Vukkies",
@@ -1531,6 +1555,12 @@
 				"url": "https://vukkybox.com/resources/leankky.webp",
 				"description": "Wow, what a funny looking Vukky! Hope it doesn't mess with our age rating so we remove it!",
 				"creator": "Ash"
+			},
+			"386": {
+				"name": "Really Tall Vukky",
+				"url": "https://vukkybox.com/resources/ReallyTallVukky.webp",
+				"description": "This lucky Vukky got all of the family's height genes. Unfortunately there were quite a lot of them.",
+				"creator": "SocialDalek"
 			}
 		},
 		"5": {
@@ -1635,6 +1665,12 @@
 				"url": "https://vukkybox.com/resources/vukkcam.webp",
 				"description": "Wait, this game can access your camera?",
 				"creator": "Mot"
+			},
+			"380": {
+				"name": "Pride Vukky",
+				"url": "https://vukkybox.com/resources/prideky.webp",
+				"description": "Skelly said he doesn't know what the description for this one should be.",
+				"creator": "Vukky"
 			}
 		},
 		"6": {
@@ -1730,6 +1766,12 @@
 				"url": "https://vukkybox.com/resources/zeldy.webp",
 				"description": "Keeps getting into trouble with really bad guys. Zeldy has a sword, though, so why not use it more?",
 				"creator": "Synne"
+			},
+			"383": {
+				"name": "Super Vukky",
+				"url": "https://vukkybox.com/resources/supervukky.webp",
+				"description": "Faster than an SSD drive, more powerful than the Fugaku Supercomputer. It's Super Vukky!",
+				"creator": "SocialDalek"
 			}
 		},
 		"7": {
@@ -1742,7 +1784,7 @@
 			"31": {
 				"name": "Salad Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkysalad.webp",
-				"description": "Ah yes, my favorite Vukky - product placement flavored.",
+				"description": "A Vukky? Eating healthy food? Impossible!",
 				"creator": "Vukky"
 			},
 			"68": {
