@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 386,
+	"currentId": 387,
 	"rarity": {
 		"1": {
 			"1": {
@@ -588,10 +588,10 @@
 				"creator": "Vukky"
 			},
 			"115": {
-				"name": "Smelly Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/smellyvukky.webp",
-				"description": "Ew! Vukky, that's gross!",
-				"creator": "Vukky"
+				"name": "DELETED VUKKY",
+				"url": "https://vukkybox.com/resources/vukkydeleted.webp",
+				"description": "This Vukky has been deleted by LIT Devs. It will be replaced by a new one soon.",
+				"creator": "Unknown"
 			},
 			"126": {
 				"name": "Fading Vukky",
@@ -850,6 +850,12 @@
 				"name": "Missing Vukky",
 				"url": "https://vukkybox.com/resources/vukkydeleted.webp",
 				"description": "Huh... Where'd Vukky go? Oh well.",
+				"creator": "Vukky"
+			},
+			"387": {
+				"name": "Vukky Listening To Epic Gamer Music",
+				"url": "https://vukkybox.com/resources/vukkymusic.webp",
+				"description": "This Vukky is listening to music on a private music streaming service. Very cool!",
 				"creator": "Vukky"
 			}
 		},
