@@ -260,7 +260,12 @@ window.addEventListener('load', (event) => {
         "You don't have to send that meme to your friend. They already reddit.", // synne
         "The fun will never end!", // socialdalek
         "Nothing interesting happens.", // vukky
-        "Send this egg text to 10 friends for a free nothing!" // vukky
+        "Send this egg text to 10 friends for a free nothing!", // vukky
+        "What is a Vukky anyways? What does it eat? What does it do?", // username42
+        "Never gonna vukk you up, never gonna vukk you down, never gonna vukk around and vukky you", //username42
+        "How does one get an egg to text?", // laker
+        "My ex-wife still misses me… <i>but her aim is getting better!</i>", // socialdalek
+        "git commit -m \"some changes\" && git push" // socialdalek
     ];
     window.eggtippy = tippy('#icon', {
         content: splashies[Math.floor(Math.random()*splashies.length)],
