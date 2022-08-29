@@ -278,16 +278,16 @@ app.get("/admin", grl, popupMid, function(req, res) {
 })
 
 app.get("/jsoneditor", grl, function(req, res) {
-	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
-	if(!req.user) return res.render(__dirname + "/public/404.ejs");
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs", {adminpage: true});
+	if(!req.user) return res.render(__dirname + "/public/404.ejs", {adminpage: true});
 	if(req.user.admin) return res.render(__dirname + "/public/jsoneditor.ejs", {vjson: vukkyJson, csrfToken: req.csrfToken()})
-	res.render(__dirname + "/public/404.ejs")
+	res.render(__dirname + "/public/404.ejs", {adminpage: true})
 })
 
 app.post("/jsoneditor", grl, function(req, res) {
-	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
-	if(!req.user) return res.render(__dirname + "/public/404.ejs");
-	if(!req.user.admin) return res.render(__dirname + "/public/404.ejs");
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs", {adminpage: true});
+	if(!req.user) return res.render(__dirname + "/public/404.ejs", {adminpage: true});
+	if(!req.user.admin) return res.render(__dirname + "/public/404.ejs", {adminpage: true});
 	let user = req.user
 	let vukky = {
 		name: req.body.name,
@@ -314,10 +314,10 @@ app.post("/jsoneditor", grl, function(req, res) {
 })
 
 app.post("/jsonraritychange", grl, function(req, res) {
-	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs");
-	if(!req.user) return res.render(__dirname + "/public/404.ejs");
+	if(!req.isAuthenticated()) return res.render(__dirname + "/public/404.ejs", {adminpage: true});
+	if(!req.user) return res.render(__dirname + "/public/404.ejs", {adminpage: true});
 	let user = req.user
-	if(!administrators.includes(user.litauthId)) return res.render(__dirname + "/public/404.ejs")
+	if(!administrators.includes(user.litauthId)) return res.render(__dirname + "/public/404.ejs", {adminpage: true})
 	let postData = {
 		rarity: req.body.oldRarity,
 		newRarity: req.body.newRarity,
@@ -498,7 +498,7 @@ app.get('/stats', grl, checkAuth, popupMid, function(req, res) {
 app.get('/beta', grl, checkAuth, popupMid, function(req, res) {
 	let authorizedReferers = ["https://vukkybox.com/admin", "https://vukkybox.com/credits"]
 	if(authorizedReferers.includes(req.headers.referer)) return res.render(__dirname + '/public/beta.ejs', {csrfToken: req.csrfToken()})
-	res.status(404).render(`${__dirname}/public/404.ejs`);
+	res.status(404).render(`${__dirname}/public/404.ejs`, {adminpage: true});
 })
 
 app.post('/beta', grl, popupMid, function(req, res) {
@@ -1099,7 +1099,7 @@ app.get('/nuke', function (req, res) {
 });
 
 app.get('*', function(req, res){
-	res.status(404).render(`${__dirname}/public/404.ejs`);
+	res.status(404).render(`${__dirname}/public/404.ejs`, {adminpage: false});
 });
 
 var fs = require('fs');

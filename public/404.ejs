@@ -9,11 +9,43 @@
 		<meta name="title" content="404">
 		<meta name="description" content="This page could not be accessed.">
 		<meta property="og:image" content="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyconfused.png">
+		<style>
+			.thanksdimden {
+				animation:corruption-spin 5s linear 0s infinite,corruption-opacity 5s step-start 0s infinite
+			}
+			@keyframes corruption-spin {
+				0% {
+				transform:rotateY(0deg)
+				}
+				100% {
+				transform:rotateY(360deg)
+				}
+			}
+			@keyframes corruption-opacity {
+				0% {
+				opacity:1
+				}
+				25% {
+				opacity:1
+				}
+				75% {
+				opacity:0
+				}
+				100% {
+				opacity:1
+				}
+			}
+		</style>
 	</head>
 	<body class="bg-gray-100">
-			<h1 class="text-9xl text-center align-middle font-mono pt-48"><img class="max-h-20 inline-block" src="/resources/Fourkky.webp" alt="Vukky that looks like and represents the number Four"><img class="max-h-20 inline-block" src="https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/eggvukky.webp" alt="Vukky that looks like an egg, representing the number Zero"><img class="max-h-20 inline-block" src="/resources/Fourkky.webp" alt="Vukky that looks like and represents the number Four">
-			</h1>
+			<% if(adminpage) { %>
+			<h1 class="text-9xl text-center align-middle font-mono pt-48"><img class="max-h-20 inline-block" src="/resources/Fourkky.webp" alt="Vukky that looks like and represents the number Four"><img class="max-h-20 inline-block thanksdimden" src="https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/eggvukky.webp" alt="Vukky that looks like an egg, representing the number Zero"><img class="max-h-20 inline-block" src="/resources/Fourkky.webp" alt="Vukky that looks like and represents the number Four"></h1>
+			<p class="text-center align-middle" style="color: red;">"dont you find it weird that we dont have anything behind us?"</p>
+			<a href="/" class="text-center align-middle text-blue-500"><p>uhh yea...</p></a>
+			<% } else {%>
+			<h1 class="text-9xl text-center align-middle font-mono pt-48"><img class="max-h-20 inline-block" src="/resources/Fourkky.webp" alt="Vukky that looks like and represents the number Four"><img class="max-h-20 inline-block" src="https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/eggvukky.webp" alt="Vukky that looks like an egg, representing the number Zero"><img class="max-h-20 inline-block" src="/resources/Fourkky.webp" alt="Vukky that looks like and represents the number Four"></h1>
 			<p class="text-center align-middle">That's strange. I can only find Numkies in this world...</p>
 			<a href="/" class="text-center align-middle text-blue-500"><p>Quick, go find the others!</p></a>
+			<% }%>
 	</body> 
 </html>
