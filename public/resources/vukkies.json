@@ -218,12 +218,6 @@
 				"description": "The Vukky isn't in the computer anymore, he IS the computer.",
 				"creator": "Alespic"
 			},
-			"158": {
-				"name": "China Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/chinavukky.webp",
-				"description": "No social credit for you.",
-				"creator": "Smokey"
-			},
 			"159": {
 				"name": "Bulgaria Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/bulgarianvukky.webp",
@@ -356,12 +350,6 @@
 				"description": "This Vukky seems to have 5 legs... Where did his arms go?",
 				"creator": "Mitchellonii"
 			},
-			"211": {
-				"name": "Indian Vukky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/indianvukky.webp",
-				"description": "This Vukky despises so-called \"Tech Support\".",
-				"creator": "Smokey"
-			},
 			"212": {
 				"name": "Italian Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/italianvukky.webp",
@@ -386,23 +374,11 @@
 				"description": "Why so many pixels? Might as well be 16x16.",
 				"creator": "Alespic"
 			},
-			"239": {
-				"name": "Owokky",
-				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/owokky.webp",
-				"description": "trade me senpai!! ＞﹏＜",
-				"creator": "Alespic"
-			},
 			"241": {
 				"name": "Vukky...?",
 				"url": "https://vukkybox.com/resources/ykkuv.webp",
 				"description": "There's something wrong with this one. I'm not quite sure what...",
 				"creator": "Skelly"
-			},
-			"246": {
-				"name": "\"V\"ukky",
-				"url": "https://vukkybox.com/resources/vvukky.webp",
-				"description": "VVVVVV.",
-				"creator": "SharkOfGod"
 			},
 			"289": {
 				"name": "Onekky",
@@ -623,6 +599,12 @@
 				"description": "AAAAAAAAAAAAA!!!!!",
 				"creator": "Seysa"
 			},
+			"158": {
+				"name": "China Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/chinavukky.webp",
+				"description": "No social credit for you.",
+				"creator": "Smokey"
+			},
 			"190": {
 				"name": "Butter Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/buttervukky.webp",
@@ -677,6 +659,12 @@
 				"description": "When the Vukker is eg!",
 				"creator": "laker"
 			},
+			"211": {
+				"name": "Indian Vukky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/indianvukky.webp",
+				"description": "This Vukky despises so-called \"Tech Support\".",
+				"creator": "Smokey"
+			},
 			"218": {
 				"name": "Tide Pod Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/tidevukk.webp",
@@ -707,6 +695,12 @@
 				"description": "The face of a Vukky.",
 				"creator": "Vukky"
 			},
+			"239": {
+				"name": "Owokky",
+				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/owokky.webp",
+				"description": "trade me senpai!! ＞﹏＜",
+				"creator": "Alespic"
+			},
 			"240": {
 				"name": "birtdai vukie",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/vukkybox/birtdayvuky.webp",
@@ -719,6 +713,12 @@
 				"url": "https://vukkybox.com/resources/vesax.webp",
 				"description": "This Vukky seems to have weird lines on it.",
 				"creator": "Skelly"
+			},
+			"246": {
+				"name": "\"V\"ukky",
+				"url": "https://vukkybox.com/resources/vvukky.webp",
+				"description": "VVVVVV.",
+				"creator": "SharkOfGod"
 			},
 			"290": {
 				"name": "Twokky",
