@@ -39,7 +39,7 @@
     "express-fileupload": "^1.4.0",
     "express-rate-limit": "^6.6.0",
     "express-session": "^1.17.3",
-    "mongoose": "^6.6.0",
+    "mongoose": "^6.6.1",
     "node-fetch": "^2.6.7",
     "nodemailer": "^6.7.8",
     "passport": "^0.6.0",
