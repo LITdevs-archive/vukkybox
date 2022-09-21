@@ -1026,7 +1026,7 @@ app.get('/humans.txt', function(req, res){
 
 app.get('/robots.txt', function (req, res) {
     res.type('text/plain');
-    res.send("# All robots allowed\n# Unless you're a rude one\n\nUser-agent: *\nDisallow: /guestgallery/\nDisallow: /cdn-cgi/");
+    res.send("# All robots allowed\n# Unless you're a rude one\n\nUser-agent: *\nDisallow: /cdn-cgi/");
 });
 
 app.get('/.well-known/keybase.txt', function (req, res) {
