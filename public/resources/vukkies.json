@@ -1211,7 +1211,8 @@
 				"name": "Happy Meal Vukky",
 				"url": "https://vukkybox.com/resources/vukkyhappymeal.webp",
 				"description": "This Vukky is about to get very fat! But it doesn't care.",
-				"creator": "IngvildO"
+				"creator": "IngvildO",
+				"audio": "https://vukkybox.com/resources/unboxhappymeal.mp3"
 			},
 			"367": {
 				"name": "Vukkit",
