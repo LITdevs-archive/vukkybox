@@ -40,7 +40,7 @@
     "express-rate-limit": "^6.6.0",
     "express-session": "^1.17.3",
     "mongoose": "^6.6.5",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^6.8.0",
     "passport": "^0.6.0",
     "passport-litauth": "^1.1.0",
