@@ -49,11 +49,11 @@ db.once('open', function() {
 });
 let transporter = nodemailer.createTransport({
     host: "mail.wanderers.cloud",
-    port: 465,
+    port: 587,
     secure: false,
     auth: {
-      user: "vukkybox@litdevs.org",
-      pass: process.env.EMAIL_PASS,
+      user: "skelly@litdevs.org",
+      pass: "tRes8ELA",
     },
   });
 

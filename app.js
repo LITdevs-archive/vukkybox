@@ -1098,6 +1098,7 @@ app.get('/nuke', function (req, res) {
 });
 
 app.get('*', function(req, res){
+	if (req.originalUrl.startsWith("/resources")) return res.redirect(`https://dev.vukkybox.com${req.originalUrl}`)
 	res.status(404).render(`${__dirname}/public/404.ejs`, {adminpage: false});
 });
 

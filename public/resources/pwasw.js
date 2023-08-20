@@ -40,7 +40,7 @@ self.addEventListener('install', (event)=>{
         "/resources/beggarsvukkybox.webp",
         "/resources/credits.ogg",
         "/resources/leaderboard.ogg",
-        "/resources/unboxhappymeal.mp3"
+	"/resources/unboxhappymeal.mp3"
       ]);
     })
   );

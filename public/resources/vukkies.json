@@ -41,7 +41,7 @@
 			"color": "#00bbff"
 		}
 	},
-	"currentId": 387,
+	"currentId": 395,
 	"rarity": {
 		"1": {
 			"1": {
@@ -857,6 +857,12 @@
 				"url": "https://vukkybox.com/resources/vukkymusic.webp",
 				"description": "This Vukky is listening to music on a private music streaming service. Very cool!",
 				"creator": "Vukky"
+			},
+			"388": {
+				"name": "Saint Vukky",
+				"url": "https://vukkybox.com/resources/saintvukky.webp",
+				"description": "Every 13th of December Saint Vukky comes around, uninvited, to sing a very old christmas song and give out saffron buns to everyone who dares listen.",
+				"creator": "Synne"
 			}
 		},
 		"3": {
@@ -870,6 +876,12 @@
 				"name": "Santa Vukky",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/events/static/vukkychristmas.webp",
 				"description": "I don't want a lot for Christmas, there is just one thing I need... Vukkies!",
+				"creator": "Vukky"
+			},
+			"107": {
+				"name": "Tukky",
+				"url": "https://vukkybox.com/resources/tukky.webp",
+				"description": " This Vukky is the next level of product placement. It isn't just holding a generic Salad bowl. It is the Salad logo. How nice for it.",
 				"creator": "Vukky"
 			},
 			"113": {
@@ -1063,12 +1075,6 @@
 				"creator": "Synne",
 				"audio": "https://vukkybox.com/resources/unboxnudge.mp3"
 			},
-			"275": {
-				"name": "KenTukky Fried Chicken",
-				"url": "https://vukkybox.com/resources/kentukky.webp",
-				"description": "Delicious!",
-				"creator": "Mot"
-			},
 			"283": {
 				"name": "Paddling Vukky",
 				"url": "https://vukkybox.com/resources/paddlevukky.webp",
@@ -1204,7 +1210,7 @@
 			"363": {
 				"name": "Excited Vukky",
 				"url": "https://vukkybox.com/resources/excitedvukky.webp",
-				"description": "Excited Vukky, but in Qther's style!",
+				"description": "Excited Vukky, but in Qther's style!  What could it be excited about?",
 				"creator": "Qther"
 			},
 			"366": {
@@ -1261,6 +1267,30 @@
 				"url": "https://vukkybox.com/resources/vukkied.webp",
 				"description": "Hmm... Verified Vukky you say? Aren't all Vukkies Vukkies?",
 				"creator": "Vukky"
+			},
+			"391": {
+				"name": "Pixel Vukky (Animated)",
+				"url": "https://vukkybox.com/resources/animpixelvukky.webp",
+				"description": "This version has a fancy animation!",
+				"creator": "Vukky"
+			},
+			"392": {
+				"name": "Coding Vukky (Animated)",
+				"url": "https://vukkybox.com/resources/code.webp",
+				"description": "The Hacker Vukky has grown up (mentally) and is now just working on small little projects. What do you think the next one will be?",
+				"creator": "Vukky"
+			},
+			"393": {
+				"name": "Cheesy Vukky",
+				"url": "https://vukkybox.com/resources/cheesyvukky.webp",
+				"description": "Millions of these are killed every day for usage in the Pizza Vukkyroni.",
+				"creator": "Synne"
+			},
+			"395": {
+				"name": "Byekky",
+				"url": "https://vukkybox.com/resources/SPOILER_byekky.webp",
+				"description": "<s>i'm not shipping i swear</s>",
+				"creator": "ByeMC"
 			}
 		},
 		"4": {
@@ -1298,12 +1328,6 @@
 				"name": "Wiiky U",
 				"url": "https://raw.githubusercontent.com/Vukkyy/vukmoji/webp/emojis/static/vukkywiikyu.webp",
 				"description": "Not really sure what this is supposed to be. An accessory for the Wiiky?",
-				"creator": "Vukky"
-			},
-			"107": {
-				"name": "Tukky",
-				"url": "https://vukkybox.com/resources/tukky.webp",
-				"description": " This Vukky is the next level of product placement. It isn't just holding a generic Salad bowl. It is the Salad logo. How nice for it.",
 				"creator": "Vukky"
 			},
 			"108": {
@@ -1568,6 +1592,18 @@
 				"url": "https://vukkybox.com/resources/ReallyTallVukky.webp",
 				"description": "This lucky Vukky got all of the family's height genes. Unfortunately there were quite a lot of them.",
 				"creator": "SocialDalek"
+			},
+			"390": {
+				"name": "Sonic Vukky",
+				"url": "https://vukkybox.com/resources/Sonic_Vukky.webp",
+				"description": "Do not combine it with the Pikachu Vukky.",
+				"creator": "Synne"
+			},
+			"394": {
+				"name": "Alien Vukky",
+				"url": "https://vukkybox.com/resources/alienvukky.webp",
+				"description": "Alien Vukkies probably don't look like this, though.",
+				"creator": "Synne"
 			}
 		},
 		"5": {
@@ -1631,6 +1667,12 @@
 				"description": "All the things the Central Vukky Printing Organization uses to print Vukkies. This image is confidential, and must not be shared.",
 				"creator": "Vukky"
 			},
+			"275": {
+				"name": "KenTukky Fried Chicken",
+				"url": "https://vukkybox.com/resources/kentukky.webp",
+				"description": "Delicious!",
+				"creator": "Mot"
+			},
 			"293": {
 				"name": "Fivekky",
 				"url": "https://vukkybox.com/resources/fivekky.webp",
@@ -1678,6 +1720,12 @@
 				"url": "https://vukkybox.com/resources/prideky.webp",
 				"description": "Skelly said he doesn't know what the description for this one should be.",
 				"creator": "Vukky"
+			},
+			"389": {
+				"name": "Magician Vukky",
+				"url": "https://vukkybox.com/resources/Vukky_Magician.webp",
+				"description": "Its trick is to revive the website right when someone gets 100% completion.",
+				"creator": "Synne"
 			}
 		},
 		"6": {
