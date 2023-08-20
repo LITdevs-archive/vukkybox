@@ -44,7 +44,7 @@
     "nodemailer": "^6.8.0",
     "passport": "^0.6.0",
     "passport-litauth": "^1.1.0",
-    "qrcode": "^1.5.1",
+    "qrcode": "^1.5.3",
     "speakeasy": "^2.0.0",
     "webp-converter": "^2.3.3"
   }
